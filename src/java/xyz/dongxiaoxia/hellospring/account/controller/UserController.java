@@ -7,6 +7,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import xyz.dongxiaoxia.hellospring.account.service.UserService;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 
+import javax.annotation.Resource;
+
 /**
  * Created by chenwendong on 2015/10/29.
  */
@@ -14,7 +16,7 @@ import xyz.dongxiaoxia.hellospring.core.entity.User;
 @Controller
 @RequestMapping(value = "/api/user")
 public class UserController {
-    @Autowired
+    @Resource
     private UserService userService;
 
     public static void main(String[] args) {
@@ -26,5 +28,10 @@ public class UserController {
     @RequestMapping(value = "/get")
     public void get(@RequestParam(value = "id") String id) {
         User user = userService.getUser(id);
+    }
+
+    @RequestMapping(value = "/count")
+    public void getCount() {
+        int count = userService.getUserCount();
     }
 }

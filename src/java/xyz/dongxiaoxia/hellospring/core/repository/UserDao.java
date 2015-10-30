@@ -8,4 +8,6 @@ import xyz.dongxiaoxia.hellospring.core.entity.User;
 public interface UserDao {
 
     User get(String id);
+
+    int getCount();
 }
