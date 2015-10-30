@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import xyz.dongxiaoxia.hellospring.Response;
 import xyz.dongxiaoxia.hellospring.account.service.UserService;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 
@@ -31,7 +33,16 @@ public class UserController {
     }
 
     @RequestMapping(value = "/count")
-    public void getCount() {
+    @ResponseBody
+    public Object getCount() {
+        Response response;
         int count = userService.getUserCount();
+        User user = new User();
+        user.setPassword(String.valueOf(count));
+        response = new Response();
+        //   response.success(user);
+        //  response.success();
+        response.failure("timeOut");
+        return response;
     }
 }
