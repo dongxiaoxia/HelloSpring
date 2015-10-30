@@ -15,16 +15,16 @@
        </context:component-scan>
 
        <mvc:annotation-driven>
-              <!-- <mvc:message-converters register-defaults="true">
-                      &lt;!&ndash; 将StringHttpMessageConverter的默认编码设为UTF-8 &ndash;&gt;
+              <mvc:message-converters register-defaults="true">
+                     <!-- 将StringHttpMessageConverter的默认编码设为UTF-8 -->
                       <bean class="org.springframework.http.converter.StringHttpMessageConverter">
                              <constructor-arg value="UTF-8"/>
                       </bean>
-                      &lt;!&ndash; 将Jackson2HttpMessageConverter的默认格式化输出设为true &ndash;&gt;
+                     <!-- 将Jackson2HttpMessageConverter的默认格式化输出设为true -->
                       <bean class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
                              <property name="prettyPrint" value="true"/>
                       </bean>
-               </mvc:message-converters>-->
+              </mvc:message-converters>
        </mvc:annotation-driven>
 
        <!-- 定义JSP文件的位置 -->
