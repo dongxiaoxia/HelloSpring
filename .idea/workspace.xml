@@ -2,12 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="0c536fdc-1f75-4eeb-aeb7-8b2ecedb798e" name="Default" comment="build project level" />
-    <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="Add necessary jar packages from a url to the database query process.">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/lib/javax.servlet-api-3.1.0.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/account/controller/UserControllerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/HelloSpring.iml" afterPath="$PROJECT_DIR$/HelloSpring.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/controller/UserController.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+    <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="Add Spring Test">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HelloSpring.iws" />
@@ -621,7 +616,7 @@
       <workItem from="1446208499777" duration="13510000" />
       <workItem from="1446727490049" duration="2280000" />
       <workItem from="1446730975116" duration="1196000" />
-      <workItem from="1446732335879" duration="149000" />
+      <workItem from="1446732335879" duration="313000" />
     </task>
     <task id="LOCAL-00001" summary="test in company">
       <created>1446081049368</created>
@@ -683,11 +678,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446226850348</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add Spring Test">
+      <created>1446732542746</created>
+      <option name="number" value="00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1446732542746</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="32812000" />
+    <option name="totallyTimeSpent" value="32976000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -779,7 +780,8 @@
     <MESSAGE value="Add the function about JSON Response." />
     <MESSAGE value="Add necessary jar packages from a url to the database query process." />
     <MESSAGE value="Add the function about the JSON response." />
-    <option name="LAST_COMMIT_MESSAGE" value="Add the function about the JSON response." />
+    <MESSAGE value="Add Spring Test" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Spring Test" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.89506173" />
