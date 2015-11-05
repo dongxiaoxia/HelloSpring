@@ -40,9 +40,9 @@ public class UserController {
         User user = new User();
         user.setPassword(String.valueOf(count));
         response = new Response();
-        //   response.success(user);
+        response.success(user);
         //  response.success();
-        response.failure("timeOut");
+        // response.failure("timeOut");
         return response;
     }
 }
