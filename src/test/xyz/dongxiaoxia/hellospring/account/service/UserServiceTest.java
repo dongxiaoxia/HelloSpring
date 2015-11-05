@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
+import xyz.dongxiaoxia.hellospring.BasicTest;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 
 import javax.annotation.Resource;
@@ -13,10 +14,7 @@ import javax.annotation.Resource;
 /**
  * Created by Administrator on 2015/11/5.
  */
-@RunWith(SpringJUnit4ClassRunner.class)
-@WebAppConfiguration
-@ContextConfiguration(locations = {"file:web/WEB-INF/dispatcher-servlet.xml", "classpath:applicationContext.xml"})
-public class UserServiceTest {
+public class UserServiceTest extends BasicTest {
     @Resource
     UserService userService;
 
