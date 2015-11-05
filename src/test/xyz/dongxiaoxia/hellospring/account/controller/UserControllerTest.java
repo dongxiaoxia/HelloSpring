@@ -26,6 +26,7 @@ public class UserControllerTest extends BasicTest {
 
     @Before
     public void init() {
+
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
     }
 

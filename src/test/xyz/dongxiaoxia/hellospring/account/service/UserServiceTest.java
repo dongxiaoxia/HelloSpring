@@ -20,6 +20,7 @@ public class UserServiceTest extends BasicTest {
 
     @Test
     public void getTest() {
+
         User user = userService.getUser("123");
         Assert.assertEquals(user.getId(), "123");
     }
