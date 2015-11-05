@@ -28,8 +28,12 @@ public class UserController {
     }
 
     @RequestMapping(value = "/get")
-    public void get(@RequestParam(value = "id") String id) {
+    @ResponseBody
+    public Object get(@RequestParam(value = "id") String id) {
         User user = userService.getUser(id);
+        Response response = new Response();
+        response.success(user);
+        return response;
     }
 
     @RequestMapping(value = "/count")
