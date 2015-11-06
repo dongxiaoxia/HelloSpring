@@ -15,6 +15,9 @@
                                 expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
     </context:component-scan>
 
+    <!-- 使用注解配置切面 -->
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+
     <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
         <property name="driverClassName" value="${jdbc.driverClassName}"/>
         <property name="url" value="${jdbc.url}"/>
@@ -22,8 +25,5 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
     <context:property-placeholder location="classpath:jdbc.properties"/>
-
-    <!-- 使用注解配置切面 -->
-    <aop:aspectj-autoproxy/>
 
 </beans>
