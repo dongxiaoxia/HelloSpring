@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.dongxiaoxia.hellospring.Response;
 import xyz.dongxiaoxia.hellospring.account.service.UserService;
+import xyz.dongxiaoxia.hellospring.aop.MyLog;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 
 import javax.annotation.Resource;
@@ -38,6 +39,7 @@ public class UserController {
 
     @RequestMapping(value = "/count")
     @ResponseBody
+    @MyLog(operationType = "getCount操作", operationName = "获取用户数量")
     public Object getCount() {
         Response response;
         int count = userService.getUserCount();

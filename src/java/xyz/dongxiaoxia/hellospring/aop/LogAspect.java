@@ -3,17 +3,26 @@ package xyz.dongxiaoxia.hellospring.aop;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import xyz.dongxiaoxia.hellospring.log.service.LogService;
 
 import java.util.Arrays;
 
 /**
  * Created by Administrator on 2015/11/6.
+ * 日志记录，添加、删除、修改方法AOP
  */
 @Aspect
 @Component
 public class LogAspect {
 
+    @Autowired
+    private LogService logService;//日志记录服务
+
+    /**
+     * 添加业务逻辑方法切入点
+     */
     @Pointcut("execution(* xyz.dongxiaoxia.hellospring..*.*(..)))")
     public void pointcutExpression(){
     }

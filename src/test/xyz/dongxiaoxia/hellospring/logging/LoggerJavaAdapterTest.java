@@ -7,7 +7,7 @@ import org.junit.Test;
  */
 public class LoggerJavaAdapterTest {
 
-    static LoggerAdapter logger = LoggerAapterFactory.getLoggerAdapter(LoggerJavaAdapter.class);
+    static LoggerAdapter logger = LoggerAdapterFactory.getLoggerAdapter(LoggerJavaAdapter.class);
 
     @Test
     public void test() {
