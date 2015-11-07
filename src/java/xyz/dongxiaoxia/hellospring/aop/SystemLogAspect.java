@@ -34,7 +34,7 @@ public class SystemLogAspect {
     private LogService logService;
 
     //Controlle层切点
-    @Pointcut("execution (* xyz.dongxiaoxia.hellospring.account.controller.*.*(..))")
+    @Pointcut("execution (* xyz.dongxiaoxia.hellospring.account.controller.*.*(..))&&@annotation(MyLog)")
     public void controllerAspect() {
     }
 

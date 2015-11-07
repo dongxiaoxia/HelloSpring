@@ -30,6 +30,7 @@ public class UserController {
 
     @RequestMapping(value = "/get")
     @ResponseBody
+    @MyLog(operationType = "get操作", operationName = "获取用户")
     public Object get(@RequestParam(value = "id") String id) {
         User user = userService.getUser(id);
         Response response = new Response();

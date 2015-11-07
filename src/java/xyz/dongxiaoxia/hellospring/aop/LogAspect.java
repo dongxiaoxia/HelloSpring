@@ -23,7 +23,7 @@ public class LogAspect {
     /**
      * 添加业务逻辑方法切入点
      */
-    @Pointcut("execution(* xyz.dongxiaoxia.hellospring..*.*(..)))")
+    @Pointcut("execution(* xyz233.dongxiaoxia.hellospring..*.*(..)))")
     public void pointcutExpression(){
     }
 

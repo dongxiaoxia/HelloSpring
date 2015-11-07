@@ -23,8 +23,8 @@ public class LogDaoImpl implements LogDao {
 
     @Override
     public void save(Log log) {
-        String sql = "INSERT INTO SYSTEM_LOG (description,method,logType,requestIp,exceptionCode,exceptionDetail,params,createDate) values (?,?,?,?,?,?,?,?)";
-        jdbcTemplate.update(sql, new Object[]{log.getDescription(), log.getMethod(), log.getLogType(), log.getRequestIp(), log.getExceptionCode(), log.getExceptionDetail(), log.getParams(), log.getCreateDate()});
+        String sql = "INSERT INTO SYSTEM_LOG (description,method,logType,requestIp,exceptionCode,exceptionDetail,params,createBy,createDate) values (?,?,?,?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, new Object[]{log.getDescription(), log.getMethod(), log.getLogType(), log.getRequestIp(), log.getExceptionCode(), log.getExceptionDetail(), log.getParams(), log.getCreateBy(), log.getCreateDate()});
     }
 
     @Override

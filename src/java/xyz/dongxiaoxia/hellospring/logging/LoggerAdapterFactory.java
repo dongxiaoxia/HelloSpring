@@ -8,6 +8,7 @@ public class LoggerAdapterFactory {
     public static LoggerAdapter getLoggerAdapter(Class clazz) {
         //TODO according to specific circumstance
         //such as 'LoggerJava'
-        return new LoggerJavaAdapter(clazz);
+        //return new LoggerJavaAdapter(clazz);
+        return new LoggerSLF4JAdapter(clazz);
     }
 }
