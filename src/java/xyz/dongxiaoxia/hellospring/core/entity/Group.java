@@ -3,14 +3,14 @@ package xyz.dongxiaoxia.hellospring.core.entity;
 import java.util.List;
 
 /**
- * Created by chenwendong on 2015/10/29.
+ * Created by Administrator on 2015/11/8.
  */
-public class User {
+public class Group {
     private String id;
     private String name;
-    private String password;
-    private List<Group> groups;
+    private String parentId;
     private List<Role> roles;
+    private List<User> users;
 
     public String getId() {
         return id;
@@ -28,20 +28,12 @@ public class User {
         this.name = name;
     }
 
-    public String getPassword() {
-        return password;
+    public String getParentId() {
+        return parentId;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public List<Group> getGroups() {
-        return groups;
-    }
-
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
+    public void setParentId(String parentId) {
+        this.parentId = parentId;
     }
 
     public List<Role> getRoles() {
@@ -50,5 +42,13 @@ public class User {
 
     public void setRoles(List<Role> roles) {
         this.roles = roles;
+    }
+
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public void setUsers(List<User> users) {
+        this.users = users;
     }
 }
