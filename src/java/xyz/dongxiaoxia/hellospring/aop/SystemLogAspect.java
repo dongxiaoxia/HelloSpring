@@ -55,19 +55,21 @@ public class SystemLogAspect {
      * @param joinPoint
      */
     @Around("controllerAspect()")
-    public void around(JoinPoint joinPoint) {
+    public Object around(JoinPoint joinPoint) {
+        Object returnValue = null;
         logger.info("===============执行controller前置通知================");
         long start = System.currentTimeMillis();
         try {
-            ((ProceedingJoinPoint) joinPoint).proceed();
+            returnValue = ((ProceedingJoinPoint) joinPoint).proceed();
             long end = System.currentTimeMillis();
             logger.info("===============around " + joinPoint + "\tUse time:" + (end - start) + " ms!================");
             logger.info("===============结束执行controller环绕通知================");
         } catch (Throwable throwable) {
-            throwable.printStackTrace();
             long end = System.currentTimeMillis();
-            logger.info("===============around " + joinPoint + "\tUse time:" + (end - start) + " ms with exception:" + throwable.getMessage() + "================", throwable);
+            logger.error("===============around " + joinPoint + "\tUse time:" + (end - start) + " ms with exception:" + throwable.getMessage() + "================", throwable);
+            throw new RuntimeException(throwable);
         }
+        return returnValue;
     }
 
     /**

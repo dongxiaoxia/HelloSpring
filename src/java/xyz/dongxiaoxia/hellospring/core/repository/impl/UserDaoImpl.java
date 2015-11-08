@@ -46,6 +46,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public List<User> findByUsername(String username) {
+        return this.jdbcTemplate.query("SELECT * FROM SYSTEM_USER WHERE username = ?", new UserMapper(), username);
+    }
+
+    @Override
+    public List<User> findByUsernameAndPassword(String username, String password) {
+        return this.jdbcTemplate.query("SELECT * FROM SYSTEM_USER WHERE username = ? and password = ?", new UserMapper(), username, password);
+    }
+
+    @Override
     public List<User> list() {
         return this.jdbcTemplate.query("SELECT * FROM SYSTEM_USER", new UserMapper());
     }
