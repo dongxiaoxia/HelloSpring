@@ -2,16 +2,20 @@ package xyz.dongxiaoxia.hellospring.core.repository;
 
 import xyz.dongxiaoxia.hellospring.core.entity.Log;
 
+import java.util.List;
+
 /**
  * Created by Administrator on 2015/11/7.
  */
 public interface LogDao {
-    void save(Log log);
+    int insert(Log log);
 
-    void delete(String id);
+    int delete(String id);
 
-    void update(Log log);
+    int update(Log log);
 
     Log get(String id);
+
+    List<Log> list();
 
 }

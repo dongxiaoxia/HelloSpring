@@ -24,7 +24,7 @@ public class UserController {
 
     public static void main(String[] args) {
         UserService userService = new UserService();
-        User user = userService.getUser("123");
+        User user = userService.get("123");
         System.out.println(user.getName());
     }
 
@@ -32,7 +32,7 @@ public class UserController {
     @ResponseBody
     @MyLog(operationType = "get操作", operationName = "获取用户")
     public Object get(@RequestParam(value = "id") String id) {
-        User user = userService.getUser(id);
+        User user = userService.get(id);
         Response response = new Response();
         response.success(user);
         return response;

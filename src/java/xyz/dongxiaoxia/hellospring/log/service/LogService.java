@@ -20,7 +20,7 @@ public class LogService {
     private LogDao logDao;
 
     public void save(Log log) {
-        logDao.save(log);
+        logDao.insert(log);
     }
 
     public void delete(String id) {
