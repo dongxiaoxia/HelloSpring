@@ -3,36 +3,11 @@
   <component name="ChangeListManager">
     <list id="0c536fdc-1f75-4eeb-aeb7-8b2ecedb798e" name="Default" comment="build project level" />
     <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="Add Entities Dao level!">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/GroupDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/GroupDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/GroupDaoImplTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/OperationDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/OperationDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/OperationDaoImplTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/PrivilegeDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/PrivilegeDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/PrivilegeDaoImplTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/ResourceDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/ResourceDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/ResourceDapImplTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/RoleDao.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/RoleDaoImpl.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/RoleDaoImplTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/LogDao.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/LogDao.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/impl/LogDaoImpl.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/impl/LogDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/impl/LogDaoImplTest.class" afterPath="$PROJECT_DIR$/out/test/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/impl/LogDaoImplTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/log/service/LogService.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/log/service/LogService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/LogDao.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/LogDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/LogDaoImpl.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/LogDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/LogDaoImplTest.java" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/LogDaoImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/log/service/LogService.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/log/service/LogService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/entity/Resource.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/entity/Resource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/controller/UserController.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/UserDao.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/UserDao.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/service/UserService.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/account/service/UserServiceTest.java" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/account/service/UserServiceTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/controller/UserController.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/controller/UserController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/UserDao.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/UserDao.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/service/UserService.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/service/UserService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/HelloSpring/xyz/dongxiaoxia/hellospring/account/service/UserServiceTest.class" afterPath="$PROJECT_DIR$/out/test/HelloSpring/xyz/dongxiaoxia/hellospring/account/service/UserServiceTest.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HelloSpring.iws" />
@@ -801,7 +776,7 @@
       <workItem from="1446732335879" duration="4831000" />
       <workItem from="1446814455152" duration="17464000" />
       <workItem from="1446862082699" duration="33103000" />
-      <workItem from="1446956047849" duration="8862000" />
+      <workItem from="1446956047849" duration="8971000" />
     </task>
     <task id="LOCAL-00001" summary="test in company">
       <created>1446081049368</created>
@@ -971,11 +946,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446965595816</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="Add Entities Dao level!">
+      <created>1446965750346</created>
+      <option name="number" value="00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1446965750346</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96923000" />
+    <option name="totallyTimeSpent" value="97032000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
