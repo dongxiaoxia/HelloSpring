@@ -2,17 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="0c536fdc-1f75-4eeb-aeb7-8b2ecedb798e" name="Default" comment="build project level" />
-    <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="Add Entities Dao level!">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/account/controller/UserController.class" afterPath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/account/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/controller/UserController.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/controller/UserController.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/account/service/UserService.class" afterPath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/account/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/service/UserService.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/service/UserService.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/applicationContext.xml" afterPath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/applicationContext.xml" afterPath="$PROJECT_DIR$/out/production/HelloSpring/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resource/applicationContext.xml" afterPath="$PROJECT_DIR$/src/resource/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/web.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
+    <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="Add Spring Security!">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HelloSpring.iws" />
@@ -52,12 +42,12 @@
         <entry file="file://$PROJECT_DIR$/src/resource/applicationContext.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-7.84">
-              <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding>
-                <element signature="e#2305#2330#0" expanded="true" />
-                <element signature="e#2368#2381#0" expanded="true" />
-                <element signature="e#2424#2442#0" expanded="true" />
-                <element signature="e#2485#2503#0" expanded="true" />
+                <element signature="e#2304#2329#0" expanded="true" />
+                <element signature="e#2367#2380#0" expanded="true" />
+                <element signature="e#2423#2441#0" expanded="true" />
+                <element signature="e#2484#2502#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -718,7 +708,7 @@
       <workItem from="1446814455152" duration="17464000" />
       <workItem from="1446862082699" duration="33103000" />
       <workItem from="1446956047849" duration="8971000" />
-      <workItem from="1446989591192" duration="2549000" />
+      <workItem from="1446989591192" duration="2667000" />
     </task>
     <task id="LOCAL-00001" summary="test in company">
       <created>1446081049368</created>
@@ -894,11 +884,17 @@
       <option name="project" value="LOCAL" />
       <updated>1446965750346</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="Add Spring Security!">
+      <created>1446992189791</created>
+      <option name="number" value="00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1446992189791</updated>
+    </task>
+    <option name="localTasksCounter" value="31" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="99581000" />
+    <option name="totallyTimeSpent" value="99699000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -967,7 +963,8 @@
     <MESSAGE value="Add logging to database and make a common adapter for logging!" />
     <MESSAGE value="Add Group，Operation，Privilege，Resource，Role Entities and create tables!" />
     <MESSAGE value="Add Entities Dao level!" />
-    <option name="LAST_COMMIT_MESSAGE" value="Add Entities Dao level!" />
+    <MESSAGE value="Add Spring Security!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add Spring Security!" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.89506173" />
@@ -1388,12 +1385,12 @@
     <entry file="file://$PROJECT_DIR$/src/resource/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.84">
-          <caret line="34" column="0" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
+          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
           <folding>
-            <element signature="e#2305#2330#0" expanded="true" />
-            <element signature="e#2368#2381#0" expanded="true" />
-            <element signature="e#2424#2442#0" expanded="true" />
-            <element signature="e#2485#2503#0" expanded="true" />
+            <element signature="e#2304#2329#0" expanded="true" />
+            <element signature="e#2367#2380#0" expanded="true" />
+            <element signature="e#2423#2441#0" expanded="true" />
+            <element signature="e#2484#2502#0" expanded="true" />
           </folding>
         </state>
       </provider>
