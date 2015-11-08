@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:security="http://www.springframework.org/schema/security"
        xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.2.xsd"
        default-lazy-init="true">
     <description>Spring公共配置</description>
+
+
+    <!-- 不拦截登录页面，至于为什么加一个 *，是因为请求这个页面的时候可能会带有一些参数 -->
+    <security:http pattern="/login.jsp*" security="none"/>
+    <security:http auto-config="true">
+        <security:form-login login-page="/login.jsp"/>
+        <!-- 指定登录页面 -->
+        <security:intercept-url pattern="/**" access="ROLE_USER"/>
+    </security:http>
+
+    <!-- 配置认证管理器 -->
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="user" password="123456" authorities="ROLE_USER"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+    <!-- 这里定义的messageSource对象供spring security 框架输出异常信息 -->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:/org/springframework/security/messages_zh_CN"/>
+    </bean>
+
 
     <!-- 使用annotation 自动注册bean, 并保证@Required、@Autowired的属性被注入 -->
     <context:component-scan base-package="xyz.dongxiaoxia.hellospring">
