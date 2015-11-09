@@ -1,0 +1,63 @@
+<beans xmlns:security="http://www.springframework.org/schema/security"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+          http://www.springframework.org/schema/beans/spring-beans.xsd
+          http://www.springframework.org/schema/security
+          http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+
+
+    <!--
+        <security:http security="none" pattern="/login.jsp" />
+    -->
+    <security:http security="none" pattern="/403.jsp"/>
+    <security:http auto-config="true">
+        <security:form-login login-page="/login.jsp"
+                             login-processing-url="/api/user/login"
+                             username-parameter="username"
+                             password-parameter="password"
+                             default-target-url="/index.jsp"
+                             always-use-default-target="true"
+                             authentication-failure-url="/login_failure.jsp"/>
+        <!-- 表示匿名用户可以访问 -->
+        <security:intercept-url pattern="/login*.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/**" access="ROLE_USER"/>
+        <security:access-denied-handler error-page="/403.jsp"/>
+    </security:http>
+
+    <!--<security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="user" password="user" authorities="ROLE_USER"/>
+                <security:user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>-->
+    <!-- 用于认证的AuthenticationManager -->
+    <!-- <security:authentication-manager alias="authenticationManager">
+         <security:authentication-provider
+                 user-service-ref="userDetailsService" />
+     </security:authentication-manager>
+
+     <bean id="userDetailsService"
+           class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+         <property name="dataSource" ref="dataSource" />
+     </bean>-->
+    <bean id="messageSource"
+          class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename"
+                  value="classpath:org/springframework/security/messages"/>
+    </bean>
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:jdbc-user-service data-source-ref="dataSource"
+                                        users-by-username-query="SELECT username,password,enabled FROM SYSTEM_USER WHERE username = ?"
+                                        authorities-by-username-query="SELECT id AS username,name as role FROM system_role WHERE id = ?"
+
+                    />
+
+        </security:authentication-provider>
+    </security:authentication-manager>
+
+
+</beans>
