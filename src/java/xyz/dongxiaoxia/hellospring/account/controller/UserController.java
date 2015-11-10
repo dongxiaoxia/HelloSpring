@@ -47,6 +47,26 @@ public class UserController extends BasicController {
         return response;
     }
 
+    /**
+     * 登出
+     *
+     * @return
+     */
+    @RequestMapping("/logout")
+    @ResponseBody
+    @MyLog(operationType = "logout", operationName = "登出")
+    public Object logout() {
+        Response response = new Response();
+        try {
+            getSession().removeAttribute("user");
+            response.success("登陆成功");
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.failure(e.getMessage());
+        }
+        return response;
+    }
+
     @RequestMapping(value = "/get")
     @ResponseBody
     @MyLog(operationType = "get操作", operationName = "获取用户")

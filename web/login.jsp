@@ -27,6 +27,10 @@ ${sessionScope.SPRING_SECURITY_LAST_EXCEPTION.message} <!-- 输出异常信息 -
             <td><input type="password" name="password"/></td>
         </tr>
         <tr>
+            <td>记住我：</td>
+            <td><input type="checkbox" name="_spring_security_remember_me"/></td>
+        </tr>
+        <tr>
             <td colspan="2" align="center">
                 <input type="submit" value="登录"/>
                 <input type="reset" value="重置"/>

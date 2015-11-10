@@ -19,10 +19,16 @@
                              default-target-url="/index.jsp"
                              always-use-default-target="true"
                              authentication-failure-url="/login_failure.jsp"/>
+        <!-- 定义记住我功能 -->
+        <security:remember-me key="elim"/>
         <!-- 表示匿名用户可以访问 -->
         <security:intercept-url pattern="/login*.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
-        <security:intercept-url pattern="/**" access="ROLE_USER"/>
+        <security:intercept-url pattern="/logout*.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
+        <security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN"/>
         <security:access-denied-handler error-page="/403.jsp"/>
+        <security:logout logout-url="/api/user/logout"
+                         logout-success-url="/logout.jsp"/>
+
     </security:http>
 
     <!--<security:authentication-manager>
@@ -59,5 +65,10 @@
         </security:authentication-provider>
     </security:authentication-manager>
 
-
+    <!--<security:global-method-security secured-annotations="enabled"/>-->
+    <security:global-method-security>
+        <security:protect-pointcut
+                expression="execution(* xyz.dongxiaoxia.hellospring.account.service.UserService.*(..))"
+                access="ROLE_ADMIN"/>
+    </security:global-method-security>
 </beans>

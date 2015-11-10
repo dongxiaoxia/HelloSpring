@@ -1,6 +1,7 @@
 package xyz.dongxiaoxia.hellospring.account.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import xyz.dongxiaoxia.hellospring.Utils.StringUtils;
@@ -77,6 +78,7 @@ public class UserService {
      *
      * @return
      */
+    @Secured("ROLE_ADMIN")
     public int getUserCount() {
         return userDao.list().size();
     }
