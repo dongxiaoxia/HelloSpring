@@ -3,11 +3,10 @@
   <component name="ChangeListManager">
     <list id="0c536fdc-1f75-4eeb-aeb7-8b2ecedb798e" name="Default" comment="build project level" />
     <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="Add Spring Security!">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/logout.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/controller/UserController.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/service/UserService.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/service/UserService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/login.jsp" afterPath="$PROJECT_DIR$/web/login.jsp" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resource/springSecurity.xml" afterPath="$PROJECT_DIR$/src/resource/springSecurity.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/account/controller/UserController.class" afterPath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/account/controller/UserController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/controller/UserController.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/controller/UserController.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/account/service/UserService.class" afterPath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/account/service/UserService.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/service/UserService.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/account/service/UserService.class" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HelloSpring.iws" />
@@ -49,9 +48,9 @@
             <state vertical-scroll-proportion="-8.08">
               <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
               <folding>
-                <marker date="1447167902925" expanded="true" signature="2982:3007" placeholder="SELECT usern..." />
-                <marker date="1447167902925" expanded="true" signature="2982:3050" placeholder="SELECT usern..SYSTEM_USER..." />
-                <marker date="1447167902925" expanded="true" signature="3123:3187" placeholder="SELECT TYPE ..system_privilege..." />
+                <marker date="1447168467021" expanded="true" signature="2991:3016" placeholder="SELECT usern..." />
+                <marker date="1447168467021" expanded="true" signature="2991:3059" placeholder="SELECT usern..SYSTEM_USER..." />
+                <marker date="1447168467021" expanded="true" signature="3132:3196" placeholder="SELECT TYPE ..system_privilege..." />
               </folding>
             </state>
           </provider>
@@ -820,7 +819,7 @@
       <workItem from="1446956047849" duration="8971000" />
       <workItem from="1446989591192" duration="3924000" />
       <workItem from="1447069322822" duration="10170000" />
-      <workItem from="1447163282911" duration="4761000" />
+      <workItem from="1447163282911" duration="4841000" />
     </task>
     <task id="LOCAL-00001" summary="test in company">
       <created>1446081049368</created>
@@ -1026,11 +1025,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447080224352</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Add Spring Security!">
+      <created>1447168473958</created>
+      <option name="number" value="00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1447168473958</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="115887000" />
+    <option name="totallyTimeSpent" value="115967000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1520,9 +1525,9 @@
         <state vertical-scroll-proportion="-8.08">
           <caret line="22" column="42" selection-start-line="22" selection-start-column="42" selection-end-line="22" selection-end-column="42" />
           <folding>
-            <marker date="1447167902925" expanded="true" signature="2982:3007" placeholder="SELECT usern..." />
-            <marker date="1447167902925" expanded="true" signature="2982:3050" placeholder="SELECT usern..SYSTEM_USER..." />
-            <marker date="1447167902925" expanded="true" signature="3123:3187" placeholder="SELECT TYPE ..system_privilege..." />
+            <marker date="1447168467021" expanded="true" signature="2991:3016" placeholder="SELECT usern..." />
+            <marker date="1447168467021" expanded="true" signature="2991:3059" placeholder="SELECT usern..SYSTEM_USER..." />
+            <marker date="1447168467021" expanded="true" signature="3132:3196" placeholder="SELECT TYPE ..system_privilege..." />
           </folding>
         </state>
       </provider>
