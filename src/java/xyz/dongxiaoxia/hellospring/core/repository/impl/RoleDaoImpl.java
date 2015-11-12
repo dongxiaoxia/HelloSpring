@@ -51,6 +51,11 @@ public class RoleDaoImpl implements RoleDao {
 
     }
 
+    @Override
+    public List<Role> findRoleByUsername(String userId) {
+        return this.jdbcTemplate.query("SELECT r.name,u.id,ur.role_id,ur.user_id FROM system_role r,SYSTEM_USER u,system_user_role ur WHERE u.id = ur.user_id AND r.id = ur.role_id AND u.username = ?", new RoleMapper(), userId);
+    }
+
     private static final class RoleMapper implements RowMapper<Role> {
         public Role mapRow(ResultSet rs, int rowNum) throws SQLException {
             Role role = new Role();

@@ -50,13 +50,21 @@ public class ResourceDaoImpl implements ResourceDao {
         return this.jdbcTemplate.query("select * from system_resource", new ResouceMapper());
     }
 
+    //sptingSecurity
+    public List<Resource> listResourceAndRoleName() {
+        return this.jdbcTemplate.query("SELECT re.res_string,r.name FROM system_role r JOIN system_role_resource rr ON r.id = rr.role_id JOIN system_resource re ON re.id = rr.resource_id ORDER BY re.priority", new ResouceMapper());
+    }
+
     private static final class ResouceMapper implements RowMapper<Resource> {
         public Resource mapRow(ResultSet rs, int rowNum) throws SQLException {
             Resource resource = new Resource();
             resource.setId(rs.getString("id"));
             resource.setName(rs.getString("name"));
+            resource.setRes_string(rs.getString("res_string"));
+            resource.setDesc(rs.getString("desc"));
+            resource.setType(rs.getString("type"));
+            resource.setPriority(rs.getString("priority"));
             return resource;
         }
     }
-
 }
