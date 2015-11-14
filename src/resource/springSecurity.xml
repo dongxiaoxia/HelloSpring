@@ -20,7 +20,7 @@
                              always-use-default-target="true"
                              authentication-failure-url="/login.jsp?error=true"/>
         <!-- 定义记住我功能 -->
-        <security:remember-me key="elim"/>
+        <security:remember-me key="hellospring" data-source-ref="dataSource"/>
         <!-- 表示匿名用户可以访问 -->
         <security:intercept-url pattern="/login*.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/logout*.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
