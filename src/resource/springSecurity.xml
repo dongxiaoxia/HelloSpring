@@ -11,7 +11,7 @@
         <security:http security="none" pattern="/login.jsp" />
     -->
     <security:http security="none" pattern="/403.jsp"/>
-    <security:http auto-config="true">
+    <security:http auto-config="true" access-denied-page="/403.jsp">
         <security:form-login login-page="/login.jsp"
                              login-processing-url="/api/user/login"
                              username-parameter="username"
@@ -25,8 +25,9 @@
         <security:intercept-url pattern="/login*.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/logout*.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/admin*.jsp*" access="ROLE_ADMIN"/>
+        <security:intercept-url pattern="/api/user/get" access="ROLE_ADMIN"/>
         <security:intercept-url pattern="/**" access="ROLE_USER,ROLE_ADMIN"/>
-        <security:access-denied-handler error-page="/403.jsp"/>
+        <!--<security:access-denied-handler error-page="/403.jsp"/>-->
         <security:logout logout-url="/api/user/logout"
                          logout-success-url="/logout.jsp"/>
 
@@ -35,9 +36,13 @@
     <!--自定义数据库认证-->
     <security:authentication-manager alias="authenticationManager">
         <security:authentication-provider
-                user-service-ref="userDetailService"/>
+                user-service-ref="userDetailService">
+            <security:password-encoder hash="md5">
+                <security:salt-source user-property="username"/>
+            </security:password-encoder>
+        </security:authentication-provider>
     </security:authentication-manager>
-    <bean id="userDetailService" class="xyz.dongxiaoxia.hellospring.account.service.UserDetailService"/>
+    <bean id="userDetailService" class="xyz.dongxiaoxia.hellospring.account.service.UserDetailService"></bean>
 
     <!-- 基于配置的认证 -->
     <!--<security:authentication-manager>

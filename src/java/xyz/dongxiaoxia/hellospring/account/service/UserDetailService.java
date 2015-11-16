@@ -6,6 +6,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
@@ -45,14 +47,19 @@ public class UserDetailService implements UserDetailsService {
         return new UserDetailsVO(users.get(0).getName(), users.get(0).getPassword(), authorities);
     }
 
-    class UserDetailsVO implements UserDetails {
+    //修饰符一定要用public 要不加盐的时候报错。。
+    public class UserDetailsVO implements UserDetails {
         private String username;
         private String password;
         private Set<GrantedAuthority> grantedAuthorities;
+        //添加盐值加密需要
+        // PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        //private String hashedPassword = passwordEncoder.encode(password);
 
         public UserDetailsVO(String username, String password, Set<GrantedAuthority> grantedAuthorities) {
             this.username = username;
             this.password = password;
+            // this.password = passwordEncoder.encode(password);
             this.grantedAuthorities = grantedAuthorities;
         }
 
@@ -90,5 +97,7 @@ public class UserDetailService implements UserDetailsService {
         public boolean isEnabled() {
             return true;
         }
+
+
     }
 }

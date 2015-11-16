@@ -1,6 +1,9 @@
 package xyz.dongxiaoxia.hellospring.account.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContext;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -40,6 +43,7 @@ public class UserController extends BasicController {
             User user = userService.login(username, password);
             session.setAttribute("user", user);
             response.success("登陆成功");
+            UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         } catch (Exception e) {
             e.printStackTrace();
             response.failure(e.getMessage());

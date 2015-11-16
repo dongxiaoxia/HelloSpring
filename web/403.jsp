@@ -1,12 +1,24 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ page contentType="text/html;charset=UTF-8" %>
 <html>
 <head>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>登录页面</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Access Denied</title>
+    <style type="text/css">
+        div.error {
+            width: 260px;
+            border: 2px solid red;
+            background-color: yellow;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-没有权限查看！
+<h1>Access Denied</h1>
+<hr>
+<div class="error">
+    访问被拒绝<br>
+    ${requestScope['SPRING_SECURITY_403_EXCEPTION'].message}
+</div>
+<hr>
 </body>
-</html>
+</html> 
