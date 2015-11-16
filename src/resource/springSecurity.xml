@@ -31,6 +31,7 @@
         <security:logout logout-url="/api/user/logout"
                          logout-success-url="/logout.jsp"/>
 
+
     </security:http>
 
     <!--自定义数据库认证-->
@@ -88,4 +89,6 @@
                 expression="execution(* xyz.dongxiaoxia.hellospring.account.service.UserService.*(..))"
                 access="ROLE_ADMIN"/>
     </security:global-method-security>
+
+
 </beans>
