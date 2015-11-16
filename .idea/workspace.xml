@@ -51,8 +51,8 @@
       <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/controller/UserController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3602015">
-              <caret line="98" column="31" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.74811083">
+              <caret line="45" column="122" selection-start-line="45" selection-start-column="122" selection-end-line="45" selection-end-column="122" />
               <folding />
             </state>
           </provider>
@@ -178,10 +178,10 @@
         <option value="$PROJECT_DIR$/web/index.jsp" />
         <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/service/UserDetailService.java" />
-        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/controller/UserController.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/service/UserService.java" />
         <option value="$PROJECT_DIR$/src/resource/springSecurity.xml" />
         <option value="$PROJECT_DIR$/web/403.jsp" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/controller/UserController.java" />
       </list>
     </option>
   </component>
@@ -820,7 +820,7 @@
       <workItem from="1447331240179" duration="10213000" />
       <workItem from="1447515760705" duration="6224000" />
       <workItem from="1447599284380" duration="4449000" />
-      <workItem from="1447679890121" duration="3173000" />
+      <workItem from="1447679890121" duration="3219000" />
     </task>
     <task id="LOCAL-00001" summary="test in company">
       <created>1446081049368</created>
@@ -1056,11 +1056,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447682721233</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="Add Spring Security! md5 add salt!Add 403 page">
+      <created>1447683094023</created>
+      <option name="number" value="00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1447683094023</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140299000" />
+    <option name="totallyTimeSpent" value="140345000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1550,8 +1556,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3602015">
-          <caret line="98" column="31" selection-start-line="98" selection-start-column="31" selection-end-line="98" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.74811083">
+          <caret line="45" column="122" selection-start-line="45" selection-start-column="122" selection-end-line="45" selection-end-column="122" />
           <folding />
         </state>
       </provider>
