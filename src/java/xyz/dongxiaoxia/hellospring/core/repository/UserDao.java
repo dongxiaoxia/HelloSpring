@@ -1,5 +1,6 @@
 package xyz.dongxiaoxia.hellospring.core.repository;
 
+import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 
 import java.util.List;
@@ -17,11 +18,10 @@ public interface UserDao {
 
     User get(String id);
 
-    List<User> findByUsername(String username);
-
-    List<User> findByUsernameAndPassword(String username, String password);
-
     List<User> list();
 
+    User findByUsername(String username);
+
+    int countUser(String username, String password);
 
 }

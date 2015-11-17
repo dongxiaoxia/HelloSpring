@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
+import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
 
@@ -46,13 +47,24 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> findByUsername(String username) {
-        return this.jdbcTemplate.query("SELECT * FROM SYSTEM_USER WHERE username = ?", new UserMapper(), username);
+    public User findByUsername(String username) {
+        List<User> userList = this.jdbcTemplate.query("SELECT * FROM SYSTEM_USER WHERE username = ?", new UserMapper(), username);
+        if (userList != null && userList.size() > 0) {
+            return userList.get(0);
+        } else {
+            return null;
+        }
+
     }
 
     @Override
-    public List<User> findByUsernameAndPassword(String username, String password) {
-        return this.jdbcTemplate.query("SELECT * FROM SYSTEM_USER WHERE username = ? and password = ?", new UserMapper(), username, password);
+    public int countUser(String username, String password) {
+        User user = this.jdbcTemplate.queryForObject("SELECT * FROM SYSTEM_USER WHERE username = ? and password = ?", new UserMapper(), username, password);
+        if (user == null) {
+            return 0;
+        } else {
+            return 1;
+        }
     }
 
     @Override

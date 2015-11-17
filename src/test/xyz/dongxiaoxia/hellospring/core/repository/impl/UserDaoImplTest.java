@@ -45,13 +45,13 @@ public class UserDaoImplTest extends BasicTest {
     }
 
     @Test
-    public void findByUsernameAndPasswordTest() {
-        Assert.assertEquals(1, userDao.findByUsernameAndPassword("admin", "123456").size());
+    public void countUserTest() {
+        Assert.assertEquals(1, userDao.countUser("admin", "123456"));
     }
 
     @Test
-    public void findByUsername() {
-        Assert.assertEquals(1, userDao.findByUsername("admin").size());
+    public void findByUsernameTest() {
+        Assert.assertEquals(1, userDao.findByUsername("admin"));
     }
 
     @Test

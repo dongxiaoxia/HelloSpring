@@ -35,16 +35,16 @@ public class UserDetailService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 
-        List<User> users = userDao.findByUsername(username);
-        if (users == null) {
+        User user = userDao.findByUsername(username);
+        if (user == null) {
             throw new UsernameNotFoundException("用户" + username + "不存在！！！");
         }
-        List<Role> roleList = roleDao.findRoleByUsername(users.get(0).getName());
+        List<Role> roleList = roleDao.findRoleByUsername(user.getName());
         Set<GrantedAuthority> authorities = new HashSet<>();
         for (Role role : roleList) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-        return new UserDetailsVO(users.get(0).getName(), users.get(0).getPassword(), authorities);
+        return new UserDetailsVO(user.getName(), user.getPassword(), authorities);
     }
 
     //修饰符一定要用public 要不加盐的时候报错。。

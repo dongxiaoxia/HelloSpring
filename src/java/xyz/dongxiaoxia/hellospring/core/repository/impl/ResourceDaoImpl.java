@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
+import xyz.dongxiaoxia.hellospring.core.entity.ResourceRole;
 import xyz.dongxiaoxia.hellospring.core.repository.ResourceDao;
 
 import javax.sql.DataSource;
@@ -27,7 +28,7 @@ public class ResourceDaoImpl implements ResourceDao {
 
     @Override
     public int insert(Resource resource) {
-        return this.jdbcTemplate.update("INSERT INTO system_resource (name ) VALUES (?)", resource.getName());
+        return this.jdbcTemplate.update("INSERT INTO system_resource (name,parentId,resKey,type,resUrl,level,description ) VALUES (?,?,?,?,?,?,?)", resource.getName(), resource.getParentId(), resource.getResKey(), resource.getType(), resource.getResUrl(), resource.getLevel(), resource.getDescription());
     }
 
     @Override
@@ -37,12 +38,12 @@ public class ResourceDaoImpl implements ResourceDao {
 
     @Override
     public int update(Resource resource) {
-        return this.jdbcTemplate.update("UPDATE system_resource SET name = ? WHERE id = ?", resource.getName(), resource.getId());
+        return this.jdbcTemplate.update("UPDATE system_resource SET name = ?,parentId = ?,resKey = ?,type = ?,resUrl = ?,level = ?,description = ? WHERE id = ?", resource.getName(), resource.getParentId(), resource.getResKey(), resource.getType(), resource.getResUrl(), resource.getLevel(), resource.getDescription(), resource.getId());
     }
 
     @Override
     public Resource get(String id) {
-        return this.jdbcTemplate.queryForObject("select id, name from system_resource where id = ?", new ResouceMapper(), id);
+        return this.jdbcTemplate.queryForObject("select id,name,parentId,resKey,type,resUrl,level,description from system_resource where id = ?", new ResouceMapper(), id);
     }
 
     @Override
@@ -50,9 +51,37 @@ public class ResourceDaoImpl implements ResourceDao {
         return this.jdbcTemplate.query("select * from system_resource", new ResouceMapper());
     }
 
-    //sptingSecurity
+    //<!-- 根据用户Id获取该用户的权限-->
+    @Override
+    public List<Resource> getUserResources(String userId) {
+        return this.jdbcTemplate.query("SELECT re.* FROM system_role r JOIN system_role_resource rr ON r.id = rr.role_id JOIN system_resource re  ON re.id = rr.resource_id JOIN system_user_role ur ON ur.role_id = r.id JOIN SYSTEM_USER u ON u.id = ur.user_id WHERE u.id = ? ORDER BY re.level", new ResouceMapper(), userId);
+    }
+
+    //<!-- 根据用户名获取该用户的权限-->
+    @Override
+    public List<Resource> getResourcesByUserName(String username) {
+        return this.jdbcTemplate.query("SELECT re.* FROM system_role r JOIN system_role_resource rr ON r.id = rr.role_id JOIN system_resource re  ON re.id = rr.resource_id JOIN system_user_role ur ON ur.role_id = r.id JOIN SYSTEM_USER u ON u.id = ur.user_id WHERE u.username = ? ORDER BY re.level", new ResouceMapper(), username);
+    }
+
+    //<!-- 根据roleId获取该用户的权限-->
+    @Override
+    public List<Resource> getRoleResources(String roleId) {
+        return this.jdbcTemplate.query("SELECT re.* FROM system_role r JOIN system_role_resource rr ON r.id = rr.role_id JOIN system_resource re  ON re.id = rr.resource_id  ORDER BY re.level", new ResouceMapper(), roleId);
+    }
+
+    @Override
+    public void saveRoleResource(ResourceRole resourceRole) {
+        this.jdbcTemplate.update("INSERT INTO system_role_resource (resource_id,role_id ) VALUES (?,?)", resourceRole.getRescId(), resourceRole.getRoleId());
+    }
+
+    @Override
+    public void deleteRoleResource(String roleId) {
+        this.jdbcTemplate.update("DELETE From system_role_resource WHERE role_id = ?", roleId);
+    }
+
+    //springSecurity
     public List<Resource> listResourceAndRoleName() {
-        return this.jdbcTemplate.query("SELECT re.res_string,r.name FROM system_role r JOIN system_role_resource rr ON r.id = rr.role_id JOIN system_resource re ON re.id = rr.resource_id ORDER BY re.priority", new ResouceMapper());
+        return this.jdbcTemplate.query("SELECT re.resUrl,r.name FROM system_role r JOIN system_role_resource rr ON r.id = rr.role_id JOIN system_resource re ON re.id = rr.resource_id ORDER BY re.level", new ResouceMapper());
     }
 
     private static final class ResouceMapper implements RowMapper<Resource> {
@@ -60,10 +89,12 @@ public class ResourceDaoImpl implements ResourceDao {
             Resource resource = new Resource();
             resource.setId(rs.getString("id"));
             resource.setName(rs.getString("name"));
-            resource.setRes_string(rs.getString("res_string"));
-            resource.setDesc(rs.getString("desc"));
+            resource.setParentId(rs.getString("parentId"));
+            resource.setResKey(rs.getString("resKey"));
             resource.setType(rs.getString("type"));
-            resource.setPriority(rs.getString("priority"));
+            resource.setResUrl(rs.getString("resUrl"));
+            resource.setLevel(rs.getInt("level"));
+            resource.setDescription(rs.getString("description"));
             return resource;
         }
     }

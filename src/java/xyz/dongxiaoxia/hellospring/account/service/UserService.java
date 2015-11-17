@@ -1,16 +1,13 @@
 package xyz.dongxiaoxia.hellospring.account.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import xyz.dongxiaoxia.hellospring.Utils.StringUtils;
+import xyz.dongxiaoxia.hellospring.util.StringUtils;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
-import xyz.dongxiaoxia.hellospring.core.repository.impl.UserDaoImpl;
 
 import javax.annotation.Resource;
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
 /**
@@ -88,7 +85,7 @@ public class UserService {
      *
      * @return
      */
-    public List<User> findByUserName(String username) {
+    public User findByUserName(String username) {
         return userDao.findByUsername(username);
     }
 
@@ -100,13 +97,17 @@ public class UserService {
         if (StringUtils.isEmpty(password)) {
             throw new Exception("密码不能为空");
         }
-        if (findByUserName(username) == null || findByUserName(username).size() == 0) {
+        if (findByUserName(username) == null) {
             throw new Exception("用户名不存在");
         }
-        List<User> users = userDao.findByUsernameAndPassword(username, password);
-        if (users == null || users.size() == 0) {
+        int count = userDao.countUser(username, password);
+        if (count == 0) {
             throw new Exception("用户名错误或密码错误");
         }
-        return users.get(0);
+        return userDao.findByUsername(username);
+    }
+
+    public int countUser(String username, String password) {
+        return userDao.countUser(username, password);
     }
 }

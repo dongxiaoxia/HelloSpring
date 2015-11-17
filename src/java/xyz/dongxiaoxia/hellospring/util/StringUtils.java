@@ -1,4 +1,4 @@
-package xyz.dongxiaoxia.hellospring.Utils;
+package xyz.dongxiaoxia.hellospring.util;
 
 /**
  * Created by Administrator on 2015/11/8.
