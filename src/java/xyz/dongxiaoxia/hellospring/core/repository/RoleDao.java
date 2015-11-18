@@ -1,6 +1,7 @@
 package xyz.dongxiaoxia.hellospring.core.repository;
 
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
+import xyz.dongxiaoxia.hellospring.core.entity.UserRole;
 
 import java.util.List;
 
@@ -19,4 +20,8 @@ public interface RoleDao {
     List<Role> list();
 
     List<Role> findRoleByUsername(String userId);
+
+    void deleteUserRole(String userId);
+
+    void saveUserRole(UserRole userRole);
 }

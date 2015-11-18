@@ -1,15 +1,22 @@
 package xyz.dongxiaoxia.hellospring.core.entity;
 
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Administrator on 2015/11/8.
  */
 public class Role {
     private String id;
+    private Integer enable;//是否禁用角色　1　表示禁用　2　表示不禁用
     private String name;
-    private List<User> users;
-    private List<Group> groups;
+    private String roleKey;
+    private String description;
+    private Set<Resource> resources = new HashSet<>(0);
+
+    public Role() {
+    }
 
     public String getId() {
         return id;
@@ -17,6 +24,14 @@ public class Role {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public Integer getEnable() {
+        return enable;
+    }
+
+    public void setEnable(Integer enable) {
+        this.enable = enable;
     }
 
     public String getName() {
@@ -27,19 +42,27 @@ public class Role {
         this.name = name;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public String getRoleKey() {
+        return roleKey;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
+    public void setRoleKey(String roleKey) {
+        this.roleKey = roleKey;
     }
 
-    public List<Group> getGroups() {
-        return groups;
+    public String getDescription() {
+        return description;
     }
 
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public Set<Resource> getResources() {
+        return resources;
+    }
+
+    public void setResources(Set<Resource> resources) {
+        this.resources = resources;
     }
 }
