@@ -28,7 +28,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int insert(User user) {
-        return this.jdbcTemplate.update("INSERT INTO SYSTEM_USER (username,password) VALUES (?,?)", user.getName(), user.getPassword());
+        return this.jdbcTemplate.update("INSERT INTO SYSTEM_USER (username,password) VALUES (?,?)", user.getUsername(), user.getPassword());
     }
 
     @Override
@@ -38,7 +38,7 @@ public class UserDaoImpl implements UserDao {
 
     @Override
     public int update(User user) {
-        return this.jdbcTemplate.update("UPDATE SYSTEM_USER  SET username = ?,password = ? WHERE id = ?", user.getName(), user.getPassword(), user.getId());
+        return this.jdbcTemplate.update("UPDATE SYSTEM_USER  SET username = ?,password = ? WHERE id = ?", user.getUsername(), user.getPassword(), user.getId());
     }
 
     @Override
@@ -68,6 +68,11 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+    public List<Role> findRoleByUserId(String userId) {
+        return null;
+    }
+
+    @Override
     public List<User> list() {
         return this.jdbcTemplate.query("SELECT * FROM SYSTEM_USER", new UserMapper());
     }
@@ -76,7 +81,7 @@ public class UserDaoImpl implements UserDao {
         public User mapRow(ResultSet rs, int rowNum) throws SQLException {
             User user = new User();
             user.setId(rs.getString("id"));
-            user.setName(rs.getString("username"));
+            user.setUsername(rs.getString("username"));
             user.setPassword(rs.getString("password"));
             return user;
         }

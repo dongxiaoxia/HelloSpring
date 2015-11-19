@@ -24,4 +24,6 @@ public interface UserDao {
 
     int countUser(String username, String password);
 
+    List<Role> findRoleByUserId(String userId);
+
 }

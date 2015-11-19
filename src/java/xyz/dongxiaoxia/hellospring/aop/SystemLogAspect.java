@@ -79,17 +79,18 @@ public class SystemLogAspect {
      */
     @After("controllerAspect()")
     public void after(JoinPoint joinPoint) {
-        /*HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+        HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("user");
-        String ip = request.getRemoteAddr();*/
-        User user = new User();
-        user.setId("123");
-        user.setName("东小侠");
-        String ip = "127.0.0.1";
+        String ip = request.getRemoteAddr();
+//        User user = new User();
+//        user.setId("123");
+//        user.setUsername("东小侠");
+//        String ip = "127.0.0.1";
 
         try {
-            String targetName = joinPoint.getTarget().getClass().getName();
+//            String targetName = joinPoint.getTarget().getClass().getName();
+            String targetName = joinPoint.getTarget().getClass().getSimpleName();
             String methodName = joinPoint.getSignature().getName();
             Object[] arguments = joinPoint.getArgs();
             Class targetClass = Class.forName(targetName);
@@ -111,7 +112,7 @@ public class SystemLogAspect {
             logger.info("===============controller后置通知开始================");
             logger.info("请求方法:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()") + "." + operationType);
             logger.info("方法描述:" + operationName);
-            logger.info("请求人:" + user.getName());
+            logger.info("请求人:" + user.getUsername());
             logger.info("请求IP:" + ip);
             //*========数据库日志=========*//
             Log log = new Log();
@@ -123,7 +124,7 @@ public class SystemLogAspect {
             log.setExceptionCode(null);
             log.setExceptionDetail(null);
             log.setParams(null);
-            log.setCreateBy(user.getName());
+            log.setCreateBy(user.getUsername());
             log.setCreateDate(new Date());
             //保存数据库
             logService.save(log);
@@ -163,7 +164,7 @@ public class SystemLogAspect {
 
         User user = new User();
         user.setId("123");
-        user.setName("东小侠");
+        user.setUsername("东小侠");
         String ip = "127.0.0.1";
 
         String params = "";
@@ -195,7 +196,7 @@ public class SystemLogAspect {
             logger.info("异常信息:" + e.getMessage());
             logger.info("异常方法:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()") + "." + operationType);
             logger.info("方法描述:" + operationName);
-            logger.info("请求人:" + user.getName());
+            logger.info("请求人:" + user.getUsername());
             logger.info("请求IP:" + ip);
             logger.info("请求参数:" + params);
             //*========数据库日志=========*//
@@ -207,7 +208,7 @@ public class SystemLogAspect {
             log.setExceptionDetail(e.getMessage());
             log.setMethod((joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()"));
             log.setParams(params);
-            log.setCreateBy(user.getName());
+            log.setCreateBy(user.getUsername());
             log.setCreateDate(new Date());
             log.setRequestIp(ip);
             //保存数据库

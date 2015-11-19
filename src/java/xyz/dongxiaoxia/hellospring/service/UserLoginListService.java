@@ -1,6 +1,7 @@
 package xyz.dongxiaoxia.hellospring.service;
 
 import xyz.dongxiaoxia.hellospring.core.entity.UserLoginList;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import java.util.List;
 
@@ -10,5 +11,5 @@ import java.util.List;
 public interface UserLoginListService {
     void add(UserLoginList userLoginList);
 
-    List<UserLoginList> list();
+    PageView query(PageView pageView, UserLoginList userLoginList);
 }
