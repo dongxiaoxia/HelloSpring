@@ -22,8 +22,10 @@ public class ResourceServiceImpl implements ResourceService {
     private ResourceDao resourceDao;
 
     @Override
-    public PageView query(PageView pageView, Resource resources) {
-        return null;
+    public PageView query(PageView pageView, Resource resource) {
+        List<Resource> list = resourceDao.query(pageView, resource);
+        pageView.setRecords(list);
+        return pageView;
     }
 
     @Override
@@ -68,6 +70,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public void saveRoleResource(String roleId, List<String> list) {
+        resourceDao.deleteRoleRescours(roleId);
         ResourceRole resourceRole = new ResourceRole();
         for (String resourceId : list) {
             resourceRole.setRoleId(roleId);

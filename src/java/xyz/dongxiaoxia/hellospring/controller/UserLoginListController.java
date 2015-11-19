@@ -5,9 +5,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.dongxiaoxia.hellospring.Response;
+import xyz.dongxiaoxia.hellospring.core.entity.UserLoginList;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.service.UserLoginListService;
+import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 import java.util.List;
 
@@ -34,6 +37,30 @@ public class UserLoginListController {
         Response response = new Response();
         try {
             response.success(userLoginListService.list());
+        } catch (Exception e) {
+            logger.error(e.getMessage(), e);
+            response.failure(e.getMessage());
+        }
+        return response;
+    }
+
+    /**
+     * 查询客户登录信息
+     *
+     * @return
+     */
+    @RequestMapping(value = "query")
+    @ResponseBody
+    public Response query(UserLoginList userLoginList, String pageNow) {
+        Response response = new Response();
+        try {
+            PageView pageView = null;
+            if (StringUtils.isEmpty(pageNow)) {
+                pageView = new PageView(1);
+            } else {
+                pageView = new PageView(Integer.parseInt(pageNow));
+            }
+            response.success(userLoginListService.query(pageView, userLoginList));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.failure(e.getMessage());
