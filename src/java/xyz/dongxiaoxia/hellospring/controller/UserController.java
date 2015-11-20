@@ -1,6 +1,7 @@
 package xyz.dongxiaoxia.hellospring.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -128,9 +129,13 @@ public class UserController extends BasicController {
     @RequestMapping(value = "get")
     @ResponseBody
     @MyLog(operationType = "get操作", operationName = "获取用户")
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Response get(String id) {
         Response response = new Response();
         try {
+            if (Common.isEmpty(id)) {
+                throw new Exception("id不能为空");
+            }
             response.success(userService.getById(id));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
