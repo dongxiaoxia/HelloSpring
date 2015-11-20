@@ -10,7 +10,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import xyz.dongxiaoxia.hellospring.BasicController;
 import xyz.dongxiaoxia.hellospring.Response;
+import xyz.dongxiaoxia.hellospring.aop.MyLog;
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.entity.UserLoginList;
@@ -21,6 +23,7 @@ import xyz.dongxiaoxia.hellospring.service.ResourceService;
 import xyz.dongxiaoxia.hellospring.service.RoleService;
 import xyz.dongxiaoxia.hellospring.service.UserLoginListService;
 import xyz.dongxiaoxia.hellospring.service.UserService;
+import xyz.dongxiaoxia.hellospring.util.Common;
 import xyz.dongxiaoxia.hellospring.util.PageView;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
@@ -35,7 +38,7 @@ import java.util.Map;
  */
 @Controller
 @RequestMapping(value = "api/user/")
-public class UserController {
+public class UserController extends BasicController {
 
     LoggerAdapter logger = LoggerAdapterFactory.getLoggerAdapter(UserController.class);
 
@@ -124,6 +127,7 @@ public class UserController {
      */
     @RequestMapping(value = "get")
     @ResponseBody
+    @MyLog(operationType = "get操作", operationName = "获取用户")
     public Response get(String id) {
         Response response = new Response();
         try {
@@ -161,6 +165,22 @@ public class UserController {
         return response;
     }
 
+    @RequestMapping(value = "count")
+    @ResponseBody
+    @MyLog(operationType = "getCount操作", operationName = "获取用户数量")
+    public Object getCount() {
+        HttpSession session = getSession();
+        Response response;
+        int count = userService.countUser(null, null);
+        User user = new User();
+        user.setPassword(String.valueOf(count));
+        response = new Response();
+        response.success(user);
+        //  response.success();
+        // response.failure("timeOut");
+        return response;
+    }
+
     /**
      * 保存用户分配角色
      *
@@ -189,6 +209,7 @@ public class UserController {
      */
     @RequestMapping(value = "login")
     @ResponseBody
+    @MyLog(operationType = "login", operationName = "登录")
     public Response login(HttpServletRequest request) {
         Response response = new Response();
         try {
@@ -264,7 +285,7 @@ public class UserController {
             request.getSession().setAttribute("userSession", users);
             // 记录登录信息
             UserLoginList userLoginList = new UserLoginList();
-            userLoginList.setUserId(users.getId());
+            userLoginList.setUserId(users.getUsername());
             userLoginList.setLoginIp(Common.toIpAddr(request));
             userLoginListService.add(userLoginList);
             response.success();

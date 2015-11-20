@@ -2,6 +2,7 @@ package xyz.dongxiaoxia.hellospring.core.repository;
 
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.UserRole;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import java.util.List;
 
@@ -18,6 +19,8 @@ public interface RoleDao {
     Role get(String id);
 
     List<Role> list();
+
+    List<Role> query(PageView pageView, Role role);
 
     List<Role> findRoleByUsername(String userId);
 

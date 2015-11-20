@@ -1,6 +1,7 @@
 package xyz.dongxiaoxia.hellospring.core.repository;
 
 import xyz.dongxiaoxia.hellospring.core.entity.UserLoginList;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import java.util.List;
 
@@ -18,4 +19,6 @@ public interface UserLoginListDao {
     UserLoginList get(String id);
 
     List<UserLoginList> list();
+
+    List<UserLoginList> query(PageView pageView, UserLoginList userLoginList);
 }

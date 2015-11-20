@@ -11,5 +11,7 @@ import java.util.List;
 public interface UserLoginListService {
     void add(UserLoginList userLoginList);
 
+    List<UserLoginList> list();
+
     PageView query(PageView pageView, UserLoginList userLoginList);
 }

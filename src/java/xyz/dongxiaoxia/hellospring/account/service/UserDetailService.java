@@ -39,12 +39,12 @@ public class UserDetailService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("用户" + username + "不存在！！！");
         }
-        List<Role> roleList = roleDao.findRoleByUsername(user.getName());
+        List<Role> roleList = roleDao.findRoleByUsername(user.getUsername());
         Set<GrantedAuthority> authorities = new HashSet<>();
         for (Role role : roleList) {
             authorities.add(new SimpleGrantedAuthority(role.getName()));
         }
-        return new UserDetailsVO(user.getName(), user.getPassword(), authorities);
+        return new UserDetailsVO(user.getUsername(), user.getPassword(), authorities);
     }
 
     //修饰符一定要用public 要不加盐的时候报错。。

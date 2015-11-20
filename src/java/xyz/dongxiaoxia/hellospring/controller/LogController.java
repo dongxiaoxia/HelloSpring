@@ -6,10 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.dongxiaoxia.hellospring.Response;
 import xyz.dongxiaoxia.hellospring.core.entity.Log;
-import xyz.dongxiaoxia.hellospring.core.entity.User;
-import xyz.dongxiaoxia.hellospring.log.service.LogService;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
+import xyz.dongxiaoxia.hellospring.service.LogService;
 import xyz.dongxiaoxia.hellospring.util.PageView;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 

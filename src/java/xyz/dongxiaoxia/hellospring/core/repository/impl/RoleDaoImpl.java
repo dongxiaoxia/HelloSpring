@@ -8,6 +8,7 @@ import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.UserRole;
 import xyz.dongxiaoxia.hellospring.core.repository.RoleDao;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -61,6 +62,11 @@ public class RoleDaoImpl implements RoleDao {
             role.setResources(resources);
         }
         return roleList;
+    }
+
+    @Override
+    public List<Role> query(PageView pageView, Role role) {
+        return null;
     }
 
     @Override
