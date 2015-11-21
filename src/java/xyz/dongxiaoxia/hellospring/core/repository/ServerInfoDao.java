@@ -9,16 +9,6 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/11/19.
  */
-public interface ServerInfoDao {
-    int insert(ServerInfo serverInfo);
+public interface ServerInfoDao extends BaseDao<ServerInfo> {
 
-    int delete(String id);
-
-    int update(ServerInfo serverInfo);
-
-    ServerInfo get(String id);
-
-    List<ServerInfo> list();
-
-    List<ServerInfo> query(PageView pageView, ServerInfo serverInfo);
 }

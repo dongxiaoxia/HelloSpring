@@ -22,14 +22,14 @@ public class ServerInfoServiceImpl implements ServerInfoService {
 
     @Override
     public PageView query(PageView pageView, ServerInfo serverInfo) {
-        List<ServerInfo> list = serverInfoDao.query(pageView, serverInfo);
+        List<ServerInfo> list = serverInfoDao.page(pageView, serverInfo);
         pageView.setRecords(list);
         return pageView;
     }
 
     @Override
     public List<ServerInfo> queryAll(ServerInfo serverInfo) {
-        return serverInfoDao.list();
+        return serverInfoDao.list(null);
     }
 
     @Override

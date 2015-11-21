@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Group;
 import xyz.dongxiaoxia.hellospring.core.repository.GroupDao;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -16,15 +17,7 @@ import java.util.List;
  * Created by Administrator on 2015/11/8.
  */
 @Repository
-public class GroupDaoImpl implements GroupDao {
-
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    private void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
-
+public class GroupDaoImpl extends BaseDaoImpl implements GroupDao {
 
     @Override
     public int insert(Group group) {
@@ -52,8 +45,13 @@ public class GroupDaoImpl implements GroupDao {
     }
 
     @Override
-    public List<Group> list() {
+    public List<Group> list(Group group) {
         return this.jdbcTemplate.query("select id, name ,parent_id from system_group", new GroupMapper());
+    }
+
+    @Override
+    public List<Group> page(PageView pageView, Group group) {
+        return null;
     }
 
     private static final class GroupMapper implements RowMapper<Group> {

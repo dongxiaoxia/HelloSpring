@@ -18,14 +18,7 @@ import java.util.List;
  * Created by Administrator on 2015/11/8.
  */
 @Repository
-public class ResourceDaoImpl implements ResourceDao {
-
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    private void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
+public class ResourceDaoImpl extends BaseDaoImpl implements ResourceDao {
 
     @Override
     public int insert(Resource resource) {
@@ -48,12 +41,12 @@ public class ResourceDaoImpl implements ResourceDao {
     }
 
     @Override
-    public List<Resource> list() {
+    public List<Resource> list(Resource resource) {
         return this.jdbcTemplate.query("select * from system_resource", new ResouceMapper());
     }
 
     @Override
-    public List<Resource> query(PageView pageView, Resource resource) {
+    public List<Resource> page(PageView pageView, Resource resource) {
         return null;
     }
 

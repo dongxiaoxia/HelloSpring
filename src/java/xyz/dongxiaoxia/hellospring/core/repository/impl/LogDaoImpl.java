@@ -17,14 +17,7 @@ import java.util.List;
  * Created by Administrator on 2015/11/7.
  */
 @Repository
-public class LogDaoImpl implements LogDao {
-
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    private void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
+public class LogDaoImpl extends BaseDaoImpl implements LogDao {
 
     @Override
     public int insert(Log log) {
@@ -48,12 +41,12 @@ public class LogDaoImpl implements LogDao {
     }
 
     @Override
-    public List<Log> list() {
+    public List<Log> list(Log log) {
         return this.jdbcTemplate.query("select * from system_log", new LogMapper());
     }
 
     @Override
-    public List<Log> query(PageView pageView, Log log) {
+    public List<Log> page(PageView pageView, Log log) {
         return null;
     }
 

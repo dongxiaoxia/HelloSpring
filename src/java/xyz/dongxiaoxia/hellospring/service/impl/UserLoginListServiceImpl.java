@@ -27,13 +27,13 @@ public class UserLoginListServiceImpl implements UserLoginListService {
 
     @Override
     public PageView query(PageView pageView, UserLoginList userLoginList) {
-        List<UserLoginList> list = userLoginListDao.query(pageView, userLoginList);
+        List<UserLoginList> list = userLoginListDao.page(pageView, userLoginList);
         pageView.setRecords(list);
         return pageView;
     }
 
 
     public List<UserLoginList> list() {
-        return userLoginListDao.list();
+        return userLoginListDao.list(null);
     }
 }

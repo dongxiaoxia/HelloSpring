@@ -57,7 +57,7 @@ public class OperationDaoImplTest extends BasicTest {
 
     @Test
     public void listTest() {
-        Assert.assertEquals(1, operationDao.list().size());
+        Assert.assertEquals(1, operationDao.list(null).size());
     }
 
 }

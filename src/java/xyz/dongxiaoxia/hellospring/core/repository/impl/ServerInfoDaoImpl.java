@@ -11,7 +11,7 @@ import java.util.List;
  * Created by Administrator on 2015/11/19.
  */
 @Repository
-public class ServerInfoDaoImpl implements ServerInfoDao {
+public class ServerInfoDaoImpl extends BaseDaoImpl implements ServerInfoDao {
 
     @Override
     public int insert(ServerInfo serverInfo) {
@@ -34,12 +34,12 @@ public class ServerInfoDaoImpl implements ServerInfoDao {
     }
 
     @Override
-    public List<ServerInfo> list() {
+    public List<ServerInfo> list(ServerInfo serverInfo) {
         return null;
     }
 
     @Override
-    public List<ServerInfo> query(PageView pageView, ServerInfo serverInfo) {
+    public List<ServerInfo> page(PageView pageView, ServerInfo serverInfo) {
         return null;
     }
 }

@@ -49,6 +49,6 @@ public class GroupDaoImplTest extends BasicTest {
 
     @Test
     public void listTest() {
-        Assert.assertEquals(2, groupDao.list().size());
+        Assert.assertEquals(2, groupDao.list(null).size());
     }
 }

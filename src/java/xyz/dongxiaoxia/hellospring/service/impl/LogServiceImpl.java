@@ -22,7 +22,7 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public PageView query(PageView pageView, Log log) {
-        List<Log> list = logDao.query(pageView, log);
+        List<Log> list = logDao.page(pageView, log);
         pageView.setRecords(list);
         return pageView;
     }
@@ -49,6 +49,6 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public List<Log> findAll(Log log) {
-        return logDao.list();
+        return logDao.list(null);
     }
 }

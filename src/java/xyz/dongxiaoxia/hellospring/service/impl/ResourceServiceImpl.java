@@ -23,7 +23,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public PageView query(PageView pageView, Resource resource) {
-        List<Resource> list = resourceDao.query(pageView, resource);
+        List<Resource> list = resourceDao.page(pageView, resource);
         pageView.setRecords(list);
         return pageView;
     }
@@ -50,7 +50,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public List<Resource> findAll() {
-        return resourceDao.list();
+        return resourceDao.list(null);
     }
 
     @Override

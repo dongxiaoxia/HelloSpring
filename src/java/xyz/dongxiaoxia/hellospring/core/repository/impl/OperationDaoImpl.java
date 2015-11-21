@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Operation;
 import xyz.dongxiaoxia.hellospring.core.repository.OperationDao;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -16,14 +17,7 @@ import java.util.List;
  * Created by Administrator on 2015/11/8.
  */
 @Repository
-public class OperationDaoImpl implements OperationDao {
-
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    private void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
+public class OperationDaoImpl extends BaseDaoImpl implements OperationDao {
 
     @Override
     public int insert(Operation operation) {
@@ -56,8 +50,13 @@ public class OperationDaoImpl implements OperationDao {
     }
 
     @Override
-    public List<Operation> list() {
+    public List<Operation> list(Operation operation) {
         return this.jdbcTemplate.query("select * from system_operation", new OperationMapper());
+    }
+
+    @Override
+    public List<Operation> page(PageView pageView, Operation operation) {
+        return null;
     }
 
     private static final class OperationMapper implements RowMapper<Operation> {

@@ -41,11 +41,7 @@ public class PrivilegeDaoImplTest extends BasicTest {
 
     @Test
     public void listTest() {
-        Assert.assertEquals(2, privilegeDao.list().size());
+        Assert.assertEquals(2, privilegeDao.list(null).size());
     }
 
-    @Test
-    public void listByTypeTest() {
-        Assert.assertEquals(2, privilegeDao.listByType("02").size());
-    }
 }

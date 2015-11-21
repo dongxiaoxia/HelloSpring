@@ -7,16 +7,8 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/11/8.
  */
-public interface GroupDao {
-    int insert(Group group);
-
-    int delete(String id);
-
-    int update(Group group);
-
-    Group get(String id);
+public interface GroupDao extends BaseDao<Group> {
 
     List<Group> getByParentId(String parentId);
 
-    List<Group> list();
 }

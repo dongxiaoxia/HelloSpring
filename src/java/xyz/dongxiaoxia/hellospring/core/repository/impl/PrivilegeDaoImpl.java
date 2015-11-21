@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Privilege;
 import xyz.dongxiaoxia.hellospring.core.repository.PrivilegeDao;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -16,14 +17,7 @@ import java.util.List;
  * Created by Administrator on 2015/11/8.
  */
 @Repository
-public class PrivilegeDaoImpl implements PrivilegeDao {
-
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    private void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
+public class PrivilegeDaoImpl extends BaseDaoImpl implements PrivilegeDao {
 
     @Override
     public int insert(Privilege privilege) {
@@ -46,13 +40,13 @@ public class PrivilegeDaoImpl implements PrivilegeDao {
     }
 
     @Override
-    public List<Privilege> list() {
+    public List<Privilege> list(Privilege privilege) {
         return this.jdbcTemplate.query("select id, type from system_privilege", new PrivilegeMapper());
     }
 
     @Override
-    public List<Privilege> listByType(String type) {
-        return this.jdbcTemplate.query("select id, type from system_privilege where type = ?", new PrivilegeMapper(), type);
+    public List<Privilege> page(PageView pageView, Privilege privilege) {
+        return null;
     }
 
     private static final class PrivilegeMapper implements RowMapper<Privilege> {

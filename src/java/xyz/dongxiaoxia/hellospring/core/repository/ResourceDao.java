@@ -9,19 +9,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/11/8.
  */
-public interface ResourceDao {
-    int insert(Resource resource);
-
-    int delete(String id);
-
-    int update(Resource resource);
-
-    Resource get(String id);
-
-    List<Resource> list();
-
-    List<Resource> query(PageView pageView, Resource resource);
-
+public interface ResourceDao extends BaseDao<Resource> {
     //<!-- 根据用户Id获取该用户的权限-->
     List<Resource> getUserResources(String userId);
 

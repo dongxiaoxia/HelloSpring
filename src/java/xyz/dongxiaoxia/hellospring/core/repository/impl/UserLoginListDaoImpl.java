@@ -17,14 +17,7 @@ import java.util.List;
  * Created by Administrator on 2015/11/18.
  */
 @Repository
-public class UserLoginListDaoImpl implements UserLoginListDao {
-
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    private void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
+public class UserLoginListDaoImpl extends BaseDaoImpl implements UserLoginListDao {
 
     @Override
     public int insert(UserLoginList userLoginList) {
@@ -47,12 +40,12 @@ public class UserLoginListDaoImpl implements UserLoginListDao {
     }
 
     @Override
-    public List<UserLoginList> list() {
+    public List<UserLoginList> list(UserLoginList userLoginList) {
         return this.jdbcTemplate.query("SELECT ul.*,u.username FROM system_userloginlist ul JOIN SYSTEM_USER u WHERE u.id = ul.userId", new UserLoginListMapper());
     }
 
     @Override
-    public List<UserLoginList> query(PageView pageView, UserLoginList userLoginList) {
+    public List<UserLoginList> page(PageView pageView, UserLoginList userLoginList) {
         return null;
     }
 

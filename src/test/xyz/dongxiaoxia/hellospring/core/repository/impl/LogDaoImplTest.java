@@ -61,6 +61,6 @@ public class LogDaoImplTest extends BasicTest {
 
     @Test
     public void listTest() {
-        Assert.assertEquals(37, logDao.list().size());
+        Assert.assertEquals(37, logDao.list(null).size());
     }
 }

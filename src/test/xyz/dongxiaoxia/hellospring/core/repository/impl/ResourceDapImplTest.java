@@ -44,6 +44,6 @@ public class ResourceDapImplTest extends BasicTest {
 
     @Test
     public void listTest() {
-        Assert.assertEquals(1, resourceDao.list().size());
+        Assert.assertEquals(1, resourceDao.list(null).size());
     }
 }
