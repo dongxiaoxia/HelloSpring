@@ -13,6 +13,7 @@ import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.service.ResourceService;
 import xyz.dongxiaoxia.hellospring.service.UserService;
+import xyz.dongxiaoxia.hellospring.util.Common;
 import xyz.dongxiaoxia.hellospring.util.PageView;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 

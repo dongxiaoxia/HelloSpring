@@ -23,7 +23,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public PageView query(PageView pageView, Role role) {
-        List<Role> list = roleDao.query(pageView, role);
+        List<Role> list = roleDao.page(pageView, role);
         pageView.setRecords(list);
         return pageView;
     }
@@ -50,7 +50,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public List<Role> findAll() {
-        return roleDao.list();
+        return roleDao.list(null);
     }
 
     @Override

@@ -11,22 +11,17 @@ import java.util.List;
  * <T> 表示传入的实体类
  */
 public interface BaseDao<T> {
-    void add(T t);
 
-    void delete();
+    int insert(T t);
 
-    void modify(T t);
+    int delete(String id);
 
-    T getById(String id);
+    int update(T t);
 
-    List<T> queryAll(T t);
+    T get(String id);
 
-    /**
-     * 返回分页后的数据
-     *
-     * @param pageView
-     * @param t
-     * @return
-     */
-    List<T> query(PageView pageView, T t);
+    List<T> list(T t);
+
+    List<T> page(PageView pageView, T t);
+
 }

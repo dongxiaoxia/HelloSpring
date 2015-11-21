@@ -42,6 +42,6 @@ public class RoleDaoImplTest extends BasicTest {
 
     @Test
     public void listTest() {
-        Assert.assertEquals(2, roleDao.list().size());
+        Assert.assertEquals(2, roleDao.list(null).size());
     }
 }

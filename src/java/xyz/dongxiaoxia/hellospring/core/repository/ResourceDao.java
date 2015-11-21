@@ -2,6 +2,7 @@ package xyz.dongxiaoxia.hellospring.core.repository;
 
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.entity.ResourceRole;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import java.util.List;
 
@@ -19,6 +20,8 @@ public interface ResourceDao {
 
     List<Resource> list();
 
+    List<Resource> query(PageView pageView, Resource resource);
+
     //<!-- 根据用户Id获取该用户的权限-->
     List<Resource> getUserResources(String userId);
 
@@ -30,5 +33,5 @@ public interface ResourceDao {
 
     void saveRoleResource(ResourceRole resourceRole);
 
-    void deleteRoleResource(String roleId);
+    void deleteRoleRescours(String roleId);
 }

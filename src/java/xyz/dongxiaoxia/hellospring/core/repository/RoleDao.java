@@ -9,18 +9,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/11/8.
  */
-public interface RoleDao {
-    int insert(Role role);
-
-    int delete(String id);
-
-    int update(Role role);
-
-    Role get(String id);
-
-    List<Role> list();
-
-    List<Role> query(PageView pageView, Role role);
+public interface RoleDao extends BaseDao<Role> {
 
     List<Role> findRoleByUsername(String userId);
 

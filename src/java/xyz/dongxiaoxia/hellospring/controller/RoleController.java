@@ -99,7 +99,7 @@ public class RoleController {
      * @param role
      * @return
      */
-    @RequestMapping(value = "get")
+    @RequestMapping(value = "update")
     @ResponseBody
     public Response get(Role role) {
         Response response = new Response();

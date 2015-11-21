@@ -41,6 +41,7 @@ import java.util.Map;
 @RequestMapping(value = "api/user/")
 public class UserController extends BasicController {
 
+    //日志适配器，把日志框架规范起来
     LoggerAdapter logger = LoggerAdapterFactory.getLoggerAdapter(UserController.class);
 
     @Autowired
@@ -51,8 +52,10 @@ public class UserController extends BasicController {
 
     @Autowired
     private UserLoginListService userLoginListService;
+
     @Autowired
     private ResourceService resourceService;
+
     @Autowired
     private AuthenticationManager myAuthenticationManager;
 
@@ -65,13 +68,13 @@ public class UserController extends BasicController {
     @RequestMapping(value = "add")
     @ResponseBody
     public Response add(User user) {
-        Response response = new Response();
+        Response response;
         try {
             userService.add(user);
-            response.success();
+            response = new Response().success();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            response.failure(e.getMessage());
+            response = new Response().failure(e.getMessage());
         }
         return response;
     }
@@ -108,7 +111,7 @@ public class UserController extends BasicController {
     public Response update(User user, UserRole userRole) {
         Response response = new Response();
         try {
-            userService.modify(user);
+            userService.update(user);
             if (userRole.getRoleId() != null) {
                 roleService.saveUserRole(userRole);
             }
@@ -136,7 +139,7 @@ public class UserController extends BasicController {
             if (Common.isEmpty(id)) {
                 throw new Exception("id不能为空");
             }
-            response.success(userService.getById(id));
+            response.success(userService.get(id));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.failure(e.getMessage());
@@ -162,7 +165,7 @@ public class UserController extends BasicController {
             } else {
                 pageView = new PageView(Integer.parseInt(pageNow));
             }
-            response.success(userService.query(pageView, user));
+            response.success(userService.page(pageView, user));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.failure(e.getMessage());

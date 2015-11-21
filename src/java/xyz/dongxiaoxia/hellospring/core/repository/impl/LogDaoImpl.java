@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Log;
 import xyz.dongxiaoxia.hellospring.core.repository.LogDao;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -49,6 +50,11 @@ public class LogDaoImpl implements LogDao {
     @Override
     public List<Log> list() {
         return this.jdbcTemplate.query("select * from system_log", new LogMapper());
+    }
+
+    @Override
+    public List<Log> query(PageView pageView, Log log) {
+        return null;
     }
 
     private static final class LogMapper implements RowMapper<Log> {

@@ -9,8 +9,11 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
+import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.repository.ResourceDao;
+import xyz.dongxiaoxia.hellospring.core.repository.RoleDao;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
+import xyz.dongxiaoxia.hellospring.service.UserService;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -34,7 +37,7 @@ import java.util.Set;
 public class MyUserDetailServiceImpl implements UserDetailsService {
 
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
     @Autowired
     private ResourceDao resourceDao;
 
@@ -43,13 +46,13 @@ public class MyUserDetailServiceImpl implements UserDetailsService {
 //		System.err.println("-----------MyUserDetailServiceImpl loadUserByUsername ----------- ");
 
         //取得用户的权限
-        xyz.dongxiaoxia.hellospring.core.entity.User users = userDao.findByUsername(username);
+        xyz.dongxiaoxia.hellospring.core.entity.User users = userService.querySingleUser(username);
         if (users == null)
             throw new UsernameNotFoundException(username + " not exist!");
         Collection<GrantedAuthority> grantedAuths = obtionGrantedAuthorities(users);
         // 封装成spring security的user
         User userdetail = new User(
-                users.getName(),
+                users.getUsername(),
                 users.getPassword(),
                 true,
                 true,
@@ -72,5 +75,108 @@ public class MyUserDetailServiceImpl implements UserDetailsService {
         }
         return authSet;
     }
+
+
+
+
+
+
+
+
+
+/*=================================================之前版本====================================================*/
+/*
+    @Autowired
+    private UserDao userDao;
+
+    @Autowired
+    private RoleDao roleDao;
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+
+        xyz.dongxiaoxia.hellospring.core.entity.User user = userDao.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("用户" + username + "不存在！！！");
+        }
+        List<Role> roleList = roleDao.findRoleByUsername(user.getUsername());
+        Set<GrantedAuthority> authorities = new HashSet<>();
+        for (Role role : roleList) {
+            authorities.add(new SimpleGrantedAuthority(role.getName()));
+        }
+        return new UserDetailsVO(user.getUsername(), user.getPassword(), authorities);
+    }
+
+    //修饰符一定要用public 要不加盐的时候报错。。
+    public class UserDetailsVO implements UserDetails {
+        private String username;
+        private String password;
+        private Set<GrantedAuthority> grantedAuthorities;
+        //添加盐值加密需要
+        // PasswordEncoder passwordEncoder = new BCryptPasswordEncoder();
+        //private String hashedPassword = passwordEncoder.encode(password);
+
+        public UserDetailsVO(String username, String password, Set<GrantedAuthority> grantedAuthorities) {
+            this.username = username;
+            this.password = password;
+            // this.password = passwordEncoder.encode(password);
+            this.grantedAuthorities = grantedAuthorities;
+        }
+
+        @Override
+        public Collection<? extends GrantedAuthority> getAuthorities() {
+            return grantedAuthorities;
+        }
+
+        @Override
+        public String getPassword() {
+            return password;
+        }
+
+        @Override
+        public String getUsername() {
+            return username;
+        }
+
+        @Override
+        public boolean isAccountNonExpired() {
+            return true;
+        }
+
+        @Override
+        public boolean isAccountNonLocked() {
+            return true;
+        }
+
+        @Override
+        public boolean isCredentialsNonExpired() {
+            return true;
+        }
+
+        @Override
+        public boolean isEnabled() {
+            return true;
+        }
+
+    }*/
+    /*=====================================================================================================*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }

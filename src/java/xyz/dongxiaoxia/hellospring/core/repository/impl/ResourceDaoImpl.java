@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.entity.ResourceRole;
 import xyz.dongxiaoxia.hellospring.core.repository.ResourceDao;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -51,6 +52,11 @@ public class ResourceDaoImpl implements ResourceDao {
         return this.jdbcTemplate.query("select * from system_resource", new ResouceMapper());
     }
 
+    @Override
+    public List<Resource> query(PageView pageView, Resource resource) {
+        return null;
+    }
+
     //<!-- 根据用户Id获取该用户的权限-->
     @Override
     public List<Resource> getUserResources(String userId) {
@@ -75,7 +81,7 @@ public class ResourceDaoImpl implements ResourceDao {
     }
 
     @Override
-    public void deleteRoleResource(String roleId) {
+    public void deleteRoleRescours(String roleId) {
         this.jdbcTemplate.update("DELETE From system_role_resource WHERE role_id = ?", roleId);
     }
 

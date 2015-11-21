@@ -3,6 +3,7 @@ package xyz.dongxiaoxia.hellospring.core.repository.impl;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.ServerInfo;
 import xyz.dongxiaoxia.hellospring.core.repository.ServerInfoDao;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import java.util.List;
 
@@ -34,6 +35,11 @@ public class ServerInfoDaoImpl implements ServerInfoDao {
 
     @Override
     public List<ServerInfo> list() {
+        return null;
+    }
+
+    @Override
+    public List<ServerInfo> query(PageView pageView, ServerInfo serverInfo) {
         return null;
     }
 }

@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.UserLoginList;
 import xyz.dongxiaoxia.hellospring.core.repository.UserLoginListDao;
+import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import javax.sql.DataSource;
 import java.sql.ResultSet;
@@ -50,10 +51,15 @@ public class UserLoginListDaoImpl implements UserLoginListDao {
         return this.jdbcTemplate.query("SELECT ul.*,u.username FROM system_userloginlist ul JOIN SYSTEM_USER u WHERE u.id = ul.userId", new UserLoginListMapper());
     }
 
+    @Override
+    public List<UserLoginList> query(PageView pageView, UserLoginList userLoginList) {
+        return null;
+    }
+
     private static final class UserLoginListMapper implements RowMapper<UserLoginList> {
         public UserLoginList mapRow(ResultSet rs, int rowNum) throws SQLException {
             UserLoginList userLoginList = new UserLoginList();
-            userLoginList.setLoginId(rs.getInt("loginId"));
+            userLoginList.setLoginId(rs.getString("loginId"));
             userLoginList.setLoginIp(rs.getString("loginIP"));
             userLoginList.setLoginTime(rs.getDate("loginTime"));
             userLoginList.setUserName(rs.getString("username"));

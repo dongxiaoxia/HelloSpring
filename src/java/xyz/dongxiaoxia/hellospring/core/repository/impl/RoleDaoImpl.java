@@ -6,6 +6,7 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
+import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.entity.UserRole;
 import xyz.dongxiaoxia.hellospring.core.repository.RoleDao;
 import xyz.dongxiaoxia.hellospring.util.PageView;
@@ -21,14 +22,7 @@ import java.util.Set;
  * Created by Administrator on 2015/11/8.
  */
 @Repository
-public class RoleDaoImpl implements RoleDao {
-
-    private JdbcTemplate jdbcTemplate;
-
-    @Autowired
-    private void setDataSource(DataSource dataSource) {
-        this.jdbcTemplate = new JdbcTemplate(dataSource);
-    }
+public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
 
     @Override
     public int insert(Role role) {
@@ -55,7 +49,7 @@ public class RoleDaoImpl implements RoleDao {
     }
 
     @Override
-    public List<Role> list() {
+    public List<Role> list(Role r) {
         List<Role> roleList = this.jdbcTemplate.query("select * from system_role", new RoleMapper());
         for (Role role : roleList) {
             Set<Resource> resources = new HashSet<>(this.jdbcTemplate.query("SELECT re.* FROM system_resource re JOIN system_role_resource rr ON rr.resource_id = re.id JOIN system_role r ON rr.role_id = r.id WHERE r.id = ?", new ResouceMapper(), role.getId()));
@@ -65,7 +59,7 @@ public class RoleDaoImpl implements RoleDao {
     }
 
     @Override
-    public List<Role> query(PageView pageView, Role role) {
+    public List<Role> page(PageView pageView, Role role) {
         return null;
     }
 

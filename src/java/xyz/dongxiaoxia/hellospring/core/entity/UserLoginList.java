@@ -8,8 +8,8 @@ import java.util.Date;
  * 登陆信息实体类
  */
 public class UserLoginList {
-    private int loginId;
-    private int userId;
+    private String loginId;
+    private String userId;
     private String userName;
     private Date loginTime;
     private String loginIp;
@@ -17,7 +17,7 @@ public class UserLoginList {
     public UserLoginList() {
     }
 
-    public UserLoginList(int loginId, int userId, Date loginTime, String loginIp, String userName) {
+    public UserLoginList(String loginId, String userId, Date loginTime, String loginIp, String userName) {
         this.loginId = loginId;
         this.userId = userId;
         this.loginTime = loginTime;
@@ -25,19 +25,19 @@ public class UserLoginList {
         this.userName = userName;
     }
 
-    public int getLoginId() {
+    public String getLoginId() {
         return loginId;
     }
 
-    public void setLoginId(int loginId) {
+    public void setLoginId(String loginId) {
         this.loginId = loginId;
     }
 
-    public int getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

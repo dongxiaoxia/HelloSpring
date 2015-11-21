@@ -3,12 +3,15 @@ package xyz.dongxiaoxia.hellospring.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import xyz.dongxiaoxia.hellospring.ServiceException;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
 import xyz.dongxiaoxia.hellospring.service.UserService;
+import xyz.dongxiaoxia.hellospring.util.Common;
 import xyz.dongxiaoxia.hellospring.util.PageView;
 
+import javax.management.ServiceNotFoundException;
 import java.util.List;
 
 /**
@@ -22,14 +25,25 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public PageView query(PageView pageView, User user) {
-        List<User> list = userDao.query(pageView, user);
-        pageView.setRecords(list);
-        return pageView;
-    }
-
-    @Override
     public void add(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("user must not be null");
+        }
+        if (Common.isEmpty(user.getUsername())) {
+            throw new IllegalArgumentException("username must not be null");
+        }
+        if (querySingleUser(user.getUsername()) != null) {
+            throw new IllegalArgumentException("username is exist");
+        }
+        if (Common.isEmpty(user.getPassword())) {
+            throw new IllegalArgumentException("password must not be null");
+        }
+        if (Common.isEmpty(user.getPassword())) {
+            throw new IllegalArgumentException("password must not be null");
+        }
+        if (Common.isEmpty(user.getStatus())) {
+            throw new IllegalArgumentException("status must not be null");
+        }
         userDao.insert(user);
     }
 
@@ -39,27 +53,73 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void modify(User user) {
+    public void update(User user) {
+        if (user == null) {
+            throw new IllegalArgumentException("user must not be null");
+        }
+        if (Common.isEmpty(user.getId())) {
+            throw new IllegalArgumentException("user is not exist");
+        }
+        if (Common.isEmpty(user.getUsername())) {
+            throw new IllegalArgumentException("username must not be null");
+        }
+        if (querySingleUser(user.getUsername()) != null) {
+            throw new IllegalArgumentException("username is exist");
+        }
+        if (Common.isEmpty(user.getPassword())) {
+            throw new IllegalArgumentException("password must not be null");
+        }
+        if (Common.isEmpty(user.getPassword())) {
+            throw new IllegalArgumentException("password must not be null");
+        }
+        if (Common.isEmpty(user.getStatus())) {
+            throw new IllegalArgumentException("status must not be null");
+        }
         userDao.update(user);
     }
 
     @Override
-    public User getById(String id) {
+    public User get(String id) {
         return userDao.get(id);
     }
 
     @Override
-    public int countUser(String userName, String userPassword) {
-        return userDao.countUser(userName, userPassword);
+    public List<User> list(User user) {
+        return userDao.list(user);
+    }
+
+    @Override
+    public PageView page(PageView pageView, User user) {
+        List<User> list = userDao.page(pageView, user);
+        pageView.setRecords(list);
+        return pageView;
+    }
+
+    @Override
+    public int countUser(String username, String password) {
+        User user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        return userDao.list(user).size();
     }
 
     @Override
     public User querySingleUser(String userName) {
-        return userDao.findByUsername(userName);
+        User user = new User();
+        user.setUsername(userName);
+        List<User> userList = userDao.list(user);
+        //TODO if userList.size()>1 what should be do
+        return (userList == null || userList.size() == 0) ? null : userList.get(0);
     }
+
 
     @Override
     public List<Role> findbyUserRole(String userId) {
         return userDao.findRoleByUserId(userId);
+    }
+
+    @Override
+    public boolean isExistUsername(String username) {
+        return querySingleUser(username) != null;
     }
 }

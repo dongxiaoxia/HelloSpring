@@ -10,7 +10,9 @@ import xyz.dongxiaoxia.hellospring.core.entity.ServerStatus;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.service.ServerInfoService;
+import xyz.dongxiaoxia.hellospring.util.Common;
 import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.PropertiesUtils;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -72,10 +74,10 @@ public class ServerInfoController {
     public Response serverBaseInfo() {
         Response response = new Response();
         try {
-            Map<String, Object> dataMap = new HashMap<>();
-            ServerStatus serverStatus = Common.getServerStatus();
-            dataMap.put("data", serverStatus);
-            response.success(dataMap);
+//            Map<String, Object> dataMap = new HashMap<>();
+//            ServerStatus serverStatus = Common.getServerStatus();
+//            dataMap.put("data", serverStatus);
+//            response.success(dataMap);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.failure(e.getMessage());
@@ -94,7 +96,8 @@ public class ServerInfoController {
     public Response warnInfo(HttpServletRequest request) {
         Response response = new Response();
         try {
-            ServerStatus status = Common.getServerStatus();
+//            ServerStatus status = Common.getServerStatus();
+            ServerStatus status = null;
             Map<String, Object> dataMap = new HashMap<String, Object>();
 
             String cpuUsage = status.getCpuUsage();
@@ -116,7 +119,7 @@ public class ServerInfoController {
             dataMap.put("jvm", PropertiesUtils.findPropertiesKey("jvm"));
             dataMap.put("ram", PropertiesUtils.findPropertiesKey("ram"));
             dataMap.put("toEmail", PropertiesUtils.findPropertiesKey("toEmail"));
-            dataMap.put("diskInfos", status.getDiskInfos());
+            // dataMap.put("diskInfos", status.getDiskInfos());
             response.success(dataMap);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);

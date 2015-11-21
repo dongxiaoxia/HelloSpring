@@ -12,6 +12,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import org.springframework.stereotype.Component;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
+import xyz.dongxiaoxia.hellospring.service.UserService;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +37,7 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
      */
     private String errorUrl = "/background/login.html";
     @Autowired
-    private UserDao userDao;
+    private UserService userService;
 //    @Autowired
 //    private UserLoginListService userLoginListService;
 
@@ -90,7 +91,7 @@ public class MyAuthenticationFilter extends UsernamePasswordAuthenticationFilter
         }
 
         // 验证用户账号与密码是否正确
-        User users = this.userDao.findByUsername(username);
+        User users = userService.querySingleUser(username);
         if (users == null || !users.getPassword().equals(password)) {
             BadCredentialsException exception = new BadCredentialsException(
                     "用户名或密码不匹配！");// 在界面输出自定义的信息！！

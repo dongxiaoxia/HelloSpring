@@ -1,41 +1,24 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.repository.BaseDao;
 import xyz.dongxiaoxia.hellospring.util.PageView;
 
+import javax.sql.DataSource;
 import java.util.List;
 
 /**
  * Created by Administrator on 2015/11/19.
  */
-public class BaseDaoImpl implements BaseDao {
-    @Override
-    public void add(Object o) {
+@Repository
+public class BaseDaoImpl {
 
-    }
+    protected JdbcTemplate jdbcTemplate;
 
-    @Override
-    public void delete() {
-
-    }
-
-    @Override
-    public void modify(Object o) {
-
-    }
-
-    @Override
-    public Object getById(String id) {
-        return null;
-    }
-
-    @Override
-    public List queryAll(Object o) {
-        return null;
-    }
-
-    @Override
-    public List query(PageView pageView, Object o) {
-        return null;
+    @Autowired
+    private void setDataSource(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
     }
 }
