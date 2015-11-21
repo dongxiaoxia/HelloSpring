@@ -154,7 +154,7 @@ public class UserController extends BasicController {
      * @param pageNow
      * @return
      */
-    @RequestMapping(value = "query")
+    @RequestMapping(value = "page")
     @ResponseBody
     public Response query(User user, String pageNow) {
         Response response = new Response();

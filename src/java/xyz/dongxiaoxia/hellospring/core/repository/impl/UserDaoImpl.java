@@ -136,7 +136,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
                 pageSql += " AND status = '" + user.getStatus() + "'";
             }
         }
-        pageSql += pageView.getPageSize() * (pageView.getPageNow() - 1) + "," + pageView.getPageSize();
+        pageSql += " limit " + pageView.getPageSize() * (pageView.getPageNow() - 1) + "," + pageView.getPageSize();
         return this.jdbcTemplate.query(pageSql, new UserMapper());
     }
 

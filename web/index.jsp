@@ -8,30 +8,47 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-  <head>
+<head>
     <title>HelloSpring</title>
-  </head>
-  <body>
+    <script src="http://apps.bdimg.com/libs/jquery/2.1.1/jquery.min.js"></script>
+</head>
+<body>
 <h1>Hello Spring</h1>
-I coming!!<br>
-<sec:authentication property="principal" var="authentication"/> <sec:authorize
-        ifAllGranted="ROLE_USER">可以访问</sec:authorize> 用户名：${authentication.username }<br/>
-<sec:authentication property="name"/>
+<sec:authentication property="principal" var="authentication"/>
+<sec:authorize ifAllGranted="ROLE_USER1">可以访问</sec:authorize>
+
+<div>
+    用户：<a href="">${authentication.username }</a> <span style="margin-left: 50px">您的身份为：
+    <sec:authorize ifAllGranted="ROLE_ADMIN">
+        admin
+    </sec:authorize>
+
+<sec:authorize ifAnyGranted="ROLE_USER" ifNotGranted="ROLE_ADMIN">
+    user
+</sec:authorize>
+
+</span> <a style="margin-left: 50px" href="/api/user/logout">退出</a> <br/>
+</div>
+<%--<sec:authentication property="name"/>
 <sec:authentication property="authorities" var="authorities" scope="page"/>
 <c:forEach item="${authorities}" var="authority">
-  ${authority.authority}
-</c:forEach>
+    ${authority.authority}
+</c:forEach>--%>
 
-<sec:authorize ifAllGranted="ROLE_ADMIN,ROLE_USER">
-  admin and user
-</sec:authorize>
+<div id="stage" style="background-color:#eee;">
+</div>
+<script type="text/javascript" language="javascript">
+    $(document).ready(function () {
+        $.getJSON('/api/user/page', function (jd) {
+            debugger
+            $('#stage').append('<table>');
+            for (var i = 0; i < jd.data.records.length; i++) {
+                $('#stage').append("<tr><td> Userame: <a href='/api/user/get?id= " + jd.data.records[i].id + "'>" + jd.data.records[i].username + "</a></td>" + '<td style="padding-left: 100px"></td>' + '<td>Password : ' + jd.data.records[i].password + '</td><//tr>');
+            }
+            $('#stage').append('</table>');
+        });
+    });
+</script>
 
-<sec:authorize ifAnyGranted="ROLE_ADMIN,ROLE_USER">
-  admin or user
-</sec:authorize>
-
-<sec:authorize ifNotGranted="ROLE_ADMIN">
-  not admin
-</sec:authorize>
-  </body>
+</body>
 </html>
