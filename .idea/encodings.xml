@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="Encoding">
-    <file url="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/account/service/UserService.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/entity/User.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/UserDao.java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java" charset="UTF-8" />
