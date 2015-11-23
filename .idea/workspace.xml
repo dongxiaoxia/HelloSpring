@@ -3,15 +3,7 @@
   <component name="ChangeListManager">
     <list id="0c536fdc-1f75-4eeb-aeb7-8b2ecedb798e" name="Default" comment="" />
     <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="fix some bug in logging aop module !">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/aop/LogAspect.class" afterPath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/aop/LogAspect.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/aop/LogAspect.class" afterPath="$PROJECT_DIR$/out/production/HelloSpring/xyz/dongxiaoxia/hellospring/aop/LogAspect.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/LoggerAdapter.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/LoggerAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/LoggerSLF4JAdapter.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/LoggerSLF4JAdapter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="F:\spring\HelloSpring\src\java\xyz\dongxiaoxia\hellospring\aop\ControllerLog.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/ControllerLog.java" />
-      <change type="MOVED" beforePath="F:\spring\HelloSpring\src\java\xyz\dongxiaoxia\hellospring\aop\LogAspect.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/LogAspect.java" />
-      <change type="MOVED" beforePath="F:\spring\HelloSpring\src\java\xyz\dongxiaoxia\hellospring\aop\SystemLogAspect.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/SystemLogAspect.java" />
     </list>
     <ignored path="HelloSpring.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -851,13 +843,7 @@
       <workItem from="1448020866902" duration="14092000" />
       <workItem from="1448104204905" duration="22505000" />
       <workItem from="1448158528181" duration="16015000" />
-      <workItem from="1448285976674" duration="5069000" />
-    </task>
-    <task id="LOCAL-00008" summary="Add necessary jar packages from a url to the database query process.">
-      <created>1446221648133</created>
-      <option name="number" value="00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1446221648133</updated>
+      <workItem from="1448285976674" duration="5710000" />
     </task>
     <task id="LOCAL-00009" summary="Add the function about JSON Response.">
       <created>1446226657129</created>
@@ -1147,11 +1133,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448290493763</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="fix some bug in logging aop module !">
+      <created>1448291094322</created>
+      <option name="number" value="00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1448291094324</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="235121000" />
+    <option name="totallyTimeSpent" value="235762000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
