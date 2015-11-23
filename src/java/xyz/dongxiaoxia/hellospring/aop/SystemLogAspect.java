@@ -4,20 +4,19 @@ import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.*;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextImpl;
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import xyz.dongxiaoxia.hellospring.core.entity.Log;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
-import xyz.dongxiaoxia.hellospring.log.service.LogService;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.logging.LoggerJavaAdapter;
+import xyz.dongxiaoxia.hellospring.service.LogService;
 
-import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Date;
 import java.util.UUID;
@@ -34,7 +33,7 @@ public class SystemLogAspect {
     private LogService logService;
 
     //Controlle层切点
-    @Pointcut("execution (* xyz.dongxiaoxia.hellospring.account.controller.*.*(..))&&@annotation(MyLog)")
+    @Pointcut("execution (* xyz.dongxiaoxia.hellospring.controller.*.*(..))&&@annotation(ControllerLog)")
     public void controllerAspect() {
     }
 
@@ -81,28 +80,27 @@ public class SystemLogAspect {
     public void after(JoinPoint joinPoint) {
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
         HttpSession session = request.getSession();
-        User user = (User) session.getAttribute("user");
+        SecurityContextImpl securityContextImpl = (SecurityContextImpl) session.getAttribute("SPRING_SECURITY_CONTEXT");
+        // 登录名
+        String username = securityContextImpl.getAuthentication().getName();
         String ip = request.getRemoteAddr();
-//        User user = new User();
-//        user.setId("123");
-//        user.setUsername("东小侠");
-//        String ip = "127.0.0.1";
-
         try {
-//            String targetName = joinPoint.getTarget().getClass().getName();
-            String targetName = joinPoint.getTarget().getClass().getSimpleName();
+            String targetName = joinPoint.getTarget().getClass().getName();
+//            String targetName = joinPoint.getTarget().getClass().getSimpleName();
             String methodName = joinPoint.getSignature().getName();
             Object[] arguments = joinPoint.getArgs();
             Class targetClass = Class.forName(targetName);
             Method[] methods = targetClass.getMethods();
             String operationType = "";
             String operationName = "";
+            String module = "";
             for (Method method : methods) {
                 if (method.getName().equals(methodName)) {
                     Class[] clazzs = method.getParameterTypes();
                     if (clazzs.length == arguments.length) {
-                        operationType = method.getAnnotation(MyLog.class).operationType();
-                        operationName = method.getAnnotation(MyLog.class).operationName();
+                        module = method.getAnnotation(ControllerLog.class).module();
+                        operationType = method.getAnnotation(ControllerLog.class).operationType();
+                        operationName = method.getAnnotation(ControllerLog.class).operationName();
                         break;
                     }
 
@@ -112,22 +110,23 @@ public class SystemLogAspect {
             logger.info("===============controller后置通知开始================");
             logger.info("请求方法:" + (joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()") + "." + operationType);
             logger.info("方法描述:" + operationName);
-            logger.info("请求人:" + user.getUsername());
+            logger.info("请求人:" + username);
             logger.info("请求IP:" + ip);
             //*========数据库日志=========*//
             Log log = new Log();
             log.setId(UUID.randomUUID().toString());
             log.setDescription(operationName);
+            log.setModule(module);
             log.setMethod((joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()") + "." + operationType);
             log.setLogType((long) 0);
             log.setRequestIp(ip);
             log.setExceptionCode(null);
             log.setExceptionDetail(null);
             log.setParams(null);
-            log.setCreateBy(user.getUsername());
+            log.setCreateBy(username);
             log.setCreateDate(new Date());
             //保存数据库
-            logService.save(log);
+            logService.add(log);
             logger.info("===============controller后置通知结束================");
 
         } catch (Exception e) {
@@ -181,12 +180,13 @@ public class SystemLogAspect {
             Method[] methods = targetClass.getMethods();
             String operationType = "";
             String operationName = "";
-
+            String module = "";
             for (Method method : methods) {
                 Class[] clazzs = method.getParameterTypes();
                 if (clazzs.length == arguments.length) {
-                    operationType = method.getAnnotation(MyLog.class).operationType();
-                    operationName = method.getAnnotation(MyLog.class).operationName();
+                    module = method.getAnnotation(ControllerLog.class).module();
+                    operationType = method.getAnnotation(ControllerLog.class).operationType();
+                    operationName = method.getAnnotation(ControllerLog.class).operationName();
                     break;
                 }
             }
@@ -203,6 +203,7 @@ public class SystemLogAspect {
             Log log = new Log();
             log.setId(UUID.randomUUID().toString());
             log.setDescription(operationName);
+            log.setModule(module);
             log.setExceptionCode(e.getClass().getName());
             log.setLogType((long) 1);
             log.setExceptionDetail(e.getMessage());
@@ -212,7 +213,7 @@ public class SystemLogAspect {
             log.setCreateDate(new Date());
             log.setRequestIp(ip);
             //保存数据库
-            logService.save(log);
+            logService.add(log);
             logger.info("===============异常通知结束================");
         } catch (ClassNotFoundException ex) {
             //记录本地异常记录

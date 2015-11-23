@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import xyz.dongxiaoxia.hellospring.BasicTest;
 import xyz.dongxiaoxia.hellospring.core.entity.Log;
+import xyz.dongxiaoxia.hellospring.service.LogService;
 
 import java.util.Date;
 

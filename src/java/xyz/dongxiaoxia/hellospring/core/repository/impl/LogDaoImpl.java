@@ -21,8 +21,8 @@ public class LogDaoImpl extends BaseDaoImpl implements LogDao {
 
     @Override
     public int insert(Log log) {
-        String sql = "INSERT INTO SYSTEM_LOG (description,method,logType,requestIp,exceptionCode,exceptionDetail,params,createBy,createDate) values (?,?,?,?,?,?,?,?,?)";
-        return this.jdbcTemplate.update(sql, new Object[]{log.getDescription(), log.getMethod(), log.getLogType(), log.getRequestIp(), log.getExceptionCode(), log.getExceptionDetail(), log.getParams(), log.getCreateBy(), log.getCreateDate()});
+        String sql = "INSERT INTO SYSTEM_LOG (description,module,method,logType,requestIp,exceptionCode,exceptionDetail,params,createBy,createDate) values (?,?,?,?,?,?,?,?,?,?)";
+        return this.jdbcTemplate.update(sql, new Object[]{log.getDescription(), log.getModule(), log.getMethod(), log.getLogType(), log.getRequestIp(), log.getExceptionCode(), log.getExceptionDetail(), log.getParams(), log.getCreateBy(), log.getCreateDate()});
     }
 
     @Override
@@ -32,7 +32,7 @@ public class LogDaoImpl extends BaseDaoImpl implements LogDao {
 
     @Override
     public int update(Log log) {
-        return this.jdbcTemplate.update("UPDATE system_log SET description = ? ,method = ? ,logType = ? ,requestIp = ? ,exceptionCode = ?, exceptionDetail = ? , params = ?, createBy = ?,createDate = ? WHERE id = ?", log.getDescription(), log.getMethod(), log.getLogType(), log.getRequestIp(), log.getExceptionCode(), log.getExceptionDetail(), log.getParams(), log.getCreateBy(), log.getCreateDate(), log.getId());
+        return this.jdbcTemplate.update("UPDATE system_log SET description = ?,module = ? ,method = ? ,logType = ? ,requestIp = ? ,exceptionCode = ?, exceptionDetail = ? , params = ?, createBy = ?,createDate = ? WHERE id = ?", log.getDescription(), log.getModule(), log.getMethod(), log.getLogType(), log.getRequestIp(), log.getExceptionCode(), log.getExceptionDetail(), log.getParams(), log.getCreateBy(), log.getCreateDate(), log.getId());
     }
 
     @Override
@@ -54,6 +54,7 @@ public class LogDaoImpl extends BaseDaoImpl implements LogDao {
         public Log mapRow(ResultSet rs, int rowNum) throws SQLException {
             Log log = new Log();
             log.setId(rs.getString("id"));
+            log.setModule(rs.getString("module"));
             log.setDescription(rs.getString("description"));
             log.setMethod(rs.getString("method"));
             log.setLogType(rs.getLong("logType"));

@@ -7,6 +7,7 @@ import java.util.Date;
  */
 public class Log {
     private String id;
+    private String module;
     private String description;
     private String method;
     private Long logType;
@@ -16,6 +17,16 @@ public class Log {
     private String params;
     private String createBy;
     private Date createDate;
+
+
+    public String getModule() {
+        return module;
+    }
+
+    public void setModule(String module) {
+        this.module = module;
+    }
+
 
     public String getCreateBy() {
         return createBy;

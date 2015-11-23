@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.dongxiaoxia.hellospring.BasicController;
 import xyz.dongxiaoxia.hellospring.Response;
-import xyz.dongxiaoxia.hellospring.aop.MyLog;
+import xyz.dongxiaoxia.hellospring.aop.ControllerLog;
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.entity.UserLoginList;
@@ -67,6 +67,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping(value = "add")
     @ResponseBody
+    @ControllerLog(module = "UserController", operationType = "add操作", operationName = "添加用户")
     public Response add(User user) {
         Response response;
         try {
@@ -131,7 +132,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping(value = "get")
     @ResponseBody
-    @MyLog(operationType = "get操作", operationName = "获取用户")
+    @ControllerLog(module = "UserController", operationType = "get操作", operationName = "获取用户")
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     public Response get(String id) {
         Response response = new Response();
@@ -156,6 +157,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping(value = "page")
     @ResponseBody
+    @ControllerLog(module = "UserController", operationType = "page操作", operationName = "分页查询")
     public Response query(User user, String pageNow) {
         Response response = new Response();
         try {
@@ -175,7 +177,7 @@ public class UserController extends BasicController {
 
     @RequestMapping(value = "count")
     @ResponseBody
-    @MyLog(operationType = "getCount操作", operationName = "获取用户数量")
+    @ControllerLog(module = "UserController", operationType = "getCount操作", operationName = "获取用户数量")
     public Object getCount() {
         HttpSession session = getSession();
         Response response;
@@ -197,6 +199,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping(value = "allocation")
     @ResponseBody
+    @ControllerLog(module = "UserController", operationType = "allocation操作", operationName = "保存用户分配角色")
     public Response allocation(UserRole userRole) {
         Response response = new Response();
         try {
@@ -217,7 +220,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping(value = "login")
     @ResponseBody
-    @MyLog(operationType = "login", operationName = "登录")
+    @ControllerLog(module = "UserController", operationType = "login操作", operationName = "用户登录")
     public Response login(HttpServletRequest request) {
         Response response = new Response();
         try {
@@ -242,6 +245,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping(value = "logout")
     @ResponseBody
+    @ControllerLog(module = "UserController", operationType = "logout操作", operationName = "用户退出")
     public Response logout(HttpServletRequest request) {
         Response response = new Response();
         try {
@@ -269,6 +273,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping(value = "loginCheck")
     @ResponseBody
+    @ControllerLog(module = "UserController", operationType = "loginCheck操作", operationName = "登录检查")
     public Response loginCheck(String username, String password, HttpServletRequest request) {
         Response response = new Response();
         try {
