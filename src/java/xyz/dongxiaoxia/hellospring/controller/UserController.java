@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.dongxiaoxia.hellospring.BasicController;
 import xyz.dongxiaoxia.hellospring.Response;
-import xyz.dongxiaoxia.hellospring.aop.ControllerLog;
+import xyz.dongxiaoxia.hellospring.logging.ControllerLog;
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.entity.UserLoginList;

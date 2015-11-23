@@ -1,4 +1,4 @@
-package xyz.dongxiaoxia.hellospring.aop;
+package xyz.dongxiaoxia.hellospring.logging;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -23,7 +23,7 @@ public class LogAspect {
     /**
      * 添加业务逻辑方法切入点
      */
-    @Pointcut("execution(* xyz233.dongxiaoxia.hellospring..*.*(..)))")
+    @Pointcut("execution(* xyz.dongxiaoxia.hellospring..*.*(..)))")
     public void pointcutExpression(){
     }
 

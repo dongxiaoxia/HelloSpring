@@ -1,4 +1,4 @@
-package xyz.dongxiaoxia.hellospring.aop;
+package xyz.dongxiaoxia.hellospring.logging;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;

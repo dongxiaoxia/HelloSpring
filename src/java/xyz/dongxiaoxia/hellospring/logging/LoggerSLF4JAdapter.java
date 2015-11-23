@@ -5,6 +5,8 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Created by Administrator on 2015/11/7.
+ *
+ * sla4j日志适配器实现类
  */
 public class LoggerSLF4JAdapter implements LoggerAdapter {
     private Logger logger;

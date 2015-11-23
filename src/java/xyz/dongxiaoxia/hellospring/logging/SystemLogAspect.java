@@ -1,4 +1,4 @@
-package xyz.dongxiaoxia.hellospring.aop;
+package xyz.dongxiaoxia.hellospring.logging;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -10,9 +10,6 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 import xyz.dongxiaoxia.hellospring.core.entity.Log;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
-import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
-import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
-import xyz.dongxiaoxia.hellospring.logging.LoggerJavaAdapter;
 import xyz.dongxiaoxia.hellospring.service.LogService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +30,7 @@ public class SystemLogAspect {
     private LogService logService;
 
     //Controlle层切点
-    @Pointcut("execution (* xyz.dongxiaoxia.hellospring.controller.*.*(..))&&@annotation(ControllerLog)")
+    @Pointcut("execution (* xyz.dongxiaoxia.hellospring.controller.*.*(..))&&@annotation(xyz.dongxiaoxia.hellospring.logging.ControllerLog)")
     public void controllerAspect() {
     }
 
