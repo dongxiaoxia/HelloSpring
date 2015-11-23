@@ -3,6 +3,8 @@
   <component name="ChangeListManager">
     <list id="0c536fdc-1f75-4eeb-aeb7-8b2ecedb798e" name="Default" comment="" />
     <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="fix some bug in logging aop module !">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/BasicController.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/BasicController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/Response.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/Response.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HelloSpring.iws" />
@@ -70,14 +72,34 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SystemLogAspect.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="SystemLogAspect.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/SystemLogAspect.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="1.5680473">
-              <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="111" column="40" selection-start-line="111" selection-start-column="40" selection-end-line="111" selection-end-column="40" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BasicController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/BasicController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Response.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/Response.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.9166667">
+              <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -134,29 +156,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LogService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/LogService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="18" column="15" selection-start-line="18" selection-start-column="9" selection-end-line="18" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="LogServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/LogServiceImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="51" column="31" selection-start-line="51" selection-start-column="31" selection-end-line="51" selection-end-column="31" />
-              <folding>
-                <element signature="e#1219#1220#0" expanded="true" />
-                <element signature="e#1259#1260#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -187,8 +186,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/BaseDao.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/UserDao.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/RoleDao.java" />
@@ -238,6 +235,8 @@
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/LogAspect.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/LoggerAdapter.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/LoggerSLF4JAdapter.java" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/BasicController.java" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/Response.java" />
       </list>
     </option>
   </component>
@@ -843,13 +842,7 @@
       <workItem from="1448020866902" duration="14092000" />
       <workItem from="1448104204905" duration="22505000" />
       <workItem from="1448158528181" duration="16015000" />
-      <workItem from="1448285976674" duration="5710000" />
-    </task>
-    <task id="LOCAL-00009" summary="Add the function about JSON Response.">
-      <created>1446226657129</created>
-      <option name="number" value="00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1446226657129</updated>
+      <workItem from="1448285976674" duration="6810000" />
     </task>
     <task id="LOCAL-00010" summary="Add the function about the JSON response.">
       <created>1446226850348</created>
@@ -1139,11 +1132,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448291094324</updated>
     </task>
-    <option name="localTasksCounter" value="58" />
+    <task id="LOCAL-00058" summary="fix some bug in logging aop module !">
+      <created>1448292300299</created>
+      <option name="number" value="00058" />
+      <option name="project" value="LOCAL" />
+      <updated>1448292300299</updated>
+    </task>
+    <option name="localTasksCounter" value="59" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="235762000" />
+    <option name="totallyTimeSpent" value="236862000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1165,17 +1164,17 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38980263" sideWeight="0.51062214" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33717105" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852808" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43585527" sideWeight="0.4969651" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.43585527" sideWeight="0.4969651" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2993421" sideWeight="0.48937786" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24051593" sideWeight="0.47425476" order="3" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24051593" sideWeight="0.47425476" order="3" side_tool="false" content_ui="combo" />
       <window_info id="Web" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24051593" sideWeight="0.5065789" order="14" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852808" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962063" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24051593" sideWeight="0.5257453" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3930921" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3930921" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1238,20 +1237,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/UserLoginListServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="36" column="41" selection-start-line="36" selection-start-column="41" selection-end-line="36" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/UserLoginListDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/ServerInfoDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1646,11 +1631,27 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/SystemLogAspect.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.5680473">
-          <caret line="122" column="0" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="111" column="40" selection-start-line="111" selection-start-column="40" selection-end-line="111" selection-end-column="40" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/BasicController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/Response.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9166667">
+          <caret line="16" column="39" selection-start-line="16" selection-start-column="39" selection-end-line="16" selection-end-column="39" />
+          <folding />
         </state>
       </provider>
     </entry>

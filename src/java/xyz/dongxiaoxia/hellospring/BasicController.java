@@ -9,6 +9,8 @@ import java.io.Serializable;
 
 /**
  * Created by chenwendong on 2015/10/29.
+ *
+ * Controller基类
  */
 public abstract class BasicController implements Serializable {
 
@@ -19,6 +21,7 @@ public abstract class BasicController implements Serializable {
         try {
             session = getRequest().getSession();
         } catch (Exception e) {
+
         }
         return session;
     }

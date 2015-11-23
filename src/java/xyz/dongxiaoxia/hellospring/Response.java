@@ -2,6 +2,8 @@ package xyz.dongxiaoxia.hellospring;
 
 /**
  * Created by Administrator on 2015/10/31.
+ *
+ * Controller层方法返回封装对象
  */
 public class Response {
 
