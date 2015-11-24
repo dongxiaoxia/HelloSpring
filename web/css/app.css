@@ -1,0 +1,15 @@
+body {
+    padding-top: 70px;
+}
+
+.delete-book {
+    cursor: pointer;
+}
+
+.filter-input {
+    margin-bottom: 0;
+}
+
+.bookFilterInput {
+    margin-right: 15px;
+}

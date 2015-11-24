@@ -1,0 +1,77 @@
+<div class="panel panel-primary" xmlns="http://www.w3.org/1999/html">
+    <div class="panel-heading">
+        <a type="button" class="btn btn-default" ng-href="#/">返回列表</a>
+    </div>
+    <div class="panel-body">
+        <form name="newBook" class="form-horizontal" role="form" ng-submit="newBook.$valid && new(user)">
+            <div class="form-group">
+                <label for="username" class="col-sm-2 control-label">用户名</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="username" ng-model="user.username" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-2 control-label">密码</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="password" ng-model="user.password" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="nickname" class="col-sm-2 control-label">昵称</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="nickname" ng-model="user.nickname" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="realname" class="col-sm-2 control-label">真实姓名</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="realname" ng-model="user.realname" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="age" class="col-sm-2 control-label">年龄</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="age" ng-model="user.age" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="sex" class="col-sm-2 control-label">性别</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="sex" ng-model="user.sex" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="email" class="col-sm-2 control-label">邮箱</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="email" ng-model="user.email" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="accountType" class="col-sm-2 control-label">账号类型</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="accountType" ng-model="user.accountType" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="status" class="col-sm-2 control-label">状态</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="status" ng-model="user.status" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary" ng-disabled="newBook.$invalid">确定</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
