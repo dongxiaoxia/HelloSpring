@@ -12,8 +12,8 @@ book.factory('users', ['$http', function ($http) {
     };
 
     factory.get = function (id) {
-        var book = $http.get(url + '/' + id).then(function (resp) {
-            return resp.data;
+        var book = $http.get(url + 'get?id=' + id).then(function (resp) {
+            return resp.data.data;
         });
         return book;
     };
@@ -24,8 +24,9 @@ book.factory('users', ['$http', function ($http) {
         });
     };
 
-    factory.update = function (book) {
-        $http.put(url + '/' + book.id, book).then(function (resp) {
+    factory.update = function (user) {
+        debugger
+        $http.put(url + 'update', user).then(function (resp) {
             return resp;
         });
     };
