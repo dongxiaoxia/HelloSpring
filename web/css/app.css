@@ -2,7 +2,7 @@ body {
     padding-top: 70px;
 }
 
-.delete-book {
+.pointer {
     cursor: pointer;
 }
 
@@ -10,6 +10,6 @@ body {
     margin-bottom: 0;
 }
 
-.bookFilterInput {
+.userFilterInput {
     margin-right: 15px;
 }

@@ -26,6 +26,7 @@ book.factory('users', ['$http', function ($http) {
 
     factory.update = function (user) {
         debugger
+        /*user._method = 'put';*/
         $http.put(url + 'update', user).then(function (resp) {
             return resp;
         });

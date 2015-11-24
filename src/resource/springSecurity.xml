@@ -23,7 +23,7 @@
                              login-processing-url="/api/user/login"
                              username-parameter="username"
                              password-parameter="password"
-                             default-target-url="/index.jsp"
+                             default-target-url="/index.html"
                              always-use-default-target="true"
                              authentication-failure-url="/login.jsp?error=true"/>
         <!--定义记住我功能 实现免登陆验证-->

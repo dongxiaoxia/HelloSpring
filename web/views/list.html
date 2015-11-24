@@ -2,9 +2,9 @@
     <div class="panel-heading">
         <div class="row">
             <div class="input-group col-lg-4 pull-right bookFilterInput">
-                <input type="text" class="form-control" placeholder="输入要搜索的用户" ng-model="bookFilterdInput">
+                <input type="text" class="form-control" placeholder="输入要搜索的用户" ng-model="userFilterdInput">
 
-                <div class="input-group-addon">用户检索</div>
+                <div class="input-group-addon pointer">用户检索</div>
             </div>
 
             <button class="btn btn-default" type="button" ng-click="loadList()">刷新</button>
@@ -55,7 +55,7 @@
                 <td>
                     <a ng-href="#/view/{{user.id}}">查看</a>
                     <a ng-href="#/edit/{{user.id}}">修改</a>
-                    <a ng-click="deleteBook($index, user.id)" class="delete-book">删除</a>
+                    <a ng-click="deleteBook($index, user.id)" class="pointer">删除</a>
                 </td>
             </tr>
             </tbody>
