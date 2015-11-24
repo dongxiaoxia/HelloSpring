@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list id="0c536fdc-1f75-4eeb-aeb7-8b2ecedb798e" name="Default" comment="" />
     <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="add angular web interface!">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/js/controllers.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/directive.html" afterPath="$PROJECT_DIR$/web/views/directive.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/directives.js" afterPath="$PROJECT_DIR$/web/js/directives.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/js/services.js" afterPath="$PROJECT_DIR$/web/js/services.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/views/view.html" afterPath="$PROJECT_DIR$/web/views/view.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/WEB-INF/web.xml" afterPath="$PROJECT_DIR$/web/WEB-INF/web.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HelloSpring.iws" />
@@ -136,7 +130,7 @@
         <entry file="file://$PROJECT_DIR$/web/views/directive.html">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="-7.774194">
-              <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+              <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -871,13 +865,7 @@
       <workItem from="1448104204905" duration="22505000" />
       <workItem from="1448158528181" duration="16015000" />
       <workItem from="1448285976674" duration="7708000" />
-      <workItem from="1448363939624" duration="10717000" />
-    </task>
-    <task id="LOCAL-00012" summary="Add Spring Test">
-      <created>1446732663576</created>
-      <option name="number" value="00012" />
-      <option name="project" value="LOCAL" />
-      <updated>1446732663576</updated>
+      <workItem from="1448363939624" duration="10733000" />
     </task>
     <task id="LOCAL-00013" summary="Add Spring Test">
       <created>1446732711102</created>
@@ -1167,11 +1155,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448370667549</updated>
     </task>
-    <option name="localTasksCounter" value="61" />
+    <task id="LOCAL-00061" summary="add angular web interface!">
+      <created>1448376806172</created>
+      <option name="number" value="00061" />
+      <option name="project" value="LOCAL" />
+      <updated>1448376806172</updated>
+    </task>
+    <option name="localTasksCounter" value="62" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="248477000" />
+    <option name="totallyTimeSpent" value="248493000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1639,7 +1633,7 @@
     <entry file="file://$PROJECT_DIR$/web/views/directive.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-7.774194">
-          <caret line="12" column="27" selection-start-line="12" selection-start-column="27" selection-end-line="12" selection-end-column="27" />
+          <caret line="19" column="27" selection-start-line="19" selection-start-column="27" selection-end-line="19" selection-end-column="27" />
           <folding />
         </state>
       </provider>
