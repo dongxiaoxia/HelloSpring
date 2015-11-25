@@ -27,8 +27,9 @@
                              always-use-default-target="true"
                              authentication-failure-url="/login.jsp?error=true"/>
         <!--定义记住我功能 实现免登陆验证-->
-        <!--<security:remember-me key="hellospring" data-source-ref="dataSource"/>-->
         <!--表示匿名用户可以访问-->
+        <!--<security:remember-me key="hellospring" data-source-ref="dataSource"/>-->
+
         <security:intercept-url pattern="/login*.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/logout*.jsp*" access="IS_AUTHENTICATED_ANONYMOUSLY"/>
         <security:intercept-url pattern="/admin*.jsp*" access="ROLE_ADMIN"/>
@@ -66,7 +67,7 @@
         <!--以上未列出的，也都必须验证才能访问 -->
         <!--<security:intercept-url pattern="/background/**" access="isAuthenticated()"/>-->
         <!--以上未列出的，也都必须验证才能访问-->
-        <!--注意： com.huaxin.security.MyAccessDecisionManager是自已实现的权限控制-->
+        <!--注意： xya.dongxiaoxia.hellospring.security.MyAccessDecisionManager是自已实现的权限控制-->
         <!--注意： 不但要满足自己实现的权限控制还要满足SPRING默认的访问权限控制才可以访问特定资源-->
 
         <!--所有地址全开，无需验证，测试用 -->
@@ -78,7 +79,7 @@
         <!--<security:custom-filter ref="myLoginFilter" position="FORM_LOGIN_FILTER"  />-->
 
 
-        <!--================================================================-->
+        <!--================================自定义过滤器================================-->
         <!-- Spring Sercurity要从数据库中获取用户、权限、资源来实现权限管理，需要自定义过滤器，
          　并且该过滤器必须在spring Security执行FILTER_SECURITY_INTERCEPTOR过滤器之前执行，
          　 因为该框架实现权限管理实质就是在执行action之前先执行它框架中的为权限管理制定的一系列Fliter。
@@ -87,35 +88,68 @@
          AccessDecisionManager 接口，UserDetailsService 接口，只要重写了这3个接口，
          然后再spring配置文件中做相应的配置，项目启动启动后，我们进行资源请求，就自动会去执行我们重定义的类进行权限判断。
         -->
-        <security:custom-filter ref="mySecurityFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
-        <!--================================================================-->
         <!--在http标签下配置一个我们自定义的继承了org.springframework.security.access.intercept.AbstractSecurityInterceptor的Filter，并注入其-->
         <!--必须的3个组件authenticationManager、accessDecisionManager和securityMetadataSource。其作用上面已经注释了。-->
         <!--这里的FILTER_SECURITY_INTERCEPTOR是Spring Security默认的Filter，-->
         <!--我们自定义的Filter必须在它之前，过滤请求-->
+        <security:custom-filter ref="mySecurityFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
+        <!--================================================================-->
+
     </security:http>
     <!--未登录的切入点-->
     <!--<bean id="myAuthenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
         <property name="loginFormUrl" value="/background/login.html"></property>
     </bean>-->
-
-    <!--<security:authentication-manager alias="authenticationManager">
-        <security:authentication-provider
-                user-service-ref="userDetailService">
-            <security:password-encoder hash="md5">
-                <security:salt-source user-property="username"/>
-            </security:password-encoder>
-        </security:authentication-provider>
-    </security:authentication-manager>-->
-    <!--自定义数据库认证-->
+    <!---↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓几种认证管理方法↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
+    <!---==================================自定义数据库认证============================================-->
     <security:authentication-manager alias="myAuthenticationManager">
         <!--实现了UserDetailsService的Bean 用户拥有的权限：登录后取得用户所保有的权限信息-->
         <security:authentication-provider user-service-ref="myUserDetailServiceImpl">
+            <!--MD5加密，盐值加密 -->
             <security:password-encoder hash="md5">
                 <security:salt-source user-property="username"/>
             </security:password-encoder>
         </security:authentication-provider>
     </security:authentication-manager>
+    <!---===============================================================================================-->
+    <!---==================================基于XML配置的认证============================================-->
+    <!--<security:authentication-manager>
+        <security:authentication-provider>
+            <security:user-service>
+                <security:user name="user" password="user" authorities="ROLE_USER"/>
+                <security:user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
+            </security:user-service>
+        </security:authentication-provider>
+    </security:authentication-manager>-->
+    <!---=================================================================================================-->
+    <!---===============================================居于jdbc的用于认证的AuthenticationManager==================================================-->
+    <!-- <security:authentication-manager alias="authenticationManager">
+         <security:authentication-provider
+                 user-service-ref="userDetailsService" />
+     </security:authentication-manager>
+
+     <bean id="userDetailsService"
+           class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+         <property name="dataSource" ref="dataSource" />
+     </bean>-->
+    <!---=================================================================================================-->
+    <!---==================居于jdbc的用于认证的AuthenticationManager 跟上面意思一样，只是自定义了sql语句===============-->
+    <!-- <security:authentication-manager>
+        <security:authentication-provider>
+            <security:jdbc-user-service data-source-ref="dataSource"
+                                        users-by-username-query="SELECT username,password,enabled FROM SYSTEM_USER WHERE username = ?"
+                                        authorities-by-username-query="select u.username,r.name as authority
+                                             from user u
+                                             join user_role ur
+                                               on u.id=ur.user_id
+                                             join role r
+                                               on r.id=ur.role_id
+                                            where u.username=?"
+                    />
+        </security:authentication-provider>
+    </security:authentication-manager>-->
+    <!---=================================================================================================-->
+    <!---↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑几种认证管理方法↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑v-->
 
 
     <!--=================================登录验证===============================-->
@@ -133,36 +167,6 @@
     <!--================================================================-->
 
 
-    <!-- 基于配置的认证 -->
-    <!--<security:authentication-manager>
-        <security:authentication-provider>
-            <security:user-service>
-                <security:user name="user" password="user" authorities="ROLE_USER"/>
-                <security:user name="admin" password="admin" authorities="ROLE_USER, ROLE_ADMIN"/>
-            </security:user-service>
-        </security:authentication-provider>
-    </security:authentication-manager>-->
-
-
-    <!-- 居于jdbc的用于认证的AuthenticationManager -->
-    <!-- <security:authentication-manager alias="authenticationManager">
-         <security:authentication-provider
-                 user-service-ref="userDetailsService" />
-     </security:authentication-manager>
-
-     <bean id="userDetailsService"
-           class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
-         <property name="dataSource" ref="dataSource" />
-     </bean>-->
-
-    <!-- <security:authentication-manager>
-         <security:authentication-provider>
-             <security:jdbc-user-service data-source-ref="dataSource"
-                                         users-by-username-query="SELECT username,password,enabled FROM SYSTEM_USER WHERE username = ?"
-                                         authorities-by-username-query="SELECT id AS username,name as role FROM system_role WHERE id = ?"
-                     />
-         </security:authentication-provider>
-     </security:authentication-manager>-->
     <bean id="messageSource"
           class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
         <property name="basename"
