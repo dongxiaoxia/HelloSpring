@@ -7,6 +7,8 @@ import org.springframework.security.authentication.InsufficientAuthenticationExc
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.stereotype.Component;
+import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
+import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 
 import java.util.Collection;
 import java.util.Iterator;
@@ -14,6 +16,7 @@ import java.util.Iterator;
 /**
  * Created by Administrator on 2015/11/17.
  * <p/>
+ * 决策类 当请求访问时，判断用户是否具有访问所需的所有权限
  * 自己实现的过滤用户请求类，也可以直接使用 FilterSecurityInterceptor
  * <p/>
  * AbstractSecurityInterceptor有三个派生类：
@@ -27,9 +30,18 @@ import java.util.Iterator;
  */
 @Component
 public class MyAccessDecisionManager implements AccessDecisionManager {
+
+    LoggerAdapter logger = LoggerAdapterFactory.getLoggerAdapter(MyAccessDecisionManager.class);
+
+
+    /**
+     * authentication用户认证后 存有用户的所有权限
+     * configAttributes访问所需要的权限
+     * 若无权则抛出异常
+     */
     @Override
     public void decide(Authentication authentication, Object object, Collection<ConfigAttribute> configAttributes) throws AccessDeniedException, InsufficientAuthenticationException {
-        //		System.err.println(" ---------------  MyAccessDecisionManager --------------- ");
+        System.err.println(" ---------------  MyAccessDecisionManager --------------- ");
         if (configAttributes == null) {
             return;
         }
@@ -53,11 +65,11 @@ public class MyAccessDecisionManager implements AccessDecisionManager {
 
     @Override
     public boolean supports(ConfigAttribute attribute) {
-        return false;
+        return true;
     }
 
     @Override
     public boolean supports(Class<?> clazz) {
-        return false;
+        return true;
     }
 }

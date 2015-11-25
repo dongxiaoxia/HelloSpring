@@ -1,6 +1,7 @@
 package xyz.dongxiaoxia.hellospring.security;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.ConfigAttribute;
 import org.springframework.security.access.SecurityMetadataSource;
 import org.springframework.security.access.intercept.AbstractSecurityInterceptor;
 import org.springframework.security.access.intercept.InterceptorStatusToken;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.PostConstruct;
 import javax.servlet.*;
 import java.io.IOException;
+import java.util.Collection;
 
 /**
  * Created by Administrator on 2015/11/17.
@@ -60,13 +62,13 @@ public class MySecurityFilter extends AbstractSecurityInterceptor implements Fil
     }
 
     private void invoke(FilterInvocation fi) throws IOException, ServletException {
-        // object为FilterInvocation对象
-        //super.beforeInvocation(fi);源码
-        //1.获取请求资源的权限
-        //执行Collection<ConfigAttribute> attributes = SecurityMetadataSource.getAttributes(object);
-        //2.是否拥有权限
-        //this.accessDecisionManager.decide(authenticated, object, attributes);
-//		System.err.println(" ---------------  MySecurityFilter invoke--------------- ");
+        //object为FilterInvocation对象
+        // super.beforeInvocation(fi);源码
+        // 1.获取请求资源的权限
+        // 执行Collection<ConfigAttribute> attributes = SecurityMetadataSource.getAttributes(object);
+//        // 2.是否拥有权限
+//        this.accessDecisionManager.decide(authenticated, fi, attributes);
+        System.err.println(" ---------------  MySecurityFilter invoke--------------- ");
         InterceptorStatusToken token = super.beforeInvocation(fi);
         try {
             fi.getChain().doFilter(fi.getRequest(), fi.getResponse());

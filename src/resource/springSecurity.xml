@@ -87,9 +87,12 @@
          AccessDecisionManager 接口，UserDetailsService 接口，只要重写了这3个接口，
          然后再spring配置文件中做相应的配置，项目启动启动后，我们进行资源请求，就自动会去执行我们重定义的类进行权限判断。
         -->
-        <!--<security:custom-filter ref="mySecurityFilter" before="FILTER_SECURITY_INTERCEPTOR"/>-->
+        <security:custom-filter ref="mySecurityFilter" before="FILTER_SECURITY_INTERCEPTOR"/>
         <!--================================================================-->
-
+        <!--在http标签下配置一个我们自定义的继承了org.springframework.security.access.intercept.AbstractSecurityInterceptor的Filter，并注入其-->
+        <!--必须的3个组件authenticationManager、accessDecisionManager和securityMetadataSource。其作用上面已经注释了。-->
+        <!--这里的FILTER_SECURITY_INTERCEPTOR是Spring Security默认的Filter，-->
+        <!--我们自定义的Filter必须在它之前，过滤请求-->
     </security:http>
     <!--未登录的切入点-->
     <!--<bean id="myAuthenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
@@ -183,12 +186,5 @@
     <!--<security:global-method-security pre-post-annotations="enabled" />-->
     <!--<security:global-method-security secured-annotations="enabled"/>-->
     <!--================================================================-->
-
-
-    <!--<security:custom-filter ref="myFilter" before="FILTER_SECURITY_INTERCEPTOR"/>-->
-    <!--在http标签下配置一个我们自定义的继承了org.springframework.security.access.intercept.AbstractSecurityInterceptor的Filter，并注入其-->
-    <!--必须的3个组件authenticationManager、accessDecisionManager和securityMetadataSource。其作用上面已经注释了。-->
-    <!--这里的FILTER_SECURITY_INTERCEPTOR是Spring Security默认的Filter，-->
-    <!--我们自定义的Filter必须在它之前，过滤请求-->
 
 </beans>
