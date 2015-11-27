@@ -89,6 +89,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping(value = "delete")
     @ResponseBody
+    @ControllerLog(module = "UserController", operationType = "delete操作", operationName = "删除用户")
     public Response delete(String id) {
         Response response = new Response();
         try {
@@ -110,6 +111,7 @@ public class UserController extends BasicController {
      */
     @RequestMapping(value = "update", method = RequestMethod.PUT)
     @ResponseBody
+    @ControllerLog(module = "UserController", operationType = "update操作", operationName = "修改用户")
     public Response update(User user, UserRole userRole) {
         Response response = new Response();
         try {
@@ -154,13 +156,13 @@ public class UserController extends BasicController {
      *
      * @param user
      * @param pageNow
-     * @return
+     * @return 
      */
     @RequestMapping(value = "page")
     @ResponseBody
     @ControllerLog(module = "UserController", operationType = "page操作", operationName = "分页查询")
     public Response query(User user, String pageNow) {
-        Response response = new Response();
+        Response response;
         try {
             PageView pageView = null;
             if (StringUtils.isEmpty(pageNow)) {
@@ -168,10 +170,10 @@ public class UserController extends BasicController {
             } else {
                 pageView = new PageView(Integer.parseInt(pageNow));
             }
-            response.success(userService.page(pageView, user));
+            response = new Response().success(userService.page(pageView, user));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
-            response.failure(e.getMessage());
+            response = new Response().failure(e.getMessage());
         }
         return response;
     }
@@ -187,8 +189,6 @@ public class UserController extends BasicController {
         user.setPassword(String.valueOf(count));
         response = new Response();
         response.success(user);
-        //  response.success();
-        // response.failure("timeOut");
         return response;
     }
 
