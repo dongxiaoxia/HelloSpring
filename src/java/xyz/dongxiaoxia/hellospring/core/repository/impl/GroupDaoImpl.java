@@ -1,14 +1,11 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Group;
 import xyz.dongxiaoxia.hellospring.core.repository.GroupDao;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
-import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -50,7 +47,7 @@ public class GroupDaoImpl extends BaseDaoImpl implements GroupDao {
     }
 
     @Override
-    public List<Group> page(PageView pageView, Group group) {
+    public Paging<Group> page(Group group, int pageStart, int pageSize) {
         return null;
     }
 

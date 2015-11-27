@@ -9,7 +9,6 @@ import xyz.dongxiaoxia.hellospring.core.entity.Log;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.service.LogService;
-import xyz.dongxiaoxia.hellospring.util.PageView;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 /**
@@ -26,21 +25,22 @@ public class LogController {
      * 查询客户登陆信息
      *
      * @param log
-     * @param pageNow
+     * @param pageStart
+     * @param pageSize
      * @return
      */
     @RequestMapping(value = "query")
     @ResponseBody
-    public Response query(Log log, String pageNow) {
+    public Response query(Log log, int pageStart, int pageSize) {
         Response response = new Response();
         try {
-            PageView pageView = null;
-            if (StringUtils.isEmpty(pageNow)) {
-                pageView = new PageView(1);
-            } else {
-                pageView = new PageView(Integer.parseInt(pageNow));
+            if (pageStart < 0) {
+                throw new IllegalArgumentException("参数pageStart非法");
             }
-            response.success(logService.query(pageView, log));
+            if (pageSize < 1) {
+                throw new IllegalArgumentException("参数pageSize非法");
+            }
+            response.success(logService.query(log, pageStart, pageSize));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.failure(e.getMessage());

@@ -1,9 +1,7 @@
 package xyz.dongxiaoxia.hellospring.service;
 
-import org.springframework.stereotype.Component;
-import org.springframework.transaction.annotation.Transactional;
 import xyz.dongxiaoxia.hellospring.core.entity.Log;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
 
@@ -12,7 +10,7 @@ import java.util.List;
  * 日志记录业务逻辑
  */
 public interface LogService {
-    PageView query(PageView pageView, Log log);
+    Paging<Log> query(Log log, int pageStart, int pageSize);
 
     void add(Log log);
 

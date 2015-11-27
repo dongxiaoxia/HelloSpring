@@ -4,7 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.repository.BaseDao;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import javax.sql.DataSource;
 import java.lang.reflect.Field;
@@ -116,7 +116,7 @@ public class TestDaoImpl implements BaseDao<Object> {
     }
 
     @Override
-    public List<Object> page(PageView pageView, Object o) {
+    public Paging<Object> page(Object o, int pageStart, int pageSize) {
         return null;
     }
 

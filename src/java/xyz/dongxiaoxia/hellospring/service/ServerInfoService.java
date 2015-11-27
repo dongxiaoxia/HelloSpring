@@ -1,7 +1,7 @@
 package xyz.dongxiaoxia.hellospring.service;
 
 import xyz.dongxiaoxia.hellospring.core.entity.ServerInfo;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ServerInfoService {
 
-    PageView query(PageView pageView, ServerInfo serverInfo);
+    Paging<ServerInfo> query(ServerInfo serverInfo, int pageStart, int pageSize);
 
     List<ServerInfo> queryAll(ServerInfo serverInfo);
 

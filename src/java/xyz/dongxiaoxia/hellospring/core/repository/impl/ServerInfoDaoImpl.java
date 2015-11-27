@@ -3,7 +3,7 @@ package xyz.dongxiaoxia.hellospring.core.repository.impl;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.ServerInfo;
 import xyz.dongxiaoxia.hellospring.core.repository.ServerInfoDao;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
 
@@ -39,7 +39,7 @@ public class ServerInfoDaoImpl extends BaseDaoImpl implements ServerInfoDao {
     }
 
     @Override
-    public List<ServerInfo> page(PageView pageView, ServerInfo serverInfo) {
+    public Paging<ServerInfo> page(ServerInfo serverInfo, int pageStart, int pageSize) {
         return null;
     }
 }

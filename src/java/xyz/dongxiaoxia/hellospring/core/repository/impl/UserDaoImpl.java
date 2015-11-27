@@ -1,16 +1,13 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
 import xyz.dongxiaoxia.hellospring.util.Common;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
-import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -95,7 +92,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     }
 
     @Override
-    public List<User> page(PageView pageView, User user) {
+    public Paging<User> page(User user, int pageStart, int pageSize) {
         String pageSql = "SELECT * FROM SYSTEM_USER WHERE 1=1";
         if (user != null) {
             if (!Common.isEmpty(user.getUsername())) {
@@ -136,8 +133,12 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
                 pageSql += " AND status = '" + user.getStatus() + "'";
             }
         }
-        pageSql += " limit " + pageView.getPageSize() * (pageView.getPageNow() - 1) + "," + pageView.getPageSize();
-        return this.jdbcTemplate.query(pageSql, new UserMapper());
+        // pageSql += " limit " + pageView.getPageSize() * (pageView.getPageNow() - 1) + "," + pageView.getPageSize();
+        List<User> userList = this.jdbcTemplate.query(pageSql, new UserMapper());
+//        long pageCount = this.jdbcTemplate.queryForObject("select count(*) from system_user", Long.class);
+//        pageView.setRecords(userList);
+//        pageView.setPageCount(pageCount);
+        return null;
     }
 
     @Override

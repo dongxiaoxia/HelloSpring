@@ -3,15 +3,13 @@ package xyz.dongxiaoxia.hellospring.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
-import xyz.dongxiaoxia.hellospring.ServiceException;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
 import xyz.dongxiaoxia.hellospring.service.UserService;
 import xyz.dongxiaoxia.hellospring.util.Common;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
-import javax.management.ServiceNotFoundException;
 import java.util.List;
 
 /**
@@ -89,10 +87,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public PageView page(PageView pageView, User user) {
-        List<User> list = userDao.page(pageView, user);
-        pageView.setRecords(list);
-        return pageView;
+    public Paging<User> page(User user, int pageStart, int pageSize) {
+        return userDao.page(user, pageStart, pageSize);
     }
 
     @Override

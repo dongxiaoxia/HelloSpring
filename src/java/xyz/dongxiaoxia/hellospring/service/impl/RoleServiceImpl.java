@@ -7,7 +7,7 @@ import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.UserRole;
 import xyz.dongxiaoxia.hellospring.core.repository.RoleDao;
 import xyz.dongxiaoxia.hellospring.service.RoleService;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
 
@@ -22,10 +22,8 @@ public class RoleServiceImpl implements RoleService {
     private RoleDao roleDao;
 
     @Override
-    public PageView query(PageView pageView, Role role) {
-        List<Role> list = roleDao.page(pageView, role);
-        pageView.setRecords(list);
-        return pageView;
+    public Paging<Role> query(Role role, int pageStart, int pageSize) {
+        return roleDao.page(role, pageStart, pageSize);
     }
 
     @Override

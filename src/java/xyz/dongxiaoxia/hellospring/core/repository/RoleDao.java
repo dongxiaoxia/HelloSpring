@@ -2,7 +2,6 @@ package xyz.dongxiaoxia.hellospring.core.repository;
 
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.UserRole;
-import xyz.dongxiaoxia.hellospring.util.PageView;
 
 import java.util.List;
 

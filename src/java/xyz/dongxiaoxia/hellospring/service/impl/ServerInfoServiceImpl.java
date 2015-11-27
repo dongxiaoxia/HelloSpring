@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import xyz.dongxiaoxia.hellospring.core.entity.ServerInfo;
 import xyz.dongxiaoxia.hellospring.core.repository.ServerInfoDao;
 import xyz.dongxiaoxia.hellospring.service.ServerInfoService;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
 
@@ -21,10 +21,8 @@ public class ServerInfoServiceImpl implements ServerInfoService {
     private ServerInfoDao serverInfoDao;
 
     @Override
-    public PageView query(PageView pageView, ServerInfo serverInfo) {
-        List<ServerInfo> list = serverInfoDao.page(pageView, serverInfo);
-        pageView.setRecords(list);
-        return pageView;
+    public Paging<ServerInfo> query(ServerInfo serverInfo, int pageStart, int pageSize) {
+        return serverInfoDao.page(serverInfo, pageStart, pageSize);
     }
 
     @Override

@@ -11,7 +11,6 @@ import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.service.ResourceService;
 import xyz.dongxiaoxia.hellospring.service.RoleService;
-import xyz.dongxiaoxia.hellospring.util.PageView;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 import java.util.ArrayList;
@@ -152,13 +151,13 @@ public class RoleController {
     public Response query(Role role, String pageNow) {
         Response response = new Response();
         try {
-            PageView pageView = null;
+           /* PageView pageView = null;
             if (StringUtils.isEmpty(pageNow)) {
                 pageView = new PageView(1);
             } else {
                 pageView = new PageView(Integer.parseInt(pageNow));
             }
-            response.success(roleService.query(pageView, role));
+            response.success(roleService.query(pageView, role));*/
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.failure(e.getMessage());

@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import xyz.dongxiaoxia.hellospring.core.entity.Log;
 import xyz.dongxiaoxia.hellospring.core.repository.LogDao;
 import xyz.dongxiaoxia.hellospring.service.LogService;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
 
@@ -21,10 +21,9 @@ public class LogServiceImpl implements LogService {
     private LogDao logDao;
 
     @Override
-    public PageView query(PageView pageView, Log log) {
-        List<Log> list = logDao.page(pageView, log);
-        pageView.setRecords(list);
-        return pageView;
+    public Paging<Log> query(Log log, int pageStart, int pageSize) {
+        Paging<Log> paging = logDao.page(log, pageStart, pageSize);
+        return paging;
     }
 
     @Override

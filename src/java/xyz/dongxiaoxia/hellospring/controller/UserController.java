@@ -26,7 +26,6 @@ import xyz.dongxiaoxia.hellospring.service.RoleService;
 import xyz.dongxiaoxia.hellospring.service.UserLoginListService;
 import xyz.dongxiaoxia.hellospring.service.UserService;
 import xyz.dongxiaoxia.hellospring.util.Common;
-import xyz.dongxiaoxia.hellospring.util.PageView;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 import javax.servlet.http.HttpServletRequest;
@@ -161,16 +160,16 @@ public class UserController extends BasicController {
     @RequestMapping(value = "page")
     @ResponseBody
     @ControllerLog(module = "UserController", operationType = "page操作", operationName = "分页查询")
-    public Response query(User user, String pageNow) {
+    public Response query(User user, int pageStart, int pageSize) {
         Response response;
         try {
-            PageView pageView = null;
-            if (StringUtils.isEmpty(pageNow)) {
-                pageView = new PageView(1);
-            } else {
-                pageView = new PageView(Integer.parseInt(pageNow));
+            if (pageStart < 0) {
+                throw new IllegalArgumentException("参数pageStart非法");
             }
-            response = new Response().success(userService.page(pageView, user));
+            if (pageSize < 1) {
+                throw new IllegalArgumentException("参数pageSize非法");
+            }
+            response = new Response().success(userService.page(user, pageStart, pageSize));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response = new Response().failure(e.getMessage());

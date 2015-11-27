@@ -6,7 +6,7 @@ book.factory('users', ['$http', function ($http) {
 
     factory.all = function () {
         var users = $http.get(url + 'page').then(function (resp) {
-            return resp.data.data.records;
+            return resp;
         });
         return users;
     };

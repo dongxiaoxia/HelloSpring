@@ -7,14 +7,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import xyz.dongxiaoxia.hellospring.Response;
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
-import xyz.dongxiaoxia.hellospring.core.entity.User;
-import xyz.dongxiaoxia.hellospring.core.entity.UserRole;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.service.ResourceService;
 import xyz.dongxiaoxia.hellospring.service.UserService;
 import xyz.dongxiaoxia.hellospring.util.Common;
-import xyz.dongxiaoxia.hellospring.util.PageView;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 import java.util.*;
@@ -121,16 +118,16 @@ public class ResourcesController {
      */
     @RequestMapping(value = "query")
     @ResponseBody
-    public Response query(Resource resource, String pageNow) {
+    public Response query(Resource resource, int pageStart, int pageSize) {
         Response response = new Response();
         try {
-            PageView pageView = null;
-            if (StringUtils.isEmpty(pageNow)) {
-                pageView = new PageView(1);
-            } else {
-                pageView = new PageView(Integer.parseInt(pageNow));
+            if (pageStart < 0) {
+                throw new IllegalArgumentException("参数pageStart非法");
             }
-            response.success(resourceService.query(pageView, resource));
+            if (pageSize <= 0) {
+                throw new IllegalArgumentException("参数pageSize非法");
+            }
+            response.success(resourceService.query(resource, pageStart, pageSize));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.failure(e.getMessage());

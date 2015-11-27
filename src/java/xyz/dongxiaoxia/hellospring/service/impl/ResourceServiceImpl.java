@@ -7,7 +7,7 @@ import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.entity.ResourceRole;
 import xyz.dongxiaoxia.hellospring.core.repository.ResourceDao;
 import xyz.dongxiaoxia.hellospring.service.ResourceService;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
 
@@ -22,10 +22,8 @@ public class ResourceServiceImpl implements ResourceService {
     private ResourceDao resourceDao;
 
     @Override
-    public PageView query(PageView pageView, Resource resource) {
-        List<Resource> list = resourceDao.page(pageView, resource);
-        pageView.setRecords(list);
-        return pageView;
+    public Paging<Resource> query(Resource resource, int pageStart, int pageSize) {
+        return resourceDao.page(resource, pageStart, pageSize);
     }
 
     @Override

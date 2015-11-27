@@ -1,6 +1,7 @@
 package xyz.dongxiaoxia.hellospring.core.repository;
 
-import xyz.dongxiaoxia.hellospring.util.PageView;
+
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
 
@@ -22,6 +23,6 @@ public interface BaseDao<T> {
 
     List<T> list(T t);
 
-    List<T> page(PageView pageView, T t);
+    Paging<T> page(T t, int pageStart, int pageSize);
 
 }

@@ -1,10 +1,9 @@
 package xyz.dongxiaoxia.hellospring.service;
 
 import org.springframework.security.access.annotation.Secured;
-import xyz.dongxiaoxia.hellospring.ServiceException;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
 
@@ -23,7 +22,7 @@ public interface UserService {
 
     List<User> list(User user);
 
-    PageView page(PageView pageView, User user);
+    Paging<User> page(User user, int pageStart, int pageSize);
 
     @Secured("ROLE_ADMIN")
     int countUser(String userName, String userPassword);

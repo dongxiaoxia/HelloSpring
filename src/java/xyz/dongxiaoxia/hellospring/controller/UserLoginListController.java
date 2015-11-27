@@ -9,10 +9,7 @@ import xyz.dongxiaoxia.hellospring.core.entity.UserLoginList;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.service.UserLoginListService;
-import xyz.dongxiaoxia.hellospring.util.PageView;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
-
-import java.util.List;
 
 /**
  * Created by Administrator on 2015/11/18.
@@ -54,13 +51,13 @@ public class UserLoginListController {
     public Response query(UserLoginList userLoginList, String pageNow) {
         Response response = new Response();
         try {
-            PageView pageView = null;
+           /* PageView pageView = null;
             if (StringUtils.isEmpty(pageNow)) {
                 pageView = new PageView(1);
             } else {
                 pageView = new PageView(Integer.parseInt(pageNow));
             }
-            response.success(userLoginListService.query(pageView, userLoginList));
+            response.success(userLoginListService.query(pageView, userLoginList));*/
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.failure(e.getMessage());

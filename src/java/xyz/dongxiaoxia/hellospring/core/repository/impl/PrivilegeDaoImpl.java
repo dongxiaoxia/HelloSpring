@@ -1,14 +1,11 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Privilege;
 import xyz.dongxiaoxia.hellospring.core.repository.PrivilegeDao;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
-import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -45,7 +42,7 @@ public class PrivilegeDaoImpl extends BaseDaoImpl implements PrivilegeDao {
     }
 
     @Override
-    public List<Privilege> page(PageView pageView, Privilege privilege) {
+    public Paging<Privilege> page(Privilege privilege, int paeStart, int pageSize) {
         return null;
     }
 

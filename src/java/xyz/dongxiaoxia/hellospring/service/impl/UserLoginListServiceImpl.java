@@ -6,7 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 import xyz.dongxiaoxia.hellospring.core.entity.UserLoginList;
 import xyz.dongxiaoxia.hellospring.core.repository.UserLoginListDao;
 import xyz.dongxiaoxia.hellospring.service.UserLoginListService;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
 
@@ -26,10 +26,8 @@ public class UserLoginListServiceImpl implements UserLoginListService {
     }
 
     @Override
-    public PageView query(PageView pageView, UserLoginList userLoginList) {
-        List<UserLoginList> list = userLoginListDao.page(pageView, userLoginList);
-        pageView.setRecords(list);
-        return pageView;
+    public Paging<UserLoginList> query(UserLoginList userLoginList, int pageStart, int pageSize) {
+        return userLoginListDao.page(userLoginList, pageStart, pageSize);
     }
 
 

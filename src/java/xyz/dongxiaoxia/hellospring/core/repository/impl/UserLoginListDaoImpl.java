@@ -1,14 +1,11 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.UserLoginList;
 import xyz.dongxiaoxia.hellospring.core.repository.UserLoginListDao;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
-import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.List;
@@ -45,7 +42,7 @@ public class UserLoginListDaoImpl extends BaseDaoImpl implements UserLoginListDa
     }
 
     @Override
-    public List<UserLoginList> page(PageView pageView, UserLoginList userLoginList) {
+    public Paging<UserLoginList> page(UserLoginList userLoginList, int pageStart, int pageSize) {
         return null;
     }
 

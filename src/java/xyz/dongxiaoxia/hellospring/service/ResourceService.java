@@ -1,7 +1,7 @@
 package xyz.dongxiaoxia.hellospring.service;
 
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface ResourceService {
 
-    PageView query(PageView pageView, Resource resources);
+    Paging<Resource> query(Resource resources, int pageStart, int pageSize);
 
     void add(Resource resources);
 

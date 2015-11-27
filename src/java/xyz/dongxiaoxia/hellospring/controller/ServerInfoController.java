@@ -11,7 +11,6 @@ import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.service.ServerInfoService;
 import xyz.dongxiaoxia.hellospring.util.Common;
-import xyz.dongxiaoxia.hellospring.util.PageView;
 import xyz.dongxiaoxia.hellospring.util.PropertiesUtils;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
@@ -47,16 +46,16 @@ public class ServerInfoController {
      */
     @RequestMapping(value = "query")
     @ResponseBody
-    public Response query(ServerInfo serverInfo, String pageNow) {
+    public Response query(ServerInfo serverInfo, int pageStart, int pageSize) {
         Response response = new Response();
         try {
-            PageView pageView = null;
-            if (StringUtils.isEmpty(pageNow)) {
-                pageView = new PageView(1);
-            } else {
-                pageView = new PageView(Integer.parseInt(pageNow));
+            if (pageStart < 0) {
+                throw new IllegalArgumentException("参数pageStart非法");
             }
-            response.success(serverInfoService.query(pageView, serverInfo));
+            if (pageSize < 1) {
+                throw new IllegalArgumentException("参数pageSize非法");
+            }
+            response.success(serverInfoService.query(serverInfo, pageStart, pageSize));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.failure(e.getMessage());

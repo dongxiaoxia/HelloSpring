@@ -1,17 +1,13 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
-import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.entity.UserRole;
 import xyz.dongxiaoxia.hellospring.core.repository.RoleDao;
-import xyz.dongxiaoxia.hellospring.util.PageView;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
-import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.HashSet;
@@ -59,7 +55,7 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
     }
 
     @Override
-    public List<Role> page(PageView pageView, Role role) {
+    public Paging<Role> page(Role role, int pageStart, int pageSize) {
         return null;
     }
 

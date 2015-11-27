@@ -3,8 +3,11 @@
 book.controller('ListCtrl', ['$scope', '$filter', 'users',
     function ($scope, $filter, users) {
         $scope.loadList = function () {
-            users.all().then(function (users) {
-                $scope.users = users;
+            users.all().then(function (response) {
+                console.log(response);
+                $scope.users = response.data.data.records;
+                $scope.pageNow = response.data.data.pageNow;
+                $scope.pageCount = response.data.data.pageCount;
             });
         };
 
@@ -36,7 +39,7 @@ book.controller('ListCtrl', ['$scope', '$filter', 'users',
         //书名搜索关键词，主要用于更新books数组
         $scope.bookFilterdInput = '';
 
-        $scope.pageCount = function () {
+        $scope.pageCount1 = function () {
             if ($scope.books) {
                 //根据用户输入来过滤更新数组，主要用来更新页数
                 $scope.updatePage = $filter('bookname')($scope.books, $scope.bookFilterdInput);
@@ -54,19 +57,19 @@ book.controller('ListCtrl', ['$scope', '$filter', 'users',
         };
 
         $scope.nextPageDisabled = function () {
-            return $scope.currentPage + 1 == $scope.pageCount();
+            return $scope.currentPage + 1 == $scope.pageCount1();
         };
 
         $scope.$watch('bookFilterdInput', function () {
             //console.log('change');
-            if ($scope.pageCount() <= $scope.currentPage) {
+            if ($scope.pageCount1() <= $scope.currentPage) {
                 $scope.currentPage = 0;
             }
         })
 
         $scope.$watch('itemsPerPage', function () {
             //console.log('change');
-            if ($scope.pageCount() <= $scope.currentPage) {
+            if ($scope.pageCount1() <= $scope.currentPage) {
                 $scope.currentPage = 0;
             }
         })
