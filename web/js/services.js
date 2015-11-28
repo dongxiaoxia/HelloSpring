@@ -5,7 +5,21 @@ book.factory('users', ['$http', function ($http) {
     var factory = {};
 
     factory.all = function () {
-        var users = $http.get(url + 'page').then(function (resp) {
+        var data = {"user": null, "pageStart": 0, "pageSize": 10};
+        //$http({
+        //
+        //    method: "post",
+        //
+        //    data: data,//Form Data = {"id":1,"value":"hello"}
+        //
+        //    url: "/api/user/page",
+        //
+        //    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+        //
+        //    success: function (d) { console.log(d); }
+        //
+        //});
+        var users = $http.get(url + 'page', data).then(function (resp) {
             return resp;
         });
         return users;

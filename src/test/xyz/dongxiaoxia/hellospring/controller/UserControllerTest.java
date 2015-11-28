@@ -1,22 +1,20 @@
-package xyz.dongxiaoxia.hellospring.account.controller;
+package xyz.dongxiaoxia.hellospring.controller;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
 import xyz.dongxiaoxia.hellospring.BasicTest;
+import xyz.dongxiaoxia.hellospring.core.entity.User;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
- * Created by Administrator on 2015/11/5.
+ * Created by Administrator on 2015/11/28.
  */
 public class UserControllerTest extends BasicTest {
 
@@ -25,9 +23,17 @@ public class UserControllerTest extends BasicTest {
     private WebApplicationContext wac;
 
     @Before
-    public void init() {
+    public void setUp() throws Exception {
 
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+    }
+
+    @Test
+    public void addTest() throws Exception {
+        User user = new User();
+        user.setUsername("test");
+        user.setPassword("test");
+        mockMvc.perform(post("/api/user/add").param("username", "test")).andExpect(status().is2xxSuccessful());
     }
 
     @Test

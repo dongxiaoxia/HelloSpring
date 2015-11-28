@@ -10,7 +10,6 @@ book.controller('ListCtrl', ['$scope', '$filter', 'users',
                 $scope.pageCount = response.data.data.pageCount;
             });
         };
-
         //init load data
         $scope.loadList();
 

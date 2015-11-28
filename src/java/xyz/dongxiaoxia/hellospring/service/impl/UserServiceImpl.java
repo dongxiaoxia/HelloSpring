@@ -36,9 +36,6 @@ public class UserServiceImpl implements UserService {
         if (Common.isEmpty(user.getPassword())) {
             throw new IllegalArgumentException("password must not be null");
         }
-        if (Common.isEmpty(user.getPassword())) {
-            throw new IllegalArgumentException("password must not be null");
-        }
         if (Common.isEmpty(user.getStatus())) {
             throw new IllegalArgumentException("status must not be null");
         }

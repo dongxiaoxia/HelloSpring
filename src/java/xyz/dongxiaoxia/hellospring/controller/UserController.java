@@ -154,7 +154,8 @@ public class UserController extends BasicController {
      * 查询用户
      *
      * @param user
-     * @param pageNow
+     * @param pageStart
+     * @param pageSize
      * @return 
      */
     @RequestMapping(value = "page")

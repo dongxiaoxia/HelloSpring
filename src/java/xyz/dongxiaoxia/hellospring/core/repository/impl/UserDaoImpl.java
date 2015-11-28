@@ -43,7 +43,12 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
     @Override
     public User get(String id) {
-        return this.jdbcTemplate.queryForObject(getSql, new UserMapper(), id);
+        List<User> userList = this.jdbcTemplate.query(getSql, new UserMapper(), id);
+        if (userList == null || userList.size() == 0) {
+            return null;
+        } else {
+            return userList.get(0);
+        }
     }
 
     @Override
