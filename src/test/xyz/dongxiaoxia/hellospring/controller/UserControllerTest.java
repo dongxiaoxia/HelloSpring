@@ -33,7 +33,7 @@ public class UserControllerTest extends BasicTest {
         User user = new User();
         user.setUsername("test");
         user.setPassword("test");
-        mockMvc.perform(post("/api/user/add").param("username", "test")).andExpect(status().is2xxSuccessful());
+        mockMvc.perform(post("/api/user/add").param("username", "test").param("password", "test")).andExpect(status().is2xxSuccessful());
     }
 
     @Test
