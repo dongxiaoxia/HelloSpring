@@ -3,8 +3,22 @@
   <component name="ChangeListManager">
     <list id="0c536fdc-1f75-4eeb-aeb7-8b2ecedb798e" name="Default" comment="" />
     <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="add junit test">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/HelloSpring/xyz/dongxiaoxia/hellospring/BasicTest.class" afterPath="$PROJECT_DIR$/out/test/HelloSpring/xyz/dongxiaoxia/hellospring/BasicTest.class" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/lib/javax.mail.jar" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessage.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessageWithJavaMailSender.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/message/EmailTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl$UserMapper.class" afterPath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl$UserMapper.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.class" afterPath="$PROJECT_DIR$/out/test/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.class" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/BaseDaoImpl.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/BaseDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MySecurityMetadataSource.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MySecurityMetadataSource.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/SystemLogAspect.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/SystemLogAspect.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/controller/UserControllerTest.java" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/controller/UserControllerTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.java" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/applicationContext.xml" afterPath="$PROJECT_DIR$/out/production/HelloSpring/applicationContext.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resource/applicationContext.xml" afterPath="$PROJECT_DIR$/src/resource/applicationContext.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HelloSpring.iws" />
@@ -48,103 +62,61 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="UserController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java">
+      <file leaf-file-name="EmailTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/message/EmailTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.5065617">
-              <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#756#757#0" expanded="true" />
+                <element signature="e#796#797#0" expanded="true" />
+                <element signature="e#831#832#0" expanded="true" />
+                <element signature="e#889#890#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserControllerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/controller/UserControllerTest.java">
+      <file leaf-file-name="EmailMessage.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#455#456#0" expanded="true" />
+                <element signature="e#499#500#0" expanded="true" />
+                <element signature="e#572#573#0" expanded="true" />
+                <element signature="e#626#627#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BasicTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/BasicTest.java">
+      <file leaf-file-name="EmailMessageWithJavaMailSender.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessageWithJavaMailSender.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserService.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/UserService.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+              <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#756#757#0" expanded="true" />
+                <element signature="e#800#801#0" expanded="true" />
+                <element signature="e#917#1330#0" expanded="true" />
+                <element signature="e#1329#1330#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserServiceImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/UserServiceImpl.java">
+      <file leaf-file-name="applicationContext.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/resource/applicationContext.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.4519573">
+              <caret line="68" column="50" selection-start-line="68" selection-start-column="50" selection-end-line="68" selection-end-column="74" />
               <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2659#2660#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/UserDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BaseDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/BaseDao.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserDaoImpl.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
-              <folding>
-                <element signature="e#6589#6590#0" expanded="true" />
-                <element signature="e#6616#6617#0" expanded="true" />
-                <marker date="1448723797433" expanded="true" signature="666:821" placeholder="INSERT INTO ..." />
-                <marker date="1448723797433" expanded="true" signature="863:899" placeholder="DELETE FROM ..." />
-                <marker date="1448723797433" expanded="true" signature="941:1122" placeholder="UPDATE SYSTE..." />
-                <marker date="1448723797433" expanded="true" signature="1161:1199" placeholder="SELECT * FRO..SYSTEM_USER..." />
-                <marker date="1448723797433" expanded="true" signature="2365:2400" placeholder="SELECT * FRO..SYSTEM_USER..." />
-                <marker date="1448723797433" expanded="true" signature="4324:4359" placeholder="SELECT * FRO..SYSTEM_USER..." />
+                <element signature="e#1257#1275#0" expanded="true" />
+                <element signature="e#1318#1336#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -180,20 +152,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/web/css/app.css" />
-        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MySecurityMetadataSource.java" />
-        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MyAccessDecisionManager.java" />
-        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MySecurityFilter.java" />
-        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/LogAspect.java" />
-        <option value="$PROJECT_DIR$/src/resource/springSecurity.xml" />
-        <option value="$PROJECT_DIR$/web/WEB-INF/web.xml" />
-        <option value="$PROJECT_DIR$/src/resource/log4j.properties" />
-        <option value="$PROJECT_DIR$/web/views/list.html" />
-        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/util/PagingImpl.java" />
-        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/util/PageView.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/LogDao.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/RoleController.java" />
-        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/BaseDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/UserDao.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/ResourceDao.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserLoginListController.java" />
@@ -227,10 +187,22 @@
         <option value="$PROJECT_DIR$/web/js/controllers.js" />
         <option value="$PROJECT_DIR$/web/js/services.js" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/UserServiceImpl.java" />
-        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java" />
-        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java" />
         <option value="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/BasicTest.java" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MyAccessDecisionManager.java" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MySecurityMetadataSource.java" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/SystemLogAspect.java" />
+        <option value="$PROJECT_DIR$/src/resource/springSecurity.xml" />
         <option value="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/controller/UserControllerTest.java" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/BaseDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.java" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/Order.java" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/OrderManager.java" />
+        <option value="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/message/EmailTest.java" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessage.java" />
+        <option value="$PROJECT_DIR$/src/resource/applicationContext.xml" />
+        <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessageWithJavaMailSender.java" />
       </list>
     </option>
   </component>
@@ -279,6 +251,9 @@
             <id>Code maturity issuesJava</id>
           </State>
           <State>
+            <id>CodeSpring CoreSpring</id>
+          </State>
+          <State>
             <id>Data flow issuesJava</id>
           </State>
           <State>
@@ -317,7 +292,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>UnparsedCustomBeanInspection</id>
+            <id>SpringJavaAutowiringInspection</id>
           </State>
         </selected-state>
       </profile-state>
@@ -336,16 +311,17 @@
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
-      <showMembers />
+      <showMembers ProjectPane="true" />
       <showModules />
       <showLibraryContents />
       <hideEmptyPackages />
       <abbreviatePackageNames />
-      <autoscrollToSource />
+      <autoscrollToSource ProjectPane="false" />
       <autoscrollFromSource />
       <sortByType />
     </navigator>
     <panes>
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -377,8 +353,22 @@
               <option name="myItemId" value="src" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
+          </PATH>
+          <PATH>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="HelloSpring" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="HelloSpring" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -400,7 +390,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
+              <option name="myItemId" value="java" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
@@ -408,91 +398,7 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HelloSpring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HelloSpring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hellospring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="controller" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HelloSpring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HelloSpring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="test" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="hellospring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="service" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HelloSpring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HelloSpring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="resource" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HelloSpring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="HelloSpring" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="src" />
+              <option name="myItemId" value="message" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -500,13 +406,12 @@
       </pane>
       <pane id="Scratches" />
       <pane id="Scope" />
-      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="settings.editor.selected.configurable" value="project.propDebugger" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.last.edited" value="Libraries" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -545,6 +450,7 @@
       <recent name="xyz.dongxiaoxia.hellospring.core.entity" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="F:\spring\HelloSpring\lib\lib" />
       <recent name="F:\spring\HelloSpring\web" />
       <recent name="F:\spring\HelloSpring" />
       <recent name="F:\spring\HelloSpring\src" />
@@ -562,10 +468,31 @@
       <recent name="xyz.dongxiaoxia.hellospring.core.entity" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.UserControllerTest.addTest">
-    <configuration default="false" name="PagingImpl" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="JUnit.EmailTest.test">
+    <configuration default="false" name="UserDaoImplTest.addTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <option name="MAIN_CLASS_NAME" value="xyz.dongxiaoxia.hellospring.util.PagingImpl" />
+      <module name="HelloSpring" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="xyz.dongxiaoxia.hellospring.core.repository.impl" />
+      <option name="MAIN_CLASS_NAME" value="xyz.dongxiaoxia.hellospring.core.repository.impl.UserDaoImplTest" />
+      <option name="METHOD_NAME" value="addTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+      <method />
+    </configuration>
+    <configuration default="false" name="EmailMessage" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" value="xyz.dongxiaoxia.hellospring.message.EmailMessage" />
       <option name="VM_PARAMETERS" />
       <option name="PROGRAM_PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
@@ -578,14 +505,14 @@
       <envs />
       <method />
     </configuration>
-    <configuration default="false" name="UserControllerTest.getCountTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="EmailTest.sendEmailTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="HelloSpring" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="xyz.dongxiaoxia.hellospring.controller" />
-      <option name="MAIN_CLASS_NAME" value="xyz.dongxiaoxia.hellospring.controller.UserControllerTest" />
-      <option name="METHOD_NAME" value="getCountTest" />
+      <option name="PACKAGE_NAME" value="xyz.dongxiaoxia.hellospring.message" />
+      <option name="MAIN_CLASS_NAME" value="xyz.dongxiaoxia.hellospring.message.EmailTest" />
+      <option name="METHOD_NAME" value="sendEmailTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -599,14 +526,14 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="UserControllerTest.getTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="EmailTest.test" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="HelloSpring" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="xyz.dongxiaoxia.hellospring.controller" />
-      <option name="MAIN_CLASS_NAME" value="xyz.dongxiaoxia.hellospring.controller.UserControllerTest" />
-      <option name="METHOD_NAME" value="getTest" />
+      <option name="PACKAGE_NAME" value="xyz.dongxiaoxia.hellospring.message" />
+      <option name="MAIN_CLASS_NAME" value="xyz.dongxiaoxia.hellospring.message.EmailTest" />
+      <option name="METHOD_NAME" value="test" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -620,35 +547,14 @@
       <patterns />
       <method />
     </configuration>
-    <configuration default="false" name="UserControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration default="false" name="EmailTest.testMessageHelper" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="HelloSpring" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="xyz.dongxiaoxia.hellospring.controller" />
-      <option name="MAIN_CLASS_NAME" value="xyz.dongxiaoxia.hellospring.controller.UserControllerTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-      <option name="ENV_VARIABLES" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <envs />
-      <patterns />
-      <method />
-    </configuration>
-    <configuration default="false" name="UserControllerTest.addTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
-      <module name="HelloSpring" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="xyz.dongxiaoxia.hellospring.controller" />
-      <option name="MAIN_CLASS_NAME" value="xyz.dongxiaoxia.hellospring.controller.UserControllerTest" />
-      <option name="METHOD_NAME" value="addTest" />
+      <option name="PACKAGE_NAME" value="xyz.dongxiaoxia.hellospring.message" />
+      <option name="MAIN_CLASS_NAME" value="xyz.dongxiaoxia.hellospring.message.EmailTest" />
+      <option name="METHOD_NAME" value="testMessageHelper" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -877,19 +783,19 @@
     </configuration>
     <list size="6">
       <item index="0" class="java.lang.String" itemvalue="Tomcat Server.Tomcat6.0.26" />
-      <item index="1" class="java.lang.String" itemvalue="Application.PagingImpl" />
-      <item index="2" class="java.lang.String" itemvalue="JUnit.UserControllerTest.getCountTest" />
-      <item index="3" class="java.lang.String" itemvalue="JUnit.UserControllerTest.getTest" />
-      <item index="4" class="java.lang.String" itemvalue="JUnit.UserControllerTest" />
-      <item index="5" class="java.lang.String" itemvalue="JUnit.UserControllerTest.addTest" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.UserDaoImplTest.addTest" />
+      <item index="2" class="java.lang.String" itemvalue="Application.EmailMessage" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.EmailTest.sendEmailTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.EmailTest.test" />
+      <item index="5" class="java.lang.String" itemvalue="JUnit.EmailTest.testMessageHelper" />
     </list>
     <recent_temporary>
       <list size="5">
-        <item index="0" class="java.lang.String" itemvalue="JUnit.UserControllerTest.getTest" />
-        <item index="1" class="java.lang.String" itemvalue="JUnit.UserControllerTest.addTest" />
-        <item index="2" class="java.lang.String" itemvalue="JUnit.UserControllerTest.getCountTest" />
-        <item index="3" class="java.lang.String" itemvalue="JUnit.UserControllerTest" />
-        <item index="4" class="java.lang.String" itemvalue="Application.PagingImpl" />
+        <item index="0" class="java.lang.String" itemvalue="JUnit.EmailTest.test" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.EmailTest.sendEmailTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.EmailTest.testMessageHelper" />
+        <item index="3" class="java.lang.String" itemvalue="Application.EmailMessage" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.UserDaoImplTest.addTest" />
       </list>
     </recent_temporary>
   </component>
@@ -937,13 +843,9 @@
       <workItem from="1448454064668" duration="7897000" />
       <workItem from="1448548222207" duration="4214000" />
       <workItem from="1448632957358" duration="10838000" />
-      <workItem from="1448715151377" duration="8511000" />
-    </task>
-    <task id="LOCAL-00020" summary="Add Spring AOP Function">
-      <created>1446824261653</created>
-      <option name="number" value="00020" />
-      <option name="project" value="LOCAL" />
-      <updated>1446824261653</updated>
+      <workItem from="1448715151377" duration="9107000" />
+      <workItem from="1448724973758" duration="5901000" />
+      <workItem from="1448784373933" duration="17158000" />
     </task>
     <task id="LOCAL-00021" summary="Add slf4j jar package and something else to achieve logging function.">
       <created>1446828153063</created>
@@ -1233,11 +1135,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448723810655</updated>
     </task>
-    <option name="localTasksCounter" value="69" />
+    <task id="LOCAL-00069" summary="add junit test">
+      <created>1448724187723</created>
+      <option name="number" value="00069" />
+      <option name="project" value="LOCAL" />
+      <updated>1448724187723</updated>
+    </task>
+    <option name="localTasksCounter" value="70" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="283038000" />
+    <option name="totallyTimeSpent" value="306693000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1260,7 +1168,7 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33717105" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852808" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.43585527" sideWeight="0.4969651" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31907895" sideWeight="0.48937786" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.44572368" sideWeight="0.48937786" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -1269,7 +1177,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852808" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962063" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24051593" sideWeight="0.5257453" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3223684" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.42105263" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1358,22 +1266,34 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java</url>
-          <line>225</line>
+          <url>file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/UserServiceImpl.java</url>
+          <line>26</line>
           <properties />
-          <option name="timeStamp" value="81" />
+          <option name="timeStamp" value="96" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java</url>
-          <line>73</line>
+          <line>225</line>
           <properties />
-          <option name="timeStamp" value="90" />
+          <option name="timeStamp" value="97" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java</url>
+          <line>60</line>
+          <properties />
+          <option name="timeStamp" value="99" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessageWithJavaMailSender.java</url>
+          <line>48</line>
+          <properties />
+          <option name="timeStamp" value="102" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="91" />
+      <option name="time" value="103" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -1382,295 +1302,10 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/web/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="55" column="42" selection-start-line="54" selection-start-column="6" selection-end-line="55" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.7096774">
-          <caret line="1" column="30" selection-start-line="1" selection-start-column="30" selection-end-line="1" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/views/list.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-1.5873016">
-          <caret line="65" column="80" selection-start-line="65" selection-start-column="71" selection-end-line="65" selection-end-column="80" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/util/PaseXml.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="13" selection-start-line="18" selection-start-column="13" selection-end-line="18" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/LogDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/RoleController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="159" column="66" selection-start-line="153" selection-start-column="11" selection-end-line="159" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/BaseDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/ResourceDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserLoginListController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="59" column="84" selection-start-line="53" selection-start-column="11" selection-end-line="59" selection-end-column="84" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/ResourcesController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="129" column="47" selection-start-line="129" selection-start-column="47" selection-end-line="129" selection-end-column="47" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/ResourceService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="72" selection-start-line="12" selection-start-column="72" selection-end-line="12" selection-end-column="72" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/LogServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="46" selection-start-line="17" selection-start-column="46" selection-end-line="17" selection-end-column="46" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/LogService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="56" selection-start-line="12" selection-start-column="56" selection-end-line="12" selection-end-column="56" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/RoleDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="4" column="0" selection-start-line="4" selection-start-column="0" selection-end-line="4" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/GroupDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="51" column="5" selection-start-line="51" selection-start-column="5" selection-end-line="51" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/TestDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="119" column="8" selection-start-line="119" selection-start-column="8" selection-end-line="119" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#3602#3603#0" expanded="true" />
-            <element signature="e#3629#3630#0" expanded="true" />
-            <element signature="e#3716#3717#0" expanded="true" />
-            <element signature="e#3743#3744#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/RoleDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="65" selection-start-line="57" selection-start-column="65" selection-end-line="57" selection-end-column="65" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/RoleServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#788#789#0" expanded="true" />
-            <element signature="e#850#851#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/RoleService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="60" selection-start-line="12" selection-start-column="60" selection-end-line="12" selection-end-column="60" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/UserLoginListServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="17" column="58" selection-start-line="17" selection-start-column="58" selection-end-line="17" selection-end-column="58" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/UserLoginListService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="15" column="87" selection-start-line="15" selection-start-column="87" selection-end-line="15" selection-end-column="87" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/ResourceServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="80" selection-start-line="24" selection-start-column="80" selection-end-line="24" selection-end-column="80" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/ResourceDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="26" selection-start-line="45" selection-start-column="26" selection-end-line="45" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/LogController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="41" column="13" selection-start-line="36" selection-start-column="11" selection-end-line="41" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/ServerInfoController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="57" column="51" selection-start-line="57" selection-start-column="51" selection-end-line="57" selection-end-column="51" />
-          <folding>
-            <element signature="e#3337#3353#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/ServerInfoService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="79" selection-start-line="12" selection-start-column="79" selection-end-line="12" selection-end-column="79" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/PrivilegeDaoImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="44" column="81" selection-start-line="44" selection-start-column="81" selection-end-line="44" selection-end-column="81" />
-          <folding>
-            <element signature="e#775#776#0" expanded="false" />
-            <element signature="e#871#872#0" expanded="false" />
-            <element signature="e#1540#1541#0" expanded="false" />
-            <element signature="e#1567#1568#0" expanded="false" />
-            <marker date="1448645089406" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1448645089406" expanded="true" signature="-1:-1" placeholder="DELETE From ..." />
-            <marker date="1448645089406" expanded="true" signature="-1:-1" placeholder="UPDATE syste..." />
-            <marker date="1448645089406" expanded="true" signature="-1:-1" placeholder="select id, t..system_privilege..." />
-            <marker date="1448645089406" expanded="true" signature="-1:-1" placeholder="select id, t..system_privilege..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/ServerInfoServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="24" column="67" selection-start-line="24" selection-start-column="67" selection-end-line="24" selection-end-column="67" />
-          <folding>
-            <element signature="e#942#943#0" expanded="false" />
-            <element signature="e#989#990#0" expanded="false" />
-            <element signature="e#1049#1050#0" expanded="false" />
-            <element signature="e#1097#1098#0" expanded="false" />
-            <element signature="e#1148#1149#0" expanded="false" />
-            <element signature="e#1188#1189#0" expanded="false" />
-            <element signature="e#1246#1247#0" expanded="false" />
-            <element signature="e#1290#1291#0" expanded="false" />
-            <element signature="e#1353#1354#0" expanded="false" />
-            <element signature="e#1401#1402#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/ServerInfoDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserLoginListDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="44" column="94" selection-start-line="44" selection-start-column="94" selection-end-line="44" selection-end-column="94" />
-          <folding>
-            <element signature="e#1977#1978#0" expanded="false" />
-            <element signature="e#2004#2005#0" expanded="false" />
-            <marker date="1448645175128" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1448645175128" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-            <marker date="1448645175128" expanded="true" signature="-1:-1" placeholder="UPDATE SYSTE..." />
-            <marker date="1448645175128" expanded="true" signature="-1:-1" placeholder="SELECT ul.*,..system_userloginlist..." />
-            <marker date="1448645175128" expanded="true" signature="-1:-1" placeholder="SELECT ul.*,..system_userloginlist..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1678,20 +1313,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="41" column="85" selection-start-line="41" selection-start-column="85" selection-end-line="41" selection-end-column="85" />
-          <folding>
-            <element signature="e#508#509#0" expanded="false" />
-            <element signature="e#532#533#0" expanded="false" />
-            <element signature="e#582#583#0" expanded="false" />
-            <element signature="e#606#607#0" expanded="false" />
-            <element signature="e#668#669#0" expanded="false" />
-            <element signature="e#692#693#0" expanded="false" />
-            <element signature="e#746#747#0" expanded="false" />
-            <element signature="e#773#774#0" expanded="false" />
-            <element signature="e#846#847#0" expanded="false" />
-            <element signature="e#873#874#0" expanded="false" />
-            <element signature="e#977#978#0" expanded="false" />
-            <element signature="e#1004#1005#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1699,19 +1320,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="54" column="82" selection-start-line="54" selection-start-column="82" selection-end-line="54" selection-end-column="82" />
-          <folding>
-            <element signature="e#879#880#0" expanded="false" />
-            <element signature="e#975#976#0" expanded="false" />
-            <element signature="e#2163#2164#0" expanded="false" />
-            <element signature="e#2190#2191#0" expanded="false" />
-            <marker date="1448645667212" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1448645667212" expanded="true" signature="-1:-1" placeholder="DELETE From ..." />
-            <marker date="1448645667212" expanded="true" signature="-1:-1" placeholder="UPDATE syste..." />
-            <marker date="1448645667212" expanded="true" signature="-1:-1" placeholder="select * fro..system_operation..." />
-            <marker date="1448645667212" expanded="true" signature="-1:-1" placeholder="select * fro..system_operation..." />
-            <marker date="1448645667212" expanded="true" signature="-1:-1" placeholder="select * fro..system_operation..." />
-            <marker date="1448645667212" expanded="true" signature="-1:-1" placeholder="select * fro..system_operation..." />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1719,7 +1327,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1727,7 +1334,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.5080214">
           <caret line="1706" column="12" selection-start-line="1706" selection-start-column="12" selection-end-line="1706" selection-end-column="12" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1735,7 +1341,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.1764706">
           <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1743,7 +1348,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="3.2478135">
           <caret line="244" column="32" selection-start-line="244" selection-start-column="27" selection-end-line="244" selection-end-column="32" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1751,7 +1355,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="6" column="38" selection-start-line="6" selection-start-column="38" selection-end-line="6" selection-end-column="38" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1759,15 +1362,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="47" selection-start-line="21" selection-start-column="43" selection-end-line="21" selection-end-column="47" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/LogTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4117647">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1775,15 +1369,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.3783784">
           <caret line="588" column="110" selection-start-line="588" selection-start-column="91" selection-end-line="588" selection-end-column="110" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$PROJECT_DIR$/lib/spring-aop-4.1.6.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.35674158">
-          <caret line="119" column="0" selection-start-line="119" selection-start-column="0" selection-end-line="119" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1791,7 +1376,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.35674158">
           <caret line="174" column="0" selection-start-line="174" selection-start-column="0" selection-end-line="174" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1799,41 +1383,119 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
-          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MySecurityFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="34" column="13" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MyAccessDecisionManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="60" column="9" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/spring-test-4.1.6.RELEASE.jar!/org/springframework/test/web/servlet/request/MockMvcRequestBuilders.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.08">
+          <caret line="21" column="0" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/spring-test-4.1.6.RELEASE.jar!/org/springframework/test/web/servlet/MockMvc.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-5.08">
+          <caret line="60" column="0" selection-start-line="60" selection-start-column="0" selection-end-line="60" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/spring-test-4.1.6.RELEASE.jar!/org/springframework/test/web/servlet/result/MockMvcResultMatchers.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.096296296">
+          <caret line="84" column="5" selection-start-line="84" selection-start-column="5" selection-end-line="84" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MySecurityMetadataSource.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/LogService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/LogServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="16" selection-start-line="30" selection-start-column="16" selection-end-line="30" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/BaseDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="15" column="8" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/LogDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.608355">
-          <caret line="45" column="17" selection-start-line="45" selection-start-column="17" selection-end-line="45" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2042#2043#0" expanded="true" />
-            <element signature="e#2069#2070#0" expanded="true" />
-            <marker date="1448645667256" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
-            <marker date="1448645667256" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
-            <marker date="1448645667256" expanded="true" signature="-1:-1" placeholder="UPDATE syste..." />
-            <marker date="1448645667256" expanded="true" signature="-1:-1" placeholder="select * fro..system_log..." />
-            <marker date="1448645667256" expanded="true" signature="-1:-1" placeholder="select * fro..system_log..." />
-          </folding>
+        <state vertical-scroll-proportion="0.0">
+          <caret line="20" column="0" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/controller/UserControllerTest.java">
+    <entry file="jar://$PROJECT_DIR$/lib/spring-aop-4.1.6.RELEASE.jar!/org/springframework/aop/aspectj/AbstractAspectJAdvice.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.359375">
+          <caret line="422" column="0" selection-start-line="422" selection-start-column="0" selection-end-line="422" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/spring-core-4.1.6.RELEASE.jar!/org/springframework/cglib/proxy/MethodProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-4.6">
+          <caret line="105" column="0" selection-start-line="105" selection-start-column="0" selection-end-line="105" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/SystemLogAspect.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="35" column="0" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+          <caret line="220" column="0" selection-start-line="220" selection-start-column="0" selection-end-line="220" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/spring-aop-4.1.6.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.72">
+          <caret line="143" column="0" selection-start-line="143" selection-start-column="0" selection-end-line="143" selection-end-column="0" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/UserService.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
+          <caret line="12" column="22" selection-start-line="12" selection-start-column="22" selection-end-line="12" selection-end-column="22" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1843,57 +1505,221 @@
     <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/service/impl/UserServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <caret line="15" column="32" selection-start-line="15" selection-start-column="32" selection-end-line="15" selection-end-column="32" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#2621#2622#0" expanded="true" />
             <element signature="e#2659#2660#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/UserDao.java">
+    <entry file="jar://$PROJECT_DIR$/lib/spring-security-web-3.2.5.RELEASE.jar!/org/springframework/security/web/authentication/AbstractAuthenticationProcessingFilter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="10" column="38" selection-start-line="10" selection-start-column="38" selection-end-line="10" selection-end-column="38" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.359375">
+          <caret line="41" column="86" selection-start-line="41" selection-start-column="69" selection-end-line="41" selection-end-column="86" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/BaseDao.java">
+    <entry file="jar://$PROJECT_DIR$/lib/spring-security-web-3.2.5.RELEASE.jar!/org/springframework/security/web/authentication/UsernamePasswordAuthenticationFilter.class">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state vertical-scroll-proportion="0.359375">
+          <caret line="16" column="78" selection-start-line="16" selection-start-column="78" selection-end-line="16" selection-end-column="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.ideaLibSources/spring-security-core-3.2.5.RELEASE-sources.jar!/org/springframework/security/access/intercept/AbstractSecurityInterceptor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.33333334">
+          <caret line="338" column="0" selection-start-line="338" selection-start-column="0" selection-end-line="338" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/WEB-INF/web.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3188406">
+          <caret line="52" column="22" selection-start-line="52" selection-start-column="22" selection-end-line="52" selection-end-column="74" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MyUserDetailServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="1.9768116">
+          <caret line="66" column="58" selection-start-line="66" selection-start-column="34" selection-end-line="66" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/login.jsp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.22929937">
+          <caret line="18" column="45" selection-start-line="18" selection-start-column="45" selection-end-line="18" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/springSecurity.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="61.76">
+          <caret line="21" column="46" selection-start-line="21" selection-start-column="46" selection-end-line="21" selection-end-column="46" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MyAuthenticationFilter.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.38260868">
+          <caret line="85" column="11" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://D:/Program Files/Java/src.zip!/java/sql/Types.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-16.64">
+          <caret line="33" column="13" selection-start-line="33" selection-start-column="13" selection-end-line="33" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$PROJECT_DIR$/lib/spring-context-support-4.1.6.RELEASE.jar!/org/springframework/mail/javamail/JavaMailSenderImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.39076924">
+          <caret line="259" column="17" selection-start-line="259" selection-start-column="17" selection-end-line="259" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="45" column="0" selection-start-line="45" selection-start-column="0" selection-end-line="45" selection-end-column="0" />
+        <state vertical-scroll-proportion="-3.52">
+          <caret line="76" column="39" selection-start-line="76" selection-start-column="39" selection-end-line="76" selection-end-column="39" />
           <folding>
-            <element signature="e#6589#6590#0" expanded="true" />
-            <element signature="e#6616#6617#0" expanded="true" />
-            <marker date="1448723797433" expanded="true" signature="666:821" placeholder="INSERT INTO ..." />
-            <marker date="1448723797433" expanded="true" signature="863:899" placeholder="DELETE FROM ..." />
-            <marker date="1448723797433" expanded="true" signature="941:1122" placeholder="UPDATE SYSTE..." />
-            <marker date="1448723797433" expanded="true" signature="1161:1199" placeholder="SELECT * FRO..SYSTEM_USER..." />
-            <marker date="1448723797433" expanded="true" signature="2365:2400" placeholder="SELECT * FRO..SYSTEM_USER..." />
-            <marker date="1448723797433" expanded="true" signature="4324:4359" placeholder="SELECT * FRO..SYSTEM_USER..." />
+            <element signature="e#3698#3699#0" expanded="true" />
+            <element signature="e#3760#3761#0" expanded="true" />
+            <element signature="e#8701#8702#0" expanded="true" />
+            <element signature="e#8728#8729#0" expanded="true" />
+            <marker date="1448788797102" expanded="true" signature="-1:-1" placeholder="INSERT INTO ..." />
+            <marker date="1448788797102" expanded="true" signature="-1:-1" placeholder="DELETE FROM ..." />
+            <marker date="1448788797102" expanded="true" signature="-1:-1" placeholder="UPDATE SYSTE..." />
+            <marker date="1448788797102" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..SYSTEM_USER..." />
+            <marker date="1448788797102" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..SYSTEM_USER..." />
+            <marker date="1448788797102" expanded="true" signature="-1:-1" placeholder="SELECT * FRO..SYSTEM_USER..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.49714285">
+          <caret line="60" column="42" selection-start-line="60" selection-start-column="42" selection-end-line="60" selection-end-column="42" />
+          <folding>
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#891#892#0" expanded="true" />
+            <element signature="e#1160#1161#0" expanded="true" />
+            <element signature="e#1236#1237#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.5065617">
-          <caret line="73" column="0" selection-start-line="73" selection-start-column="0" selection-end-line="74" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="225" column="0" selection-start-line="225" selection-start-column="0" selection-end-line="225" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/BaseDaoImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.74857146">
+          <caret line="21" column="65" selection-start-line="21" selection-start-column="65" selection-end-line="21" selection-end-column="65" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/controller/UserControllerTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="35" column="16" selection-start-line="35" selection-start-column="16" selection-end-line="35" selection-end-column="16" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/LogTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.4509804">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/log/service/LogServiceTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.11.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.3614865">
+          <caret line="17" column="0" selection-start-line="17" selection-start-column="0" selection-end-line="17" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/message/EmailTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#756#757#0" expanded="true" />
+            <element signature="e#796#797#0" expanded="true" />
+            <element signature="e#831#832#0" expanded="true" />
+            <element signature="e#889#890#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+            <element signature="e#626#627#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessageWithJavaMailSender.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+          <folding>
+            <element signature="e#756#757#0" expanded="true" />
+            <element signature="e#800#801#0" expanded="true" />
+            <element signature="e#917#1330#0" expanded="true" />
+            <element signature="e#1329#1330#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/resource/applicationContext.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.4519573">
+          <caret line="68" column="50" selection-start-line="68" selection-start-column="50" selection-end-line="68" selection-end-column="74" />
+          <folding>
+            <element signature="e#1257#1275#0" expanded="true" />
+            <element signature="e#1318#1336#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1976,7 +1802,7 @@
       </state>
       <state key="ProjectLibrariesConfigurable.UI">
         <settings>
-          <last-edited>lib</last-edited>
+          <last-edited>Spring Data JPA-1.3.3</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

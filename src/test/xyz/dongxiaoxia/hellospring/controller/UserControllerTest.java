@@ -3,6 +3,8 @@ package xyz.dongxiaoxia.hellospring.controller;
 import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.web.context.WebApplicationContext;
@@ -16,16 +18,22 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 /**
  * Created by Administrator on 2015/11/28.
  */
+
 public class UserControllerTest extends BasicTest {
 
     MockMvc mockMvc;
     @Autowired
     private WebApplicationContext wac;
 
+//    @Autowired
+//    private FilterChainProxy springSecurityFilterChain;
+
     @Before
     public void setUp() throws Exception {
 
+        //this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).addFilter(this.springSecurityFilterChain).build();
         this.mockMvc = MockMvcBuilders.webAppContextSetup(this.wac).build();
+        mockMvc.perform(post("/api/user/login").param("username", "admin").param("password", "admin"));
     }
 
     @Test

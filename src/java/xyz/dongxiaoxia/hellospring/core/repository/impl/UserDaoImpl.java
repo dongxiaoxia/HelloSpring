@@ -1,6 +1,11 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.SqlParameter;
+import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
+import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
+import org.springframework.jdbc.core.namedparam.SqlParameterSource;
+import org.springframework.jdbc.object.MappingSqlQuery;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
@@ -8,9 +13,14 @@ import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
 import xyz.dongxiaoxia.hellospring.util.Common;
 import xyz.dongxiaoxia.hellospring.util.Paging;
 
+import javax.sql.DataSource;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Types;
+import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by chenwendong on 2015/10/29.
@@ -28,7 +38,33 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
     @Override
     public int insert(User user) {
-        return this.jdbcTemplate.update(insetSql, user.getUsername(), user.getPassword(), user.getNickname(), user.getRealname(), user.getAge(), user.getSex(), user.getEmail(), user.getRegTime(), user.getLastLoginTime(), user.getLevel(), user.getAccountType(), user.getStatus());
+        /*直接使用jdbcTemplate*/
+//        return this.jdbcTemplate.update(insetSql, user.getUsername(), user.getPassword(), user.getNickname(), user.getRealname(), user.getAge(), user.getSex(), user.getEmail(), user.getRegTime(), user.getLastLoginTime(), user.getLevel(), user.getAccountType(), user.getStatus());
+         /*使用simpleJdbcInsert*/
+//        Map<String, Object> parameters = new HashMap<>();
+//        parameters.put("username", user.getUsername());
+//        parameters.put("password", user.getPassword());
+//        parameters.put("nickname", user.getNickname());
+//        parameters.put("realname", user.getRealname());
+//        parameters.put("age",user.getAge());
+//        parameters.put("sex",user.getSex());
+//        parameters.put("email", user.getEmail());
+//        parameters.put("regtime",user.getRegTime() == null?new Date():user.getRegTime());
+//        parameters.put("lastLogintime",user.getLastLoginTime() == null?new Date():user.getLastLoginTime());
+//        parameters.put("level",user.getLevel());
+//        parameters.put("accountType",user.getAccountType());
+//        parameters.put("status", user.getStatus());
+        //simpleJdbcInsert.withTableName("system_user").usingGeneratedKeyColumns("id").execute(parameters);
+        //simpleJdbcInsert.execute(parameters);
+//        Number id = simpleJdbcInsert.withTableName("system_user").usingGeneratedKeyColumns("id").executeAndReturnKey(parameters);
+         /*使用SqlParameterSource*/
+        // SqlParameterSource parameterSource = new BeanPropertySqlParameterSource(user);
+        SqlParameterSource parameterSource = new MapSqlParameterSource()
+                .addValue("username", user.getUsername())
+                .addValue("password", user.getPassword());
+        Number id = simpleJdbcInsert.withTableName("system_user").usingGeneratedKeyColumns("id").executeAndReturnKey(parameterSource);
+//        user.setId(id.toString());
+        return 1;
     }
 
     @Override

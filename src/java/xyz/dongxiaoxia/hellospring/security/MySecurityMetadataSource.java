@@ -8,6 +8,8 @@ import org.springframework.security.web.access.intercept.FilterInvocationSecurit
 import org.springframework.stereotype.Component;
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.repository.ResourceDao;
+import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
+import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 
 import javax.annotation.PostConstruct;
 import java.util.*;
@@ -19,6 +21,8 @@ import java.util.*;
 @Component
 public class MySecurityMetadataSource implements FilterInvocationSecurityMetadataSource {
 
+    private static final LoggerAdapter logger = LoggerAdapterFactory.getLoggerAdapter(MySecurityMetadataSource.class);
+
     private static Map<String, Collection<ConfigAttribute>> resourceMap = null;
     @Autowired
     private ResourceDao resourceDao;
@@ -26,7 +30,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
     //返回所请求资源所需要的权限
     @Override
     public Collection<ConfigAttribute> getAttributes(Object object) throws IllegalArgumentException {
-//		System.err.println("-----------MySecurityMetadataSource getAttributes ----------- ");
+        logger.info("-----------MySecurityMetadataSource getAttributes ----------- ");
         String requestUrl = ((FilterInvocation) object).getRequestUrl();
         //	System.out.println("requestUrl is " + requestUrl);
         if (resourceMap == null) {
@@ -52,7 +56,7 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
      */
     @PostConstruct
     private void loadResourceDefine() {
-        //		System.err.println("-----------MySecurityMetadataSource loadResourceDefine ----------- ");
+        logger.info("-----------MySecurityMetadataSource loadResourceDefine ----------- ");
         if (resourceMap == null) {
             resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
             List<Resource> resources = this.resourceDao.list(null);

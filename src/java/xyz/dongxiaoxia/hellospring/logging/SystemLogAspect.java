@@ -198,7 +198,6 @@ public class SystemLogAspect {
             logger.info("请求参数:" + params);
             //*========数据库日志=========*//
             Log log = new Log();
-            log.setId(UUID.randomUUID().toString());
             log.setDescription(operationName);
             log.setModule(module);
             log.setExceptionCode(e.getClass().getName());
@@ -212,7 +211,7 @@ public class SystemLogAspect {
             //保存数据库
             logService.add(log);
             logger.info("===============异常通知结束================");
-        } catch (ClassNotFoundException ex) {
+        } catch (Exception ex) {
             //记录本地异常记录
             logger.error("===============异常通知异常================");
             logger.error("异常信息：" + ex.getMessage(), ex);

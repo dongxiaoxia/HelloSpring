@@ -48,4 +48,21 @@ public class UserDaoImplTest extends BasicTest {
     public void listTest() {
         //Assert.assertEquals(2, userDao.list().size());
     }
+
+    @Test
+    public void addTest() {
+        User user = new User();
+        user.setUsername("123");
+        user.setPassword("123");
+        user.setStatus("01");
+        user.setAccountType("01");
+        user.setId("0001");
+        user.setAge(12);
+        user.setEmail("810196858@qq.com");
+        user.setLevel(1);
+        user.setNickname("dongxiaoxia");
+        user.setRealname("陈文东");
+        user.setSex("01");
+        userDao.insert(user);
+    }
 }

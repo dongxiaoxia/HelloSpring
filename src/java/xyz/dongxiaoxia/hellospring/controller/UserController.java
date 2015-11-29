@@ -222,7 +222,7 @@ public class UserController extends BasicController {
     @RequestMapping(value = "login")
     @ResponseBody
     @ControllerLog(module = "UserController", operationType = "login操作", operationName = "用户登录")
-    public Response login(HttpServletRequest request) {
+    public Response login(HttpServletRequest request, String username, String password) {
         Response response = new Response();
         try {
             //重新登录时销毁该用户的Session
@@ -230,6 +230,7 @@ public class UserController extends BasicController {
             if (null != o) {
                 request.getSession().removeAttribute("SPRING_SECURITY_CONTEXT");
             }
+
             response.success();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);

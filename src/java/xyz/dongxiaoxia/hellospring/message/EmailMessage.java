@@ -1,0 +1,40 @@
+package xyz.dongxiaoxia.hellospring.message;
+
+import org.springframework.mail.MailException;
+import org.springframework.mail.MailSender;
+import org.springframework.mail.SimpleMailMessage;
+
+/**
+ * Created by Administrator on 2015/11/29.
+ * <p/>
+ * Basic MailSender and SimpleMailMessage usage
+ */
+public class EmailMessage {
+    private MailSender mailSender;
+    private SimpleMailMessage templateMessage;
+
+    public void setMailSender(MailSender mailSender) {
+        this.mailSender = mailSender;
+    }
+
+    public void setTemplateMessage(SimpleMailMessage templateMessage) {
+        this.templateMessage = templateMessage;
+    }
+
+    public void sendEmail() {
+        // Do the business calculations...
+// Call the collaborators to persist the order...
+// Create a thread safe "copy" of the template message and customize it
+        SimpleMailMessage msg = new SimpleMailMessage(this.templateMessage);
+        msg.setTo("01dongxiaoxia@gmail.com");
+        msg.setText("Dear friend! This is a test!");
+        try {
+            this.mailSender.send(msg);
+        } catch (MailException ex) {
+            // simply log it and go on...
+            System.err.println(ex.getMessage());
+        }
+    }
+
+
+}
