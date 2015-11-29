@@ -2,23 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list id="0c536fdc-1f75-4eeb-aeb7-8b2ecedb798e" name="Default" comment="" />
-    <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="add junit test">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/lib/lib/javax.mail.jar" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessage.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessageWithJavaMailSender.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/message/EmailTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl$UserMapper.class" afterPath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl$UserMapper.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.class" afterPath="$PROJECT_DIR$/out/artifacts/HelloSpring_war_exploded/WEB-INF/classes/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/test/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.class" afterPath="$PROJECT_DIR$/out/test/HelloSpring/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/BaseDaoImpl.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/BaseDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MySecurityMetadataSource.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MySecurityMetadataSource.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/SystemLogAspect.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/logging/SystemLogAspect.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/controller/UserController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/controller/UserControllerTest.java" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/controller/UserControllerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImpl.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.java" afterPath="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/core/repository/impl/UserDaoImplTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/out/production/HelloSpring/applicationContext.xml" afterPath="$PROJECT_DIR$/out/production/HelloSpring/applicationContext.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/resource/applicationContext.xml" afterPath="$PROJECT_DIR$/src/resource/applicationContext.xml" />
+    <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="Spring Email Integration!">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HelloSpring.iws" />
@@ -66,13 +50,13 @@
         <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/message/EmailTest.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+              <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#756#757#0" expanded="true" />
-                <element signature="e#796#797#0" expanded="true" />
-                <element signature="e#831#832#0" expanded="true" />
-                <element signature="e#889#890#0" expanded="true" />
+                <element signature="e#757#758#0" expanded="true" />
+                <element signature="e#797#798#0" expanded="true" />
+                <element signature="e#833#834#0" expanded="true" />
+                <element signature="e#891#892#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -82,13 +66,13 @@
         <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessage.java">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+              <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#455#456#0" expanded="true" />
-                <element signature="e#499#500#0" expanded="true" />
-                <element signature="e#572#573#0" expanded="true" />
-                <element signature="e#626#627#0" expanded="true" />
+                <element signature="e#460#461#0" expanded="true" />
+                <element signature="e#504#505#0" expanded="true" />
+                <element signature="e#577#578#0" expanded="true" />
+                <element signature="e#631#632#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -100,10 +84,10 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
               <folding>
-                <element signature="e#756#757#0" expanded="true" />
-                <element signature="e#800#801#0" expanded="true" />
-                <element signature="e#917#1330#0" expanded="true" />
-                <element signature="e#1329#1330#0" expanded="true" />
+                <element signature="e#761#762#0" expanded="true" />
+                <element signature="e#805#806#0" expanded="true" />
+                <element signature="e#923#1337#0" expanded="true" />
+                <element signature="e#1336#1337#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -113,7 +97,7 @@
         <entry file="file://$PROJECT_DIR$/src/resource/applicationContext.xml">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.4519573">
-              <caret line="68" column="50" selection-start-line="68" selection-start-column="50" selection-end-line="68" selection-end-column="74" />
+              <caret line="67" column="50" selection-start-line="67" selection-start-column="50" selection-end-line="67" selection-end-column="74" />
               <folding>
                 <element signature="e#1257#1275#0" expanded="true" />
                 <element signature="e#1318#1336#0" expanded="true" />
@@ -201,8 +185,8 @@
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/OrderManager.java" />
         <option value="$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/message/EmailTest.java" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessage.java" />
-        <option value="$PROJECT_DIR$/src/resource/applicationContext.xml" />
         <option value="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessageWithJavaMailSender.java" />
+        <option value="$PROJECT_DIR$/src/resource/applicationContext.xml" />
       </list>
     </option>
   </component>
@@ -845,13 +829,7 @@
       <workItem from="1448632957358" duration="10838000" />
       <workItem from="1448715151377" duration="9107000" />
       <workItem from="1448724973758" duration="5901000" />
-      <workItem from="1448784373933" duration="17158000" />
-    </task>
-    <task id="LOCAL-00021" summary="Add slf4j jar package and something else to achieve logging function.">
-      <created>1446828153063</created>
-      <option name="number" value="00021" />
-      <option name="project" value="LOCAL" />
-      <updated>1446828153063</updated>
+      <workItem from="1448784373933" duration="17541000" />
     </task>
     <task id="LOCAL-00022" summary="Add slf4j jar package and something else to achieve logging function.">
       <created>1446832255305</created>
@@ -1141,11 +1119,17 @@
       <option name="project" value="LOCAL" />
       <updated>1448724187723</updated>
     </task>
-    <option name="localTasksCounter" value="70" />
+    <task id="LOCAL-00070" summary="Spring Email Integration!">
+      <created>1448808741837</created>
+      <option name="number" value="00070" />
+      <option name="project" value="LOCAL" />
+      <updated>1448808741844</updated>
+    </task>
+    <option name="localTasksCounter" value="71" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="306693000" />
+    <option name="totallyTimeSpent" value="307076000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1232,7 +1216,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="test in company" />
     <MESSAGE value="README.md" />
     <MESSAGE value="build project level" />
     <MESSAGE value="Add Spring configuration" />
@@ -1257,7 +1240,8 @@
     <MESSAGE value="check out the problem why the Spring Security print so mamy logs,&#10;it is because i write the level 'DEBUG' in log4j.propertier.&#10;&quot;log4j.logger.org.springframework&quot;" />
     <MESSAGE value="refactor the page utils class&#10;----delete PageView.class , PageIndex.class&#10;----add Paging.class&#10;&#10;&#10;----I think it is the best way to use the Page Utils!&#10;----And refactor project is a excruciating thing!!!" />
     <MESSAGE value="add junit test" />
-    <option name="LAST_COMMIT_MESSAGE" value="add junit test" />
+    <MESSAGE value="Spring Email Integration!" />
+    <option name="LAST_COMMIT_MESSAGE" value="Spring Email Integration!" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="FILE_HISTORY_SPLITTER_PROPORTION" value="0.89506173" />
@@ -1432,6 +1416,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="58" column="20" selection-start-line="58" selection-start-column="20" selection-end-line="58" selection-end-column="20" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1675,13 +1660,13 @@
     <entry file="file://$PROJECT_DIR$/src/test/xyz/dongxiaoxia/hellospring/message/EmailTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="30" column="34" selection-start-line="30" selection-start-column="34" selection-end-line="30" selection-end-column="34" />
+          <caret line="31" column="34" selection-start-line="31" selection-start-column="34" selection-end-line="31" selection-end-column="34" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#756#757#0" expanded="true" />
-            <element signature="e#796#797#0" expanded="true" />
-            <element signature="e#831#832#0" expanded="true" />
-            <element signature="e#889#890#0" expanded="true" />
+            <element signature="e#757#758#0" expanded="true" />
+            <element signature="e#797#798#0" expanded="true" />
+            <element signature="e#833#834#0" expanded="true" />
+            <element signature="e#891#892#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1689,13 +1674,13 @@
     <entry file="file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/message/EmailMessage.java">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="33" column="22" selection-start-line="33" selection-start-column="22" selection-end-line="33" selection-end-column="22" />
+          <caret line="32" column="24" selection-start-line="32" selection-start-column="24" selection-end-line="32" selection-end-column="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#455#456#0" expanded="true" />
-            <element signature="e#499#500#0" expanded="true" />
-            <element signature="e#572#573#0" expanded="true" />
-            <element signature="e#626#627#0" expanded="true" />
+            <element signature="e#460#461#0" expanded="true" />
+            <element signature="e#504#505#0" expanded="true" />
+            <element signature="e#577#578#0" expanded="true" />
+            <element signature="e#631#632#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1705,10 +1690,10 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="5" column="0" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
           <folding>
-            <element signature="e#756#757#0" expanded="true" />
-            <element signature="e#800#801#0" expanded="true" />
-            <element signature="e#917#1330#0" expanded="true" />
-            <element signature="e#1329#1330#0" expanded="true" />
+            <element signature="e#761#762#0" expanded="true" />
+            <element signature="e#805#806#0" expanded="true" />
+            <element signature="e#923#1337#0" expanded="true" />
+            <element signature="e#1336#1337#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1716,7 +1701,7 @@
     <entry file="file://$PROJECT_DIR$/src/resource/applicationContext.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.4519573">
-          <caret line="68" column="50" selection-start-line="68" selection-start-column="50" selection-end-line="68" selection-end-column="74" />
+          <caret line="67" column="50" selection-start-line="67" selection-start-column="50" selection-end-line="67" selection-end-column="74" />
           <folding>
             <element signature="e#1257#1275#0" expanded="true" />
             <element signature="e#1318#1336#0" expanded="true" />
