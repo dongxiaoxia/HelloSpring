@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-       xmlns="http://www.springframework.org/schema/beans"
-       xsi:schemaLocation="  http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd"
+       xmlns:task="http://www.springframework.org/schema/task" xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd http://www.springframework.org/schema/task http://www.springframework.org/schema/task/spring-task.xsd"
        default-lazy-init="true">
     <description>Spring公共配置</description>
 
@@ -67,4 +67,29 @@
         <property name="mailSender" ref="mailSender"/>
     </bean>
     <!--==========================================Spring Email Integration=====================================================-->
+    <!--==========================================Spring Task Execution and Scheduling ==========================================-->
+
+    <!--<bean id="taskExecutor" class="org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor">-->
+    <!--<property name="corePoolSize" value="5" />-->
+    <!--<property name="maxPoolSize" value="10" />-->
+    <!--<property name="queueCapacity" value="25" />-->
+    <!--</bean>-->
+    <!--<bean id="taskExecutorExample" class="xyz.dongxiaoxia.hellospring.task_execition_and_scheduling.TaskExecutorExample">-->
+    <!--<constructor-arg ref="taskExecutor" />-->
+    <!--</bean>-->
+    <task:scheduled-tasks>
+        <!--<task:scheduled ref="taskExecutorExample" method="printMessages" cron="0 * * * * ?" />-->
+        <task:scheduled ref="job" method="doJob" fixed-delay="1000"/>
+    </task:scheduled-tasks>
+    <!--<task:executor id="myExecutor" pool-size="5"/>-->
+
+    <bean id="job" class="xyz.dongxiaoxia.hellospring.task_execition_and_scheduling.Job">
+    </bean>
+    <!--<task:scheduler id="myScheduler" pool-size="10"/>-->
+    <!--<task:scheduled-tasks scheduler="myScheduler">-->
+    <!--<task:scheduled ref="job" method="doJob" fixed-delay="1"/>-->
+    <!--</task:scheduled-tasks>-->
+
+    <!--==========================================Spring Task Execution and Scheduling ==========================================-->
+
 </beans>
