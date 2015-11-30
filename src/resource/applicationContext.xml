@@ -53,6 +53,7 @@
         </property>
     </bean>
     <!-- this is a template message that we can pre-load with default state -->
+    <!-- You can have some pre-configured messagess also which are ready to send -->
     <bean id="templateMessage" class="org.springframework.mail.SimpleMailMessage">
         <property name="from" value="810196858@qq.com"/>
         <property name="subject" value="Your order"/>
