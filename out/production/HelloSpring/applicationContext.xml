@@ -87,18 +87,19 @@
     <!--↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑The Task Namespace↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
     <!--↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓、↓↓Using the Quartz Scheduler↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓-->
     <!--业务类的配置-->
-    <bean id="myJobNotQuartzJobBean" class="xyz.dongxiaoxia.hellospring.task_execition_and_scheduling.MyJobNotQuartzJobBean"></bean>
+    <bean id="myJobNotQuartzJobBean"
+          class="xyz.dongxiaoxia.hellospring.task_execition_and_scheduling.MyJobNotQuartzJobBean"></bean>
     <!--Step 1: Configure Jobs in Quartz Scheduler-->
     <!--JobDetail的配置-->
     <!--A : Using MethodInvokingJobDetailFactoryBean-->
     <bean id="simpleJobDetail"
           class="org.springframework.scheduling.quartz.MethodInvokingJobDetailFactoryBean">
         <!--<property name="targetObject">-->
-            <!--<bean class="xyz.dongxiaoxia.hellospring.task_execition_and_scheduling.MyJobNotQuartzJobBeanNotQuartzJobBean" />-->
+        <!--<bean class="xyz.dongxiaoxia.hellospring.task_execition_and_scheduling.MyJobNotQuartzJobBeanNotQuartzJobBean" />-->
         <!--</property>-->
         <property name="targetObject" ref="myJobNotQuartzJobBean"></property>
-        <property name="targetMethod" value="work" />
-        <property name="concurrent" value="true" />
+        <property name="targetMethod" value="work"/>
+        <property name="concurrent" value="true"/>
     </bean>
     <!--targetObject 要执行的类-->
     <!--targetMethod 要执行类当中的方法-->
@@ -108,13 +109,14 @@
     <!--  Job class must implement the Job interface.-->
     <bean id="complexJobDetail"
           class="org.springframework.scheduling.quartz.JobDetailFactoryBean">
-        <property name="jobClass" value="xyz.dongxiaoxia.hellospring.task_execition_and_scheduling.MyJobExtendQuartzJobBean" />
+        <property name="jobClass"
+                  value="xyz.dongxiaoxia.hellospring.task_execition_and_scheduling.MyJobExtendQuartzJobBean"/>
         <!--<property name="jobDataMap">-->
-            <!--<map>-->
-                <!--<entry key="task" value-ref="task"></entry>-->
-            <!--</map>-->
+        <!--<map>-->
+        <!--<entry key="task" value-ref="task"></entry>-->
+        <!--</map>-->
         <!--</property>-->
-        <property name="durability" value="true" />
+        <property name="durability" value="true"/>
     </bean>
     <!--jobClass 配置任务要执行的类-->
     <!--jobDataMap 配置执行类当中的参数设置-->
@@ -151,5 +153,25 @@
 
     <!--↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑Using the Quartz Scheduler↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑↑-->
     <!--==============================Spring Task Execution and Scheduling ==========================================-->
+    <!--==============================Remoting and Web Services using Spring  ==========================================-->
+    <bean id="accountService" class="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.AccountServiceImpl" >
+        <!-- any additional properties, maybe a DAO? -->
+    </bean>
+    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
+        <!-- does not necessarily have to be the same name as the bean to be exported -->
+        <property name="serviceName" value="AccountService"/>
+        <property name="service" ref="accountService"/>
+        <property name="serviceInterface" value="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.AccountService"/>
+        <!-- defaults to 1099 -->
+        <property name="registryPort" value="1199"/>
+    </bean>
+    <!--<bean class="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.SimpleObject">-->
+        <!--<property name="accountService" ref="accountService1"/>-->
+    <!--</bean>-->
+    <!--<bean id="accountService1" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">-->
+        <!--<property name="serviceUrl" value="rmi://localhost:1199/AccountService"/>-->
+        <!--<property name="serviceInterface" value="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.AccountService"/>-->
+    <!--</bean>-->
+    <!--==============================Remoting and Web Services using Spring ==========================================-->
 
 </beans>
