@@ -1,5 +1,6 @@
-Spring Email Integration
-1.Basic MailSender and SimpleMailMessage usage
+#Spring Email Integration
+
+##1.Basic MailSender and SimpleMailMessage usage
 
         //code demo
         public class EmailMessage {
@@ -73,7 +74,7 @@ Spring Email Integration
         <property name="templateMessage" ref="templateMessage"/>
     </bean>
 
-2.Using the JavaMailSender and the MimeMessagePreparator
+##2.Using the JavaMailSender and the MimeMessagePreparator
     //code demo
     public class EmailMessageWithJavaMailSender {
         private JavaMailSender mailSender;
@@ -166,7 +167,7 @@ Spring Email Integration
             </property>
       </bean>
 
-3.Using the JavaMail MimeMessageHelper
+##3.Using the JavaMail MimeMessageHelper
     // of course you would use DI in any real-world cases
     JavaMailSenderImpl sender = new JavaMailSenderImpl();
     sender.setHost("mail.host.com");
