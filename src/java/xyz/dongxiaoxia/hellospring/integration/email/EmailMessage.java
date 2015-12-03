@@ -49,8 +49,8 @@ public class EmailMessage {
 
 	/**
 	 * This method will send a pre-configured message
-	 * */
-	public void sendPreConfiguredMail(String message) 
+     */
+    public void sendPreConfiguredMail(String message)
 	{
 		SimpleMailMessage mailMessage = new SimpleMailMessage(templateMessage);
 		mailMessage.setText(message);
