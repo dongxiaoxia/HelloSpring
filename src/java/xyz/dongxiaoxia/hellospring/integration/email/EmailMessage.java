@@ -1,4 +1,4 @@
-package xyz.dongxiaoxia.hellospring.message;
+package xyz.dongxiaoxia.hellospring.integration.email;
 
 import org.springframework.mail.MailException;
 import org.springframework.mail.MailSender;

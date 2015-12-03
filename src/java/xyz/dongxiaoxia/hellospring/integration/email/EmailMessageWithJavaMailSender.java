@@ -1,4 +1,4 @@
-package xyz.dongxiaoxia.hellospring.message;
+package xyz.dongxiaoxia.hellospring.integration.email;
 
 import org.springframework.core.io.FileSystemResource;
 import org.springframework.mail.MailException;

@@ -2,14 +2,9 @@ package xyz.dongxiaoxia.hellospring.message;
 
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.mail.MailSender;
-import org.springframework.mail.SimpleMailMessage;
-import org.springframework.mail.javamail.JavaMailSenderImpl;
-import org.springframework.mail.javamail.MimeMessageHelper;
 import xyz.dongxiaoxia.hellospring.BasicTest;
-
-import javax.mail.MessagingException;
-import javax.mail.internet.MimeMessage;
+import xyz.dongxiaoxia.hellospring.integration.email.EmailMessage;
+import xyz.dongxiaoxia.hellospring.integration.email.EmailMessageWithJavaMailSender;
 
 /**
  * Created by Administrator on 2015/11/29.

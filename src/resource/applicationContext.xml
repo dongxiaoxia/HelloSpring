@@ -44,7 +44,7 @@
         <property name="host" value="smtp.qq.com"/>
         <property name="port" value="25"/>
         <property name="username" value="810196858@qq.com"/>
-        <property name="password" value="sycysb201314...."/>
+        <property name="password" value="qqsycysb201314.."/>
         <property name="javaMailProperties">
             <props>
                 <prop key="mail.smtp.auth">true</prop>
@@ -57,12 +57,12 @@
         <property name="from" value="810196858@qq.com"/>
         <property name="subject" value="Your order"/>
     </bean>
-    <bean id="EmailMessage" class="xyz.dongxiaoxia.hellospring.message.EmailMessage">
+    <bean id="EmailMessage" class="xyz.dongxiaoxia.hellospring.integration.email.EmailMessage">
         <property name="mailSender" ref="mailSender"/>
         <property name="templateMessage" ref="templateMessage"/>
     </bean>
     <bean id="emailMessageWithJavaMailSender"
-          class="xyz.dongxiaoxia.hellospring.message.EmailMessageWithJavaMailSender">
+          class="xyz.dongxiaoxia.hellospring.integration.email.EmailMessageWithJavaMailSender">
         <property name="mailSender" ref="mailSender"/>
     </bean>
     <!--===========================Spring Email Integration====================================-->
