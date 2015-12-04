@@ -4,7 +4,10 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
        default-lazy-init="true">
     <description>Spring RMI Integration</description>
-    <!--==============================Remoting and Web Services using Spring  ==========================================-->
+
+    <!--<bean id="register" class="org.springframework.remoting.rmi.RmiRegistryFactoryBean">-->
+    <!--<property name="port" value="1099"/>-->
+    <!--</bean>-->
     <bean id="accountService" class="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.AccountServiceImpl">
         <!-- any additional properties, maybe a DAO? -->
     </bean>
@@ -16,12 +19,13 @@
                   value="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.AccountService"/>
         <!-- defaults to 1099 -->
         <property name="registryPort" value="1099"/>
+        <!--<property name="registry" ref="register"/>-->
     </bean>
     <!--<bean class="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.SimpleObject">-->
     <!--<property name="accountService" ref="accountService1"/>-->
     <!--</bean>-->
     <!--<bean id="accountService1" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">-->
-    <!--<property name="serviceUrl" value="rmi://localhost:1199/AccountService"/>-->
+    <!--<property name="serviceUrl" value="rmi://localhost:1099/AccountService"/>-->
     <!--<property name="serviceInterface" value="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.AccountService"/>-->
     <!--</bean>-->
     <!--==============================Remoting and Web Services using Spring ==========================================-->

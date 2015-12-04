@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd "
+       default-lazy-init="true">
+
+    <bean id="userDaoImpl" class="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.UserDaoImpl"/>
+
+    <bean id="userDaoImpl_Exporter" class="org.springframework.remoting.rmi.RmiServiceExporter">
+
+        <property name="service" ref="userDaoImpl"/>
+
+        <property name="serviceName" value="rmi/userDaoImpl"/>
+
+        <property name="serviceInterface" value="com.rmi.UserDao"/>
+
+        <property name="registryPort" value="8819"/>
+
+    </bean>
+</beans>

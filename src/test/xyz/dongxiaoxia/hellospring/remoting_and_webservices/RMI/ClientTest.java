@@ -14,7 +14,7 @@ public class ClientTest {
     public void start() {
         RmiProxyFactoryBean factory = new RmiProxyFactoryBean();
         factory.setServiceInterface(AccountService.class);
-        factory.setServiceUrl("rmi://localhost:1099/AccountService");
+        factory.setServiceUrl("rmi://127.0.0.1:1099/service");
         // XXX vincan: 解决重启 rmi 的服务器后会出现拒绝连接或找不到服务对象的错误
         factory.setLookupStubOnStartup(false);
         factory.setRefreshStubOnConnectFailure(true);
@@ -26,4 +26,7 @@ public class ClientTest {
     }
 
 
+    public void test() {
+
+    }
 }

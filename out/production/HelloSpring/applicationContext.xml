@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:context="http://www.springframework.org/schema/context"
-        xmlns="http://www.springframework.org/schema/beans"
+       xmlns="http://www.springframework.org/schema/beans"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd "
        default-lazy-init="true">
     <description>Spring公共配置</description>
-    <import resource="taskExecutionAndScheduling.xml" />
+    <import resource="taskExecutionAndScheduling.xml"/>
     <import resource="email.xml"/>
     <import resource="RMI.xml"/>
 
@@ -24,28 +24,5 @@
         <property name="password" value="${jdbc.password}"/>
     </bean>
     <context:property-placeholder location="classpath:jdbc.properties"/>
-
-
-    <!--==============================Remoting and Web Services using Spring  ==========================================-->
-    <bean id="accountService" class="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.AccountServiceImpl">
-        <!-- any additional properties, maybe a DAO? -->
-    </bean>
-    <bean class="org.springframework.remoting.rmi.RmiServiceExporter">
-        <!-- does not necessarily have to be the same name as the bean to be exported -->
-        <property name="serviceName" value="AccountService"/>
-        <property name="service" ref="accountService"/>
-        <property name="serviceInterface"
-                  value="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.AccountService"/>
-        <!-- defaults to 1099 -->
-        <property name="registryPort" value="1099"/>
-    </bean>
-    <!--<bean class="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.SimpleObject">-->
-    <!--<property name="accountService" ref="accountService1"/>-->
-    <!--</bean>-->
-    <!--<bean id="accountService1" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">-->
-    <!--<property name="serviceUrl" value="rmi://localhost:1199/AccountService"/>-->
-    <!--<property name="serviceInterface" value="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.AccountService"/>-->
-    <!--</bean>-->
-    <!--==============================Remoting and Web Services using Spring ==========================================-->
 
 </beans>
