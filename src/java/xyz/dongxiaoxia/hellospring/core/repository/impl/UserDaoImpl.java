@@ -1,22 +1,26 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.SqlParameter;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
 import org.springframework.jdbc.core.namedparam.SqlParameterSource;
 import org.springframework.jdbc.object.MappingSqlQuery;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
+import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
+import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.util.Common;
 import xyz.dongxiaoxia.hellospring.util.Paging;
+import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 import javax.sql.DataSource;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.*;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -27,17 +31,50 @@ import java.util.Map;
  */
 @Repository
 public class UserDaoImpl extends BaseDaoImpl implements UserDao {
-
-    private final String insetSql = "INSERT INTO SYSTEM_USER (username,password,nickname,realname,age,sex,email,regtime,lastlogintime,level,accountType,status) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
-
+    private static final String TABLE_NAME = "SYSTEM_USER";
+    private static final String COLUME_NAMES = "username,password,nickname,realname,age,sex,email,regtime,lastlogintime,level,accountType,status";
+    private static final String SQL_INSERT_DATA = "INSERT INTO  " + TABLE_NAME + " (" + COLUME_NAMES + " ) " + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    //    查询数据一般方法，及注意事项
+    //注意点：由于主键id会唯一标识一个数据项，有些人会使用queryForObject获取数据项，若未找到目标数据时，该方法并非返回null，而是抛异常EmptyResultDataAccessException。应使用query方法，并检测返回值数据量
+    private static final String SQL_SELECT_DATA = "SELECT id," + COLUME_NAMES + " FROM " + TABLE_NAME + " WHERE id = ?";
+    private static final String SQL_UPDATE_STATUS = "UPDATE " + TABLE_NAME + " SET" + " status = ? " + "WHERE id IN (%s)";
     private final String deleteSql = "DELETE FROM SYSTEM_USER WHERE id = ?";
 
     private final String updateSql = "UPDATE SYSTEM_USER  SET username = ?,password = ?,nickname = ?,realname = ?,age = ?,sex = ?,email = ?,regtime = ?,lastlogintime = ?,level = ?,accountType = ?,status = ? WHERE id = ?";
 
     private final String getSql = "SELECT * FROM SYSTEM_USER WHERE id = ?";
+    private LoggerAdapter logger = LoggerAdapterFactory.getLoggerAdapter(getClass());
+
+    public UserDaoImpl() {
+        super(TABLE_NAME);
+    }
 
     @Override
-    public int insert(User user) {
+    public int insert(final User user) {
+        //获取新增数据的自增id
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        getJdbcTemplate().update(new PreparedStatementCreator() {
+            @Override
+            public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                PreparedStatement ps = connection.prepareStatement(SQL_INSERT_DATA, Statement.RETURN_GENERATED_KEYS);
+                int i = 0;
+                //ps.setString(++i, user.getId());
+                ps.setString(++i, user.getUsername());
+                ps.setString(++i, user.getPassword());
+                ps.setString(++i, user.getNickname());
+                ps.setString(++i, user.getRealname());
+                ps.setInt(++i, user.getAge());
+                ps.setInt(++i, user.getSex());
+                ps.setString(++i, user.getEmail());
+                ps.setTimestamp(++i, user.getRegTime());
+                ps.setTimestamp(++i, user.getLastLoginTime());
+                ps.setInt(++i, user.getLevel());
+                ps.setString(++i, user.getAccountType());
+                ps.setString(++i, user.getStatus());
+                return ps;
+            }
+        }, keyHolder);
+        return keyHolder.getKey().intValue();
         /*直接使用jdbcTemplate*/
 //        return this.jdbcTemplate.update(insetSql, user.getUsername(), user.getPassword(), user.getNickname(), user.getRealname(), user.getAge(), user.getSex(), user.getEmail(), user.getRegTime(), user.getLastLoginTime(), user.getLevel(), user.getAccountType(), user.getStatus());
          /*使用simpleJdbcInsert*/
@@ -59,32 +96,29 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 //        Number id = simpleJdbcInsert.withTableName("system_user").usingGeneratedKeyColumns("id").executeAndReturnKey(parameters);
          /*使用SqlParameterSource*/
         // SqlParameterSource parameterSource = new BeanPropertySqlParameterSource(user);
-        SqlParameterSource parameterSource = new MapSqlParameterSource()
-                .addValue("username", user.getUsername())
-                .addValue("password", user.getPassword());
-        Number id = simpleJdbcInsert.withTableName("system_user").usingGeneratedKeyColumns("id").executeAndReturnKey(parameterSource);
+//        SqlParameterSource parameterSource = new MapSqlParameterSource()
+//                .addValue("username", user.getUsername())
+//                .addValue("password", user.getPassword());
+//        Number id = simpleJdbcInsert.withTableName("system_user").usingGeneratedKeyColumns("id").executeAndReturnKey(parameterSource);
 //        user.setId(id.toString());
-        return 1;
+//        return 1;
     }
 
     @Override
     public int delete(String id) {
-        return this.jdbcTemplate.update(deleteSql, id);
+        return getJdbcTemplate().update(deleteSql, id);
     }
 
     @Override
     public int update(User user) {
-        return this.jdbcTemplate.update(updateSql, user.getUsername(), user.getPassword(), user.getNickname(), user.getRealname(), user.getAge(), user.getSex(), user.getEmail(), user.getRegTime(), user.getLastLoginTime(), user.getLevel(), user.getAccountType(), user.getStatus(), user.getId());
+        return getJdbcTemplate().update(updateSql, user.getUsername(), user.getPassword(), user.getNickname(), user.getRealname(), user.getAge(), user.getSex(), user.getEmail(), user.getRegTime(), user.getLastLoginTime(), user.getLevel(), user.getAccountType(), user.getStatus(), user.getId());
     }
 
     @Override
     public User get(String id) {
-        List<User> userList = this.jdbcTemplate.query(getSql, new UserMapper(), id);
-        if (userList == null || userList.size() == 0) {
-            return null;
-        } else {
-            return userList.get(0);
-        }
+        //List<User> userList = this.jdbcTemplate.query(getSql, new UserMapper(), id);
+        List<User> userList = getJdbcTemplate().query(SQL_SELECT_DATA, new Object[]{id}, new UserMapper());
+        return userList.size() > 0 ? userList.get(0) : null;
     }
 
     @Override
@@ -107,9 +141,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
                 //TODO how to check the type of int
                 listSql += " AND age = " + user.getAge();
             }
-            if (!Common.isEmpty(user.getSex())) {
-                listSql += " AND sex = '" + user.getSex() + "'";
-            }
+//            if (!Common.isEmpty(user.getSex())) {
+//                listSql += " AND sex = '" + user.getSex() + "'";
+//            }
             if (!Common.isEmpty(user.getEmail())) {
                 listSql += " AND email = '" + user.getEmail() + "'";
             }
@@ -129,7 +163,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
                 listSql += " AND status = '" + user.getStatus() + "'";
             }
         }
-        return this.jdbcTemplate.query(listSql, new UserMapper());
+        return getJdbcTemplate().query(listSql, new UserMapper());
     }
 
     @Override
@@ -152,9 +186,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
                 //TODO how to check the type of int
                 pageSql += " AND age = " + user.getAge();
             }
-            if (!Common.isEmpty(user.getSex())) {
-                pageSql += " AND sex = '" + user.getSex() + "'";
-            }
+//            if (!Common.isEmpty(user.getSex())) {
+//                pageSql += " AND sex = '" + user.getSex() + "'";
+//            }
             if (!Common.isEmpty(user.getEmail())) {
                 pageSql += " AND email = '" + user.getEmail() + "'";
             }
@@ -175,17 +209,31 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
             }
         }
         // pageSql += " limit " + pageView.getPageSize() * (pageView.getPageNow() - 1) + "," + pageView.getPageSize();
-        List<User> userList = this.jdbcTemplate.query(pageSql, new UserMapper());
+        List<User> userList = getJdbcTemplate().query(pageSql, new UserMapper());
 //        long pageCount = this.jdbcTemplate.queryForObject("select count(*) from system_user", Long.class);
 //        pageView.setRecords(userList);
 //        pageView.setPageCount(pageCount);
         return null;
     }
 
+
+    //SQL IN 语句
+//    IN语句中的数据项由逗号分隔，数量不固定，"?"仅支持单参数的替换，因此无法使用。此时只能拼接SQL字符串，如更新一批数据的status值，简单有效的实现方式如下
+
     @Override
     public List<Role> findRoleByUserId(String userId) {
         return null;
     }
+
+    public void updateStatus(List<Integer> ids, String status) {
+        if (ids == null || ids.size() == 0) {
+            throw new IllegalArgumentException("ids is empty");
+        }
+        String idsText = StringUtils.join(ids, ",");
+        String sql = String.format(SQL_UPDATE_STATUS, idsText);
+        getJdbcTemplate().update(sql, status);
+    }
+
 
     private static final class UserMapper implements RowMapper<User> {
         public User mapRow(ResultSet rs, int rowNum) throws SQLException {
@@ -196,7 +244,7 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
             user.setNickname(rs.getString("nickname"));
             user.setRealname(rs.getString("realname"));
             user.setAge(rs.getInt("age"));
-            user.setSex(rs.getString("sex"));
+            user.setSex(rs.getInt("sex"));
             user.setEmail(rs.getString("email"));
             user.setRegTime(rs.getTimestamp("regtime"));
             user.setLastLoginTime(rs.getTimestamp("lastlogintime"));

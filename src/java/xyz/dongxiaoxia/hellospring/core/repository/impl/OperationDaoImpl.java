@@ -16,39 +16,45 @@ import java.util.List;
 @Repository
 public class OperationDaoImpl extends BaseDaoImpl implements OperationDao {
 
+    private static final String TABLE_NAME = "SYSTEM_OPERATION";
+
+    public OperationDaoImpl() {
+        super(TABLE_NAME);
+    }
+
     @Override
     public int insert(Operation operation) {
-        return this.jdbcTemplate.update("INSERT INTO system_operation (name ,code,prefix_url,parent_id) VALUES (?,?,?,?)", operation.getName(), operation.getCode(), operation.getPrefixUrl(), operation.getParentId());
+        return getJdbcTemplate().update("INSERT INTO system_operation (name ,code,prefix_url,parent_id) VALUES (?,?,?,?)", operation.getName(), operation.getCode(), operation.getPrefixUrl(), operation.getParentId());
     }
 
     @Override
     public int delete(String id) {
-        return this.jdbcTemplate.update("DELETE From system_operation WHERE id = ?", id);
+        return getJdbcTemplate().update("DELETE From system_operation WHERE id = ?", id);
     }
 
     @Override
     public int update(Operation operation) {
-        return this.jdbcTemplate.update("UPDATE system_operation SET name = ?,code = ?,prefix_url = ?,parent_id = ? WHERE id = ?", operation.getName(), operation.getCode(), operation.getPrefixUrl(), operation.getParentId(), operation.getId());
+        return getJdbcTemplate().update("UPDATE system_operation SET name = ?,code = ?,prefix_url = ?,parent_id = ? WHERE id = ?", operation.getName(), operation.getCode(), operation.getPrefixUrl(), operation.getParentId(), operation.getId());
     }
 
     @Override
     public Operation get(String id) {
-        return this.jdbcTemplate.queryForObject("select * from system_operation where id = ?", new OperationMapper(), id);
+        return getJdbcTemplate().queryForObject("select * from system_operation where id = ?", new OperationMapper(), id);
     }
 
     @Override
     public List<Operation> listByParentId(String parentId) {
-        return this.jdbcTemplate.query("select * from system_operation where parent_id = ?", new OperationMapper(), parentId);
+        return getJdbcTemplate().query("select * from system_operation where parent_id = ?", new OperationMapper(), parentId);
     }
 
     @Override
     public List<Operation> listByPrefixUrl(String prefixUrl) {
-        return this.jdbcTemplate.query("select * from system_operation where prefix_url = ?", new OperationMapper(), prefixUrl);
+        return getJdbcTemplate().query("select * from system_operation where prefix_url = ?", new OperationMapper(), prefixUrl);
     }
 
     @Override
     public List<Operation> list(Operation operation) {
-        return this.jdbcTemplate.query("select * from system_operation", new OperationMapper());
+        return getJdbcTemplate().query("select * from system_operation", new OperationMapper());
     }
 
     @Override

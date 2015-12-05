@@ -16,29 +16,35 @@ import java.util.List;
 @Repository
 public class PrivilegeDaoImpl extends BaseDaoImpl implements PrivilegeDao {
 
+    private static final String TABLE_NAME = "SYSTEM_PRIVILEGE";
+
+    public PrivilegeDaoImpl() {
+        super(TABLE_NAME);
+    }
+
     @Override
     public int insert(Privilege privilege) {
-        return this.jdbcTemplate.update("INSERT INTO system_privilege (type ) VALUES (?)", privilege.getType());
+        return getJdbcTemplate().update("INSERT INTO system_privilege (type ) VALUES (?)", privilege.getType());
     }
 
     @Override
     public int delete(String id) {
-        return this.jdbcTemplate.update("DELETE From system_privilege WHERE id = ?", id);
+        return getJdbcTemplate().update("DELETE From system_privilege WHERE id = ?", id);
     }
 
     @Override
     public int update(Privilege privilege) {
-        return this.jdbcTemplate.update("UPDATE system_privilege SET type = ? WHERE id = ?", privilege.getType(), privilege.getId());
+        return getJdbcTemplate().update("UPDATE system_privilege SET type = ? WHERE id = ?", privilege.getType(), privilege.getId());
     }
 
     @Override
     public Privilege get(String id) {
-        return this.jdbcTemplate.queryForObject("select id, type from system_privilege where id = ?", new PrivilegeMapper(), id);
+        return getJdbcTemplate().queryForObject("select id, type from system_privilege where id = ?", new PrivilegeMapper(), id);
     }
 
     @Override
     public List<Privilege> list(Privilege privilege) {
-        return this.jdbcTemplate.query("select id, type from system_privilege", new PrivilegeMapper());
+        return getJdbcTemplate().query("select id, type from system_privilege", new PrivilegeMapper());
     }
 
     @Override

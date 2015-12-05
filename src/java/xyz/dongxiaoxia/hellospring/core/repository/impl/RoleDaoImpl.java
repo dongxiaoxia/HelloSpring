@@ -20,25 +20,31 @@ import java.util.Set;
 @Repository
 public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
 
+    private static final String TABLE_NAME = "SYSTEM_ROLE";
+
+    public RoleDaoImpl() {
+        super(TABLE_NAME);
+    }
+
     @Override
     public int insert(Role role) {
-        return this.jdbcTemplate.update("INSERT INTO system_role (name,desc,roleKey,enable ) VALUES (?,?,?,?)", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable());
+        return getJdbcTemplate().update("INSERT INTO system_role (name,desc,roleKey,enable ) VALUES (?,?,?,?)", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable());
     }
 
     @Override
     public int delete(String id) {
-        return this.jdbcTemplate.update("DELETE From system_role WHERE id = ?", id);
+        return getJdbcTemplate().update("DELETE From system_role WHERE id = ?", id);
     }
 
     @Override
     public int update(Role role) {
-        return this.jdbcTemplate.update("UPDATE system_role SET name = ?,desc = ?,roleKey = ?,enable = ? WHERE id = ?", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable(), role.getId());
+        return getJdbcTemplate().update("UPDATE system_role SET name = ?,desc = ?,roleKey = ?,enable = ? WHERE id = ?", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable(), role.getId());
     }
 
     @Override
     public Role get(String id) {
-        Role role = this.jdbcTemplate.queryForObject("select * from system_role where id = ?", new RoleMapper(), id);
-        List<Resource> resourceList = this.jdbcTemplate.query("SELECT re.* FROM system_resource re JOIN system_role_resource rr ON rr.resource_id = re.id JOIN system_role r ON rr.role_id = r.id WHERE r.id = ?", new ResouceMapper(), role.getId());
+        Role role = getJdbcTemplate().queryForObject("select * from system_role where id = ?", new RoleMapper(), id);
+        List<Resource> resourceList = getJdbcTemplate().query("SELECT re.* FROM system_resource re JOIN system_role_resource rr ON rr.resource_id = re.id JOIN system_role r ON rr.role_id = r.id WHERE r.id = ?", new ResouceMapper(), role.getId());
         Set<Resource> resources = new HashSet<>(resourceList);
         role.setResources(resources);
         return role;
@@ -46,9 +52,9 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
 
     @Override
     public List<Role> list(Role r) {
-        List<Role> roleList = this.jdbcTemplate.query("select * from system_role", new RoleMapper());
+        List<Role> roleList = getJdbcTemplate().query("select * from system_role", new RoleMapper());
         for (Role role : roleList) {
-            Set<Resource> resources = new HashSet<>(this.jdbcTemplate.query("SELECT re.* FROM system_resource re JOIN system_role_resource rr ON rr.resource_id = re.id JOIN system_role r ON rr.role_id = r.id WHERE r.id = ?", new ResouceMapper(), role.getId()));
+            Set<Resource> resources = new HashSet<>(getJdbcTemplate().query("SELECT re.* FROM system_resource re JOIN system_role_resource rr ON rr.resource_id = re.id JOIN system_role r ON rr.role_id = r.id WHERE r.id = ?", new ResouceMapper(), role.getId()));
             role.setResources(resources);
         }
         return roleList;
@@ -61,7 +67,7 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
 
     @Override
     public List<Role> findRoleByUsername(String userId) {
-        return this.jdbcTemplate.query("SELECT r.name,u.id,ur.role_id,ur.user_id FROM system_role r,SYSTEM_USER u,system_user_role ur WHERE u.id = ur.user_id AND r.id = ur.role_id AND u.username = ?", new RoleMapper(), userId);
+        return getJdbcTemplate().query("SELECT r.name,u.id,ur.role_id,ur.user_id FROM system_role r,SYSTEM_USER u,system_user_role ur WHERE u.id = ur.user_id AND r.id = ur.role_id AND u.username = ?", new RoleMapper(), userId);
     }
 
     @Override

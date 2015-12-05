@@ -11,10 +11,18 @@ import javax.sql.DataSource;
  * Created by Administrator on 2015/11/19.
  */
 @Repository
-public class BaseDaoImpl {
+public abstract class BaseDaoImpl {
 
-    protected JdbcTemplate jdbcTemplate;
-    protected SimpleJdbcInsert simpleJdbcInsert;
+    private JdbcTemplate jdbcTemplate;
+    private SimpleJdbcInsert simpleJdbcInsert;
+    private String tableName;
+    /*通过@Resource注入jdbcTemplate对象，由于我仅定义了一个jdbcTemplate bean，可以这里可以省略掉name参数，及@Resource即可，或者使用@Autowired*/
+
+
+    public BaseDaoImpl(String tableName) {
+        this.tableName = tableName;
+    }
+
     @Autowired
     private void setDataSource(DataSource dataSource) {
         this.jdbcTemplate = new JdbcTemplate(dataSource);
@@ -22,5 +30,15 @@ public class BaseDaoImpl {
         this.simpleJdbcInsert = new SimpleJdbcInsert(dataSource);
     }
 
+    protected JdbcTemplate getJdbcTemplate() {
+        return jdbcTemplate;
+    }
 
+    public void cleanAll() {
+        getJdbcTemplate().update("DELETE FROM " + tableName);
+    }
+
+    public int count() {
+        return getJdbcTemplate().queryForObject("SELECT COUNT(*) FROM" + tableName, Integer.class);
+    }
 }

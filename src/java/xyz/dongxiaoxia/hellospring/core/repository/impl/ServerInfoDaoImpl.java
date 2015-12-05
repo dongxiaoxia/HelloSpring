@@ -13,6 +13,12 @@ import java.util.List;
 @Repository
 public class ServerInfoDaoImpl extends BaseDaoImpl implements ServerInfoDao {
 
+    private static final String TABLE_NAME = "SYSTEM_SERVERINFO";
+
+    public ServerInfoDaoImpl() {
+        super(TABLE_NAME);
+    }
+
     @Override
     public int insert(ServerInfo serverInfo) {
         return 0;

@@ -16,29 +16,35 @@ import java.util.List;
 @Repository
 public class UserLoginListDaoImpl extends BaseDaoImpl implements UserLoginListDao {
 
+    private static final String TABLE_NAME = "SYSTEM_USERLOGINLISTO";
+
+    public UserLoginListDaoImpl() {
+        super(TABLE_NAME);
+    }
+
     @Override
     public int insert(UserLoginList userLoginList) {
-        return this.jdbcTemplate.update("INSERT INTO SYSTEM_userloginlist (loginId,userId,loginTime,loginIP) VALUES (?,?,?,?)", userLoginList.getLoginId(), userLoginList.getUserId(), userLoginList.getLoginTime(), userLoginList.getLoginIp());
+        return getJdbcTemplate().update("INSERT INTO SYSTEM_userloginlist (loginId,userId,loginTime,loginIP) VALUES (?,?,?,?)", userLoginList.getLoginId(), userLoginList.getUserId(), userLoginList.getLoginTime(), userLoginList.getLoginIp());
     }
 
     @Override
     public int delete(String id) {
-        return this.jdbcTemplate.update("DELETE FROM SYSTEM_userloginlist WHERE loginId = ?", id);
+        return getJdbcTemplate().update("DELETE FROM SYSTEM_userloginlist WHERE loginId = ?", id);
     }
 
     @Override
     public int update(UserLoginList userLoginList) {
-        return this.jdbcTemplate.update("UPDATE SYSTEM_userloginlist SET userId = ?,loginTime = ?,loginIP = ? WHERE loginId = ? ", userLoginList.getUserId(), userLoginList.getLoginTime(), userLoginList.getLoginIp(), userLoginList.getLoginId());
+        return getJdbcTemplate().update("UPDATE SYSTEM_userloginlist SET userId = ?,loginTime = ?,loginIP = ? WHERE loginId = ? ", userLoginList.getUserId(), userLoginList.getLoginTime(), userLoginList.getLoginIp(), userLoginList.getLoginId());
     }
 
     @Override
     public UserLoginList get(String id) {
-        return this.jdbcTemplate.queryForObject("SELECT ul.*,u.username FROM system_userloginlist ul JOIN SYSTEM_USER u WHERE u.id = ul.userId AND ul.loginId = ?", new UserLoginListMapper(), id);
+        return getJdbcTemplate().queryForObject("SELECT ul.*,u.username FROM system_userloginlist ul JOIN SYSTEM_USER u WHERE u.id = ul.userId AND ul.loginId = ?", new UserLoginListMapper(), id);
     }
 
     @Override
     public List<UserLoginList> list(UserLoginList userLoginList) {
-        return this.jdbcTemplate.query("SELECT ul.*,u.username FROM system_userloginlist ul JOIN SYSTEM_USER u WHERE u.id = ul.userId", new UserLoginListMapper());
+        return getJdbcTemplate().query("SELECT ul.*,u.username FROM system_userloginlist ul JOIN SYSTEM_USER u WHERE u.id = ul.userId", new UserLoginListMapper());
     }
 
     @Override

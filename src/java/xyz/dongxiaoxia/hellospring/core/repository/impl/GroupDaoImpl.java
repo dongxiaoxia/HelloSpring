@@ -16,34 +16,40 @@ import java.util.List;
 @Repository
 public class GroupDaoImpl extends BaseDaoImpl implements GroupDao {
 
+    private static final String TABLE_NAME = "SYSTEM_GROUP";
+
+    public GroupDaoImpl() {
+        super(TABLE_NAME);
+    }
+
     @Override
     public int insert(Group group) {
-        return this.jdbcTemplate.update("INSERT INTO system_group (name,parent_id ) VALUES (?,?)", group.getName(), group.getParentId());
+        return getJdbcTemplate().update("INSERT INTO system_group (name,parent_id ) VALUES (?,?)", group.getName(), group.getParentId());
     }
 
     @Override
     public int delete(String id) {
-        return this.jdbcTemplate.update("DELETE From system_group WHERE id = ?", id);
+        return getJdbcTemplate().update("DELETE From system_group WHERE id = ?", id);
     }
 
     @Override
     public int update(Group group) {
-        return this.jdbcTemplate.update("UPDATE system_group SET name = ?,parent_id = ? WHERE id = ?", group.getName(), group.getParentId(), group.getId());
+        return getJdbcTemplate().update("UPDATE system_group SET name = ?,parent_id = ? WHERE id = ?", group.getName(), group.getParentId(), group.getId());
     }
 
     @Override
     public Group get(String id) {
-        return this.jdbcTemplate.queryForObject("select id, name,parent_id from system_group where id = ?", new GroupMapper(), id);
+        return getJdbcTemplate().queryForObject("select id, name,parent_id from system_group where id = ?", new GroupMapper(), id);
     }
 
     @Override
     public List<Group> getByParentId(String parentId) {
-        return this.jdbcTemplate.query("select id, name,parent_id from system_group where parent_id = ?", new GroupMapper(), parentId);
+        return getJdbcTemplate().query("select id, name,parent_id from system_group where parent_id = ?", new GroupMapper(), parentId);
     }
 
     @Override
     public List<Group> list(Group group) {
-        return this.jdbcTemplate.query("select id, name ,parent_id from system_group", new GroupMapper());
+        return getJdbcTemplate().query("select id, name ,parent_id from system_group", new GroupMapper());
     }
 
     @Override

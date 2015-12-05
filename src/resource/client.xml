@@ -6,7 +6,7 @@
        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd "
        default-lazy-init="true">
     <bean id="userDaoImpl_client" class="org.springframework.remoting.rmi.RmiProxyFactoryBean">
-        <property name="serviceUrl" value="rmi://localhost:8819/rmi/userDaoImpl"/>
+        <property name="serviceUrl" value="rmi://192.168.1.102:8819/rmi/userDaoImpl"/>
 
         <property name="serviceInterface" value="xyz.dongxiaoxia.hellospring.remoting_and_webservices.RMI.UserDao"/>
 

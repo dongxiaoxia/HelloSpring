@@ -12,5 +12,5 @@ import org.springframework.test.context.web.WebAppConfiguration;
 @WebAppConfiguration
 @ContextConfiguration(locations = {"file:web/WEB-INF/dispatcher-servlet.xml", "classpath:applicationContext.xml", "classpath:springSecurity.xml"})
 public class BasicTest {
-
+//这个基类未来应该用一个注解实现
 }

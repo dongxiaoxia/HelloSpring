@@ -14,7 +14,7 @@ public class User {
     private String nickname;
     private String realname;
     private int age;
-    private String sex;
+    private int sex;
     private String email;
     private Timestamp regTime;
     private Timestamp lastLoginTime;
@@ -71,11 +71,11 @@ public class User {
         this.age = age;
     }
 
-    public String getSex() {
+    public int getSex() {
         return sex;
     }
 
-    public void setSex(String sex) {
+    public void setSex(int sex) {
         this.sex = sex;
     }
 
