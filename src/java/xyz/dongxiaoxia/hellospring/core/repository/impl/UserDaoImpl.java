@@ -15,6 +15,7 @@ import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
+import xyz.dongxiaoxia.hellospring.util.ClassUtils;
 import xyz.dongxiaoxia.hellospring.util.Common;
 import xyz.dongxiaoxia.hellospring.util.Paging;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
@@ -31,18 +32,17 @@ import java.util.Map;
  */
 @Repository
 public class UserDaoImpl extends BaseDaoImpl implements UserDao {
-    private static final String TABLE_NAME = "SYSTEM_USER";
+    //private static final String TABLE_NAME = "SYSTEM_USER";
+    private static final String TABLE_NAME = ClassUtils.getTableName(User.class);
     private static final String COLUME_NAMES = "username,password,nickname,realname,age,sex,email,regtime,lastlogintime,level,accountType,status";
     private static final String SQL_INSERT_DATA = "INSERT INTO  " + TABLE_NAME + " (" + COLUME_NAMES + " ) " + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
+    private static final String SQL_DELETE_DATE = "DELETE FROM " + TABLE_NAME + " WHERE id IN  (%s)";
+    private static final String SQL_UPDATE_STATUS = "UPDATE " + TABLE_NAME + " SET" + " status = ? " + "WHERE id IN (%s)";
+    private static final String SQL_UPDATE_DATA = "UPDATE " + TABLE_NAME + " SET username = ?,password = ?,nickname = ?,realname = ?,age = ?,sex = ?,email = ?,regtime = ?,lastlogintime = ?,level = ?,accountType = ?,status = ? WHERE id = ?";
     //    查询数据一般方法，及注意事项
     //注意点：由于主键id会唯一标识一个数据项，有些人会使用queryForObject获取数据项，若未找到目标数据时，该方法并非返回null，而是抛异常EmptyResultDataAccessException。应使用query方法，并检测返回值数据量
     private static final String SQL_SELECT_DATA = "SELECT id," + COLUME_NAMES + " FROM " + TABLE_NAME + " WHERE id = ?";
-    private static final String SQL_UPDATE_STATUS = "UPDATE " + TABLE_NAME + " SET" + " status = ? " + "WHERE id IN (%s)";
-    private final String deleteSql = "DELETE FROM SYSTEM_USER WHERE id = ?";
-
-    private final String updateSql = "UPDATE SYSTEM_USER  SET username = ?,password = ?,nickname = ?,realname = ?,age = ?,sex = ?,email = ?,regtime = ?,lastlogintime = ?,level = ?,accountType = ?,status = ? WHERE id = ?";
-
-    private final String getSql = "SELECT * FROM SYSTEM_USER WHERE id = ?";
+    private final String SQL_DELETE_DATE_BY_ID = "DELETE FROM" + TABLE_NAME + " WHERE id = ?";
     private LoggerAdapter logger = LoggerAdapterFactory.getLoggerAdapter(getClass());
 
     public UserDaoImpl() {
@@ -106,12 +106,30 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 
     @Override
     public int delete(String id) {
-        return getJdbcTemplate().update(deleteSql, id);
+        return getJdbcTemplate().update(SQL_DELETE_DATE_BY_ID, id);
+    }
+
+    public int delete(List<String> ids) {
+        if (ids == null || ids.size() == 0) {
+            throw new IllegalArgumentException("ids is empty");
+        }
+        String idsText = StringUtils.join(ids, ",");
+        String sql = String.format(SQL_DELETE_DATE, idsText);
+        return getJdbcTemplate().update(sql);
     }
 
     @Override
     public int update(User user) {
-        return getJdbcTemplate().update(updateSql, user.getUsername(), user.getPassword(), user.getNickname(), user.getRealname(), user.getAge(), user.getSex(), user.getEmail(), user.getRegTime(), user.getLastLoginTime(), user.getLevel(), user.getAccountType(), user.getStatus(), user.getId());
+        return getJdbcTemplate().update(SQL_UPDATE_DATA, user.getUsername(), user.getPassword(), user.getNickname(), user.getRealname(), user.getAge(), user.getSex(), user.getEmail(), user.getRegTime(), user.getLastLoginTime(), user.getLevel(), user.getAccountType(), user.getStatus(), user.getId());
+    }
+
+    public void updateStatus(List<Integer> ids, String status) {
+        if (ids == null || ids.size() == 0) {
+            throw new IllegalArgumentException("ids is empty");
+        }
+        String idsText = StringUtils.join(ids, ",");
+        String sql = String.format(SQL_UPDATE_STATUS, idsText);
+        getJdbcTemplate().update(sql, status);
     }
 
     @Override
@@ -223,15 +241,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
     @Override
     public List<Role> findRoleByUserId(String userId) {
         return null;
-    }
-
-    public void updateStatus(List<Integer> ids, String status) {
-        if (ids == null || ids.size() == 0) {
-            throw new IllegalArgumentException("ids is empty");
-        }
-        String idsText = StringUtils.join(ids, ",");
-        String sql = String.format(SQL_UPDATE_STATUS, idsText);
-        getJdbcTemplate().update(sql, status);
     }
 
 

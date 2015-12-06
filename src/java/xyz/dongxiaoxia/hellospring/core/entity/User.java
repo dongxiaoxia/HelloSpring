@@ -1,5 +1,8 @@
 package xyz.dongxiaoxia.hellospring.core.entity;
 
+import xyz.dongxiaoxia.hellospring.util.annotation.Column;
+import xyz.dongxiaoxia.hellospring.util.annotation.Entity;
+
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,20 +10,35 @@ import java.util.Set;
 /**
  * Created by chenwendong on 2015/10/29.
  */
+@Entity("SYSTEM_USER")
 public class User {
+    @Column("id")
     private String id;
+    @Column("username")
     private String username;
+    @Column("password")
     private String password;
+    @Column("nickname")
     private String nickname;
+    @Column("realname")
     private String realname;
+    @Column("age")
     private int age;
+    @Column("sex")
     private int sex;
+    @Column("email")
     private String email;
+    @Column("regTime")
     private Timestamp regTime;
+    @Column("lastLoginTime")
     private Timestamp lastLoginTime;
+    @Column("level")
     private int level;
+    @Column("accountType")
     private String accountType;
+    @Column("status")
     private String status;
+    @Column("role_id")
     private Set<Role> roles = new HashSet<>(0);
 
     public String getId() {
