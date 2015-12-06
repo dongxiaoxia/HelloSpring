@@ -1,5 +1,7 @@
 package xyz.dongxiaoxia.hellospring.core.entity;
 
+import xyz.dongxiaoxia.hellospring.util.annotation.Entity;
+
 import java.sql.Timestamp;
 import java.util.HashSet;
 import java.util.Set;
@@ -7,6 +9,7 @@ import java.util.Set;
 /**
  * Created by chenwendong on 2015/10/29.
  */
+@Entity(name = "SYSTEM_USER")
 public class User {
     private String id;
     private String username;
