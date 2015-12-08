@@ -2,6 +2,7 @@ package xyz.dongxiaoxia.hellospring.core.entity;
 
 import xyz.dongxiaoxia.hellospring.util.annotation.Column;
 import xyz.dongxiaoxia.hellospring.util.annotation.Entity;
+import xyz.dongxiaoxia.hellospring.util.annotation.Id;
 
 import java.sql.Timestamp;
 import java.util.HashSet;
@@ -13,6 +14,7 @@ import java.util.Set;
 @Entity("SYSTEM_USER")
 public class User {
     @Column("id")
+    @Id
     private String id;
     @Column("username")
     private String username;

@@ -2,6 +2,7 @@ package xyz.dongxiaoxia.hellospring.util;
 
 import xyz.dongxiaoxia.hellospring.util.annotation.Column;
 import xyz.dongxiaoxia.hellospring.util.annotation.Entity;
+import xyz.dongxiaoxia.hellospring.util.annotation.Id;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -14,15 +15,28 @@ import java.util.Objects;
  * 与类、反射的相关操作类
  */
 public class ClassUtils {
+
+    /**
+     * 判断一个类是否被Entity注解类所注解，也就是判断一个类是否为实体类
+     *
+     * @param clazz
+     * @return
+     */
+    public static boolean isEntityAnnotationPresent(Class clazz) {
+        return clazz.isAnnotationPresent(Entity.class);
+    }
+
     /**
      * 根据实体类获取表名
      *
      * @param clazz
      * @return
      */
-    public static String getTableName(Class<?> clazz) {
+    public static String getTableName(Class<?> clazz){
         // Class<?> cls = Class.forName("xyz.dongxiaoxia.hellospring.core.entity.User"); //或直接XXXX.class
-        //Class<?> clazz = User.class;
+        if (!isEntityAnnotationPresent(clazz)) {
+            throw new NullPointerException("the " + clazz.getClass() + " is not used Entity annotation");
+        }
         return clazz.getAnnotation(Entity.class).value();
     }
 
@@ -34,13 +48,8 @@ public class ClassUtils {
         Class<?> clazz = object.getClass();
         StringBuffer sb = new StringBuffer("SELECT * FROM ");
         //查找类是否被注解
-        boolean isExist = clazz.isAnnotationPresent(Entity.class);
-        if (!isExist) {
-            try {
-                throw new Exception("the " + clazz.getClass().getClass() + " class is not used Entity annotation");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
+        if (!isEntityAnnotationPresent(clazz)) {
+            throw new NullPointerException("the " + clazz.getClass() + " is not used Entity annotation");
         }
         //获取Entity注解
         Entity entity = clazz.getAnnotation(Entity.class);
@@ -99,5 +108,54 @@ public class ClassUtils {
         }
         //返回拼装好的sql语句
         return sb.toString();
+    }
+
+    /**
+     * 根据实体类获取主键名称
+     *
+     * @param clazz
+     * @return 主键名称
+     */
+    public static String getIdentityName(Class clazz) throws Exception {
+        String identityName = null;
+        //查找类是否被注解
+        boolean isExist = clazz.isAnnotationPresent(Entity.class);
+        if (!isExist) {
+            throw new Exception("the " + clazz.getClass().getClass() + " class is not used Entity annotation");
+        }
+        //查找属性是否被注解
+        Field[] fields = clazz.getDeclaredFields();
+        for (Field field : fields) {
+            boolean isExistIdAnnotation = field.isAnnotationPresent(Id.class);
+            if (!isExistIdAnnotation) {
+                continue;
+            }
+            identityName = field.getName();
+            break;
+        }
+        if (null == identityName) {
+            throw new Exception("the " + clazz.getName() + " is not used Id annotation");
+        }
+        return identityName;
+    }
+
+    /**
+     * 根据实体对象获取主键值
+     *
+     * @param object
+     * @return 主键值
+     */
+    public static String getIdentityValue(Object object) throws Exception {
+        if (object == null) {
+            return null;
+        }
+        Class<?> clazz = object.getClass();
+        String identityName = getIdentityName(clazz);
+        String getIdentityMethodName = "get" + identityName.substring(0, 1).toUpperCase() + identityName.substring(1);
+        String identityValue = null;
+
+        Method getMethod = clazz.getDeclaredMethod(getIdentityMethodName);
+        identityValue = (String) getMethod.invoke(object);
+        return identityValue;
     }
 }

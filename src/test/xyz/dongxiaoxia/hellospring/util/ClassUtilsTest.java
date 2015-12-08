@@ -1,6 +1,9 @@
 package xyz.dongxiaoxia.hellospring.util;
 
+import org.junit.Assert;
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.util.annotation.Column;
@@ -15,11 +18,44 @@ import java.util.Objects;
  * Created by Administrator on 2015/12/6.
  */
 public class ClassUtilsTest {
+
+    @Rule
+    public ExpectedException expectedEx = ExpectedException.none();
+
+    @Test
+    public void isEntityAnnotationPresentTest() {
+        Assert.assertEquals(true, ClassUtils.isEntityAnnotationPresent(User.class));
+        Assert.assertEquals(false, ClassUtils.isEntityAnnotationPresent(Role.class));
+    }
+
     @Test
     public void getTableNameTest() {
+        System.out.println(ClassUtils.getTableName(User.class));
+        expectedEx.expect(NullPointerException.class);
+        expectedEx.expectMessage("is not used Entity annotation");
         System.out.println(ClassUtils.getTableName(Role.class));
     }
 
+    @Test
+    public void getIdentityNameTest() throws Exception {
+        System.out.println(ClassUtils.getIdentityName(User.class));
+        expectedEx.expect(Exception.class);
+        expectedEx.expectMessage("is not used Entity annotation");
+        System.out.println(ClassUtils.getIdentityName(Role.class));
+    }
+
+    @Test
+    public void getIdentityValueTest() throws Exception {
+        User user1 = new User();
+        user1.setId("123");
+
+        User user2 = new User();
+        System.out.println(ClassUtils.getIdentityValue(user1));
+        System.out.println(ClassUtils.getIdentityValue(user2));
+        expectedEx.expect(Exception.class);
+        expectedEx.expectMessage("is not used Entity annotation");
+        System.out.println(ClassUtils.getIdentityValue(new Role()));
+    }
     @Test
     public void testExecuteQuery() {
 
