@@ -41,4 +41,13 @@ public abstract class BaseDaoImpl {
     public int count() {
         return getJdbcTemplate().queryForObject("SELECT COUNT(*) FROM" + tableName, Integer.class);
     }
+    /**
+     * 通用实体类删除方法
+     * @param id 主键
+     * @param object 实体类对象
+     * /
+    public void $delete(String id,Object object){
+        StringBuilder sb = new StringBuilder();
+        sb.append("DELETE FROM ").append(ClassUtils.getTableName(object.getClass())).append(" WHERE ").append(CLassUtils.getIdentityName(object.getClass())).append(" =").append(id);
+    }
 }
