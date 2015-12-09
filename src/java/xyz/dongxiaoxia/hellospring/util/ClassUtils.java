@@ -41,7 +41,7 @@ public class ClassUtils {
     }
 
     /**
-     * @param object 实体类对西象
+     * @param object 实体类对象
      * @return String 返回的是拼装好的sql查询语句
      */
     public static String executeQuery(Object object) {
