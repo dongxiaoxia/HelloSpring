@@ -4,14 +4,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
+import xyz.dongxiaoxia.hellospring.core.entity.User;
+import xyz.dongxiaoxia.hellospring.core.repository.BaseDao;
+import xyz.dongxiaoxia.hellospring.util.ClassUtils;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import javax.sql.DataSource;
+import java.util.List;
 
 /**
  * Created by Administrator on 2015/11/19.
  */
 @Repository
-public abstract class BaseDaoImpl {
+public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 
     private JdbcTemplate jdbcTemplate;
     private SimpleJdbcInsert simpleJdbcInsert;
@@ -41,13 +46,56 @@ public abstract class BaseDaoImpl {
     public int count() {
         return getJdbcTemplate().queryForObject("SELECT COUNT(*) FROM" + tableName, Integer.class);
     }
+
+
+    @Override
+    public int insert(T t) {
+        return 0;
+    }
+
+    @Override
+    public int delete(String id) {
+        return 0;
+    }
+
+    @Override
+    public int update(T t) {
+        return 0;
+    }
+
+    @Override
+    public T get(String id) {
+        return null;
+    }
+
+    @Override
+    public List list(T t) {
+        return null;
+    }
+
+    @Override
+    public Paging page(T t, int pageStart, int pageSize) {
+        return null;
+    }
+
+    @Override
+    public void $save(Object object) {
+        getJdbcTemplate().update(ClassUtils.getInsertSql(object));
+    }
     /**
      * 通用实体类删除方法
      * @param id 主键
-     * @param object 实体类对象
-     * /
-    public void $delete(String id,Object object){
+     * @param clazz 实体类
+     */
+
+    @Override
+    public void $delete(String id, Class clazz) {
         StringBuilder sb = new StringBuilder();
-        sb.append("DELETE FROM ").append(ClassUtils.getTableName(object.getClass())).append(" WHERE ").append(CLassUtils.getIdentityName(object.getClass())).append(" =").append(id);
+        try {
+            sb.append("DELETE FROM ").append(ClassUtils.getTableName(clazz)).append(" WHERE ").append(ClassUtils.getIdentityName(clazz)).append(" =").append(id);
+            getJdbcTemplate().update(sb.toString());
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -31,7 +31,7 @@ import java.util.Map;
  * Created by chenwendong on 2015/10/29.
  */
 @Repository
-public class UserDaoImpl extends BaseDaoImpl implements UserDao {
+public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
     //private static final String TABLE_NAME = "SYSTEM_USER";
     private static final String TABLE_NAME = ClassUtils.getTableName(User.class);
     private static final String COLUME_NAMES = "username,password,nickname,realname,age,sex,email,regtime,lastlogintime,level,accountType,status";
@@ -49,7 +49,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
         super(TABLE_NAME);
     }
 
-    @Override
     public int insert(final User user) {
         //获取新增数据的自增id
         KeyHolder keyHolder = new GeneratedKeyHolder();
@@ -104,10 +103,9 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
 //        return 1;
     }
 
-    @Override
-    public int delete(String id) {
-        return getJdbcTemplate().update(SQL_DELETE_DATE_BY_ID, id);
-    }
+//    public int delete(String id) {
+//        return getJdbcTemplate().update(SQL_DELETE_DATE_BY_ID, id);
+//    }
 
     public int delete(List<String> ids) {
         if (ids == null || ids.size() == 0) {
@@ -118,7 +116,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
         return getJdbcTemplate().update(sql);
     }
 
-    @Override
     public int update(User user) {
         return getJdbcTemplate().update(SQL_UPDATE_DATA, user.getUsername(), user.getPassword(), user.getNickname(), user.getRealname(), user.getAge(), user.getSex(), user.getEmail(), user.getRegTime(), user.getLastLoginTime(), user.getLevel(), user.getAccountType(), user.getStatus(), user.getId());
     }
@@ -132,14 +129,12 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
         getJdbcTemplate().update(sql, status);
     }
 
-    @Override
     public User get(String id) {
         //List<User> userList = this.jdbcTemplate.query(getSql, new UserMapper(), id);
         List<User> userList = getJdbcTemplate().query(SQL_SELECT_DATA, new Object[]{id}, new UserMapper());
         return userList.size() > 0 ? userList.get(0) : null;
     }
 
-    @Override
     public List<User> list(User user) {
         String listSql = "SELECT * FROM SYSTEM_USER WHERE 1=1";
         if (user != null) {
@@ -184,7 +179,6 @@ public class UserDaoImpl extends BaseDaoImpl implements UserDao {
         return getJdbcTemplate().query(listSql, new UserMapper());
     }
 
-    @Override
     public Paging<User> page(User user, int pageStart, int pageSize) {
         String pageSql = "SELECT * FROM SYSTEM_USER WHERE 1=1";
         if (user != null) {

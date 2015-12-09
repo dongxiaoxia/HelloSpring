@@ -43,7 +43,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Role getById(String id) {
-        return roleDao.get(id);
+        return (Role) roleDao.get(id);
     }
 
     @Override

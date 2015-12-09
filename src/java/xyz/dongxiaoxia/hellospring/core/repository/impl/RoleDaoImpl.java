@@ -26,7 +26,7 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
         super(TABLE_NAME);
     }
 
-    @Override
+
     public int insert(Role role) {
         return getJdbcTemplate().update("INSERT INTO system_role (name,desc,roleKey,enable ) VALUES (?,?,?,?)", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable());
     }
@@ -36,7 +36,7 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
         return getJdbcTemplate().update("DELETE From system_role WHERE id = ?", id);
     }
 
-    @Override
+
     public int update(Role role) {
         return getJdbcTemplate().update("UPDATE system_role SET name = ?,desc = ?,roleKey = ?,enable = ? WHERE id = ?", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable(), role.getId());
     }
@@ -50,7 +50,7 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
         return role;
     }
 
-    @Override
+
     public List<Role> list(Role r) {
         List<Role> roleList = getJdbcTemplate().query("select * from system_role", new RoleMapper());
         for (Role role : roleList) {
@@ -60,7 +60,7 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
         return roleList;
     }
 
-    @Override
+
     public Paging<Role> page(Role role, int pageStart, int pageSize) {
         return null;
     }

@@ -99,4 +99,9 @@ public class ClassUtilsTest {
         System.out.println(sql4);
 
     }
+
+    @Test
+    public void getInsertSqlTest() {
+        ClassUtils.getInsertSql(new User());
+    }
 }

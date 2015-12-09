@@ -40,7 +40,6 @@ public class User {
     private String accountType;
     @Column("status")
     private String status;
-    @Column("role_id")
     private Set<Role> roles = new HashSet<>(0);
 
     public String getId() {

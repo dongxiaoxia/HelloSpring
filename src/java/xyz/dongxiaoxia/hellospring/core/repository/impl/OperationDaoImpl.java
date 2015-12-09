@@ -22,7 +22,7 @@ public class OperationDaoImpl extends BaseDaoImpl implements OperationDao {
         super(TABLE_NAME);
     }
 
-    @Override
+
     public int insert(Operation operation) {
         return getJdbcTemplate().update("INSERT INTO system_operation (name ,code,prefix_url,parent_id) VALUES (?,?,?,?)", operation.getName(), operation.getCode(), operation.getPrefixUrl(), operation.getParentId());
     }
@@ -32,7 +32,7 @@ public class OperationDaoImpl extends BaseDaoImpl implements OperationDao {
         return getJdbcTemplate().update("DELETE From system_operation WHERE id = ?", id);
     }
 
-    @Override
+
     public int update(Operation operation) {
         return getJdbcTemplate().update("UPDATE system_operation SET name = ?,code = ?,prefix_url = ?,parent_id = ? WHERE id = ?", operation.getName(), operation.getCode(), operation.getPrefixUrl(), operation.getParentId(), operation.getId());
     }
@@ -52,12 +52,12 @@ public class OperationDaoImpl extends BaseDaoImpl implements OperationDao {
         return getJdbcTemplate().query("select * from system_operation where prefix_url = ?", new OperationMapper(), prefixUrl);
     }
 
-    @Override
+
     public List<Operation> list(Operation operation) {
         return getJdbcTemplate().query("select * from system_operation", new OperationMapper());
     }
 
-    @Override
+
     public Paging<Operation> page(Operation operation, int pageStart, int pageSize) {
         return null;
     }

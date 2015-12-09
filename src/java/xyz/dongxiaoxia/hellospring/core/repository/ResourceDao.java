@@ -8,7 +8,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/11/8.
  */
-public interface ResourceDao extends BaseDao<Resource> {
+public interface ResourceDao extends BaseDao {
     //<!-- 根据用户Id获取该用户的权限-->
     List<Resource> getUserResources(String userId);
 

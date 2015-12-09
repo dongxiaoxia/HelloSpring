@@ -22,7 +22,7 @@ public class LogDaoImpl extends BaseDaoImpl implements LogDao {
         super(TABLE_NAME);
     }
 
-    @Override
+
     public int insert(Log log) {
         String sql = "INSERT INTO SYSTEM_LOG (description,module,method,logType,requestIp,exceptionCode,exceptionDetail,params,createBy,createDate) values (?,?,?,?,?,?,?,?,?,?)";
         return getJdbcTemplate().update(sql, new Object[]{log.getDescription(), log.getModule(), log.getMethod(), log.getLogType(), log.getRequestIp(), log.getExceptionCode(), log.getExceptionDetail(), log.getParams(), log.getCreateBy(), log.getCreateDate()});
@@ -33,7 +33,7 @@ public class LogDaoImpl extends BaseDaoImpl implements LogDao {
         return getJdbcTemplate().update("DELETE FROM system_log WHERE id = ?", id);
     }
 
-    @Override
+
     public int update(Log log) {
         return getJdbcTemplate().update("UPDATE system_log SET description = ?,module = ? ,method = ? ,logType = ? ,requestIp = ? ,exceptionCode = ?, exceptionDetail = ? , params = ?, createBy = ?,createDate = ? WHERE id = ?", log.getDescription(), log.getModule(), log.getMethod(), log.getLogType(), log.getRequestIp(), log.getExceptionCode(), log.getExceptionDetail(), log.getParams(), log.getCreateBy(), log.getCreateDate(), log.getId());
     }
@@ -43,12 +43,12 @@ public class LogDaoImpl extends BaseDaoImpl implements LogDao {
         return getJdbcTemplate().queryForObject("select * from system_log where id = ?", new LogMapper(), id);
     }
 
-    @Override
+
     public List<Log> list(Log log) {
         return getJdbcTemplate().query("select * from system_log", new LogMapper());
     }
 
-    @Override
+
     public Paging<Log> page(Log log, int pageStart, int pageSize) {
         return null;
     }

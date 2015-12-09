@@ -42,7 +42,7 @@ public class ServerInfoServiceImpl implements ServerInfoService {
 
     @Override
     public ServerInfo getById(String id) {
-        return serverInfoDao.get(id);
+        return (ServerInfo) serverInfoDao.get(id);
     }
 
     @Override

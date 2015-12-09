@@ -19,7 +19,7 @@ public class ServerInfoDaoImpl extends BaseDaoImpl implements ServerInfoDao {
         super(TABLE_NAME);
     }
 
-    @Override
+
     public int insert(ServerInfo serverInfo) {
         return 0;
     }
@@ -29,7 +29,7 @@ public class ServerInfoDaoImpl extends BaseDaoImpl implements ServerInfoDao {
         return 0;
     }
 
-    @Override
+
     public int update(ServerInfo serverInfo) {
         return 0;
     }
@@ -39,12 +39,12 @@ public class ServerInfoDaoImpl extends BaseDaoImpl implements ServerInfoDao {
         return null;
     }
 
-    @Override
+
     public List<ServerInfo> list(ServerInfo serverInfo) {
         return null;
     }
 
-    @Override
+
     public Paging<ServerInfo> page(ServerInfo serverInfo, int pageStart, int pageSize) {
         return null;
     }

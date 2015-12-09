@@ -22,7 +22,7 @@ public class UserLoginListDaoImpl extends BaseDaoImpl implements UserLoginListDa
         super(TABLE_NAME);
     }
 
-    @Override
+
     public int insert(UserLoginList userLoginList) {
         return getJdbcTemplate().update("INSERT INTO SYSTEM_userloginlist (loginId,userId,loginTime,loginIP) VALUES (?,?,?,?)", userLoginList.getLoginId(), userLoginList.getUserId(), userLoginList.getLoginTime(), userLoginList.getLoginIp());
     }
@@ -32,7 +32,7 @@ public class UserLoginListDaoImpl extends BaseDaoImpl implements UserLoginListDa
         return getJdbcTemplate().update("DELETE FROM SYSTEM_userloginlist WHERE loginId = ?", id);
     }
 
-    @Override
+
     public int update(UserLoginList userLoginList) {
         return getJdbcTemplate().update("UPDATE SYSTEM_userloginlist SET userId = ?,loginTime = ?,loginIP = ? WHERE loginId = ? ", userLoginList.getUserId(), userLoginList.getLoginTime(), userLoginList.getLoginIp(), userLoginList.getLoginId());
     }
@@ -42,12 +42,12 @@ public class UserLoginListDaoImpl extends BaseDaoImpl implements UserLoginListDa
         return getJdbcTemplate().queryForObject("SELECT ul.*,u.username FROM system_userloginlist ul JOIN SYSTEM_USER u WHERE u.id = ul.userId AND ul.loginId = ?", new UserLoginListMapper(), id);
     }
 
-    @Override
+
     public List<UserLoginList> list(UserLoginList userLoginList) {
         return getJdbcTemplate().query("SELECT ul.*,u.username FROM system_userloginlist ul JOIN SYSTEM_USER u WHERE u.id = ul.userId", new UserLoginListMapper());
     }
 
-    @Override
+
     public Paging<UserLoginList> page(UserLoginList userLoginList, int pageStart, int pageSize) {
         return null;
     }

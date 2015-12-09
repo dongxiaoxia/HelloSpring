@@ -39,12 +39,12 @@ public class UserServiceImpl implements UserService {
         if (Common.isEmpty(user.getStatus())) {
             throw new IllegalArgumentException("status must not be null");
         }
-        userDao.insert(user);
+//        userDao.insert(user);
     }
 
     @Override
     public void delete(String id) {
-        userDao.delete(id);
+//        userDao.delete(id);
     }
 
     @Override
@@ -70,12 +70,12 @@ public class UserServiceImpl implements UserService {
         if (Common.isEmpty(user.getStatus())) {
             throw new IllegalArgumentException("status must not be null");
         }
-        userDao.update(user);
+//        userDao.update(user);
     }
 
     @Override
     public User get(String id) {
-        return userDao.get(id);
+        return (User) userDao.get(id);
     }
 
     @Override

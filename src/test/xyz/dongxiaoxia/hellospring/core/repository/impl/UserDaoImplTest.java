@@ -120,7 +120,7 @@ public class UserDaoImplTest extends BasicTest {
             String accountType,
             String status
     ) {
-        User user = userDao.get(id);
+        User user = (User) userDao.get(id);
         Assert.assertEquals(id, user.getId());
         Assert.assertEquals(username, user.getUsername());
         Assert.assertEquals(password, user.getPassword());
@@ -134,5 +134,15 @@ public class UserDaoImplTest extends BasicTest {
         Assert.assertEquals(accountType, user.getAccountType());
         Assert.assertEquals(status, user.getStatus());
 
+    }
+
+    @Test
+    public void $deleteTest() {
+        userDao.$delete("123", User.class);
+    }
+
+    @Test
+    public void $saveTest() {
+        userDao.$save(new User());
     }
 }

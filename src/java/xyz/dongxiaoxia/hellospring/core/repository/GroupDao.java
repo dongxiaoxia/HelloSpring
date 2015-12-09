@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/11/8.
  */
-public interface GroupDao extends BaseDao<Group> {
+public interface GroupDao extends BaseDao {
 
     List<Group> getByParentId(String parentId);
 

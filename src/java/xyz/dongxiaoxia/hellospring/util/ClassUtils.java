@@ -158,4 +158,67 @@ public class ClassUtils {
         identityValue = (String) getMethod.invoke(object);
         return identityValue;
     }
+
+    /**
+     * 获取insert sql语句
+     *
+     * @param o
+     * @return
+     */
+    public static String getInsertSql(Object object) {
+        Class<?> clazz = object.getClass();
+        StringBuffer sb = new StringBuffer("INSERT INTO ");
+        //查找类是否被注解
+        if (!isEntityAnnotationPresent(clazz)) {
+            throw new NullPointerException("the " + clazz.getClass() + " is not used Entity annotation");
+        }
+        //获取Entity注解
+        Entity entity = clazz.getAnnotation(Entity.class);
+        sb.append(entity.value()).append(" (");
+        //查找属性是否被注解
+        Field[] fields = clazz.getDeclaredFields();
+        StringBuilder nameStr = new StringBuilder();
+        StringBuilder valueStr = new StringBuilder();
+        for (Field field : fields) {
+            //处理每个字段对应的sql
+            //拿到字段值
+            boolean isFieldExist = field.isAnnotationPresent(Column.class);
+            if (!isFieldExist) {
+              /*  try {
+                    throw new Exception("the " + field.getName() + " field is not used Column annotation");
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }*/
+                continue;
+            }
+            //获取属性注解
+            Column column = field.getAnnotation(Column.class);
+            String columnName = column.value();
+            nameStr.append(columnName).append(",");
+            //获取字段
+            String fieldName = field.getName();
+            //获取字段值
+            Object fieldValue = null;
+            String getFieldMethodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+            try {
+                Method getMethod = clazz.getDeclaredMethod(getFieldMethodName);
+                fieldValue = getMethod.invoke(object);
+                if (fieldValue == null) {
+                    valueStr.append("null").append(",");
+                } else {
+                    valueStr.append("'").append(fieldValue).append("',");
+                }
+
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        sb.append(nameStr.substring(0, nameStr.length() - 1)).append(") VALUES (").append(valueStr.substring(0, valueStr.length() - 1)).append(")");
+        //返回拼装好的sql语句
+        return sb.toString();
+    }
 }

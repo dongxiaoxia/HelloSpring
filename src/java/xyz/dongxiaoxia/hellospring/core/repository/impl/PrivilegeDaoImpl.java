@@ -22,7 +22,7 @@ public class PrivilegeDaoImpl extends BaseDaoImpl implements PrivilegeDao {
         super(TABLE_NAME);
     }
 
-    @Override
+
     public int insert(Privilege privilege) {
         return getJdbcTemplate().update("INSERT INTO system_privilege (type ) VALUES (?)", privilege.getType());
     }
@@ -32,7 +32,7 @@ public class PrivilegeDaoImpl extends BaseDaoImpl implements PrivilegeDao {
         return getJdbcTemplate().update("DELETE From system_privilege WHERE id = ?", id);
     }
 
-    @Override
+
     public int update(Privilege privilege) {
         return getJdbcTemplate().update("UPDATE system_privilege SET type = ? WHERE id = ?", privilege.getType(), privilege.getId());
     }
@@ -42,12 +42,12 @@ public class PrivilegeDaoImpl extends BaseDaoImpl implements PrivilegeDao {
         return getJdbcTemplate().queryForObject("select id, type from system_privilege where id = ?", new PrivilegeMapper(), id);
     }
 
-    @Override
+
     public List<Privilege> list(Privilege privilege) {
         return getJdbcTemplate().query("select id, type from system_privilege", new PrivilegeMapper());
     }
 
-    @Override
+
     public Paging<Privilege> page(Privilege privilege, int paeStart, int pageSize) {
         return null;
     }

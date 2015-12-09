@@ -25,4 +25,8 @@ public interface BaseDao<T> {
 
     Paging<T> page(T t, int pageStart, int pageSize);
 
+    void $save(T t);
+
+    void $delete(String id, Class clazz);
+
 }

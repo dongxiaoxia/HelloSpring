@@ -59,7 +59,15 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
         logger.info("-----------MySecurityMetadataSource loadResourceDefine ----------- ");
         if (resourceMap == null) {
             resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
-            List<Resource> resources = this.resourceDao.list(null);
+            // List<Resource> resources = this.resourceDao.list(null);
+            List<Resource> resources = new ArrayList<>();
+            if (resources == null) {
+                Resource resource = new Resource();
+                resource.setResUrl("123");
+                resource.setResKey("123");
+                resource.setName("123");
+                resources.add(resource);
+            }
             for (Resource resource : resources) {
                 Collection<ConfigAttribute> configAttributes = new ArrayList<ConfigAttribute>();
                 // TODO:ZZQ 通过资源名称来表示具体的权限 注意：必须"ROLE_"开头

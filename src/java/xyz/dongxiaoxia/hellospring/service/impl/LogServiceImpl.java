@@ -43,7 +43,7 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public Log getById(String id) {
-        return logDao.get(id);
+        return (Log) logDao.get(id);
     }
 
     @Override

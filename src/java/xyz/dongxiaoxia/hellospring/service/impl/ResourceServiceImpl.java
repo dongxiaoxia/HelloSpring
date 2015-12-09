@@ -43,7 +43,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public Resource getById(String id) {
-        return resourceDao.get(id);
+        return (Resource) resourceDao.get(id);
     }
 
     @Override

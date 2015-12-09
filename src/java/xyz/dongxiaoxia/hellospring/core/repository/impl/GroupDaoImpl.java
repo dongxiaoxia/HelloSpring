@@ -22,7 +22,7 @@ public class GroupDaoImpl extends BaseDaoImpl implements GroupDao {
         super(TABLE_NAME);
     }
 
-    @Override
+
     public int insert(Group group) {
         return getJdbcTemplate().update("INSERT INTO system_group (name,parent_id ) VALUES (?,?)", group.getName(), group.getParentId());
     }
@@ -32,7 +32,7 @@ public class GroupDaoImpl extends BaseDaoImpl implements GroupDao {
         return getJdbcTemplate().update("DELETE From system_group WHERE id = ?", id);
     }
 
-    @Override
+
     public int update(Group group) {
         return getJdbcTemplate().update("UPDATE system_group SET name = ?,parent_id = ? WHERE id = ?", group.getName(), group.getParentId(), group.getId());
     }
@@ -47,12 +47,12 @@ public class GroupDaoImpl extends BaseDaoImpl implements GroupDao {
         return getJdbcTemplate().query("select id, name,parent_id from system_group where parent_id = ?", new GroupMapper(), parentId);
     }
 
-    @Override
+
     public List<Group> list(Group group) {
         return getJdbcTemplate().query("select id, name ,parent_id from system_group", new GroupMapper());
     }
 
-    @Override
+
     public Paging<Group> page(Group group, int pageStart, int pageSize) {
         return null;
     }
