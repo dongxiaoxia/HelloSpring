@@ -7,6 +7,7 @@ import xyz.dongxiaoxia.hellospring.util.annotation.Id;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.sql.Timestamp;
 import java.util.Objects;
 
 /**
@@ -32,7 +33,7 @@ public class ClassUtils {
      * @param clazz
      * @return
      */
-    public static String getTableName(Class<?> clazz){
+    public static String getTableName(Class<?> clazz) {
         // Class<?> cls = Class.forName("xyz.dongxiaoxia.hellospring.core.entity.User"); //或直接XXXX.class
         if (!isEntityAnnotationPresent(clazz)) {
             throw new NullPointerException("the " + clazz.getClass() + " is not used Entity annotation");
@@ -162,7 +163,7 @@ public class ClassUtils {
     /**
      * 获取insert sql语句
      *
-     * @param o
+     * @param object
      * @return
      */
     public static String getInsertSql(Object object) {
@@ -191,12 +192,17 @@ public class ClassUtils {
                 }*/
                 continue;
             }
+            if (field.isAnnotationPresent(Id.class)) {
+                continue;
+            }
             //获取属性注解
             Column column = field.getAnnotation(Column.class);
             String columnName = column.value();
             nameStr.append(columnName).append(",");
             //获取字段
             String fieldName = field.getName();
+            //获取属性类型
+            Class fieldClass = field.getType();
             //获取字段值
             Object fieldValue = null;
             String getFieldMethodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
@@ -205,6 +211,10 @@ public class ClassUtils {
                 fieldValue = getMethod.invoke(object);
                 if (fieldValue == null) {
                     valueStr.append("null").append(",");
+                } else if (fieldClass == String.class) {
+                    valueStr.append("'").append(fieldValue).append("',");
+                } else if (fieldClass == int.class) {
+                    valueStr.append(fieldValue).append(",");
                 } else {
                     valueStr.append("'").append(fieldValue).append("',");
                 }
@@ -218,6 +228,135 @@ public class ClassUtils {
             }
         }
         sb.append(nameStr.substring(0, nameStr.length() - 1)).append(") VALUES (").append(valueStr.substring(0, valueStr.length() - 1)).append(")");
+        //返回拼装好的sql语句
+        return sb.toString();
+    }
+
+    /**
+     * 获取update sql语句
+     *
+     * @param object
+     * @return
+     */
+    public static String getUpdateSql(Object object) {
+        Class<?> clazz = object.getClass();
+        StringBuffer sb = new StringBuffer("UPDATE ");
+        //查找类是否被注解
+        if (!isEntityAnnotationPresent(clazz)) {
+            throw new NullPointerException("the " + clazz.getClass() + " is not used Entity annotation");
+        }
+        //获取Entity注解
+        Entity entity = clazz.getAnnotation(Entity.class);
+        sb.append(entity.value()).append(" SET ");
+        //查找属性是否被注解
+        Field[] fields = clazz.getDeclaredFields();
+        StringBuilder nameAndValueStr = new StringBuilder();
+        StringBuilder idStr = new StringBuilder();
+        for (Field field : fields) {
+            //处理每个字段对应的sql
+            //拿到字段值
+            boolean isFieldExist = field.isAnnotationPresent(Column.class);
+            if (!isFieldExist) {
+                continue;
+            }
+
+            //获取属性注解
+            Column column = field.getAnnotation(Column.class);
+            String columnName = column.value();
+            //获取字段
+            String fieldName = field.getName();
+            //获取属性类型
+            Class fieldClass = field.getType();
+            //获取字段值
+            Object fieldValue = null;
+            String getFieldMethodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+            try {
+                Method getMethod = clazz.getDeclaredMethod(getFieldMethodName);
+                fieldValue = getMethod.invoke(object);
+                if (field.isAnnotationPresent(Id.class)) {
+                    idStr.append(" WHERE ").append(column.value()).append(" = ").append(fieldValue);
+                    continue;
+                }
+                if (fieldValue == null) {
+                    continue;
+                } else if (fieldClass == String.class) {
+                    nameAndValueStr.append(columnName).append(" = '").append(fieldValue).append("',");
+                } else if (fieldClass == int.class) {
+                    nameAndValueStr.append(columnName).append(" = ").append(fieldValue).append(",");
+                } else {
+                    nameAndValueStr.append(columnName).append(" = '").append(fieldValue).append("',");
+                }
+
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
+        sb.append(nameAndValueStr.substring(0, nameAndValueStr.length() - 1)).append(idStr);
+        //返回拼装好的sql语句
+        return sb.toString();
+    }
+
+    /**
+     * 获取query sql语句
+     *
+     * @param object
+     * @return
+     */
+    public static String getQuerySql(Object object) {
+        Class<?> clazz = object.getClass();
+        StringBuffer sb = new StringBuffer("SELECT * FROM ");
+        //查找类是否被注解
+        if (!isEntityAnnotationPresent(clazz)) {
+            throw new NullPointerException("the " + clazz.getClass() + " is not used Entity annotation");
+        }
+        //获取Entity注解
+        Entity entity = clazz.getAnnotation(Entity.class);
+        sb.append(entity.value()).append(" WHERE 1=1");
+        //查找属性是否被注解
+        Field[] fields = clazz.getDeclaredFields();
+        StringBuilder nameAndValueStr = new StringBuilder();
+        StringBuilder whereStr = new StringBuilder();
+        for (Field field : fields) {
+            //处理每个字段对应的sql
+            //拿到字段值
+            boolean isFieldExist = field.isAnnotationPresent(Column.class);
+            if (!isFieldExist) {
+                continue;
+            }
+            //获取属性注解
+            Column column = field.getAnnotation(Column.class);
+            String columnName = column.value();
+            //获取字段
+            String fieldName = field.getName();
+            //获取属性类型
+            Class fieldClass = field.getType();
+            //获取字段值
+            Object fieldValue = null;
+            String getFieldMethodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+            try {
+                Method getMethod = clazz.getDeclaredMethod(getFieldMethodName);
+                fieldValue = getMethod.invoke(object);
+                if (fieldValue == null) {
+                    continue;
+                } else if (fieldClass == String.class) {
+                    sb.append(" AND ").append(columnName).append(" = '").append(fieldValue).append("'");
+                } else if (fieldClass == int.class) {
+                    sb.append(" AND ").append(columnName).append(" = ").append(fieldValue);
+                } else {
+                    sb.append(" AND ").append(columnName).append(" = '").append(fieldValue).append("'");
+                }
+            } catch (NoSuchMethodException e) {
+                e.printStackTrace();
+            } catch (InvocationTargetException e) {
+                e.printStackTrace();
+            } catch (IllegalAccessException e) {
+                e.printStackTrace();
+            }
+        }
         //返回拼装好的sql语句
         return sb.toString();
     }

@@ -12,6 +12,7 @@ import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
 
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Administrator on 2015/11/8.
@@ -75,7 +76,7 @@ public class UserDaoImplTest extends BasicTest {
             user.setEmail(email);
             user.setRegTime(regtime);
             user.setLastLoginTime(lastlogintime);
-
+            userDao.$save(user);
             userId = String.valueOf(userDao.insert(user));
         }
 
@@ -97,10 +98,14 @@ public class UserDaoImplTest extends BasicTest {
             user.setEmail(updateEmail);
             user.setRegTime(updateRegtime);
             user.setLastLoginTime(updateLastlogintime);
-
+            userDao.$update(user);
             userDao.update(user);
+            List<User> users = userDao.$query(user, User.class);
+            System.out.println(users);
         }
         checkUserInfo(userId, updateUsername, updatePassword, updateNickname, updateRealname, updateAge, updateSex, updateEmail, updateRegtime, updateLastlogintime, updateLevel, updateAccountType, updateStatus);
+
+        userDao.$delete(userId, User.class);
 
     }
 
@@ -143,6 +148,9 @@ public class UserDaoImplTest extends BasicTest {
 
     @Test
     public void $saveTest() {
-        userDao.$save(new User());
+        User user = new User();
+        user.setUsername("东小侠");
+        user.setPassword("123456");
+        userDao.$save(user);
     }
 }

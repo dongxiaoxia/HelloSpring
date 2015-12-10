@@ -1,6 +1,7 @@
 package xyz.dongxiaoxia.hellospring.core.repository;
 
 
+import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.List;
@@ -28,5 +29,11 @@ public interface BaseDao<T> {
     void $save(T t);
 
     void $delete(String id, Class clazz);
+
+    void $update(T t);
+
+    // T $get(String id,Class clazz);
+
+    List<T> $query(T t, Class<T> clazz);
 
 }

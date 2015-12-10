@@ -1,6 +1,7 @@
 package xyz.dongxiaoxia.hellospring.util;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -19,8 +20,42 @@ import java.util.Objects;
  */
 public class ClassUtilsTest {
 
+
+    final String id = "1";
+    final String username = "张三丰";
+    final String password = "123456";
+    final String nickname = "阿三";
+    final String realname = "张三";
+    final int age = 16;
+    final int sex = 1;
+    final String email = "9876@543.21";
+    //final Timestamp regtime = new Timestamp(System.currentTimeMillis());
+    final Timestamp regtime = Timestamp.valueOf("2015-02-16 12:12:12");
+    final Timestamp lastlogintime = Timestamp.valueOf("2015-05-16 12:12:12");
+    //final Timestamp lastlogintime = new Timestamp(System.currentTimeMillis());
+    final int level = 1;
+    final String accountType = "01";
+    final String status = "01";
     @Rule
     public ExpectedException expectedEx = ExpectedException.none();
+    User user = new User();
+
+    @Before
+    public void init() {
+        user.setId(id);
+        user.setPassword(password);
+        user.setUsername(username);
+        user.setAccountType(accountType);
+        user.setAge(age);
+        user.setEmail(email);
+        user.setLastLoginTime(lastlogintime);
+        user.setLevel(level);
+        user.setNickname(nickname);
+        user.setRealname(realname);
+        user.setRegTime(regtime);
+        user.setSex(sex);
+        user.setStatus(status);
+    }
 
     @Test
     public void isEntityAnnotationPresentTest() {
@@ -56,24 +91,10 @@ public class ClassUtilsTest {
         expectedEx.expectMessage("is not used Entity annotation");
         System.out.println(ClassUtils.getIdentityValue(new Role()));
     }
+
     @Test
     public void testExecuteQuery() {
 
-        final String id = "1";
-        final String username = "张三丰";
-        final String password = "123456";
-        final String nickname = "阿三";
-        final String realname = "张三";
-        final int age = 16;
-        final int sex = 1;
-        final String email = "9876@543.21";
-        //final Timestamp regtime = new Timestamp(System.currentTimeMillis());
-        final Timestamp regtime = Timestamp.valueOf("2015-02-16 12:12:12");
-        final Timestamp lastlogintime = Timestamp.valueOf("2015-05-16 12:12:12");
-        //final Timestamp lastlogintime = new Timestamp(System.currentTimeMillis());
-        final int level = 1;
-        final String accountType = "01";
-        final String status = "01";
 
         User user1 = new User();
         user1.setId(id);//根据id查询
@@ -102,6 +123,16 @@ public class ClassUtilsTest {
 
     @Test
     public void getInsertSqlTest() {
-        ClassUtils.getInsertSql(new User());
+        System.out.println(ClassUtils.getInsertSql(user));
+    }
+
+    @Test
+    public void getUpdateSqlTest() {
+        System.out.println(ClassUtils.getUpdateSql(user));
+    }
+
+    @Test
+    public void getQuerySqlTest() {
+        System.out.println(ClassUtils.getQuerySql(user));
     }
 }

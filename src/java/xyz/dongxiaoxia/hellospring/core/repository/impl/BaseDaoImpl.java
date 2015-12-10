@@ -2,6 +2,7 @@ package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
@@ -10,6 +11,10 @@ import xyz.dongxiaoxia.hellospring.util.ClassUtils;
 import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import javax.sql.DataSource;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.List;
 
 /**
@@ -82,9 +87,26 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
     public void $save(Object object) {
         getJdbcTemplate().update(ClassUtils.getInsertSql(object));
     }
+
+    @Override
+    public void $update(Object object) {
+        getJdbcTemplate().update(ClassUtils.getUpdateSql(object));
+    }
+
+//    @Override
+//    public void $get(String id, T t) {
+//        getJdbcTemplate().get(ClassUtils.getUpdateSql(object));
+//    }
+
+    @Override
+    public List<T> $query(T t, Class<T> clazz) {
+        return getJdbcTemplate().query(ClassUtils.getQuerySql(t), new BaseRowMapper<>(clazz));
+    }
+
     /**
      * 通用实体类删除方法
-     * @param id 主键
+     *
+     * @param id    主键
      * @param clazz 实体类
      */
 
@@ -98,4 +120,32 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
             e.printStackTrace();
         }
     }
+
+    /*public class BaseMapper<T> implements RowMapper {
+        @Override
+        public T mapRow(ResultSet rs, int rowNum) throws SQLException {
+            try {
+
+                Class clazz =  this.getClass();
+                Object obj = clazz.newInstance();
+
+                Field[] fields = clazz.getDeclaredFields();
+                if (fields == null) {
+                    return null;
+                }
+                for (int i = 0; i < fields.length; i++) {
+                    String fieldName = fields[i].getName();
+                    Class fieldClass = fields[i].getType();
+                    String methodName = "set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+                    Method method = clazz.getMethod(methodName , new Class[]{fieldClass});
+                    method.invoke(obj, rs.getObject(fieldName.toLowerCase()));
+                }
+                return (T) obj;
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+            }
+        }
+    }*/
 }
