@@ -20,12 +20,6 @@ import java.util.Set;
 @Repository
 public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
 
-    private static final String TABLE_NAME = "SYSTEM_ROLE";
-
-    public RoleDaoImpl() {
-        super(TABLE_NAME);
-    }
-
 
     public int insert(Role role) {
         return getJdbcTemplate().update("INSERT INTO system_role (name,desc,roleKey,enable ) VALUES (?,?,?,?)", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable());

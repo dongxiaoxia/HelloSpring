@@ -17,13 +17,6 @@ import java.util.List;
 @Repository
 public class ResourceDaoImpl extends BaseDaoImpl implements ResourceDao {
 
-    private static final String TABLE_NAME = "SYSTEM_RESOURCE";
-
-    public ResourceDaoImpl() {
-        super(TABLE_NAME);
-    }
-
-
     public int insert(Resource resource) {
         return getJdbcTemplate().update("INSERT INTO system_resource (name,parentId,resKey,type,resUrl,level,description ) VALUES (?,?,?,?,?,?,?)", resource.getName(), resource.getParentId(), resource.getResKey(), resource.getType(), resource.getResUrl(), resource.getLevel(), resource.getDescription());
     }

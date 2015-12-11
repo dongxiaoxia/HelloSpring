@@ -16,13 +16,6 @@ import java.util.List;
 @Repository
 public class OperationDaoImpl extends BaseDaoImpl implements OperationDao {
 
-    private static final String TABLE_NAME = "SYSTEM_OPERATION";
-
-    public OperationDaoImpl() {
-        super(TABLE_NAME);
-    }
-
-
     public int insert(Operation operation) {
         return getJdbcTemplate().update("INSERT INTO system_operation (name ,code,prefix_url,parent_id) VALUES (?,?,?,?)", operation.getName(), operation.getCode(), operation.getPrefixUrl(), operation.getParentId());
     }

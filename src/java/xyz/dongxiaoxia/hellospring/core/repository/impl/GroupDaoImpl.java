@@ -18,10 +18,6 @@ public class GroupDaoImpl extends BaseDaoImpl implements GroupDao {
 
     private static final String TABLE_NAME = "SYSTEM_GROUP";
 
-    public GroupDaoImpl() {
-        super(TABLE_NAME);
-    }
-
     @Override
     public List<Group> getByParentId(String parentId) {
         return getJdbcTemplate().query("select id, name,parent_id from system_group where parent_id = ?", new GroupMapper(), parentId);

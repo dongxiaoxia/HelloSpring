@@ -16,12 +16,6 @@ import java.util.List;
 @Repository
 public class UserLoginListDaoImpl extends BaseDaoImpl implements UserLoginListDao {
 
-    private static final String TABLE_NAME = "SYSTEM_USERLOGINLISTO";
-
-    public UserLoginListDaoImpl() {
-        super(TABLE_NAME);
-    }
-
 
     public int insert(UserLoginList userLoginList) {
         return getJdbcTemplate().update("INSERT INTO SYSTEM_userloginlist (loginId,userId,loginTime,loginIP) VALUES (?,?,?,?)", userLoginList.getLoginId(), userLoginList.getUserId(), userLoginList.getLoginTime(), userLoginList.getLoginIp());

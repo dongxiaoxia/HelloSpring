@@ -2,30 +2,21 @@ package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
-import org.springframework.jdbc.core.SqlParameter;
-import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;
-import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;
-import org.springframework.jdbc.core.namedparam.SqlParameterSource;
-import org.springframework.jdbc.object.MappingSqlQuery;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.Finder;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
-import xyz.dongxiaoxia.hellospring.util.ClassUtils;
 import xyz.dongxiaoxia.hellospring.util.Common;
 import xyz.dongxiaoxia.hellospring.util.Paging;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
-import javax.sql.DataSource;
 import java.sql.*;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by chenwendong on 2015/10/29.
@@ -33,7 +24,7 @@ import java.util.Map;
 @Repository
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
     //private static final String TABLE_NAME = "SYSTEM_USER";
-    private static final String TABLE_NAME = ClassUtils.getTableName(User.class);
+    private static final String TABLE_NAME = Finder.getTableName(User.class);
     private static final String COLUME_NAMES = "username,password,nickname,realname,age,sex,email,regtime,lastlogintime,level,accountType,status";
     private static final String SQL_INSERT_DATA = "INSERT INTO  " + TABLE_NAME + " (" + COLUME_NAMES + " ) " + "VALUES (?,?,?,?,?,?,?,?,?,?,?,?)";
     private static final String SQL_DELETE_DATE = "DELETE FROM " + TABLE_NAME + " WHERE id IN  (%s)";
@@ -44,10 +35,6 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
     private static final String SQL_SELECT_DATA = "SELECT id," + COLUME_NAMES + " FROM " + TABLE_NAME + " WHERE id = ?";
     private final String SQL_DELETE_DATE_BY_ID = "DELETE FROM" + TABLE_NAME + " WHERE id = ?";
     private LoggerAdapter logger = LoggerAdapterFactory.getLoggerAdapter(getClass());
-
-    public UserDaoImpl() {
-        super(TABLE_NAME);
-    }
 
     public int insert(final User user) {
         //获取新增数据的自增id

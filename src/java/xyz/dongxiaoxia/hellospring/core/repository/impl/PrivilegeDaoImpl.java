@@ -16,13 +16,6 @@ import java.util.List;
 @Repository
 public class PrivilegeDaoImpl extends BaseDaoImpl implements PrivilegeDao {
 
-    private static final String TABLE_NAME = "SYSTEM_PRIVILEGE";
-
-    public PrivilegeDaoImpl() {
-        super(TABLE_NAME);
-    }
-
-
     public int insert(Privilege privilege) {
         return getJdbcTemplate().update("INSERT INTO system_privilege (type ) VALUES (?)", privilege.getType());
     }

@@ -7,13 +7,9 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
-import xyz.dongxiaoxia.hellospring.util.annotation.Column;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.Finder;
 
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.sql.Timestamp;
-import java.util.Objects;
 
 /**
  * Created by Administrator on 2015/12/6.
@@ -59,24 +55,24 @@ public class ClassUtilsTest {
 
     @Test
     public void isEntityAnnotationPresentTest() {
-        Assert.assertEquals(true, ClassUtils.isEntityAnnotationPresent(User.class));
-        Assert.assertEquals(false, ClassUtils.isEntityAnnotationPresent(Role.class));
+        Assert.assertEquals(true, Finder.isEntityAnnotationPresent(User.class));
+        Assert.assertEquals(false, Finder.isEntityAnnotationPresent(Role.class));
     }
 
     @Test
     public void getTableNameTest() {
-        System.out.println(ClassUtils.getTableName(User.class));
+        System.out.println(Finder.getTableName(User.class));
         expectedEx.expect(NullPointerException.class);
         expectedEx.expectMessage("is not used Entity annotation");
-        System.out.println(ClassUtils.getTableName(Role.class));
+        System.out.println(Finder.getTableName(Role.class));
     }
 
     @Test
     public void getIdentityNameTest() throws Exception {
-        System.out.println(ClassUtils.getIdentityName(User.class));
+        System.out.println(Finder.getIdentityName(User.class));
         expectedEx.expect(Exception.class);
         expectedEx.expectMessage("is not used Entity annotation");
-        System.out.println(ClassUtils.getIdentityName(Role.class));
+        System.out.println(Finder.getIdentityName(Role.class));
     }
 
     @Test
@@ -85,11 +81,11 @@ public class ClassUtilsTest {
         user1.setId("123");
 
         User user2 = new User();
-        System.out.println(ClassUtils.getIdentityValue(user1));
-        System.out.println(ClassUtils.getIdentityValue(user2));
+        System.out.println(Finder.getIdentityValue(user1));
+        System.out.println(Finder.getIdentityValue(user2));
         expectedEx.expect(Exception.class);
         expectedEx.expectMessage("is not used Entity annotation");
-        System.out.println(ClassUtils.getIdentityValue(new Role()));
+        System.out.println(Finder.getIdentityValue(new Role()));
     }
 
     @Test
@@ -109,10 +105,10 @@ public class ClassUtilsTest {
         User user4 = new User();
         user4.setId("1,2,3,4");//根据id数组查询
 
-        String sql1 = ClassUtils.executeQuery(user1);
-        String sql2 = ClassUtils.executeQuery(user2);
-        String sql3 = ClassUtils.executeQuery(user3);
-        String sql4 = ClassUtils.executeQuery(user4);
+        String sql1 = Finder.getQuerySql(user1);
+        String sql2 = Finder.getQuerySql(user2);
+        String sql3 = Finder.getQuerySql(user3);
+        String sql4 = Finder.getQuerySql(user4);
 
         System.out.println(sql1);
         System.out.println(sql2);
@@ -123,24 +119,24 @@ public class ClassUtilsTest {
 
     @Test
     public void getInsertSqlTest() {
-        System.out.println(ClassUtils.getInsertSql(user));
+        System.out.println(Finder.getInsertSql(user));
     }
 
     @Test
     public void getUpdateSqlTest() {
-        System.out.println(ClassUtils.getUpdateSql(user));
+        System.out.println(Finder.getUpdateSql(user));
     }
 
     @Test
     public void getQuerySqlTest() {
-        System.out.println(ClassUtils.getQuerySql(user));
+        System.out.println(Finder.getQuerySql(user));
     }
 
     @Test
     public void getSelectByIdentitySqlTest() {
-        System.out.println(ClassUtils.getSelectByIdentitySql("123", User.class));
+        System.out.println(Finder.getSelectByIdentitySql("123", User.class));
         expectedEx.expect(Exception.class);
         expectedEx.expectMessage("is not used Entity annotation");
-        System.out.println(ClassUtils.getSelectByIdentitySql("123", Role.class));
+        System.out.println(Finder.getSelectByIdentitySql("123", Role.class));
     }
 }
