@@ -27,19 +27,8 @@ public class UserLoginListDaoImpl extends BaseDaoImpl implements UserLoginListDa
         return getJdbcTemplate().update("INSERT INTO SYSTEM_userloginlist (loginId,userId,loginTime,loginIP) VALUES (?,?,?,?)", userLoginList.getLoginId(), userLoginList.getUserId(), userLoginList.getLoginTime(), userLoginList.getLoginIp());
     }
 
-    @Override
-    public int delete(String id) {
-        return getJdbcTemplate().update("DELETE FROM SYSTEM_userloginlist WHERE loginId = ?", id);
-    }
-
-
     public int update(UserLoginList userLoginList) {
         return getJdbcTemplate().update("UPDATE SYSTEM_userloginlist SET userId = ?,loginTime = ?,loginIP = ? WHERE loginId = ? ", userLoginList.getUserId(), userLoginList.getLoginTime(), userLoginList.getLoginIp(), userLoginList.getLoginId());
-    }
-
-    @Override
-    public UserLoginList get(String id) {
-        return getJdbcTemplate().queryForObject("SELECT ul.*,u.username FROM system_userloginlist ul JOIN SYSTEM_USER u WHERE u.id = ul.userId AND ul.loginId = ?", new UserLoginListMapper(), id);
     }
 
 

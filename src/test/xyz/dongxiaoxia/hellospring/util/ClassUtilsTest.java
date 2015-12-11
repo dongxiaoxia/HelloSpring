@@ -135,4 +135,12 @@ public class ClassUtilsTest {
     public void getQuerySqlTest() {
         System.out.println(ClassUtils.getQuerySql(user));
     }
+
+    @Test
+    public void getSelectByIdentitySqlTest() {
+        System.out.println(ClassUtils.getSelectByIdentitySql("123", User.class));
+        expectedEx.expect(Exception.class);
+        expectedEx.expectMessage("is not used Entity annotation");
+        System.out.println(ClassUtils.getSelectByIdentitySql("123", Role.class));
+    }
 }

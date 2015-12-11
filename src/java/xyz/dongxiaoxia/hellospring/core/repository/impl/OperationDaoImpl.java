@@ -27,20 +27,10 @@ public class OperationDaoImpl extends BaseDaoImpl implements OperationDao {
         return getJdbcTemplate().update("INSERT INTO system_operation (name ,code,prefix_url,parent_id) VALUES (?,?,?,?)", operation.getName(), operation.getCode(), operation.getPrefixUrl(), operation.getParentId());
     }
 
-    @Override
-    public int delete(String id) {
-        return getJdbcTemplate().update("DELETE From system_operation WHERE id = ?", id);
-    }
-
-
     public int update(Operation operation) {
         return getJdbcTemplate().update("UPDATE system_operation SET name = ?,code = ?,prefix_url = ?,parent_id = ? WHERE id = ?", operation.getName(), operation.getCode(), operation.getPrefixUrl(), operation.getParentId(), operation.getId());
     }
 
-    @Override
-    public Operation get(String id) {
-        return getJdbcTemplate().queryForObject("select * from system_operation where id = ?", new OperationMapper(), id);
-    }
 
     @Override
     public List<Operation> listByParentId(String parentId) {

@@ -20,12 +20,7 @@ public class GroupDaoImplTest extends BasicTest {
         Group group = new Group();
         group.setName("技术部");
         group.setParentId("123");
-        Assert.assertEquals(1, groupDao.insert(group));
-    }
-
-    @Test
-    public void deleteTest() {
-        Assert.assertEquals(1, groupDao.delete("2"));
+        Assert.assertEquals(1, groupDao.$save(group));
     }
 
     @Test
@@ -34,7 +29,7 @@ public class GroupDaoImplTest extends BasicTest {
         group.setId("1");
         group.setName("工程部");
         group.setParentId("1234");
-        Assert.assertEquals(1, groupDao.update(group));
+        //Assert.assertEquals(1, groupDao.$update(group));
     }
 
     @Test
@@ -49,6 +44,6 @@ public class GroupDaoImplTest extends BasicTest {
 
     @Test
     public void listTest() {
-        Assert.assertEquals(2, groupDao.list(null).size());
+        Assert.assertEquals(2, groupDao.$query(null).size());
     }
 }

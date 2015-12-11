@@ -31,17 +31,11 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
         return getJdbcTemplate().update("INSERT INTO system_role (name,desc,roleKey,enable ) VALUES (?,?,?,?)", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable());
     }
 
-    @Override
-    public int delete(String id) {
-        return getJdbcTemplate().update("DELETE From system_role WHERE id = ?", id);
-    }
-
-
     public int update(Role role) {
         return getJdbcTemplate().update("UPDATE system_role SET name = ?,desc = ?,roleKey = ?,enable = ? WHERE id = ?", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable(), role.getId());
     }
 
-    @Override
+
     public Role get(String id) {
         Role role = getJdbcTemplate().queryForObject("select * from system_role where id = ?", new RoleMapper(), id);
         List<Resource> resourceList = getJdbcTemplate().query("SELECT re.* FROM system_resource re JOIN system_role_resource rr ON rr.resource_id = re.id JOIN system_role r ON rr.role_id = r.id WHERE r.id = ?", new ResouceMapper(), role.getId());

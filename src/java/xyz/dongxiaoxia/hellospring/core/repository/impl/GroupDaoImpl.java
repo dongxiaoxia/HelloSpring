@@ -22,36 +22,10 @@ public class GroupDaoImpl extends BaseDaoImpl implements GroupDao {
         super(TABLE_NAME);
     }
 
-
-    public int insert(Group group) {
-        return getJdbcTemplate().update("INSERT INTO system_group (name,parent_id ) VALUES (?,?)", group.getName(), group.getParentId());
-    }
-
-    @Override
-    public int delete(String id) {
-        return getJdbcTemplate().update("DELETE From system_group WHERE id = ?", id);
-    }
-
-
-    public int update(Group group) {
-        return getJdbcTemplate().update("UPDATE system_group SET name = ?,parent_id = ? WHERE id = ?", group.getName(), group.getParentId(), group.getId());
-    }
-
-    @Override
-    public Group get(String id) {
-        return getJdbcTemplate().queryForObject("select id, name,parent_id from system_group where id = ?", new GroupMapper(), id);
-    }
-
     @Override
     public List<Group> getByParentId(String parentId) {
         return getJdbcTemplate().query("select id, name,parent_id from system_group where parent_id = ?", new GroupMapper(), parentId);
     }
-
-
-    public List<Group> list(Group group) {
-        return getJdbcTemplate().query("select id, name ,parent_id from system_group", new GroupMapper());
-    }
-
 
     public Paging<Group> page(Group group, int pageStart, int pageSize) {
         return null;

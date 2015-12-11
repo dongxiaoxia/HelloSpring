@@ -27,26 +27,26 @@ public class ServerInfoServiceImpl implements ServerInfoService {
 
     @Override
     public List<ServerInfo> queryAll(ServerInfo serverInfo) {
-        return serverInfoDao.list(null);
+        return serverInfoDao.$query(null);
     }
 
     @Override
     public void add(ServerInfo serverInfo) {
-        serverInfoDao.insert(serverInfo);
+        serverInfoDao.$save(serverInfo);
     }
 
     @Override
     public void delete(String id) {
-        serverInfoDao.delete(id);
+        serverInfoDao.$delete(id, ServerInfo.class);
     }
 
     @Override
     public ServerInfo getById(String id) {
-        return (ServerInfo) serverInfoDao.get(id);
+        return (ServerInfo) serverInfoDao.$get(id, ServerInfo.class);
     }
 
     @Override
     public void modify(ServerInfo serverInfo) {
-        serverInfoDao.update(serverInfo);
+        serverInfoDao.$update(serverInfo);
     }
 }

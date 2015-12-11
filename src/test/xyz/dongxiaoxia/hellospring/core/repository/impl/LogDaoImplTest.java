@@ -30,12 +30,7 @@ public class LogDaoImplTest extends BasicTest {
         log.setParams("123");
         log.setCreateBy("dong");
         log.setCreateDate(new Date());
-        Assert.assertEquals(1, logDao.insert(log));
-    }
-
-    @Test
-    public void deleteTest() {
-        Assert.assertEquals(1, logDao.delete("38"));
+        Assert.assertEquals(1, logDao.$save(log));
     }
 
     @Test
@@ -51,7 +46,7 @@ public class LogDaoImplTest extends BasicTest {
         log.setParams("123");
         log.setCreateBy("dong");
         log.setCreateDate(new Date());
-        Assert.assertEquals(1, logDao.update(log));
+        // Assert.assertEquals(1, logDao.$update(log));
     }
 
     @Test
@@ -61,6 +56,6 @@ public class LogDaoImplTest extends BasicTest {
 
     @Test
     public void listTest() {
-        Assert.assertEquals(37, logDao.list(null).size());
+        Assert.assertEquals(37, logDao.$query(null).size());
     }
 }

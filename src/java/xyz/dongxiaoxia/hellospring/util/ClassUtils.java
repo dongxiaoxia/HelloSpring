@@ -117,12 +117,12 @@ public class ClassUtils {
      * @param clazz
      * @return 主键名称
      */
-    public static String getIdentityName(Class clazz) throws Exception {
+    public static String getIdentityName(Class clazz) {
         String identityName = null;
         //查找类是否被注解
         boolean isExist = clazz.isAnnotationPresent(Entity.class);
         if (!isExist) {
-            throw new Exception("the " + clazz.getClass().getClass() + " class is not used Entity annotation");
+            throw new NullPointerException("the " + clazz.getClass().getClass() + " class is not used Entity annotation");
         }
         //查找属性是否被注解
         Field[] fields = clazz.getDeclaredFields();
@@ -135,7 +135,7 @@ public class ClassUtils {
             break;
         }
         if (null == identityName) {
-            throw new Exception("the " + clazz.getName() + " is not used Id annotation");
+            throw new NullPointerException("the " + clazz.getName() + " is not used Id annotation");
         }
         return identityName;
     }
@@ -359,5 +359,15 @@ public class ClassUtils {
         }
         //返回拼装好的sql语句
         return sb.toString();
+    }
+
+    /**
+     * 获取根据主键查找sql语句
+     *
+     * @param clazz
+     * @return
+     */
+    public static String getSelectByIdentitySql(String id, Class<?> clazz) {
+        return new StringBuffer("SELECT * FROM ").append(getTableName(clazz)).append(" WHERE ").append(getIdentityName(clazz)).append(" =").append(id).toString();
     }
 }

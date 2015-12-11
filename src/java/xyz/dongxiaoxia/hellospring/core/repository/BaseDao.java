@@ -14,26 +14,16 @@ import java.util.List;
  */
 public interface BaseDao<T> {
 
-    int insert(T t);
-
-    int delete(String id);
-
-    int update(T t);
-
-    T get(String id);
-
-    List<T> list(T t);
-
-    Paging<T> page(T t, int pageStart, int pageSize);
-
-    void $save(T t);
+    int $save(T t);
 
     void $delete(String id, Class clazz);
 
     void $update(T t);
 
-    // T $get(String id,Class clazz);
+    T $get(String id, Class<T> clazz);
 
-    List<T> $query(T t, Class<T> clazz);
+    List<T> $query(T t);
+
+    Paging<T> page(T t, int pageStart, int pageSize);
 
 }

@@ -77,7 +77,7 @@ public class UserDaoImplTest extends BasicTest {
             user.setRegTime(regtime);
             user.setLastLoginTime(lastlogintime);
             userDao.$save(user);
-            userId = String.valueOf(userDao.insert(user));
+            userId = String.valueOf(userDao.$save(user));
         }
 
         checkUserInfo(userId, username, password, nickname, realname, age, sex, email, regtime, lastlogintime, level, accountType, status);
@@ -99,8 +99,8 @@ public class UserDaoImplTest extends BasicTest {
             user.setRegTime(updateRegtime);
             user.setLastLoginTime(updateLastlogintime);
             userDao.$update(user);
-            userDao.update(user);
-            List<User> users = userDao.$query(user, User.class);
+            //userDao.update(user);
+            List<User> users = userDao.$query(user);
             System.out.println(users);
         }
         checkUserInfo(userId, updateUsername, updatePassword, updateNickname, updateRealname, updateAge, updateSex, updateEmail, updateRegtime, updateLastlogintime, updateLevel, updateAccountType, updateStatus);
@@ -125,7 +125,7 @@ public class UserDaoImplTest extends BasicTest {
             String accountType,
             String status
     ) {
-        User user = (User) userDao.get(id);
+        User user = (User) userDao.$get(id, User.class);
         Assert.assertEquals(id, user.getId());
         Assert.assertEquals(username, user.getUsername());
         Assert.assertEquals(password, user.getPassword());

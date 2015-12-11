@@ -21,12 +21,7 @@ public class OperationDaoImplTest extends BasicTest {
         operation.setCode("02");
         operation.setPrefixUrl("/remove");
         operation.setParentId("0002");
-        Assert.assertEquals(1, operationDao.insert(operation));
-    }
-
-    @Test
-    public void deleteTest() {
-        Assert.assertEquals(1, operationDao.delete("1"));
+        Assert.assertEquals(1, operationDao.$save(operation));
     }
 
     @Test
@@ -37,7 +32,7 @@ public class OperationDaoImplTest extends BasicTest {
         operation.setCode("01");
         operation.setParentId("123");
         operation.setPrefixUrl("/create");
-        Assert.assertEquals(1, operationDao.update(operation));
+        //Assert.assertEquals(1, operationDao.$update(operation));
     }
 
     @Test
@@ -57,7 +52,7 @@ public class OperationDaoImplTest extends BasicTest {
 
     @Test
     public void listTest() {
-        Assert.assertEquals(1, operationDao.list(null).size());
+        Assert.assertEquals(1, operationDao.$query(null).size());
     }
 
 }

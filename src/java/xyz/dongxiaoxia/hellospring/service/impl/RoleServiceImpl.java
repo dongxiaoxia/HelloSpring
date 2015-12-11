@@ -28,27 +28,27 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void add(Role role) {
-        roleDao.insert(role);
+        roleDao.$save(role);
     }
 
     @Override
     public void delete(String id) {
-        roleDao.delete(id);
+        roleDao.$delete(id, Role.class);
     }
 
     @Override
     public void modify(Role role) {
-        roleDao.update(role);
+        roleDao.$update(role);
     }
 
     @Override
     public Role getById(String id) {
-        return (Role) roleDao.get(id);
+        return null;
     }
 
     @Override
     public List<Role> findAll() {
-        return roleDao.list(null);
+        return roleDao.$query(null);
     }
 
     @Override

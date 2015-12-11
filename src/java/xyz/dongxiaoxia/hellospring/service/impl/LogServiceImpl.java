@@ -28,26 +28,26 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public void add(Log log) {
-        logDao.insert(log);
+        logDao.$save(log);
     }
 
     @Override
     public void delete(String id) {
-        logDao.delete(id);
+        logDao.$delete(id, Log.class);
     }
 
     @Override
     public void modify(Log log) {
-        logDao.update(log);
+        logDao.$update(log);
     }
 
     @Override
     public Log getById(String id) {
-        return (Log) logDao.get(id);
+        return (Log) logDao.$get(id, Log.class);
     }
 
     @Override
     public List<Log> findAll(Log log) {
-        return logDao.list(null);
+        return logDao.$query(null);
     }
 }

@@ -22,7 +22,7 @@ public class UserLoginListServiceImpl implements UserLoginListService {
 
     @Override
     public void add(UserLoginList userLoginList) {
-        userLoginListDao.insert(userLoginList);
+        userLoginListDao.$save(userLoginList);
     }
 
     @Override
@@ -32,6 +32,6 @@ public class UserLoginListServiceImpl implements UserLoginListService {
 
 
     public List<UserLoginList> list() {
-        return userLoginListDao.list(null);
+        return userLoginListDao.$query(null);
     }
 }

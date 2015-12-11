@@ -28,27 +28,27 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public void add(Resource resource) {
-        resourceDao.insert(resource);
+        resourceDao.$save(resource);
     }
 
     @Override
     public void delete(String id) {
-        resourceDao.delete(id);
+        resourceDao.$delete(id, Resource.class);
     }
 
     @Override
     public void modify(Resource resource) {
-        resourceDao.update(resource);
+        resourceDao.$update(resource);
     }
 
     @Override
     public Resource getById(String id) {
-        return (Resource) resourceDao.get(id);
+        return (Resource) resourceDao.$get(id, Resource.class);
     }
 
     @Override
     public List<Resource> findAll() {
-        return resourceDao.list(null);
+        return resourceDao.$query(null);
     }
 
     @Override

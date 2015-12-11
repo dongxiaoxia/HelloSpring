@@ -24,19 +24,8 @@ public class ServerInfoDaoImpl extends BaseDaoImpl implements ServerInfoDao {
         return 0;
     }
 
-    @Override
-    public int delete(String id) {
-        return 0;
-    }
-
-
     public int update(ServerInfo serverInfo) {
         return 0;
-    }
-
-    @Override
-    public ServerInfo get(String id) {
-        return null;
     }
 
 

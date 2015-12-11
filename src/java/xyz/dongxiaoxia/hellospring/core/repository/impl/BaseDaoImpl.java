@@ -2,8 +2,11 @@ package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.repository.BaseDao;
@@ -13,8 +16,7 @@ import xyz.dongxiaoxia.hellospring.util.Paging;
 import javax.sql.DataSource;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.List;
 
 /**
@@ -53,30 +55,6 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
     }
 
 
-    @Override
-    public int insert(T t) {
-        return 0;
-    }
-
-    @Override
-    public int delete(String id) {
-        return 0;
-    }
-
-    @Override
-    public int update(T t) {
-        return 0;
-    }
-
-    @Override
-    public T get(String id) {
-        return null;
-    }
-
-    @Override
-    public List list(T t) {
-        return null;
-    }
 
     @Override
     public Paging page(T t, int pageStart, int pageSize) {
@@ -84,8 +62,21 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
     }
 
     @Override
-    public void $save(Object object) {
-        getJdbcTemplate().update(ClassUtils.getInsertSql(object));
+    public int $save(Object object) {
+        final String sql = ClassUtils.getInsertSql(object);
+        int result = 0;
+        KeyHolder holder = new GeneratedKeyHolder();
+        result = jdbcTemplate.update(new PreparedStatementCreator() {
+
+            public PreparedStatement createPreparedStatement(Connection con)
+                    throws SQLException {
+                PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+                return ps;
+            }
+        }, holder);
+        System.out.println(holder.getKey().intValue());
+        return result;
+
     }
 
     @Override
@@ -93,14 +84,18 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
         getJdbcTemplate().update(ClassUtils.getUpdateSql(object));
     }
 
-//    @Override
-//    public void $get(String id, T t) {
-//        getJdbcTemplate().get(ClassUtils.getUpdateSql(object));
-//    }
+    @Override
+    public T $get(String id, Class<T> clazz) {
+        List<T> list = getJdbcTemplate().query(ClassUtils.getSelectByIdentitySql(id, clazz), new BaseRowMapper<>(clazz));
+        if (list != null && list.size() > 0) {
+            return list.get(0);
+        }
+        return null;
+    }
 
     @Override
-    public List<T> $query(T t, Class<T> clazz) {
-        return getJdbcTemplate().query(ClassUtils.getQuerySql(t), new BaseRowMapper<>(clazz));
+    public List<T> $query(T t) {
+        return getJdbcTemplate().query(ClassUtils.getQuerySql(t), new BaseRowMapper<>(t.getClass()));
     }
 
     /**
@@ -121,31 +116,4 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
         }
     }
 
-    /*public class BaseMapper<T> implements RowMapper {
-        @Override
-        public T mapRow(ResultSet rs, int rowNum) throws SQLException {
-            try {
-
-                Class clazz =  this.getClass();
-                Object obj = clazz.newInstance();
-
-                Field[] fields = clazz.getDeclaredFields();
-                if (fields == null) {
-                    return null;
-                }
-                for (int i = 0; i < fields.length; i++) {
-                    String fieldName = fields[i].getName();
-                    Class fieldClass = fields[i].getType();
-                    String methodName = "set" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-                    Method method = clazz.getMethod(methodName , new Class[]{fieldClass});
-                    method.invoke(obj, rs.getObject(fieldName.toLowerCase()));
-                }
-                return (T) obj;
-
-            } catch (Exception e) {
-                e.printStackTrace();
-                return null;
-            }
-        }
-    }*/
 }

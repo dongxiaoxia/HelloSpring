@@ -28,19 +28,8 @@ public class ResourceDaoImpl extends BaseDaoImpl implements ResourceDao {
         return getJdbcTemplate().update("INSERT INTO system_resource (name,parentId,resKey,type,resUrl,level,description ) VALUES (?,?,?,?,?,?,?)", resource.getName(), resource.getParentId(), resource.getResKey(), resource.getType(), resource.getResUrl(), resource.getLevel(), resource.getDescription());
     }
 
-    @Override
-    public int delete(String id) {
-        return getJdbcTemplate().update("DELETE From system_resource WHERE id = ?", id);
-    }
-
-
     public int update(Resource resource) {
         return getJdbcTemplate().update("UPDATE system_resource SET name = ?,parentId = ?,resKey = ?,type = ?,resUrl = ?,level = ?,description = ? WHERE id = ?", resource.getName(), resource.getParentId(), resource.getResKey(), resource.getType(), resource.getResUrl(), resource.getLevel(), resource.getDescription(), resource.getId());
-    }
-
-    @Override
-    public Resource get(String id) {
-        return getJdbcTemplate().queryForObject("select id,name,parentId,resKey,type,resUrl,level,description from system_resource where id = ?", new ResouceMapper(), id);
     }
 
 

@@ -75,12 +75,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User get(String id) {
-        return (User) userDao.get(id);
+        return (User) userDao.$get(id, User.class);
     }
 
     @Override
     public List<User> list(User user) {
-        return userDao.list(user);
+        return userDao.$query(user);
     }
 
     @Override
@@ -93,14 +93,14 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        return userDao.list(user).size();
+        return userDao.$query(user).size();
     }
 
     @Override
     public User querySingleUser(String userName) {
         User user = new User();
         user.setUsername(userName);
-        List<User> userList = userDao.list(user);
+        List<User> userList = userDao.$query(user);
         //TODO if userList.size()>1 what should be do
         return (userList == null || userList.size() == 0) ? null : userList.get(0);
     }
