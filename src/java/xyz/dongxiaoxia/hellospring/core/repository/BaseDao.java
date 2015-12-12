@@ -15,7 +15,7 @@ public interface BaseDao<T> {
 
     int $save(T t);
 
-    void $batchSave(List<T> list);
+    void $batchSave(List<T> list, Class<T> clazz);
 
     void $delete(String id, Class<T> clazz);
 
@@ -23,7 +23,7 @@ public interface BaseDao<T> {
 
     void $update(T t);
 
-    void $batchUpdate(List<T> list);
+    void $batchUpdate(List<T> list, Class<T> clazz);
 
     T $get(String id, Class<T> clazz);
 

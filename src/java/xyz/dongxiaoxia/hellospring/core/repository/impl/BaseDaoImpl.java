@@ -8,18 +8,25 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.repository.BaseDao;
 import xyz.dongxiaoxia.hellospring.core.repository.persistence.Finder;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Column;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Id;
 import xyz.dongxiaoxia.hellospring.util.Paging;
+import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 import javax.sql.DataSource;
+import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by dongxiaoxia on 2015/11/19.
- *
+ * <p/>
  * 持久层操作基类，所有的dao实现类都应该继承这个类
  */
 @Repository
@@ -78,7 +85,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
     /**
      * 通用实体类删除方法
      *
-     * @param ids    主键数组
+     * @param ids   主键数组
      * @param clazz 实体类
      */
 
@@ -160,13 +167,99 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
         return paging;
     }
 
+    /**
+     * 通用实体类批量添加方法
+     *
+     * @param list  实体类对象集合
+     * @param clazz 实体类类型
+     */
     @Override
-    public void $batchSave(List<T> list) {
+    public void $batchSave(final List<T> list, Class<T> clazz) {
+        List<Object[]> batch = new ArrayList<>();
+        for (T t : list) {
+            //获取对象中的所有字段
+            Field[] fields = t.getClass().getDeclaredFields();
+            List<Object> objectList = new ArrayList<>();
+            for (Field f : fields) {
+                if (!f.isAnnotationPresent(Column.class)) {
+                    continue;
+                }
+                // 获取字段名称
+                String fieldName = f.getName();
+                if (StringUtils.isEmpty(fieldName)) {
+                    continue;
+                }
+                if (f.isAnnotationPresent(Id.class)) {
+                    continue;
+                }
+                String methodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+                Method method = null;
+                try {
+                    method = t.getClass().getMethod(methodName);
+                    objectList.add(method.invoke(t));
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
 
+            }
+            batch.add(objectList.toArray(new Object[objectList.size()]));
+        }
+        int[] updateCounts = jdbcTemplate.batchUpdate(Finder.getBatchSave(clazz), batch);
     }
 
+    /**
+     * 通用实体类批量更新方法
+     *
+     * @param list  实体类对象集合
+     * @param clazz 实体类类型
+     */
     @Override
-    public void $batchUpdate(List<T> list){
+    public void $batchUpdate(final List<T> list, Class<T> clazz) {
+        List<Object[]> batch = new ArrayList<>();
+        for (T t : list) {
+            /*Object[] values = new Object[]{
+                    t.getFirstName(),
+                    t.getLastName(),
+                    t.getId()};*/
 
+            //获取对象中的所有字段
+            Field[] fields = t.getClass().getDeclaredFields();
+            List<Object> objectList = new ArrayList<>();
+            Object id = new Object();
+            for (Field f : fields) {
+                if (!f.isAnnotationPresent(Column.class)) {
+                    continue;
+                }
+                // 获取字段名称
+                String fieldName = f.getName();
+                if (StringUtils.isEmpty(fieldName)) {
+                    continue;
+                }
+                String methodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+                Method method = null;
+                try {
+                    method = t.getClass().getMethod(methodName);
+                    if (f.isAnnotationPresent(Id.class)) {
+                        id = method.invoke(t);
+                    } else {
+                        objectList.add(method.invoke(t));
+                    }
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            objectList.add(id);
+            batch.add(objectList.toArray(new Object[objectList.size()]));
+        }
+        int[] updateCounts = jdbcTemplate.batchUpdate(Finder.getBatchUpdate(clazz), batch);
     }
 }

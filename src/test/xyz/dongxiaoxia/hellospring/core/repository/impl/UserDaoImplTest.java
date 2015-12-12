@@ -186,4 +186,37 @@ public class UserDaoImplTest extends BasicTest {
         Paging paging = userDao.$page(user, 1, 10);
         System.out.println(paging);
     }
+
+    @Test
+    public void $batchUpdateTest() {
+        List<User> users = new ArrayList<>();
+        for (int a = 0; a < 1000; a++) {
+            User user = new User();
+            user.setId(String.valueOf(a));
+            user.setPassword("123");
+            user.setUsername("dongxiaoxia");
+            users.add(user);
+        }
+        long start = System.currentTimeMillis();
+        userDao.$batchUpdate(users, User.class);
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
+
+    }
+
+    @Test
+    public void $batchSaveTest() {
+        List<User> users = new ArrayList<>();
+        for (int a = 0; a < 1000; a++) {
+            User user = new User();
+            user.setPassword("123");
+            user.setUsername("dongxiaoxia");
+            users.add(user);
+        }
+
+        long start = System.currentTimeMillis();
+        userDao.$batchSave(users, User.class);
+        long end = System.currentTimeMillis();
+        System.out.println(end - start);
+    }
 }

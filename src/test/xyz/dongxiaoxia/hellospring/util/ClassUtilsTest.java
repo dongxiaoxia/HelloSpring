@@ -156,4 +156,9 @@ public class ClassUtilsTest {
     public void getPageSqlTest() {
         System.out.println(Finder.getPageSql(user, 3, 10));
     }
+
+    @Test
+    public void getBatchSaveSqlTest() {
+        System.out.println(Finder.getBatchSave(User.class));
+    }
 }

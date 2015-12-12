@@ -415,4 +415,62 @@ public class Finder {
     public static String getPageSql(Object object, int pageStart, int pageSize) {
         return new StringBuilder(getQuerySql(object)).append(" LIMIT ").append(new Paging(pageStart, pageSize).getStartRecord()).append(",").append(pageSize).toString();
     }
+
+    /**
+     * batchSave sql语句
+     *
+     * @param clazz 实体类对象
+     * @return
+     */
+    public static String getBatchSave(Class clazz) {
+        StringBuilder sqlSb = new StringBuilder("INSERT INTO ").append(getTableName(clazz)).append(" (");
+        //查找属性是否被注解
+        Field[] fields = clazz.getDeclaredFields();
+        StringBuilder nameStr = new StringBuilder();
+        StringBuilder valueStr = new StringBuilder();
+        for (Field field : fields) {
+            //处理每个字段对应的sql
+            //拿到字段值
+            boolean isFieldExist = field.isAnnotationPresent(Column.class);
+            if (!isFieldExist) {
+                continue;
+            }
+            if (field.isAnnotationPresent(Id.class)) {
+                continue;
+            }
+            nameStr.append(getColumnName(field)).append(",");
+            valueStr.append("?,");
+        }
+        sqlSb.append(nameStr.substring(0, nameStr.length() - 1)).append(") VALUES (").append(valueStr.substring(0, valueStr.length() - 1)).append(")");
+        //返回拼装好的sql语句
+        return sqlSb.toString();
+    }
+
+    /**
+     * 获取batchUpdate sql语句
+     *
+     * @param clazz 实体类对象
+     * @return
+     */
+    public static String getBatchUpdate(Class clazz) {
+        StringBuilder sqlSb = new StringBuilder("UPDATE ").append(getTableName(clazz)).append(" SET ");
+        //查找属性是否被注解
+        Field[] fields = clazz.getDeclaredFields();
+        StringBuilder nameAndValueStr = new StringBuilder();
+        for (Field field : fields) {
+            //处理每个字段对应的sql
+            //拿到字段值
+            boolean isFieldExist = field.isAnnotationPresent(Column.class);
+            if (!isFieldExist) {
+                continue;
+            }
+            if (field.isAnnotationPresent(Id.class)) {
+                continue;
+            }
+            nameAndValueStr.append(getColumnName(field)).append(" = ? ,");
+        }
+        sqlSb.append(nameAndValueStr.substring(0, nameAndValueStr.length() - 1)).append(" WHERE ").append(getIdentityName(clazz)).append(" =? ");
+        //返回拼装好的sql语句
+        return sqlSb.toString();
+    }
 }
