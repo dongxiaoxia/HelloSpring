@@ -22,7 +22,7 @@ public class LogServiceImpl implements LogService {
 
     @Override
     public Paging<Log> query(Log log, int pageStart, int pageSize) {
-        Paging<Log> paging = logDao.page(log, pageStart, pageSize);
+        Paging<Log> paging = logDao.$page(log, pageStart, pageSize);
         return paging;
     }
 

@@ -27,7 +27,7 @@ public class UserLoginListServiceImpl implements UserLoginListService {
 
     @Override
     public Paging<UserLoginList> query(UserLoginList userLoginList, int pageStart, int pageSize) {
-        return userLoginListDao.page(userLoginList, pageStart, pageSize);
+        return userLoginListDao.$page(userLoginList, pageStart, pageSize);
     }
 
 

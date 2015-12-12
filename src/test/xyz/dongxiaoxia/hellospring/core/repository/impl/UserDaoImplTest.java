@@ -1,17 +1,16 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import xyz.dongxiaoxia.hellospring.BasicTest;
-import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
-import xyz.dongxiaoxia.hellospring.core.repository.RoleDao;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.sql.Timestamp;
-import java.util.Date;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -152,5 +151,39 @@ public class UserDaoImplTest extends BasicTest {
         user.setUsername("东小侠");
         user.setPassword("123456");
         userDao.$save(user);
+    }
+
+    @Test
+    public void deleteTest() {
+        //两种初始化集合的快捷方式
+        List<String> list = new ArrayList(Arrays.asList("Ryan", "Julie", "Bob"));
+//        List list = new ArrayList<String>(){{
+//            add("A");
+//            add("B");
+//        }};
+        String[] ids = new String[]{"1", "2", "3"};
+        userDao.$delete(ids, User.class);
+    }
+
+    @Test
+    public void $countTest() {
+        User user = new User();
+        user.setNickname("sdaf");
+        System.out.println(userDao.$count(user));
+    }
+
+    @Test
+    public void $queryTest() {
+        User user = new User();
+        user.setId("23");
+        System.out.println(userDao.$query(user).size());
+    }
+
+    @Test
+    public void $pageTest() {
+        User user = new User();
+        user.setId("23");
+        Paging paging = userDao.$page(user, 1, 10);
+        System.out.println(paging);
     }
 }

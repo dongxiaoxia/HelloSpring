@@ -23,7 +23,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public Paging<Resource> query(Resource resource, int pageStart, int pageSize) {
-        return resourceDao.page(resource, pageStart, pageSize);
+        return resourceDao.$page(resource, pageStart, pageSize);
     }
 
     @Override

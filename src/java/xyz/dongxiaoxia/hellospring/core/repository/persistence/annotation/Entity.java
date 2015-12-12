@@ -1,4 +1,4 @@
-package xyz.dongxiaoxia.hellospring.util.annotation;
+package xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation;
 
 import java.lang.annotation.*;
 

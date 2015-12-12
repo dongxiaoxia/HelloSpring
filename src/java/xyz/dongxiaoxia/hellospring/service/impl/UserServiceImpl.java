@@ -85,7 +85,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Paging<User> page(User user, int pageStart, int pageSize) {
-        return userDao.page(user, pageStart, pageSize);
+        return userDao.$page(user, pageStart, pageSize);
     }
 
     @Override

@@ -23,7 +23,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public Paging<Role> query(Role role, int pageStart, int pageSize) {
-        return roleDao.page(role, pageStart, pageSize);
+        return roleDao.$page(role, pageStart, pageSize);
     }
 
     @Override

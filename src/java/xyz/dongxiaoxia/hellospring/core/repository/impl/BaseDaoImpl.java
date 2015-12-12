@@ -19,6 +19,8 @@ import java.util.List;
 
 /**
  * Created by dongxiaoxia on 2015/11/19.
+ *
+ * 持久层操作基类，所有的dao实现类都应该继承这个类
  */
 @Repository
 public abstract class BaseDaoImpl<T> implements BaseDao<T> {
@@ -69,8 +71,20 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
      */
 
     @Override
-    public void $delete(String id, Class clazz) {
+    public void $delete(String id, Class<T> clazz) {
         getJdbcTemplate().update(Finder.getDeleteSql(id, clazz));
+    }
+
+    /**
+     * 通用实体类删除方法
+     *
+     * @param ids    主键数组
+     * @param clazz 实体类
+     */
+
+    @Override
+    public void $delete(String[] ids, Class<T> clazz) {
+        getJdbcTemplate().update(Finder.getDeleteSql(ids, clazz));
     }
 
     /**
@@ -110,9 +124,49 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
         return getJdbcTemplate().query(Finder.getQuerySql(t), new BaseRowMapper<>(t.getClass()));
     }
 
+    /**
+     * 获取数据库记录总条数
+     *
+     * @param t 实体类对象
+     * @return
+     */
     @Override
-    public Paging page(T t, int pageStart, int pageSize) {
-        return null;
+    public int $count(T t) {
+       /* List<T> list = getJdbcTemplate().query(Finder.getQuerySql(t), new BaseRowMapper<>(t.getClass()));
+        if (list!= null && list.size()>0){
+            return list.size();
+        }else {
+            return 0;
+        }*/
+        int count = getJdbcTemplate().queryForObject(Finder.getCountSql(t), Integer.class);
+        return count;
     }
 
+    /**
+     * 通用实体类分页查询方法
+     *
+     * @param t         实体类对象
+     * @param pageStart 分页起始页
+     * @param pageSize  分页每页大小
+     * @return
+     */
+    @Override
+    public Paging $page(T t, int pageStart, int pageSize) {
+        List<T> list = getJdbcTemplate().query(Finder.getPageSql(t, pageStart, pageSize), new BaseRowMapper(t.getClass()));
+        int total = $count(t);
+        Paging paging = new Paging(pageStart, pageSize);
+        paging.setTotalRecord(total);
+        paging.setData(list);
+        return paging;
+    }
+
+    @Override
+    public void $batchSave(List<T> list) {
+
+    }
+
+    @Override
+    public void $batchUpdate(List<T> list){
+
+    }
 }

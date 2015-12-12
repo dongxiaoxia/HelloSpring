@@ -79,15 +79,16 @@ public class Paging<T> {
 
     //起始行,当前页第一条数据在List中的位置,从0开始
     public int getStartRecord() {
-        if ((pageStart - 1) * pageSize > totalRecord) {
-            return pageSize;
+        /*if ((pageStart - 1) * pageSize > totalRecord) {
+            return totalRecord;
         } else {
             return (pageStart - 1) * pageSize;
-        }
+        }*/
+        return (pageStart - 1) * pageSize;
     }
 
     //结束行
     public int getEndRecord() {
-        return getStartRecord() + getPageSize();
+        return getStartRecord() + getPageSize() - 1;
     }
 }

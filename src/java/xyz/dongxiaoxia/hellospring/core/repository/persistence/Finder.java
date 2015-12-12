@@ -1,14 +1,19 @@
 package xyz.dongxiaoxia.hellospring.core.repository.persistence;
 
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Column;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Entity;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Id;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
-import xyz.dongxiaoxia.hellospring.util.annotation.Column;
-import xyz.dongxiaoxia.hellospring.util.annotation.Entity;
-import xyz.dongxiaoxia.hellospring.util.annotation.Id;
+import xyz.dongxiaoxia.hellospring.util.Paging;
+import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  * Created by dongxiaoxia on 2015/12/12.
@@ -117,6 +122,20 @@ public class Finder {
     }
 
     /**
+     * 获取IN sql语句
+     *
+     * @param ids 主键数组
+     * @return
+     */
+    public static <T> String getINSql(String[] ids) {
+        if (ids == null || ids.length == 0) {
+            return null;
+        }
+        List<String> list = new ArrayList<>(Arrays.asList(ids));
+        return new StringBuilder(" IN ('").append(StringUtils.join(list, "','")).append("')").toString();
+    }
+
+    /**
      * 获取insert sql语句
      *
      * @param object 实体类对象
@@ -182,6 +201,21 @@ public class Finder {
      */
     public static String getDeleteSql(String id, Class<?> clazz) {
         return new StringBuilder().append("DELETE FROM ").append(getTableName(clazz)).append(" WHERE ").append(getIdentityName(clazz)).append(" =").append(id).toString();
+    }
+
+    /**
+     * 根据对象主键与实体类类型获取delete sql语句
+     *
+     * @param ids   主键数组
+     * @param clazz 实体类类型
+     * @return
+     */
+    public static String getDeleteSql(String[] ids, Class<?> clazz) {
+        StringBuilder sb = new StringBuilder().append("DELETE FROM ").append(getTableName(clazz));
+        if (ids != null && ids.length > 0) {
+            sb.append(" WHERE ").append(getIdentityName(clazz)).append(getINSql(ids)).toString();
+        }
+        return sb.toString();
     }
 
     /**
@@ -258,7 +292,7 @@ public class Finder {
      */
     public static String getQuerySql(Object object) {
         Class<?> clazz = object.getClass();
-        StringBuilder sqlSb = new StringBuilder("SELECT * FROM ").append(getTableName(clazz)).append("WHERE 1=1");
+        StringBuilder sqlSb = new StringBuilder("SELECT * FROM ").append(getTableName(clazz)).append(" WHERE 1=1");
         //查找属性是否被注解
         Field[] fields = clazz.getDeclaredFields();
         for (Field field : fields) {
@@ -308,5 +342,77 @@ public class Finder {
         }
         //返回拼装好的sql语句
         return sqlSb.toString();
+    }
+
+    /**
+     * 根据实体类对象获取count sql语句
+     *
+     * @param object 实体类对象
+     * @return
+     */
+    public static String getCountSql(Object object) {
+        Class<?> clazz = object.getClass();
+        StringBuilder sqlSb = new StringBuilder("SELECT COUNT(*) FROM ").append(getTableName(clazz)).append(" WHERE 1=1");
+        //查找属性是否被注解
+        Field[] fields = clazz.getDeclaredFields();
+        for (Field field : fields) {
+            boolean isFieldExist = field.isAnnotationPresent(Column.class);
+            if (!isFieldExist) {
+                continue;
+            }
+            //获取字段
+            String fieldName = field.getName();
+            //获取属性类型
+            Class fieldClass = field.getType();
+            String getFieldMethodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+            try {
+                Method getMethod = clazz.getDeclaredMethod(getFieldMethodName);
+                //获取字段值
+                Object fieldValue = getMethod.invoke(object);
+                if (fieldValue == null || (fieldValue instanceof Integer && (Integer) fieldValue == 0)) {
+                    continue;
+                }
+                sqlSb.append(" AND ").append(getColumnName(field));
+                if (fieldValue instanceof Integer) {
+                    sqlSb.append("=").append(fieldValue);
+                } else if (fieldValue instanceof String) {
+                    if (((String) fieldValue).contains(",")) {
+                        String[] fieldValueIn = ((String) fieldValue).split(",");
+                        sqlSb.append(" IN(");
+                        for (String s : fieldValueIn) {
+                            sqlSb.append("'").append(s).append("'").append(",");
+                        }
+                        sqlSb.deleteCharAt(sqlSb.length() - 1);
+                        sqlSb.append(")");
+                    } else {
+                        sqlSb.append("='").append(fieldValue).append("'");
+                    }
+                } else if (fieldClass == int.class) {
+                    sqlSb.append(" = ").append(fieldValue);
+                } else {
+                    sqlSb.append(" = '").append(fieldValue).append("'");
+                }
+            } catch (NoSuchMethodException e) {
+                logger.error(e.getMessage(), e);
+            } catch (InvocationTargetException e) {
+                logger.error(e.getMessage(), e);
+            } catch (IllegalAccessException e) {
+                logger.error(e.getMessage(), e);
+            }
+        }
+        //返回拼装好的sql语句
+        return sqlSb.toString();
+    }
+
+    /**
+     * 获取page sql语句
+     *
+     * @param object    实体类对象
+     * @param pageStart 分页起始页
+     * @param pageSize  分页每页大小
+     * @return
+     */
+    public static String getPageSql(Object object, int pageStart, int pageSize) {
+        return new StringBuilder(getQuerySql(object)).append(" LIMIT ").append(new Paging(pageStart, pageSize).getStartRecord()).append(",").append(pageSize).toString();
     }
 }

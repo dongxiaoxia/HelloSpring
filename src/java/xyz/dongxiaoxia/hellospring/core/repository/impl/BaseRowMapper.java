@@ -1,15 +1,13 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
 import org.springframework.jdbc.core.RowMapper;
-import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
-import xyz.dongxiaoxia.hellospring.util.annotation.Column;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Column;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
-import java.math.BigInteger;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 

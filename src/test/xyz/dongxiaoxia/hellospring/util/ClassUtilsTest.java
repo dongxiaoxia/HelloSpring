@@ -139,4 +139,21 @@ public class ClassUtilsTest {
         expectedEx.expectMessage("is not used Entity annotation");
         System.out.println(Finder.getSelectByIdentitySql("123", Role.class));
     }
+
+    @Test
+    public void getInSqlTest() {
+        String[] ids = new String[]{"1", "2", "3"};
+        System.out.println(Finder.getDeleteSql("1", User.class));
+        System.out.println(Finder.getDeleteSql(ids, User.class));
+    }
+
+    @Test
+    public void getCountSqlTest() {
+        System.out.println(Finder.getCountSql(user));
+    }
+
+    @Test
+    public void getPageSqlTest() {
+        System.out.println(Finder.getPageSql(user, 3, 10));
+    }
 }

@@ -16,6 +16,7 @@ import xyz.dongxiaoxia.hellospring.util.Paging;
 import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -224,6 +225,24 @@ public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
         return null;
     }
 
+    /*//Here is a simple query for getting the number of rows in a relation:
+    int rowCount = getJdbcTemplate().queryForObject("select count(*) from SYSTEM_USER ", Integer.class);
+
+    //A simple query using a bind variable
+    int countOfActorsNamedJoe = getJdbcTemplate().queryForObject("select count(*) from SYSTEM_USER where username = ?", Integer.class, "Joe");
+
+    //Querying for a String
+    String lastName = getJdbcTemplate().queryForObject(
+            "select last_name from t_actor where id = ?",
+            new Object[]{1212L}, String.class);*/
+    public void deleteByIds(List<String> ids) {
+        //  getJdbcTemplate().update("delete from SYSTEM_USER where id = ?", ids.toArray());
+        List<Object[]> list = new ArrayList<>();
+        for (Object s : list) {
+            list.add(new Object[]{s});
+        }
+        getJdbcTemplate().batchUpdate("delete from SYSTEM_USER where id = ?", list);
+    }
 
     private static final class UserMapper implements RowMapper<User> {
         public User mapRow(ResultSet rs, int rowNum) throws SQLException {

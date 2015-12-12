@@ -22,7 +22,7 @@ public class ServerInfoServiceImpl implements ServerInfoService {
 
     @Override
     public Paging<ServerInfo> query(ServerInfo serverInfo, int pageStart, int pageSize) {
-        return serverInfoDao.page(serverInfo, pageStart, pageSize);
+        return serverInfoDao.$page(serverInfo, pageStart, pageSize);
     }
 
     @Override

@@ -1,8 +1,8 @@
 package xyz.dongxiaoxia.hellospring.core.entity;
 
-import xyz.dongxiaoxia.hellospring.util.annotation.Column;
-import xyz.dongxiaoxia.hellospring.util.annotation.Entity;
-import xyz.dongxiaoxia.hellospring.util.annotation.Id;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Column;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Entity;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Id;
 
 import java.sql.Timestamp;
 import java.util.HashSet;
