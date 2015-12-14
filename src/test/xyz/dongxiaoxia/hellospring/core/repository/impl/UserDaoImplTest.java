@@ -1,6 +1,8 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
+import org.junit.After;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import xyz.dongxiaoxia.hellospring.BasicTest;
@@ -15,6 +17,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2015/11/8.
  */
+
 public class UserDaoImplTest extends BasicTest {
 
     final String username = "张三丰";
@@ -46,6 +49,8 @@ public class UserDaoImplTest extends BasicTest {
     final String updateAccountType = "02";
     final String updateStatus = "02";
     String userId;
+    User user = new User();
+    User updateUser = new User();
     @Autowired
     private UserDao userDao;
 
@@ -53,46 +58,16 @@ public class UserDaoImplTest extends BasicTest {
     public void testUser() {
         {
             //添加用户
-            User user = new User();
-            user.setUsername(username);
-            user.setPassword(password);
-            user.setSex(sex);
-            user.setRealname(realname);
-            user.setNickname(nickname);
-            user.setLevel(level);
-            user.setAccountType(accountType);
-            user.setAge(age);
-            user.setStatus(status);
-            user.setEmail(email);
-            user.setRegTime(regtime);
-            user.setLastLoginTime(lastlogintime);
             userId = String.valueOf(userDao.$save(user));
         }
         checkUserInfo(userId, username, password, nickname, realname, age, sex, email, regtime, lastlogintime, level, accountType, status);
 
         {
             //更新用户
-            User user = new User();
-            user.setId(userId);
-            user.setUsername(updateUsername);
-            user.setPassword(updatePassword);
-            user.setSex(updateSex);
-            user.setRealname(updateRealname);
-            user.setNickname(updateNickname);
-            user.setLevel(updateLevel);
-            user.setAccountType(updateAccountType);
-            user.setAge(updateAge);
-            user.setStatus(updateStatus);
-            user.setEmail(updateEmail);
-            user.setRegTime(updateRegtime);
-            user.setLastLoginTime(updateLastlogintime);
-            userDao.$update(user);
+            updateUser.setId(userId);
+            userDao.$update(updateUser);
         }
         checkUserInfo(userId, updateUsername, updatePassword, updateNickname, updateRealname, updateAge, updateSex, updateEmail, updateRegtime, updateLastlogintime, updateLevel, updateAccountType, updateStatus);
-
-        //删除用户
-        userDao.$delete(userId, User.class);
-        Assert.assertNull("the user where id = " + userId, userDao.$get(userId, User.class));
     }
 
     //获取用户，并验证数据
@@ -126,63 +101,144 @@ public class UserDaoImplTest extends BasicTest {
         Assert.assertEquals(status, user.getStatus());
     }
 
-    @Test
-    public void $countTest() {
-        User user = new User();
-        user.setNickname("sdaf");
-        System.out.println(userDao.$count(user));
+    @Before
+    public void setUp() throws Exception {
+        user.setUsername(username);
+        user.setPassword(password);
+        user.setSex(sex);
+        user.setRealname(realname);
+        user.setNickname(nickname);
+        user.setLevel(level);
+        user.setAccountType(accountType);
+        user.setAge(age);
+        user.setStatus(status);
+        user.setEmail(email);
+        user.setRegTime(regtime);
+        user.setLastLoginTime(lastlogintime);
+
+        updateUser.setId(userId);
+        updateUser.setUsername(updateUsername);
+        updateUser.setPassword(updatePassword);
+        updateUser.setSex(updateSex);
+        updateUser.setRealname(updateRealname);
+        updateUser.setNickname(updateNickname);
+        updateUser.setLevel(updateLevel);
+        updateUser.setAccountType(updateAccountType);
+        updateUser.setAge(updateAge);
+        updateUser.setStatus(updateStatus);
+        updateUser.setEmail(updateEmail);
+        updateUser.setRegTime(updateRegtime);
+        updateUser.setLastLoginTime(updateLastlogintime);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+
     }
 
     @Test
-    public void $queryTest() {
-        User user = new User();
-        user.setId("23");
-        System.out.println(userDao.$query(user).size());
+    public void test$save() throws Exception {
+        int id = userDao.$save(user);
+        checkUserInfo(String.valueOf(id), username, password, nickname, realname, age, sex, email, regtime, lastlogintime, level, accountType, status);
     }
 
     @Test
-    public void $pageTest() {
-        User user = new User();
-        user.setId("23");
-        Paging paging = userDao.$page(user, 1, 10);
-        System.out.println(paging);
+    public void test$delete() throws Exception {
+        String id = String.valueOf(userDao.$save(user));
+        int count = userDao.$count(new User());
+        userDao.$delete(id, User.class);
+        int count1 = userDao.$count(new User());
+        Assert.assertEquals(1, count - count1);
     }
 
     @Test
-    public void $batchUpdateTest() {
+    public void test$delete1() throws Exception {
+        String id1 = String.valueOf(userDao.$save(user));
+        String id2 = String.valueOf(userDao.$save(user));
+        String id3 = String.valueOf(userDao.$save(user));
+
+        int count = userDao.$count(new User());
+        userDao.$delete(new String[]{id1, id2, id3}, User.class);
+        int count1 = userDao.$count(new User());
+        Assert.assertEquals(3, count - count1);
+    }
+
+    @Test
+    public void test$update() throws Exception {
+        int id = userDao.$save(user);
+        updateUser.setId(String.valueOf(id));
+        userDao.$update(updateUser);
+        checkUserInfo(String.valueOf(id), updateUsername, updatePassword, updateNickname, updateRealname, updateAge, updateSex, updateEmail, updateRegtime, updateLastlogintime, updateLevel, updateAccountType, updateStatus);
+    }
+
+    @Test
+    public void test$get() throws Exception {
+        int id = userDao.$save(user);
+        Assert.assertNotNull(userDao.$get(String.valueOf(id), User.class));
+        Assert.assertNull(userDao.$get("123123123", User.class));
+
+    }
+
+    @Test
+    public void test$query() throws Exception {
+        Assert.assertNotNull(userDao.$query(user));
+    }
+
+    @Test
+    public void test$count() throws Exception {
+        userDao.$count(user);
+    }
+
+    @Test
+    public void test$page() throws Exception {
+        int total = userDao.$count(new User());
+        Paging paging = userDao.$page(new User(), 1, 100);
+        Assert.assertEquals(paging.getTotalRecord(), total);
+    }
+
+    @Test
+    public void test$batchSave() throws Exception {
         List<User> users = new ArrayList<>();
         for (int a = 0; a < 1000; a++) {
-            User user = new User();
-            user.setId(String.valueOf(a));
-            user.setPassword("123");
-            user.setUsername("dongxiaoxia");
             users.add(user);
+        }
+        int count1 = userDao.$count(new User());
+        long start = System.currentTimeMillis();
+        userDao.$batchSave(users, User.class);
+        long end = System.currentTimeMillis();
+        System.out.println("插入1000条数据花费毫秒数：" + (end - start));
+        int count2 = userDao.$count(new User());
+        Assert.assertEquals(1000, count2 - count1);
+    }
+
+    @Test
+    public void test$batchUpdate() throws Exception {
+        List<User> users = new ArrayList<>();
+        int count = userDao.$count(new User());
+        for (int i = 0; i < 1000; i++) {
+            User updateUser = new User();
+            updateUser.setUsername(updateUsername);
+            updateUser.setPassword(updatePassword);
+            updateUser.setSex(updateSex);
+            updateUser.setRealname(updateRealname);
+            updateUser.setNickname(updateNickname);
+            updateUser.setLevel(updateLevel);
+            updateUser.setAccountType(updateAccountType);
+            updateUser.setAge(updateAge);
+            updateUser.setStatus(updateStatus);
+            updateUser.setEmail(updateEmail);
+            updateUser.setRegTime(updateRegtime);
+            updateUser.setLastLoginTime(updateLastlogintime);
+            updateUser.setId(String.valueOf(count - i));
+            users.add(updateUser);
         }
         long start = System.currentTimeMillis();
         userDao.$batchUpdate(users, User.class);
         long end = System.currentTimeMillis();
-        System.out.println(end - start);
+        System.out.println("更新1000条数据花费毫秒数：" + (end - start));
 
-    }
-
-    @Test
-    public void $batchSaveTest() {
-        List<User> users = new ArrayList<>();
-        long start1 = System.currentTimeMillis();
-        for (int a = 0; a < 1000; a++) {
-            User user = new User();
-            user.setPassword("123");
-            user.setUsername("dongxiaoxia");
-            users.add(user);
-            userDao.$save(user);
+        for (int i = 0; i < 1000; i++) {
+            checkUserInfo(String.valueOf(count - i), updateUsername, updatePassword, updateNickname, updateRealname, updateAge, updateSex, updateEmail, updateRegtime, updateLastlogintime, updateLevel, updateAccountType, updateStatus);
         }
-        long end1 = System.currentTimeMillis();
-        System.out.println(end1 - start1);
-
-        long start = System.currentTimeMillis();
-        userDao.$batchSave(users, User.class);
-        long end = System.currentTimeMillis();
-        System.out.println(end - start);
     }
-
 }

@@ -58,7 +58,6 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
                 return ps;
             }
         }, holder);
-        System.out.println(holder.getKey().intValue());
         return holder.getKey().intValue();
 
     }
