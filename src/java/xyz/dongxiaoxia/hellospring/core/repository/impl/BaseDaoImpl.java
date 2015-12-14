@@ -8,20 +8,13 @@ import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import xyz.dongxiaoxia.hellospring.core.repository.BaseDao;
 import xyz.dongxiaoxia.hellospring.core.repository.persistence.Finder;
-import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Column;
-import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Id;
 import xyz.dongxiaoxia.hellospring.util.Paging;
-import xyz.dongxiaoxia.hellospring.util.StringUtils;
 
 import javax.sql.DataSource;
-import java.lang.reflect.Field;
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -55,7 +48,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
     @Override
     public int $save(T t) {
         final String sql = Finder.getInsertSql(t);
-        int result = 0;
+        int result;
         KeyHolder holder = new GeneratedKeyHolder();
         result = jdbcTemplate.update(new PreparedStatementCreator() {
 
@@ -66,7 +59,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
             }
         }, holder);
         System.out.println(holder.getKey().intValue());
-        return result;
+        return holder.getKey().intValue();
 
     }
 
@@ -106,7 +99,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
 
     /**
      * 通用实体类获取方法
-     *
+     * 注意点：由于主键id会唯一标识一个数据项，有些人会使用queryForObject获取数据项，若未找到目标数据时，该方法并非返回null，而是抛异常EmptyResultDataAccessException。应使用query方法，并检测返回值数据量
      * @param id    实体类对象id
      * @param clazz 实体类类型
      * @return
@@ -139,12 +132,6 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
      */
     @Override
     public int $count(T t) {
-       /* List<T> list = getJdbcTemplate().query(Finder.getQuerySql(t), new BaseRowMapper<>(t.getClass()));
-        if (list!= null && list.size()>0){
-            return list.size();
-        }else {
-            return 0;
-        }*/
         int count = getJdbcTemplate().queryForObject(Finder.getCountSql(t), Integer.class);
         return count;
     }
@@ -175,40 +162,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
      */
     @Override
     public void $batchSave(final List<T> list, Class<T> clazz) {
-        List<Object[]> batch = new ArrayList<>();
-        for (T t : list) {
-            //获取对象中的所有字段
-            Field[] fields = t.getClass().getDeclaredFields();
-            List<Object> objectList = new ArrayList<>();
-            for (Field f : fields) {
-                if (!f.isAnnotationPresent(Column.class)) {
-                    continue;
-                }
-                // 获取字段名称
-                String fieldName = f.getName();
-                if (StringUtils.isEmpty(fieldName)) {
-                    continue;
-                }
-                if (f.isAnnotationPresent(Id.class)) {
-                    continue;
-                }
-                String methodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-                Method method = null;
-                try {
-                    method = t.getClass().getMethod(methodName);
-                    objectList.add(method.invoke(t));
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-
-            }
-            batch.add(objectList.toArray(new Object[objectList.size()]));
-        }
-        int[] updateCounts = jdbcTemplate.batchUpdate(Finder.getBatchSave(clazz), batch);
+        int[] saveCounts = jdbcTemplate.batchUpdate(Finder.getBatchSave(clazz), Finder.getBatchSaveObject(list));
     }
 
     /**
@@ -219,47 +173,6 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T> {
      */
     @Override
     public void $batchUpdate(final List<T> list, Class<T> clazz) {
-        List<Object[]> batch = new ArrayList<>();
-        for (T t : list) {
-            /*Object[] values = new Object[]{
-                    t.getFirstName(),
-                    t.getLastName(),
-                    t.getId()};*/
-
-            //获取对象中的所有字段
-            Field[] fields = t.getClass().getDeclaredFields();
-            List<Object> objectList = new ArrayList<>();
-            Object id = new Object();
-            for (Field f : fields) {
-                if (!f.isAnnotationPresent(Column.class)) {
-                    continue;
-                }
-                // 获取字段名称
-                String fieldName = f.getName();
-                if (StringUtils.isEmpty(fieldName)) {
-                    continue;
-                }
-                String methodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
-                Method method = null;
-                try {
-                    method = t.getClass().getMethod(methodName);
-                    if (f.isAnnotationPresent(Id.class)) {
-                        id = method.invoke(t);
-                    } else {
-                        objectList.add(method.invoke(t));
-                    }
-                } catch (NoSuchMethodException e) {
-                    e.printStackTrace();
-                } catch (InvocationTargetException e) {
-                    e.printStackTrace();
-                } catch (IllegalAccessException e) {
-                    e.printStackTrace();
-                }
-
-            }
-            objectList.add(id);
-            batch.add(objectList.toArray(new Object[objectList.size()]));
-        }
-        int[] updateCounts = jdbcTemplate.batchUpdate(Finder.getBatchUpdate(clazz), batch);
+        int[] updateCounts = jdbcTemplate.batchUpdate(Finder.getBatchUpdate(clazz), Finder.getBatchUpdateObject(list));
     }
 }

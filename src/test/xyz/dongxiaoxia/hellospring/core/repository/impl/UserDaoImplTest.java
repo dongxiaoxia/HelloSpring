@@ -10,7 +10,6 @@ import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -18,48 +17,40 @@ import java.util.List;
  */
 public class UserDaoImplTest extends BasicTest {
 
+    final String username = "张三丰";
+    final String password = "123456";
+    final String nickname = "阿三";
+    final String realname = "张三";
+    final int age = 16;
+    final int sex = 1;
+    final String email = "9876@543.21";
+    //final Timestamp regtime = new Timestamp(System.currentTimeMillis());
+    final Timestamp regtime = Timestamp.valueOf("2015-02-16 12:12:12");
+    final Timestamp lastlogintime = Timestamp.valueOf("2015-05-16 12:12:12");
+    //final Timestamp lastlogintime = new Timestamp(System.currentTimeMillis());
+    final int level = 1;
+    final String accountType = "01";
+    final String status = "01";
+    final String updateUsername = "张君宝";
+    final String updatePassword = "67890";
+    final String updateNickname = "啊宝";
+    final String updateRealname = "张小宝";
+    final int updateAge = 45;
+    final int updateSex = 2;
+    final String updateEmail = "111111@543.21";
+    // final Timestamp updateRegtime = new Timestamp(System.currentTimeMillis());
+    final Timestamp updateRegtime = Timestamp.valueOf("2015-12-11 12:12:12");
+    // final Timestamp updateLastlogintime = new Timestamp(System.currentTimeMillis());
+    final Timestamp updateLastlogintime = Timestamp.valueOf("2015-12-16 12:12:12");
+    final int updateLevel = 2;
+    final String updateAccountType = "02";
+    final String updateStatus = "02";
+    String userId;
     @Autowired
     private UserDao userDao;
 
-    /*@Before
-    public void cleanUser(){
-        userDao.cleanAll();
-    }*/
-
     @Test
     public void testUser() {
-        final String username = "张三丰";
-        final String password = "123456";
-        final String nickname = "阿三";
-        final String realname = "张三";
-        final int age = 16;
-        final int sex = 1;
-        final String email = "9876@543.21";
-        //final Timestamp regtime = new Timestamp(System.currentTimeMillis());
-        final Timestamp regtime = Timestamp.valueOf("2015-02-16 12:12:12");
-        final Timestamp lastlogintime = Timestamp.valueOf("2015-05-16 12:12:12");
-        //final Timestamp lastlogintime = new Timestamp(System.currentTimeMillis());
-        final int level = 1;
-        final String accountType = "01";
-        final String status = "01";
-
-        final String updateUsername = "张君宝";
-        final String updatePassword = "67890";
-        final String updateNickname = "啊宝";
-        final String updateRealname = "张小宝";
-        final int updateAge = 45;
-        final int updateSex = 2;
-        final String updateEmail = "111111@543.21";
-        // final Timestamp updateRegtime = new Timestamp(System.currentTimeMillis());
-        final Timestamp updateRegtime = Timestamp.valueOf("2015-12-11 12:12:12");
-        // final Timestamp updateLastlogintime = new Timestamp(System.currentTimeMillis());
-        final Timestamp updateLastlogintime = Timestamp.valueOf("2015-12-16 12:12:12");
-        final int updateLevel = 2;
-        final String updateAccountType = "02";
-        final String updateStatus = "02";
-
-        String userId;
-
         {
             //添加用户
             User user = new User();
@@ -75,10 +66,8 @@ public class UserDaoImplTest extends BasicTest {
             user.setEmail(email);
             user.setRegTime(regtime);
             user.setLastLoginTime(lastlogintime);
-            userDao.$save(user);
             userId = String.valueOf(userDao.$save(user));
         }
-
         checkUserInfo(userId, username, password, nickname, realname, age, sex, email, regtime, lastlogintime, level, accountType, status);
 
         {
@@ -98,14 +87,12 @@ public class UserDaoImplTest extends BasicTest {
             user.setRegTime(updateRegtime);
             user.setLastLoginTime(updateLastlogintime);
             userDao.$update(user);
-            //userDao.update(user);
-            List<User> users = userDao.$query(user);
-            System.out.println(users);
         }
         checkUserInfo(userId, updateUsername, updatePassword, updateNickname, updateRealname, updateAge, updateSex, updateEmail, updateRegtime, updateLastlogintime, updateLevel, updateAccountType, updateStatus);
 
+        //删除用户
         userDao.$delete(userId, User.class);
-
+        Assert.assertNull("the user where id = " + userId, userDao.$get(userId, User.class));
     }
 
     //获取用户，并验证数据
@@ -124,7 +111,7 @@ public class UserDaoImplTest extends BasicTest {
             String accountType,
             String status
     ) {
-        User user = (User) userDao.$get(id, User.class);
+        User user = userDao.$get(id, User.class);
         Assert.assertEquals(id, user.getId());
         Assert.assertEquals(username, user.getUsername());
         Assert.assertEquals(password, user.getPassword());
@@ -137,32 +124,6 @@ public class UserDaoImplTest extends BasicTest {
         Assert.assertEquals(lastlogintime, user.getLastLoginTime());
         Assert.assertEquals(accountType, user.getAccountType());
         Assert.assertEquals(status, user.getStatus());
-
-    }
-
-    @Test
-    public void $deleteTest() {
-        userDao.$delete("123", User.class);
-    }
-
-    @Test
-    public void $saveTest() {
-        User user = new User();
-        user.setUsername("东小侠");
-        user.setPassword("123456");
-        userDao.$save(user);
-    }
-
-    @Test
-    public void deleteTest() {
-        //两种初始化集合的快捷方式
-        List<String> list = new ArrayList(Arrays.asList("Ryan", "Julie", "Bob"));
-//        List list = new ArrayList<String>(){{
-//            add("A");
-//            add("B");
-//        }};
-        String[] ids = new String[]{"1", "2", "3"};
-        userDao.$delete(ids, User.class);
     }
 
     @Test
@@ -207,16 +168,21 @@ public class UserDaoImplTest extends BasicTest {
     @Test
     public void $batchSaveTest() {
         List<User> users = new ArrayList<>();
+        long start1 = System.currentTimeMillis();
         for (int a = 0; a < 1000; a++) {
             User user = new User();
             user.setPassword("123");
             user.setUsername("dongxiaoxia");
             users.add(user);
+            userDao.$save(user);
         }
+        long end1 = System.currentTimeMillis();
+        System.out.println(end1 - start1);
 
         long start = System.currentTimeMillis();
         userDao.$batchSave(users, User.class);
         long end = System.currentTimeMillis();
         System.out.println(end - start);
     }
+
 }

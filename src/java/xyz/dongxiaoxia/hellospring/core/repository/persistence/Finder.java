@@ -123,7 +123,7 @@ public class Finder {
 
     /**
      * 获取IN sql语句
-     *
+     *IN语句中的数据项由逗号分隔，数量不固定，"?"仅支持单参数的替换，因此无法使用。此时只能拼接SQL字符串
      * @param ids 主键数组
      * @return
      */
@@ -132,7 +132,8 @@ public class Finder {
             return null;
         }
         List<String> list = new ArrayList<>(Arrays.asList(ids));
-        return new StringBuilder(" IN ('").append(StringUtils.join(list, "','")).append("')").toString();
+        new String(" IN (%s)");
+        return String.format(" IN ('%s')", StringUtils.join(list, "','"));
     }
 
     /**
@@ -472,5 +473,99 @@ public class Finder {
         sqlSb.append(nameAndValueStr.substring(0, nameAndValueStr.length() - 1)).append(" WHERE ").append(getIdentityName(clazz)).append(" =? ");
         //返回拼装好的sql语句
         return sqlSb.toString();
+    }
+
+    /**
+     * 获取批量新增对象
+     *
+     * @return
+     */
+    public static <T> List<Object[]> getBatchSaveObject(List<T> list) {
+        List<Object[]> batch = new ArrayList<>();
+        for (T t : list) {
+            //获取对象中的所有字段
+            Field[] fields = t.getClass().getDeclaredFields();
+            List<Object> objectList = new ArrayList<>();
+            for (Field f : fields) {
+                if (!f.isAnnotationPresent(Column.class)) {
+                    continue;
+                }
+                // 获取字段名称
+                String fieldName = f.getName();
+                if (StringUtils.isEmpty(fieldName)) {
+                    continue;
+                }
+                if (f.isAnnotationPresent(Id.class)) {
+                    continue;
+                }
+                String methodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+                Method method = null;
+                try {
+                    method = t.getClass().getMethod(methodName);
+                    objectList.add(method.invoke(t));
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            batch.add(objectList.toArray(new Object[objectList.size()]));
+        }
+        return batch;
+    }
+
+    /**
+     * 获取批量更新对象
+     *
+     * @param list
+     * @param <T>
+     * @return
+     */
+    public static <T> List<Object[]> getBatchUpdateObject(List<T> list) {
+        List<Object[]> batch = new ArrayList<>();
+        for (T t : list) {
+            /*Object[] values = new Object[]{
+                    t.getFirstName(),
+                    t.getLastName(),
+                    t.getId()};*/
+
+            //获取对象中的所有字段
+            Field[] fields = t.getClass().getDeclaredFields();
+            List<Object> objectList = new ArrayList<>();
+            Object id = new Object();
+            for (Field f : fields) {
+                if (!f.isAnnotationPresent(Column.class)) {
+                    continue;
+                }
+                // 获取字段名称
+                String fieldName = f.getName();
+                if (StringUtils.isEmpty(fieldName)) {
+                    continue;
+                }
+                String methodName = "get" + fieldName.substring(0, 1).toUpperCase() + fieldName.substring(1);
+                Method method = null;
+                try {
+                    method = t.getClass().getMethod(methodName);
+                    if (f.isAnnotationPresent(Id.class)) {
+                        id = method.invoke(t);
+                    } else {
+                        objectList.add(method.invoke(t));
+                    }
+                } catch (NoSuchMethodException e) {
+                    e.printStackTrace();
+                } catch (InvocationTargetException e) {
+                    e.printStackTrace();
+                } catch (IllegalAccessException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            objectList.add(id);
+            batch.add(objectList.toArray(new Object[objectList.size()]));
+        }
+        return batch;
     }
 }
