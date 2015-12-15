@@ -1,20 +1,34 @@
 package xyz.dongxiaoxia.hellospring.core.entity;
 
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Column;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Entity;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Id;
+
 import java.util.HashSet;
 import java.util.Set;
 
 /**
  * Created by Administrator on 2015/11/8.
  */
+@Entity("SYSTEM_RESOURCE")
 public class Resource {
+    @Column("id")
+    @Id
     private String id;
+    @Column
     private String name;
+    @Column
     private String parentId;//父类Id
     private String parentName;
+    @Column
     private String resKey;//这个权限KEY是唯一的，新增时要注意
+    @Column
     private String resUrl;//URL地址。例如：/api/user/login ，不需要项目名和http://XXXX:8080
+    @Column
     private Integer level;
+    @Column
     private String type;//权限类型，0表示目录，1标识菜单，2表示按钮。。在spring security3安全权限中涉及精确到按钮控制
+    @Column
     private String description;
     private Set<Role> roles = new HashSet<>(0);
     private Set<Resource> childs = new HashSet<>(0);
