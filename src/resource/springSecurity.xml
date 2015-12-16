@@ -179,7 +179,7 @@
     <!--xml配置的方法权限控制-->
     <security:global-method-security>
         <security:protect-pointcut
-                expression="execution(* xyz.dongxiaoxia.hellospring.service.UserService.add(..))"
+                expression="execution(* xyz.dongxiaoxia.hellospring.service.UserService.adsd(..))"
                 access="ROLE_ADMIN"/>
     </security:global-method-security>
     <!-- 开启支持方法注解的权限控制：

@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface UserService {
 
-    void add(User user);
+    String add(User user);
 
     void delete(String id);
 

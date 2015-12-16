@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService {
     private UserDao userDao;
 
     @Override
-    public void add(User user) {
+    public String add(User user) {
         if (user == null) {
             throw new IllegalArgumentException("user must not be null");
         }
@@ -39,12 +39,12 @@ public class UserServiceImpl implements UserService {
         if (Common.isEmpty(user.getStatus())) {
             throw new IllegalArgumentException("status must not be null");
         }
-//        userDao.insert(user);
+        return String.valueOf(userDao.$save(user));
     }
 
     @Override
     public void delete(String id) {
-//        userDao.delete(id);
+        userDao.$delete(id, User.class);
     }
 
     @Override
@@ -70,12 +70,12 @@ public class UserServiceImpl implements UserService {
         if (Common.isEmpty(user.getStatus())) {
             throw new IllegalArgumentException("status must not be null");
         }
-//        userDao.update(user);
+        userDao.$update(user);
     }
 
     @Override
     public User get(String id) {
-        return (User) userDao.$get(id, User.class);
+        return userDao.$get(id, User.class);
     }
 
     @Override
@@ -85,6 +85,11 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public Paging<User> page(User user, int pageStart, int pageSize) {
+        if (pageStart < 1) {
+            throw new IllegalArgumentException("pageStart must more than the 1");
+        } else if (pageSize < 1) {
+            throw new IllegalArgumentException("pageSize must more than the 1");
+        }
         return userDao.$page(user, pageStart, pageSize);
     }
 
@@ -93,7 +98,7 @@ public class UserServiceImpl implements UserService {
         User user = new User();
         user.setUsername(username);
         user.setPassword(password);
-        return userDao.$query(user).size();
+        return userDao.$count(user);
     }
 
     @Override
