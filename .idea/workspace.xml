@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list id="0c536fdc-1f75-4eeb-aeb7-8b2ecedb798e" name="Default" comment="" />
     <list default="true" id="e7bb2a0f-85ce-4f8b-8aad-478b6fa83548" name="Rejected commit: Default" comment="自定义Spring Security url请求权限拦截json返回">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MyAccessDecisionManager.java" afterPath="$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MyAccessDecisionManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="HelloSpring.iws" />
@@ -845,13 +844,7 @@
       <workItem from="1449891354099" duration="17473000" />
       <workItem from="1449985663007" duration="14811000" />
       <workItem from="1450183868796" duration="10387000" />
-      <workItem from="1450356284146" duration="6636000" />
-    </task>
-    <task id="LOCAL-00048" summary="Copy the demo from https://github.com/lanyuancom/lanyuan.git">
-      <created>1447948644269</created>
-      <option name="number" value="00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1447948644269</updated>
+      <workItem from="1450356284146" duration="6696000" />
     </task>
     <task id="LOCAL-00049" summary="Copy the demo from https://github.com/lanyuancom/lanyuan.git">
       <created>1447950808669</created>
@@ -1141,11 +1134,17 @@
       <option name="project" value="LOCAL" />
       <updated>1450364028870</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="自定义Spring Security url请求权限拦截json返回">
+      <created>1450364837858</created>
+      <option name="number" value="00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1450364837858</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="461277000" />
+    <option name="totallyTimeSpent" value="461337000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1158,7 +1157,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32894737" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.30921054" sideWeight="0.5" order="13" side_tool="false" content_ui="tabs" />
@@ -1177,7 +1176,7 @@
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32852808" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24962063" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.26479515" sideWeight="0.54545456" order="0" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5180921" sideWeight="0.49013656" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.5180921" sideWeight="0.49013656" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
@@ -1259,12 +1258,6 @@
           <line>185</line>
           <properties />
           <option name="timeStamp" value="204" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/java/xyz/dongxiaoxia/hellospring/security/MyAccessDecisionManager.java</url>
-          <line>63</line>
-          <properties />
-          <option name="timeStamp" value="207" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
