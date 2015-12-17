@@ -142,31 +142,32 @@ public class UserServiceImplTest extends BasicTest {
 
     @Test
     public void testUpdate() throws Exception {
-
+        user.setUsername("test1111");
+        userId = userService.add(user);
+        updateUser.setId(userId);
+        user.setUsername("test2222");
+        userService.update(updateUser);
+        checkUserInfo(userId, "test2222", updatePassword, updateNickname, updateRealname, updateAge, updateSex, updateEmail, updateRegtime, updateLastlogintime, updateLevel, updateAccountType, updateStatus);
     }
 
     @Test
     public void testGet() throws Exception {
-
+        Assert.assertNotNull(userService.get("1233"));
     }
 
     @Test
     public void testList() throws Exception {
-
-    }
-
-    @Test
-    public void testCountUser() throws Exception {
-
+        Assert.assertNotNull(userService.list(new User()));
     }
 
     @Test
     public void testQuerySingleUser() throws Exception {
-
+        Assert.assertNotNull(userService.querySingleUser("admin"));
+        Assert.assertNull(userService.querySingleUser("adminadmin"));
     }
 
     @Test
     public void testFindbyUserRole() throws Exception {
-
+        Assert.assertEquals(true, userService.isExistUsername("admin"));
     }
 }

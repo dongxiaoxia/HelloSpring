@@ -58,7 +58,9 @@ public class UserServiceImpl implements UserService {
         if (Common.isEmpty(user.getUsername())) {
             throw new IllegalArgumentException("username must not be null");
         }
-        if (querySingleUser(user.getUsername()) != null) {
+        User existUser = querySingleUser(user.getUsername());
+        User beforeUser = userDao.$get(user.getId(), User.class);
+        if (existUser != null && !beforeUser.getUsername().equals(existUser.getUsername())) {
             throw new IllegalArgumentException("username is exist");
         }
         if (Common.isEmpty(user.getPassword())) {
@@ -91,14 +93,6 @@ public class UserServiceImpl implements UserService {
             throw new IllegalArgumentException("pageSize must more than the 1");
         }
         return userDao.$page(user, pageStart, pageSize);
-    }
-
-    @Override
-    public int countUser(String username, String password) {
-        User user = new User();
-        user.setUsername(username);
-        user.setPassword(password);
-        return userDao.$count(user);
     }
 
     @Override

@@ -180,13 +180,13 @@ public class UserController extends BasicController {
 
     @RequestMapping(value = "count")
     @ResponseBody
+    @PreAuthorize("hasRole('ROLE_ADMIN')")
     @ControllerLog(module = "UserController", operationType = "getCount操作", operationName = "获取用户数量")
     public Object getCount() {
         HttpSession session = getSession();
         Response response;
-        int count = userService.countUser(null, null);
         User user = new User();
-        user.setPassword(String.valueOf(count));
+        user.setPassword(String.valueOf(1));
         response = new Response();
         response.success(user);
         return response;
@@ -309,5 +309,17 @@ public class UserController extends BasicController {
             response.failure(e.getMessage());
         }
         return response;
+    }
+
+    /**
+     * 没有权限访问
+     *
+     * @return
+     */
+    @RequestMapping(value = "/denied")
+    @ResponseBody
+    public Response denied() {
+
+        return new Response().failure("没有权限访问");
     }
 }

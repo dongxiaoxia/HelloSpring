@@ -1,21 +1,38 @@
 package xyz.dongxiaoxia.hellospring.core.entity;
 
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Column;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Entity;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Id;
+
 import java.util.Date;
 
 /**
  * Created by Administrator on 2015/11/7.
  */
+@Entity("SYSTEM_LOG")
 public class Log {
+    @Id
+    @Column
     private String id;
+    @Column
     private String module;
+    @Column
     private String description;
+    @Column
     private String method;
+    @Column
     private Long logType;
+    @Column
     private String requestIp;
+    @Column
     private String exceptionCode;
+    @Column
     private String exceptionDetail;
+    @Column
     private String params;
+    @Column
     private String createBy;
+    @Column
     private Date createDate;
 
 
