@@ -3,10 +3,10 @@
 index.controller('ListCtrl', ['$scope', '$filter', 'users',
     function ($scope, $filter, users) {
         $scope.loadList = function () {
+            debugger
             users.all().then(function (response) {
-                $scope.users = response.data.data.data;
-                $scope.pageNow = response.data.data.pageStart;
-                $scope.pageCount = response.data.data.pageCount;
+                $scope.username = response.data.data.username;
+                $scope.anthorities = response.data.data.anthorities;
             });
         };
         //init load data
