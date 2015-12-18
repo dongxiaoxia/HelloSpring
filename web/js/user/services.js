@@ -1,11 +1,11 @@
 'use strict';
 
 book.factory('users', ['$http', function ($http) {
-    var url = "api/user/";
+    var url = "http://localhost/api/user/";
     var factory = {};
 
     factory.all = function () {
-        var data = {"user": null, "pageStart": 0, "pageSize": 10};
+        var data = {"user": null, "pageStart": 1, "pageSize": 10};
         //$http({
         //
         //    method: "post",
@@ -19,7 +19,7 @@ book.factory('users', ['$http', function ($http) {
         //    success: function (d) { console.log(d); }
         //
         //});
-        var users = $http.get(url + 'page', data).then(function (resp) {
+        var users = $http.post(url + 'page', data).then(function (resp) {
             return resp;
         });
         return users;
@@ -27,6 +27,7 @@ book.factory('users', ['$http', function ($http) {
 
     factory.get = function (id) {
         var book = $http.get(url + 'get?id=' + id).then(function (resp) {
+            debugger
             return resp.data.data;
         });
         return book;

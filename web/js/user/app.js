@@ -53,16 +53,16 @@ book.config(['$routeProvider', function ($routeProvider) {
     $routeProvider.
         when('/', {
             controller: 'ListCtrl',
-            templateUrl: 'views/list.html'
+            templateUrl: 'list.html'
         }).when('/edit/:id', {
             controller: 'EditCtrl',
-            templateUrl: 'views/edit.html'
+            templateUrl: 'edit.html'
         }).when('/view/:id', {
             controller: 'ViewCtrl',
-            templateUrl: 'views/view.html'
+            templateUrl: 'view.html'
         }).when('/new', {
             controller: 'NewCtrl',
-            templateUrl: 'views/edit.html'
+            templateUrl: 'edit.html'
         }).otherwise({
             redirectTo: '/'
         });

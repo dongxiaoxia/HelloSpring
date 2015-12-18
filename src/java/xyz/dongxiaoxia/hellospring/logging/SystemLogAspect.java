@@ -15,7 +15,7 @@ import xyz.dongxiaoxia.hellospring.service.LogService;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import java.lang.reflect.Method;
-import java.util.Date;
+import java.sql.Timestamp;
 import java.util.UUID;
 
 /**
@@ -121,7 +121,7 @@ public class SystemLogAspect {
             log.setExceptionDetail(null);
             log.setParams(null);
             log.setCreateBy(username);
-            log.setCreateDate(new Date());
+            log.setCreateDate(new Timestamp(System.currentTimeMillis()));
             //保存数据库
             logService.add(log);
             logger.info("===============controller后置通知结束================");
@@ -206,7 +206,7 @@ public class SystemLogAspect {
             log.setMethod((joinPoint.getTarget().getClass().getName() + "." + joinPoint.getSignature().getName() + "()"));
             log.setParams(params);
             log.setCreateBy(user.getUsername());
-            log.setCreateDate(new Date());
+            log.setCreateDate(new Timestamp(System.currentTimeMillis()));
             log.setRequestIp(ip);
             //保存数据库
             logService.add(log);

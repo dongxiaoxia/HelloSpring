@@ -29,8 +29,8 @@ public class UserDaoImplTest extends BasicTest {
     final String email = "9876@543.21";
     //final Timestamp regtime = new Timestamp(System.currentTimeMillis());
     final Timestamp regtime = Timestamp.valueOf("2015-02-16 12:12:12");
-    final Timestamp lastlogintime = Timestamp.valueOf("2015-05-16 12:12:12");
-    //final Timestamp lastlogintime = new Timestamp(System.currentTimeMillis());
+    //final Timestamp lastlogintime = Timestamp.valueOf("2015-05-16 12:12:12");
+    final Timestamp lastlogintime = new Timestamp(System.currentTimeMillis());
     final int level = 1;
     final String accountType = "01";
     final String status = "01";
@@ -43,8 +43,8 @@ public class UserDaoImplTest extends BasicTest {
     final String updateEmail = "111111@543.21";
     // final Timestamp updateRegtime = new Timestamp(System.currentTimeMillis());
     final Timestamp updateRegtime = Timestamp.valueOf("2015-12-11 12:12:12");
-    // final Timestamp updateLastlogintime = new Timestamp(System.currentTimeMillis());
-    final Timestamp updateLastlogintime = Timestamp.valueOf("2015-12-16 12:12:12");
+    final Timestamp updateLastlogintime = new Timestamp(System.currentTimeMillis());
+    // final Timestamp updateLastlogintime = Timestamp.valueOf("2015-12-16 12:12:12");
     final int updateLevel = 2;
     final String updateAccountType = "02";
     final String updateStatus = "02";

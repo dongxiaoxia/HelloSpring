@@ -1,12 +1,11 @@
 'use strict';
 
-book.controller('ListCtrl', ['$scope', '$filter', 'users',
+index.controller('ListCtrl', ['$scope', '$filter', 'users',
     function ($scope, $filter, users) {
         $scope.loadList = function () {
             users.all().then(function (response) {
-                console.log(response);
-                $scope.users = response.data.data.records;
-                $scope.pageNow = response.data.data.pageNow;
+                $scope.users = response.data.data.data;
+                $scope.pageNow = response.data.data.pageStart;
                 $scope.pageCount = response.data.data.pageCount;
             });
         };
@@ -75,7 +74,7 @@ book.controller('ListCtrl', ['$scope', '$filter', 'users',
     }
 ]);
 
-book.controller('ViewCtrl', ['$scope', '$routeParams', 'users',
+index.controller('ViewCtrl', ['$scope', '$routeParams', 'users',
     function ($scope, $routeParams, users) {
         //用指令代替了这块功能，该controller和directiveCtrl完全相同
         //books.get($routeParams.id).then(function (book) {
@@ -84,7 +83,7 @@ book.controller('ViewCtrl', ['$scope', '$routeParams', 'users',
     }
 ]);
 
-book.controller('EditCtrl', ['$scope', '$routeParams', '$location', 'users',
+index.controller('EditCtrl', ['$scope', '$routeParams', '$location', 'users',
     function ($scope, $routeParams, $location, users) {
         users.get($routeParams.id).then(function (user) {
             $scope.user = user;
@@ -99,14 +98,8 @@ book.controller('EditCtrl', ['$scope', '$routeParams', '$location', 'users',
     }
 ]);
 
-book.controller('NewCtrl', ['$scope', '$location', 'users',
+index.controller('NewCtrl', ['$scope', '$location', 'users',
     function ($scope, $location, users) {
-        //$scope.book = {
-        //    name: '1111',
-        //    author: '2222',
-        //    press: '3333',
-        //    description: '555333335555555'
-        //};
         $scope.new = function (user) {
             debugger
             console.log(user);
@@ -116,9 +109,10 @@ book.controller('NewCtrl', ['$scope', '$location', 'users',
     }
 ]);
 
-book.controller('directiveCtrl', ['$scope', '$routeParams', 'users',
+index.controller('directiveCtrl', ['$scope', '$routeParams', 'users',
     function ($scope, $routeParams, users) {
         users.get($routeParams.id).then(function (user) {
+            debugger
             console.log(user);
             $scope.user = user;
         });

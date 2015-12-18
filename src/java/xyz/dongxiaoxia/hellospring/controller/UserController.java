@@ -135,7 +135,7 @@ public class UserController extends BasicController {
     @RequestMapping(value = "get")
     @ResponseBody
     @ControllerLog(module = "UserController", operationType = "get操作", operationName = "获取用户")
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    //@PreAuthorize("hasRole('ROLE_USER')")
     public Response get(String id) {
         Response response = new Response();
         try {
@@ -161,10 +161,10 @@ public class UserController extends BasicController {
     @RequestMapping(value = "page")
     @ResponseBody
     @ControllerLog(module = "UserController", operationType = "page操作", operationName = "分页查询")
-    public Response query(User user, int pageStart, int pageSize) {
+    public Response page(User user, int pageStart, int pageSize) {
         Response response;
         try {
-            if (pageStart < 0) {
+            if (pageStart < 1) {
                 throw new IllegalArgumentException("参数pageStart非法");
             }
             if (pageSize < 1) {
