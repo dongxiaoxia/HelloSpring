@@ -1,10 +1,13 @@
 package xyz.dongxiaoxia.hellospring.core.repository.impl;
 
 import org.springframework.stereotype.Repository;
+import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.entity.User;
 import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
+
+import java.util.List;
 
 /**
  * Created by chenwendong on 2015/10/29.
@@ -12,6 +15,11 @@ import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 @Repository
 public class UserDaoImpl extends BaseDaoImpl<User> implements UserDao {
     private LoggerAdapter logger = LoggerAdapterFactory.getLoggerAdapter(getClass());
+
+    @Override
+    public List<Role> listUserRoles(String userId) {
+        return null;
+    }
 
     /*public int insert(final User user) {
         //获取新增数据的自增id

@@ -7,7 +7,9 @@ import org.springframework.security.web.FilterInvocation;
 import org.springframework.security.web.access.intercept.FilterInvocationSecurityMetadataSource;
 import org.springframework.stereotype.Component;
 import xyz.dongxiaoxia.hellospring.core.entity.Resource;
+import xyz.dongxiaoxia.hellospring.core.entity.Role;
 import xyz.dongxiaoxia.hellospring.core.repository.ResourceDao;
+import xyz.dongxiaoxia.hellospring.core.repository.RoleDao;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 
@@ -26,6 +28,9 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
     private static Map<String, Collection<ConfigAttribute>> resourceMap = null;
     @Autowired
     private ResourceDao resourceDao;
+
+    @Autowired
+    private RoleDao roleDao;
 
     //返回所请求资源所需要的权限
     @Override
@@ -58,15 +63,23 @@ public class MySecurityMetadataSource implements FilterInvocationSecurityMetadat
     private void loadResourceDefine() {
         logger.info("-----------MySecurityMetadataSource loadResourceDefine ----------- ");
         if (resourceMap == null) {
-            resourceMap = new HashMap<String, Collection<ConfigAttribute>>();
+            resourceMap = new HashMap<>();
+            //查询resource资源表获取url
             List<Resource> resources = this.resourceDao.$query(new Resource());
+            //通过资源角色关联表获取角色
             for (Resource resource : resources) {
-                Collection<ConfigAttribute> configAttributes = new ArrayList<ConfigAttribute>();
-                // TODO:ZZQ 通过资源名称来表示具体的权限 注意：必须"ROLE_"开头
-                // 关联代码：security.xml
-                // 关联代码：MyUserDetailServiceImpl#obtionGrantedAuthorities
-                ConfigAttribute configAttribute = new SecurityConfig("ROLE_" + resource.getResKey());
-                configAttributes.add(configAttribute);
+                Collection<ConfigAttribute> configAttributes = new ArrayList<>();
+                List<Role> roles = roleDao.listRoleByResourceId(resource.getId());
+                if (roles != null && roles.size() > 0) {
+                    for (Role role : roles) {
+                        // TODO:ZZQ 通过资源名称来表示具体的权限 注意：必须"ROLE_"开头
+                        // 关联代码：security.xml
+                        // 关联代码：MyUserDetailServiceImpl#obtionGrantedAuthorities
+                        //获取角色名称装配为权限
+                        ConfigAttribute configAttribute = new SecurityConfig("ROLE_" + role.getName());
+                        configAttributes.add(configAttribute);
+                    }
+                }
                 resourceMap.put(resource.getResUrl(), configAttributes);
             }
         }

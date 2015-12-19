@@ -1,17 +1,27 @@
 package xyz.dongxiaoxia.hellospring.core.entity;
 
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Column;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Entity;
+import xyz.dongxiaoxia.hellospring.core.repository.persistence.annotation.Id;
+
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 /**
  * Created by Administrator on 2015/11/8.
  */
+@Entity("SYSTEM_ROLE")
 public class Role {
+    @Column
+    @Id
     private String id;
-    private Integer enable;//是否禁用角色　1　表示禁用　2　表示不禁用
+    @Column
+    private int enable;//是否禁用角色　1　表示禁用　2　表示不禁用
+    @Column
     private String name;
+    @Column
     private String roleKey;
+    @Column
     private String description;
     private Set<Resource> resources = new HashSet<>(0);
 
@@ -26,11 +36,11 @@ public class Role {
         this.id = id;
     }
 
-    public Integer getEnable() {
+    public int getEnable() {
         return enable;
     }
 
-    public void setEnable(Integer enable) {
+    public void setEnable(int enable) {
         this.enable = enable;
     }
 

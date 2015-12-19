@@ -21,8 +21,9 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleDao roleDao;
 
+
     @Override
-    public Paging<Role> query(Role role, int pageStart, int pageSize) {
+    public Paging<Role> page(Role role, int pageStart, int pageSize) {
         return roleDao.$page(role, pageStart, pageSize);
     }
 
@@ -42,8 +43,8 @@ public class RoleServiceImpl implements RoleService {
     }
 
     @Override
-    public Role getById(String id) {
-        return null;
+    public Role get(String id) {
+        return roleDao.$get(id, Role.class);
     }
 
     @Override
@@ -55,5 +56,10 @@ public class RoleServiceImpl implements RoleService {
     public void saveUserRole(UserRole userRole) {
         roleDao.deleteUserRole(userRole.getUserId().toString());
         roleDao.saveUserRole(userRole);
+    }
+
+    @Override
+    public List<Role> listRoleByUserId(String id) {
+        return roleDao.listRoleByUserId(id);
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Administrator on 2015/11/19.
  */
 public interface RoleService {
-    Paging<Role> query(Role role, int pageStart, int pageSize);
+    Paging<Role> page(Role role, int pageStart, int pageSize);
 
     void add(Role role);
 
@@ -18,9 +18,11 @@ public interface RoleService {
 
     void modify(Role role);
 
-    Role getById(String id);
+    Role get(String id);
 
     List<Role> findAll();
 
     void saveUserRole(UserRole userRole);
+
+    List<Role> listRoleByUserId(String id);
 }

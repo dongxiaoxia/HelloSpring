@@ -1,0 +1,42 @@
+<div class="panel panel-primary" xmlns="http://www.w3.org/1999/html">
+    <div class="panel-heading">
+        <a type="button" class="btn btn-default" ng-href="#/">返回列表</a>
+    </div>
+    <div class="panel-body">
+        <form name="newRole" class="form-horizontal" role="form" ng-submit="newRole.$valid && new(role)">
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">名称</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="name" ng-model="role.name" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="resKey" class="col-sm-2 control-label">KEY</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="roleKey" ng-model="role.roleKey" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="description" class="col-sm-2 control-label">描述</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="description" ng-model="role.description" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="enable" class="col-sm-2 control-label">禁用</label>
+
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" id="enable" ng-model="role.enable" required>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-offset-2 col-sm-10">
+                    <button type="submit" class="btn btn-primary" ng-disabled="newRole.$invalid">确定</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

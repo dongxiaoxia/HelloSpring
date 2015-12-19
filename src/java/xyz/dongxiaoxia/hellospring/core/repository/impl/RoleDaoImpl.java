@@ -18,15 +18,15 @@ import java.util.Set;
  * Created by Administrator on 2015/11/8.
  */
 @Repository
-public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
+public class RoleDaoImpl extends BaseDaoImpl<Role> implements RoleDao {
 
 
     public int insert(Role role) {
-        return getJdbcTemplate().update("INSERT INTO system_role (name,desc,roleKey,enable ) VALUES (?,?,?,?)", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable());
+        return getJdbcTemplate().update("INSERT INTO system_role (name,description,roleKey,enable ) VALUES (?,?,?,?)", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable());
     }
 
     public int update(Role role) {
-        return getJdbcTemplate().update("UPDATE system_role SET name = ?,desc = ?,roleKey = ?,enable = ? WHERE id = ?", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable(), role.getId());
+        return getJdbcTemplate().update("UPDATE system_role SET name = ?,description = ?,roleKey = ?,enable = ? WHERE id = ?", role.getName(), role.getDescription(), role.getRoleKey(), role.getEnable(), role.getId());
     }
 
 
@@ -68,11 +68,24 @@ public class RoleDaoImpl extends BaseDaoImpl implements RoleDao {
 
     }
 
+    @Override
+    public List<Role> listRoleByResourceId(String id) {
+        return getJdbcTemplate().query("select r.* from system_role r join system_role_resource rr on rr.role_id = r.id join system_resource re on re.id = rr.resource_id and re.id = ?", new RoleMapper(), id);
+    }
+
+    @Override
+    public List<Role> listRoleByUserId(String id) {
+        return getJdbcTemplate().query("select r.* from system_role r join system_user_role ur on ur.role_id = r.id join system_user u on u.id = ur.user_id where u.id = ?", new RoleMapper(), id);
+    }
+
     private static final class RoleMapper implements RowMapper<Role> {
         public Role mapRow(ResultSet rs, int rowNum) throws SQLException {
             Role role = new Role();
             role.setId(rs.getString("id"));
             role.setName(rs.getString("name"));
+            role.setDescription(rs.getString("description"));
+            role.setRoleKey(rs.getString("roleKey"));
+            role.setEnable(rs.getInt("enable"));
             return role;
         }
     }

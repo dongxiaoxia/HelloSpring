@@ -108,7 +108,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public List<Role> findbyUserRole(String userId) {
         // return userDao.findRoleByUserId(userId);
-        return null;
+        return userDao.listUserRoles(userId);
     }
 
     @Override

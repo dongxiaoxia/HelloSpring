@@ -11,7 +11,7 @@ import xyz.dongxiaoxia.hellospring.logging.LoggerAdapter;
 import xyz.dongxiaoxia.hellospring.logging.LoggerAdapterFactory;
 import xyz.dongxiaoxia.hellospring.service.ResourceService;
 import xyz.dongxiaoxia.hellospring.service.RoleService;
-import xyz.dongxiaoxia.hellospring.util.StringUtils;
+import xyz.dongxiaoxia.hellospring.util.Paging;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -56,15 +56,15 @@ public class RoleController {
     /**
      * 删除角色
      *
-     * @param roleId
+     * @param id
      * @return
      */
     @RequestMapping(value = "delete")
     @ResponseBody
-    public Response delete(String roleId) {
+    public Response delete(String id) {
         Response response = new Response();
         try {
-            roleService.delete(roleId);
+            roleService.delete(id);
             response.success();
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
@@ -76,15 +76,15 @@ public class RoleController {
     /**
      * 获取角色
      *
-     * @param roleId
+     * @param id
      * @return
      */
     @RequestMapping(value = "get")
     @ResponseBody
-    public Response get(String roleId) {
+    public Response get(String id) {
         Response response = new Response();
         try {
-            response.success(roleService.getById(roleId));
+            response.success(roleService.get(id));
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.failure(e.getMessage());
@@ -143,21 +143,17 @@ public class RoleController {
      * 分页查询
      *
      * @param role
-     * @param pageNow
+     * @param pageStart
+     * @param pageSize
      * @return
      */
-    @RequestMapping(value = "query")
+    @RequestMapping(value = "page")
     @ResponseBody
-    public Response query(Role role, String pageNow) {
+    public Response page(Role role, int pageStart, int pageSize) {
         Response response = new Response();
         try {
-           /* PageView pageView = null;
-            if (StringUtils.isEmpty(pageNow)) {
-                pageView = new PageView(1);
-            } else {
-                pageView = new PageView(Integer.parseInt(pageNow));
-            }
-            response.success(roleService.query(pageView, role));*/
+            Paging<Role> paging = roleService.page(role, pageStart, pageSize);
+            response.success(paging);
         } catch (Exception e) {
             logger.error(e.getMessage(), e);
             response.failure(e.getMessage());

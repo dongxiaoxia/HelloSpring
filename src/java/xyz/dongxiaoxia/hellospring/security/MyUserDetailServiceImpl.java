@@ -8,11 +8,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import xyz.dongxiaoxia.hellospring.core.entity.Resource;
 import xyz.dongxiaoxia.hellospring.core.entity.Role;
-import xyz.dongxiaoxia.hellospring.core.repository.ResourceDao;
-import xyz.dongxiaoxia.hellospring.core.repository.RoleDao;
-import xyz.dongxiaoxia.hellospring.core.repository.UserDao;
+import xyz.dongxiaoxia.hellospring.service.RoleService;
 import xyz.dongxiaoxia.hellospring.service.UserService;
 
 import java.util.Collection;
@@ -39,7 +36,7 @@ public class MyUserDetailServiceImpl implements UserDetailsService {
     @Autowired
     private UserService userService;
     @Autowired
-    private ResourceDao resourceDao;
+    private RoleService roleService;
 
     // 登录验证
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
@@ -65,13 +62,15 @@ public class MyUserDetailServiceImpl implements UserDetailsService {
 
     // 取得用户的权限
     private Set<GrantedAuthority> obtionGrantedAuthorities(xyz.dongxiaoxia.hellospring.core.entity.User user) {
-        List<Resource> resources = resourceDao.getUserResources(String.valueOf(user.getId()));
-        Set<GrantedAuthority> authSet = new HashSet<GrantedAuthority>();
-        for (Resource res : resources) {
-            // TODO:ZZQ 用户可以访问的资源名称（或者说用户所拥有的权限） 注意：必须"ROLE_"开头
-            // 关联代码：applicationContext-security.xml
-            // 关联代码：com.huaxin.security.MySecurityMetadataSource#loadResourceDefine
-            authSet.add(new SimpleGrantedAuthority("ROLE_" + res.getResKey()));
+        Set<GrantedAuthority> authSet = new HashSet<>();
+        List<Role> roles = roleService.listRoleByUserId(user.getId());
+        if (roles != null && roles.size() > 0) {
+            for (Role role : roles) {
+                // TODO:ZZQ 用户可以访问的资源名称（或者说用户所拥有的权限） 注意：必须"ROLE_"开头
+                // 关联代码：applicationContext-security.xml
+                // 关联代码：com.huaxin.security.MySecurityMetadataSource#loadResourceDefine
+                authSet.add(new SimpleGrantedAuthority("ROLE_" + role.getName()));
+            }
         }
         return authSet;
     }
