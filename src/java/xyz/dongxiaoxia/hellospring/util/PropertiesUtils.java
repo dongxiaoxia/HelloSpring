@@ -40,7 +40,7 @@ public class PropertiesUtils {
     public static void main(String[] args) {
         Properties prop = new Properties();
         InputStream in = PropertiesUtils.class
-                .getResourceAsStream("/config.properties");
+                .getResourceAsStream("jdbc.properties");
         try {
             prop.load(in);
             Iterator<Map.Entry<Object, Object>> itr = prop.entrySet().iterator();
