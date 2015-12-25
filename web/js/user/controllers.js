@@ -5,7 +5,8 @@ book.controller('ListCtrl', ['$scope', '$filter', 'users',
         $scope.loadList = function () {
             users.all().then(function (response) {
                 $scope.users = response.data.data.data;
-                $scope.pageNow = response.data.data.pageStart;
+                $scope.pageStart = response.data.data.pageStart;
+                $scope.pageSize = response.data.data.pageSize;
                 $scope.pageCount = response.data.data.pageCount;
             });
         };
@@ -22,25 +23,25 @@ book.controller('ListCtrl', ['$scope', '$filter', 'users',
         //设置分页
         //初始化分页参数
         $scope.itemsPerPage = 10;
-        $scope.currentPage = 0;
+        $scope.currentPage = 1;
 
         $scope.prevPage = function () {
-            if ($scope.currentPage > 0) {
+            if ($scope.currentPage > 1) {
                 $scope.currentPage--;
             }
         };
 
         $scope.prevPageDisabled = function () {
-            return $scope.currentPage == 0;
+            return $scope.currentPage == 1;
         };
 
         //书名搜索关键词，主要用于更新books数组
-        $scope.bookFilterdInput = '';
+        $scope.userFilterdInput = '';
 
-        $scope.pageCount1 = function () {
-            if ($scope.books) {
+        $scope.pageCount = function () {
+            if ($scope.users) {
                 //根据用户输入来过滤更新数组，主要用来更新页数
-                $scope.updatePage = $filter('bookname')($scope.books, $scope.bookFilterdInput);
+                //  $scope.updatePage = $filter('usernaem')($scope.users, $scope.userFilterdInput);
                 //向上取整求出总页数
                 return Math.ceil($scope.updatePage.length / $scope.itemsPerPage);
             } else {
@@ -49,26 +50,33 @@ book.controller('ListCtrl', ['$scope', '$filter', 'users',
         };
 
         $scope.nextPage = function () {
-            if ($scope.currentPage < $scope.pageCount()) {
+            if ($scope.currentPage < $scope.pageCount) {
                 $scope.currentPage++;
+                var user = null;
+                users.page(user, $scope.currentPage, $scope.pageSize).then(function (response) {
+                    $scope.users = response.data.data.data;
+                    $scope.pageStart = response.data.data.pageStart;
+                    $scope.pageCount = response.data.data.pageCount;
+                });
             }
+            ;
         };
 
         $scope.nextPageDisabled = function () {
-            return $scope.currentPage + 1 == $scope.pageCount1();
+            return $scope.currentPage + 1 == $scope.pageCount;
         };
 
         $scope.$watch('bookFilterdInput', function () {
             //console.log('change');
-            if ($scope.pageCount1() <= $scope.currentPage) {
-                $scope.currentPage = 0;
+            if ($scope.pageCount <= $scope.currentPage) {
+                $scope.currentPage = 1;
             }
         })
 
         $scope.$watch('itemsPerPage', function () {
             //console.log('change');
-            if ($scope.pageCount1() <= $scope.currentPage) {
-                $scope.currentPage = 0;
+            if ($scope.pageCount <= $scope.currentPage) {
+                $scope.currentPage = 1;
             }
         })
     }
@@ -91,7 +99,6 @@ book.controller('EditCtrl', ['$scope', '$routeParams', '$location', 'users',
 
         $scope.new = function (user) {
             //console.log(book);
-            debugger
             users.update(user);
             $location.path('/');
         };
@@ -101,7 +108,7 @@ book.controller('EditCtrl', ['$scope', '$routeParams', '$location', 'users',
 book.controller('NewCtrl', ['$scope', '$location', 'users',
     function ($scope, $location, users) {
         $scope.new = function (user) {
-            debugger
+
             console.log(user);
             users.add(user);
             $location.path('/');
@@ -112,7 +119,7 @@ book.controller('NewCtrl', ['$scope', '$location', 'users',
 book.controller('directiveCtrl', ['$scope', '$routeParams', 'users',
     function ($scope, $routeParams, users) {
         users.get($routeParams.id).then(function (user) {
-            debugger
+
             console.log(user);
             $scope.user = user;
         });

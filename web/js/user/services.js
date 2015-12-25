@@ -53,5 +53,13 @@ book.factory('users', ['$http', function ($http) {
         });
     };
 
+    factory.page = function (user, pageStart, pageSize) {
+        debugger
+        var data = {"user": user, "pageStart": pageStart, "pageSize": pageSize};
+        var users = $http.post(url + 'page', data).then(function (resp) {
+            return resp;
+        });
+        return users;
+    };
     return factory;
 }]);
